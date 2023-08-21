@@ -1,11 +1,12 @@
-import { AppBar, styled, Toolbar } from '@mui/material';
+import {AppBar, styled, Toolbar, Typography} from '@mui/material';
 import { useEffect, useState } from 'react';
-import logo from '../../imgShared/S148.png';
+import logo from '../../../public/images/S148.png';
 import { useCart } from '@/hooks/useCart';
 import Link from "next/link";
 import {locale} from "@/constants/locale/ua";
-
-const topBarHeight = '80px';
+import Image from "next/image";
+import {Color} from "@/constants/color";
+import {topBarHeight} from "@/constants/size";
 
 const Navbar = () => {
   const [cartLinkDisabled, setCartLinkDisabled] = useState(true);
@@ -18,24 +19,26 @@ const Navbar = () => {
   return (
     <StyledAppBar>
       <Toolbar>
-        <LogoContainer src={logo} />
+        <LogoContainer src={logo} alt={"loading"} />
         <ItemMenu>
           <TopBarItem>
-            <TopBarNavLink to="/">{locale.home_page}</TopBarNavLink>
+            <TopBarNavLink href="/">
+              <Typography>{locale.home_page}</Typography>
+            </TopBarNavLink>
           </TopBarItem>
           <TopBarItem>
-            <TopBarNavLink to="/products">
-              {locale.products_page}
+            <TopBarNavLink href="/products">
+              <Typography>{locale.products_page}</Typography>
             </TopBarNavLink>
           </TopBarItem>
           <TopBarItem>
             {cartLinkDisabled ? (
               <TopBarNavLinkDisabled>
-                {locale.cart_page}
+                <Typography color={Color.Inactive}>{locale.cart_page}</Typography>
               </TopBarNavLinkDisabled>
             ) : (
-              <TopBarNavLink to="/cart">
-                {locale.cart_page}
+              <TopBarNavLink href="/cart">
+                <Typography>{locale.cart_page}</Typography>
               </TopBarNavLink>
             )}
           </TopBarItem>
@@ -46,7 +49,7 @@ const Navbar = () => {
 };
 
 const StyledAppBar = styled(AppBar)({
-  backgroundColor: 'var(--navbar-background-color)',
+  backgroundColor: Color.NavbarBackgroundColor,
   fontFamily: 'var(--home-page-font-family)',
   position: 'sticky',
   height: topBarHeight,
@@ -62,20 +65,15 @@ const TopBarItem = styled('div')({
 });
 
 const TopBarNavLinkDisabled = styled('span')({
-  cursor: 'pointer',
+  cursor: 'default',
   textDecoration: 'none',
-  color: 'var(--global-color-inactive)',
 });
 
 const TopBarNavLink = styled(Link)({
-  ':hover': {
-    color: 'var(--global-text-color-highlight)',
-  },
-  color: 'var(--global-text-color)',
   textDecoration: 'none',
 });
 
-const LogoContainer = styled('img')({
+const LogoContainer = styled(Image)({
   width: 'auto',
   height: '60px',
   margin: '10px 0px',

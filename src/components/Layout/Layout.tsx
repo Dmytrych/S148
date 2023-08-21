@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import {Box, styled} from "@mui/material";
 import AppTopBar from "../Navbar";
 import { ReactNode } from "react";
 

@@ -1,0 +1,16 @@
+.order-page-content-info-block-outlined{
+    margin-left: 2rem;
+    padding: 20px 15px;
+}
+
+.credentials-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.delivery-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
