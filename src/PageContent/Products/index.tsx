@@ -1,23 +1,25 @@
-import { styled } from '@mui/material';
+import {CircularProgress, styled} from '@mui/material';
 import WholeWindowBlock from '../../components/WholeWindowBlock';
 import TallProductCard from '../../components/TallProductCard';
-import { useProducts } from '../../hooks/useProducts';
+import { useProducts } from '@/hooks/useProducts';
 
 export default function Products() {
-  const products = useProducts();
+  const { data: products, isLoading: productsLoading} = useProducts();
 
   return (
         <WholeWindowBlock>
             <Gradient>
                 <ProductPageBlock>
                     <ProductDisplay>
-                        {products
-                            && products.map((product) => (
-                                <TallProductCard
-                                    key={product.id}
-                                    product={product}
-                                />
-                            ))}
+                        {
+                            !productsLoading && products
+                                ? products.map((product, index) => (
+                                    <TallProductCard
+                                        key={index}
+                                        product={product}
+                                    />
+                                )) : <CircularProgress />
+                        }
                     </ProductDisplay>
                 </ProductPageBlock>
             </Gradient>

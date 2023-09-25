@@ -1,8 +1,9 @@
 import { styled } from "@mui/material";
 import { appSettings } from "../../helpers/appSettings";
+import {config} from "../../config";
 
 const ImageBox = ({ imageName }) => {
-    return (<Image src={`${appSettings.imagesHost}/${imageName}`} />)
+    return (<Image src={`${config.imageProviderUrl}/${imageName}`} />)
 }
 
 export default ImageBox;

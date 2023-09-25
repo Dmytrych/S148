@@ -1,23 +1,23 @@
 import { styled } from '@mui/material';
 import ImageBox from '../ImageBox';
 import PriceTag from '../PriceTag';
-import { ProductDto } from '../../repositories/api/Dto/ProductDto';
 import Link from "next/link";
+import {IProduct} from "@/api/DTO/products";
 
-function TallProductCard({ product }: { product: ProductDto }) {
+function TallProductCard({ product }: { product: IProduct }) {
   return (
     <Container>
       <ImageContainer>
-        <ImageBox imageName={product.imageName} />
+        <ImageBox imageName={product.options.image} />
       </ImageContainer>
       <div style={{ width: '100%' }}>
         <ProductText>
-          <Link href={`/product/${product.id}`}>
+          <Link href={`/product/${product.code}`}>
             {product.name}
           </Link>
         </ProductText>
         <ProductPriceBox>
-          <PriceTag value={product.unitPrice}></PriceTag>
+          <PriceTag value={product.price.base}></PriceTag>
           {/* <div style={{ marginRight: "10px" }}> */}
           {/* eslint-disable-next-line max-len */}
           {/*    <RoundedButton text={locale.buy} onClick={() => setProductQuantity(productQuantity + 1)}/> */}
