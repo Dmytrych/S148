@@ -1,19 +1,18 @@
 import {AppBar, styled, Toolbar, Typography} from '@mui/material';
-import { useEffect, useState } from 'react';
+import {useMemo} from 'react';
 import logo from '../../../public/images/S148.png';
-import { useCart } from '@/hooks/useCart';
 import Link from "next/link";
 import {locale} from "@/constants/locale/ua";
 import Image from "next/image";
 import {Color} from "@/constants/color";
 import {topBarHeight} from "@/constants/size";
+import {useCart} from "@/hooks/context/useCart";
 
 const Navbar = () => {
-  const [cartLinkDisabled, setCartLinkDisabled] = useState(true);
   const { cart } = useCart();
 
-  useEffect(() => {
-    setCartLinkDisabled(cart && cart.length <= 0);
+  const cartLinkDisabled = useMemo(() => {
+    return cart && cart.length <= 0;
   }, [cart]);
 
   return (

@@ -2,7 +2,6 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import { IconButton, styled } from '@mui/material';
 import { useState } from 'react';
-import { noop } from '../../utils';
 
 const limit = 200;
 
@@ -12,7 +11,7 @@ type PlusMinusControlInput = {
 };
 
 function PlusMinusControl({
-  onChange = noop,
+  onChange = () => {},
   defaultValue = 1,
 }: PlusMinusControlInput) {
   const [value, setValue] = useState(defaultValue);

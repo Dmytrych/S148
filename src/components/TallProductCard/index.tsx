@@ -12,7 +12,7 @@ function TallProductCard({ product }: { product: IProduct }) {
       </ImageContainer>
       <div style={{ width: '100%' }}>
         <ProductText>
-          <Link href={`/product/${product.code}`}>
+          <Link href={`/products/${product.code}`}>
             {product.name}
           </Link>
         </ProductText>

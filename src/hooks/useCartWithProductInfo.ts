@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAllProductsFiltered } from '../repositories/api';
 import { useProductInCart } from './useProductInCart';
 import { ProductDto } from '../repositories/api/Dto/ProductDto';
-import { CartProduct, OptionSelection } from '../contexts/CartContext';
+import { ICartProduct, OptionSelection } from '../contexts/CartContext';
 
 export type CartProductWithInfo = {
     product: ProductDto;
@@ -22,7 +22,7 @@ export const useCartWithProductInfo = () => {
       console.log(productIds);
       const retrievedProducts = await getAllProductsFiltered(productIds);
       const successfullyFoundProducts: CartProductWithInfo[] = [];
-      const failedToFindCartProducts: CartProduct[] = [];
+      const failedToFindCartProducts: ICartProduct[] = [];
 
       cart.forEach((cartProduct) => {
         const retrievedProduct = retrievedProducts.find(
