@@ -11,7 +11,7 @@ export function useCart() {
     const { cart, saveCart } = useContext<ICartContext>(CartContext);
 
     const addToCart = ({ productCode, quantity, append }: IAddToCartParams) => {
-        if (quantity && quantity > 0) {
+        if (quantity && quantity <= 0) {
             throw new Error("Quantity should be positive");
         }
 
