@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAllProductsFiltered } from '../repositories/api';
 import { useProductInCart } from './useProductInCart';
 import { ProductDto } from '../repositories/api/Dto/ProductDto';
-import { ICartProduct, OptionSelection } from '../contexts/CartContext';
+import { ICartProduct } from '../contexts/CartContext';
 
 export type CartProductWithInfo = {
     product: ProductDto;

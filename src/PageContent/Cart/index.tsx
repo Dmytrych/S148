@@ -1,73 +1,38 @@
 import { Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import { styled } from '@mui/material';
-import { locale } from '../../locale/ua';
-import { create } from '../../repositories/api';
+import {Box, styled, Typography} from '@mui/material';
+import { locale } from '@/locale/ua';
+import { create } from '@/repositories/api';
 import CartSummary from './components/CartSummary';
 import OrderForm from './components/OrderForm/OrderFrom';
-import { useProductInCart } from '../../hooks/useProductInCart';
-import { useCartWithProductInfo } from '../../hooks/useCartWithProductInfo';
 import './index.css';
-import {IProduct} from "@/api/DTO/products";
 import {ICartProduct} from "@/contexts/CartContext";
-
-const initialValues = {
-  name: '',
-  middleName: '',
-  surname: '',
-  email: '',
-  phoneNumber: '',
-  description: '',
-};
+import {IOrderFormFields, useOrderForm} from "@/PageContent/Cart/hooks/useOrderForm";
 
 interface ICartProps {
   cartProducts: ICartProduct[];
-  onRemoveProduct: (cartProduct: ICartProduct) => void;
-  onSubmitClick: () => void;
+  onRemoveProduct: (productCode: string) => void;
+  onSubmitClick: (values: IOrderFormFields) => Promise<void> | void;
 }
 
-function Cart({ cartProducts, onRemoveProduct }: ICartProps): JSX.Element {
-  const navigate = useNavigate();
+function Cart({ cartProducts, onRemoveProduct, onSubmitClick }: ICartProps): JSX.Element {
+  const {validateForm, getInitialValues} = useOrderForm();
 
-  const handleSubmit = async (values): Promise<void> => {
-    const dataModel = {
-      description: values.description,
-      customerModel: {
-        name: values.name,
-        surname: values.surname,
-        middleName: values.middleName,
-        phoneNumber: values.phoneNumber,
-        email: values.email,
-      },
-      products: cartWithProductInfo.map((cartProduct) => ({
-        productId: cartProduct.product.id,
-        quantity: cartProduct.quantity,
-      })),
-    };
-
-    await create('novaPoshta', dataModel);
-
-    clearCart();
-    navigate('/');
-  };
-
-  const handleRemoveCartItem = (cartProduct): void => {
-    removeProductsFromCart([cartProduct]);
+  const handleRemoveCartItem = (cartProduct: ICartProduct): void => {
+    onRemoveProduct(cartProduct.productCode);
   };
 
   return (
         <CartPageBackground>
             <CartPageBox>
-                <div>
-                    <h2>{locale.order_placement}</h2>
-                </div>
-                {cartWithProductInfo && cartWithProductInfo.length > 0 && (
+                <Box>
+                    <Typography variant="h2">{locale.order_placement}</Typography>
+                </Box>
+                {cartProducts.length > 0 && (
                     <Formik
                         validateOnMount
-                        initialValues={initialValues}
+                        initialValues={getInitialValues()}
                         validate={validateForm}
                         onSubmit={handleSubmit}
-                        /* eslint-disable-next-line react/no-children-prop */
                         children={(props) => (
                             <OrderContentContainer>
                                 <OrderPageContentBlock>
@@ -75,11 +40,9 @@ function Cart({ cartProducts, onRemoveProduct }: ICartProps): JSX.Element {
                                 </OrderPageContentBlock>
                                 <OrderSummaryBlock>
                                     <CartSummary
-                                        /* eslint-disable-next-line react/prop-types */
                                         handleSubmit={props.handleSubmit}
-                                        /* eslint-disable-next-line react/prop-types */
                                         disableSubmit={!props.isValid}
-                                        cartProducts={cartWithProductInfo}
+                                        cartProducts={cartProducts}
                                         removeCartItem={handleRemoveCartItem}
                                     />
                                 </OrderSummaryBlock>

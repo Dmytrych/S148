@@ -1,6 +1,5 @@
 import {locale} from "@/locale/ua";
-
-interface CartValidationErrors {
+export interface CartValidationErrors {
     name?: string;
     middleName?: string;
     surname?: string;
@@ -9,7 +8,7 @@ interface CartValidationErrors {
     description?: string;
 }
 
-interface IOrderFormFields {
+export interface IOrderFormFields {
     name: string;
     middleName: string;
     surname: string;
@@ -19,6 +18,17 @@ interface IOrderFormFields {
 }
 
 export function useOrderForm() {
+    const getInitialValues = (): IOrderFormFields => {
+        return {
+            name: '',
+            middleName: '',
+            surname: '',
+            email: '',
+            phoneNumber: '',
+            description: '',
+        };
+    }
+
     const validateForm = (values: IOrderFormFields): CartValidationErrors => {
         const errors: CartValidationErrors = {};
         if (!values.name || values.name.length > 20) {
@@ -44,18 +54,5 @@ export function useOrderForm() {
         return errors;
     };
 
-    const getOrderFormParams = (values: IOrderFormFields) => {
-        return {
-            customerInfo: {
-                name: values.name,
-                middleName: values.middleName,
-                surname: values.surname,
-                phoneNumber: values.phoneNumber,
-                email: values.email
-            },
-            deliveryInfo: {
-                description: values.description
-            }
-        }
-    }
+    return { validateForm, getInitialValues }
 }
