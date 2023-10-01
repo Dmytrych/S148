@@ -1,7 +1,5 @@
 import React from 'react';
-import {noop} from "next/dist/client/components/react-dev-overlay/internal/helpers/noop-template";
-import {Button, Typography} from "@mui/material";
-import Link from "next/link";
+import {Typography} from "@mui/material";
 
 // const sizeToCssMapping = {
 //   big: 'rounded-button-big',

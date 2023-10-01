@@ -9,16 +9,12 @@ export interface ICustomerInfo {
 export interface IOrderItem {
     productCode: string;
     quantity: number;
-    price: {
-        base: number;
-    }
 }
 
 export interface IOrderRequest {
-    _id: string;
     customerInfo: ICustomerInfo;
     items: IOrderItem[];
-    comment: string;
+    comment?: string;
     deliveryInfo: {
         description: string;
     }

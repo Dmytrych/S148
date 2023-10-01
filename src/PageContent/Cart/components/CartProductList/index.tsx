@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { styled } from '@mui/material';
-import { type CartProductWithInfo, useCartWithProductInfo } from '../../../../hooks/useCartWithProductInfo';
 import ImageBox from '../../../../components/ImageBox';
 import { TextProductVariant } from '../../../../components/TextProductVariant';
 import { ProductName } from '../../../../components/ProductName';
@@ -10,11 +9,10 @@ import PriceTag from '../../../../components/PriceTag';
 import { Size } from '../../../../components/PriceTag/PriceTag';
 
 function CartProductList(): JSX.Element {
-  const { cartWithProductInfo } = useCartWithProductInfo();
 
   return (
     <CartProductGridContainer>
-      {cartWithProductInfo.map((productCartItem, index) => (
+      {[].map((productCartItem, index) => (
         <CartListItem key={index} productCartItem={productCartItem} />
       ))}
     </CartProductGridContainer>
@@ -26,7 +24,7 @@ function CartListItem({
 }: {
   productCartItem: CartProductWithInfo;
 }): JSX.Element {
-  const [unitPrice, setUnitPrice] = useState<number>();
+  const [unitPrice, setUnitPrice] = useState<number>(0);
 
   useEffect(() => {
     if (productCartItem.product && productCartItem.selectedOptions) {
@@ -67,7 +65,7 @@ function CartListItem({
                   </OptionName>{' '}
                   <TextProductVariant
                     variantName={
-                      option.selectedVariant.name
+                      "Variant name"
                     }
                     selected={true}
                   />

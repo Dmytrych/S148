@@ -1,5 +1,4 @@
 import { styled } from '@mui/material';
-import { noop } from '../../utils';
 
 type TextProductVariantInput = {
   variantName: string;
@@ -10,7 +9,7 @@ type TextProductVariantInput = {
 export const TextProductVariant = ({
   variantName,
   selected,
-  onClick = noop,
+  onClick = () => {},
 }: TextProductVariantInput) => (
   <TextVariantContainer selected={selected} onClick={onClick}>
     {variantName}

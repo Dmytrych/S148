@@ -1,5 +1,4 @@
 import React from 'react'
-import './index.css'
 
 function FormParagraphSign({numberTag = 0, text = ""}){
     return (<div className='form-paragraph-sign'>

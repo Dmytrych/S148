@@ -1,7 +1,6 @@
 import { locale } from '../../locale/ua';
 import FormField from '../FormField';
 import RoundedButton from '../RoundedButton';
-import './index.css';
 
 function OrderForm() {
   // const formik = useFormik({

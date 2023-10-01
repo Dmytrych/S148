@@ -1,10 +1,8 @@
 import { Formik } from 'formik';
 import {Box, styled, Typography} from '@mui/material';
 import { locale } from '@/locale/ua';
-import { create } from '@/repositories/api';
 import CartSummary from './components/CartSummary';
 import OrderForm from './components/OrderForm/OrderFrom';
-import './index.css';
 import {ICartProduct} from "@/contexts/CartContext";
 import {IOrderFormFields, useOrderForm} from "@/PageContent/Cart/hooks/useOrderForm";
 
@@ -25,14 +23,14 @@ function Cart({ cartProducts, onRemoveProduct, onSubmitClick }: ICartProps): JSX
         <CartPageBackground>
             <CartPageBox>
                 <Box>
-                    <Typography variant="h2">{locale.order_placement}</Typography>
+                    <Typography variant="h5">{locale.order_placement}</Typography>
                 </Box>
                 {cartProducts.length > 0 && (
                     <Formik
                         validateOnMount
                         initialValues={getInitialValues()}
                         validate={validateForm}
-                        onSubmit={handleSubmit}
+                        onSubmit={onSubmitClick}
                         children={(props) => (
                             <OrderContentContainer>
                                 <OrderPageContentBlock>
@@ -65,7 +63,6 @@ const CartPageBackground = styled('div')({
 const CartPageBox = styled('div')({
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
 });
 
 const OrderContentContainer = styled('div')({

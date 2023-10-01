@@ -1,6 +1,4 @@
 import React from "react";
-import { noop } from "../../utils";
-import './index.css'
 
 const FormField = ({label = "", error = false, value = "", errorText = "", className = "", ...props}) => {
     return (

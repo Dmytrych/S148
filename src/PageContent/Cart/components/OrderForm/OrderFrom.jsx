@@ -1,12 +1,11 @@
 import React from 'react'
-import { locale } from '../../../../locale/ua';
+import { locale } from '@/locale/ua';
 import FormParagraphSign from '../FormParagraphSign';
 import FormField from '../../../../components/FormField';
-import './index.css';
 import CartProductList from "../CartProductList";
 import {styled} from "@mui/material";
 
-function OrderForm({ errors, touched, handleChange, setFieldValue, values, handleSubmit }) {
+function OrderForm({ errors, touched, handleChange, values, handleSubmit }) {
     return (
         <>
             <div><FormParagraphSign numberTag={1} text={locale.contact_info} /></div>

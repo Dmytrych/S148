@@ -8,8 +8,9 @@ export function useOrderCreation() {
             throw new Error("Order request is empty");
         }
 
-        await createOrderApi(ApiRoutes.Orders, orderRequest)
+        const response = await createOrderApi(ApiRoutes.Orders, orderRequest)
 
+        console.log(response)
         // response processing
     }
 

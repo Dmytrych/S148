@@ -1,7 +1,5 @@
 import {AppProps} from "next/app";
 import {Layout} from "@/components/Layout/Layout";
-import "./index.css";
-import "./colors.css";
 import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import {appTheme} from "@/theme/appTheme";
 import {CartContextProvider} from "@/contexts/CartContextProvider";

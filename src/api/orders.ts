@@ -3,7 +3,7 @@ import {IProduct} from "@/api/DTO/products";
 import {IOrderRequest} from "@/api/DTO/orders";
 
 export async function createOrderApi(url: string, requestParams: IOrderRequest): Promise<void> {
-    const response = await API.put(url, {
+    const response = await API.post(url, {
         headers: {
             'Content-Type': 'application/json',
         },
