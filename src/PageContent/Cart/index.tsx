@@ -5,9 +5,10 @@ import {ICartProduct} from "@/contexts/CartContext";
 import {IOrderFormFields, useOrderForm} from "@/PageContent/Cart/hooks/useOrderForm";
 import CartSummary from "@/PageContent/Cart/components/CartSummary";
 import OrderForm from "@/PageContent/Cart/components/OrderForm";
+import {ICartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProductInfo";
 
 interface ICartProps {
-  cartProducts: ICartProduct[];
+  cartProducts: ICartItemsWithProductInfo[];
   onRemoveProduct: (productCode: string) => void;
   onSubmitClick: (values: IOrderFormFields) => Promise<void> | void;
 }

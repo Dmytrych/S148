@@ -1,49 +1,57 @@
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import React from 'react'
-import RoundedButton from '../../../../components/RoundedButton';
-import { locale } from '@/locale/ua';
-import {Box, Typography} from "@mui/material";
-import {ICartProduct} from "@/contexts/CartContext";
+import React, {useMemo} from 'react'
+import {locale} from '@/locale/ua';
+import {Box, styled, Typography} from "@mui/material";
+import {ICartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProductInfo";
+import {Color} from "@/constants/color";
+import {ActionButton} from "@/components/Buttons/ActionButton";
+import {PriceTag, Size} from "@/components/PriceTag";
 
 interface ICartSummaryProps {
-    cartProducts: ICartProduct[];
+    cartProducts: ICartItemsWithProductInfo[];
     disableSubmit: boolean;
     onSubmitClick: () => Promise<void> | void;
-    onRemoveProductClick: (product: ICartProduct) => Promise<void> | void;
+    onRemoveProductClick: (product: ICartItemsWithProductInfo) => Promise<void> | void;
 }
 
-function CartSummary({ cartProducts, disableSubmit, onSubmitClick, onRemoveProductClick}: ICartSummaryProps) {
+function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
+    const totalPrice = useMemo(() =>
+        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price.base * cartProduct.quantity), 0),
+        [cartProducts])
 
     return (
-        <div>
-            <Typography variant="h6">{locale.total}</Typography>
-            <Box>
-                {cartProducts.map((cartProduct, index) => {
-                    return <div key={index}>
-                        <div>
-                            <DeleteOutlineOutlinedIcon color='error' onClick={() => onRemoveProductClick(cartProduct)}/>
-                        </div>
-                        <div>
-                            {cartProduct.quantity}
-                        </div>
-                        <div>
-                            {cartProduct.quantity}₴
-                        </div>
-                    </div>
-                })}
-            </Box>
-            <div>
-                <div>
-                    {locale.to_be_paid}
-                </div>
-                {/*<div>*/}
-                {/*    {cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.unitPrice * cartProduct.quantity), 0)}₴*/}
-                {/*</div>*/}
-            </div>
-            <div className='order-confirm-button'>
-                <RoundedButton text={locale.confirm_order} size='medium' disabled={disableSubmit} onClick={onSubmitClick} />
-            </div>
-        </div>)
+        <CartSummaryBackground>
+            <CartSummaryContent>
+                <Box>
+                    <Typography variant="h5">{locale.total}</Typography>
+                </Box>
+                <Box display="flex" flexDirection="row" justifyContent="space-between">
+                    <Box>
+                        <Typography>{locale.to_be_paid}</Typography>
+                    </Box>
+                    <Box>
+                        <PriceTag value={totalPrice} size={Size.Big}/>
+                    </Box>
+                </Box>
+                <Box display="flex">
+                    <StyledConfirmButton variant="contained">{locale.confirm_order}</StyledConfirmButton>
+                </Box>
+            </CartSummaryContent>
+        </CartSummaryBackground>)
 }
 
 export default CartSummary;
+
+const StyledConfirmButton = styled(ActionButton)({
+    height: "50px",
+    flexGrow: 1,
+})
+
+const CartSummaryBackground = styled(Box)({
+    backgroundColor: Color.GlobalBlack10,
+    border: `1px solid ${Color.GlobalBlack20}`,
+    borderRadius: "5px"
+});
+
+const CartSummaryContent = styled(Box)({
+    margin: "16px"
+});

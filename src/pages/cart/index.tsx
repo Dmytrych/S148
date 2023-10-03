@@ -2,9 +2,14 @@ import Cart from "@/PageContent/Cart";
 import {useCart} from "@/hooks/context/useCart";
 import {IOrderFormFields} from "@/PageContent/Cart/hooks/useOrderForm";
 import {useOrderCreation} from "@/hooks/useOrderCreation";
+import {useProducts} from "@/hooks/useProducts";
+import {useCartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProductInfo";
 
 export default function CartPage() {
     const { cart, removeFromCart } = useCart();
+    const { data: products } = useProducts();
+
+    const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, products);
     const { createOrder } = useOrderCreation();
 
     const handleSubmit = async (values: IOrderFormFields): Promise<void> => {
@@ -30,6 +35,6 @@ export default function CartPage() {
 
 
     return (
-        <Cart cartProducts={cart} onRemoveProduct={removeFromCart} onSubmitClick={handleSubmit} />
+        <Cart cartProducts={cartItemsWithProductInfo} onRemoveProduct={removeFromCart} onSubmitClick={handleSubmit} />
     )
 }
