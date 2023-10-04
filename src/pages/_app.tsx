@@ -1,10 +1,10 @@
 import {AppProps} from "next/app";
 import {Layout} from "@/components/Layout/Layout";
-import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
+import {createTheme, CssBaseline, responsiveFontSizes, ThemeProvider} from "@mui/material";
 import {appTheme} from "@/theme/appTheme";
 import {CartContextProvider} from "@/contexts/CartContextProvider";
 
-const theme = createTheme(appTheme);
+let theme = createTheme(appTheme);
 
 export default function App({ Component, pageProps }: AppProps) {
     return (

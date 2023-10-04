@@ -5,6 +5,7 @@ import {ICartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProduc
 import {Color} from "@/constants/color";
 import {ActionButton} from "@/components/Buttons/ActionButton";
 import {PriceTag, Size} from "@/components/PriceTag";
+import {CartSummaryRow} from "@/PageContent/Cart/components/CartSummary/components/CartSummaryRow";
 
 interface ICartSummaryProps {
     cartProducts: ICartItemsWithProductInfo[];
@@ -15,23 +16,21 @@ interface ICartSummaryProps {
 
 function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
     const totalPrice = useMemo(() =>
-        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price.base * cartProduct.quantity), 0),
+        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price.base * cartProduct.quantity), 0).toString(),
         [cartProducts])
 
     return (
         <CartSummaryBackground>
             <CartSummaryContent>
                 <Box>
-                    <Typography variant="h5">{locale.total}</Typography>
+                    <Typography variant="h4">{locale.total}</Typography>
                 </Box>
-                <Box display="flex" flexDirection="row" justifyContent="space-between">
-                    <Box>
-                        <Typography>{locale.to_be_paid}</Typography>
-                    </Box>
-                    <Box>
-                        <PriceTag value={totalPrice} size={Size.Big}/>
-                    </Box>
-                </Box>
+                <CartSummaryRow label={locale.goods_with_total_price}>
+                    <PriceTag value={totalPrice} size={Size.Small} currencySize={Size.Small}/>
+                </CartSummaryRow>
+                <CartSummaryRow label={locale.delivery_cost}>
+                    <Typography>{locale.delivery_cost_unknown}</Typography>
+                </CartSummaryRow>
                 <Box display="flex">
                     <StyledConfirmButton variant="contained">{locale.confirm_order}</StyledConfirmButton>
                 </Box>

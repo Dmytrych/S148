@@ -26,7 +26,10 @@ export const locale = {
   cart_page: 'Кошик',
 
   total: 'Разом',
-  to_be_paid: 'До сплати',
+  to_be_paid: 'Разом до сплати',
+  goods_with_total_price: 'Товари на суму',
+  delivery_cost: 'Товари на суму',
+  delivery_cost_unknown: 'За тарифами перевізника',
   order_placement: 'Оформлення замовлення',
   contact_info: 'Контактні дані',
   delivery: 'Доставка',

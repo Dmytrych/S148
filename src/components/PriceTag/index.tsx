@@ -1,4 +1,4 @@
-import {Box, styled, Typography} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 
 export enum Size {
     Small = 'small',
@@ -9,17 +9,28 @@ export enum Size {
 interface IPriceTagProps {
     value: string;
     size?: Size;
+    currencySize?: Size;
 }
 
-export function PriceTag({ value, size = Size.Big }: IPriceTagProps) {
+export function PriceTag({ value, size = Size.Big, currencySize = Size.Small }: IPriceTagProps) {
+    const priceFontSize = resolveFontSize(size);
+    const currencyFontSize = resolveFontSize(currencySize);
+
     return (
-        <Box display="flex" flexDirection="row">
-            <PriceTagContent size={size}>{value}</PriceTagContent>
-            <Typography style={{ fontSize: size === Size.Big ? '1.5em' : '1em' }}>₴</Typography>
+        <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+            <Typography style={{ fontSize: priceFontSize, textAlign: "center" }}>{value}</Typography>
+            <Typography style={{ marginLeft: "5px", fontSize: currencyFontSize, textAlign: "center" }}>₴</Typography>
         </Box>
     )
-};
+}
 
-const PriceTagContent = styled(Typography)(({ size }: { size: Size }) => ({
-    fontSize: size === Size.Big ? '2em' : '1em'
-}));
+const resolveFontSize = (size: Size) => {
+    switch (size) {
+        case Size.Big:
+            return '32px';
+        case Size.Medium:
+            return '24px';
+        case Size.Small:
+            return '16px';
+    }
+}

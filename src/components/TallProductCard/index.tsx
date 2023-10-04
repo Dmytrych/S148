@@ -1,8 +1,8 @@
-import { styled } from '@mui/material';
+import {styled} from '@mui/material';
 import ImageBox from '../ImageBox';
-import PriceTag from '../PriceTag';
 import Link from "next/link";
 import {IProduct} from "@/api/DTO/products";
+import {PriceTag, Size} from "@/components/PriceTag";
 
 function TallProductCard({ product }: { product: IProduct }) {
   return (
@@ -17,7 +17,7 @@ function TallProductCard({ product }: { product: IProduct }) {
           </Link>
         </ProductText>
         <ProductPriceBox>
-          <PriceTag value={product.price.base}></PriceTag>
+          <PriceTag value={product.price.base.toString()} size={Size.Big}/>
           {/* <div style={{ marginRight: "10px" }}> */}
           {/* eslint-disable-next-line max-len */}
           {/*    <RoundedButton text={locale.buy} onClick={() => setProductQuantity(productQuantity + 1)}/> */}

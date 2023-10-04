@@ -26,7 +26,7 @@ function Cart({ cartProducts, onRemoveProduct, onSubmitClick }: ICartProps): JSX
               margin: "0px 180px"
           }}>
               <Box>
-                  <Typography variant="h5">{locale.order_placement}</Typography>
+                  <Typography variant="h4">{locale.order_placement}</Typography>
               </Box>
               {cartProducts.length > 0 && (
                   <Formik

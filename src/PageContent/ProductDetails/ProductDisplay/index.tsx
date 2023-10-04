@@ -1,10 +1,10 @@
 import ImageBox from "@/components/ImageBox";
 import {ProductName} from "@/components/ProductName";
 import {Box, Button, Grid, styled} from "@mui/material";
-import PriceTag from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
 import PlusMinusControl from "@/components/PlusMinusControl";
 import {IProduct} from "@/api/DTO/products";
+import {PriceTag, Size} from "@/components/PriceTag";
 
 interface IProductDisplayProps {
     product: IProduct;
@@ -33,7 +33,7 @@ export function ProductDisplay({ product, onQuantityChange, quantity, handleInst
             </ProductTitleBlock>
             <DescriptionBox>
                 <PriceTagContainer>
-                    <PriceTag value={product.price.base}/>
+                    <PriceTag value={product.price.base.toString()} size={Size.Big}/>
                 </PriceTagContainer>
                 <Box>
                     <div>{locale.quantity}:</div>
