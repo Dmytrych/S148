@@ -1,5 +1,5 @@
 import {Formik} from 'formik';
-import {Box, Grid} from '@mui/material';
+import {Box, Grid, styled} from '@mui/material';
 import {IOrderFormFields, useOrderForm} from "@/PageContent/Cart/hooks/useOrderForm";
 import CartSummary from "@/PageContent/Cart/components/CartSummary";
 import OrderForm from "@/PageContent/Cart/components/OrderForm";
@@ -9,18 +9,18 @@ import React from "react";
 interface ICartProps {
     cartProducts: ICartItemsWithProductInfo[];
     onRemoveProduct: (productCode: string) => void;
-    onSubmitClick: (values: IOrderFormFields) => Promise<void> | void;
+    onSubmit: (values: IOrderFormFields) => Promise<void> | void;
 }
 
-function Cart({cartProducts, onRemoveProduct, onSubmitClick}: ICartProps) {
+function Cart({cartProducts, onRemoveProduct, onSubmit}: ICartProps) {
     const {validateForm, getInitialValues} = useOrderForm();
 
-    const handleRemoveCartItem = (cartProduct: ICartProduct): void => {
-        onRemoveProduct(cartProduct.productCode);
-    };
+    // const handleRemoveCartItem = (cartProduct: ICartProduct): void => {
+    //     onRemoveProduct(cartProduct.productCode);
+    // };
 
     return (
-        <Box display="flex" justifyContent="center" sx={{ marginX: { lg: "200px", xs: "40px" } }}>
+        <PageContainer sx={{ marginX: { lg: "200px", xs: "40px" } }}>
             <Box sx={{
                 display: "flex",
                 flexGrow: "1"
@@ -30,12 +30,12 @@ function Cart({cartProducts, onRemoveProduct, onSubmitClick}: ICartProps) {
                         validateOnMount
                         initialValues={getInitialValues()}
                         validate={validateForm}
-                        onSubmit={onSubmitClick}
+                        onSubmit={onSubmit}
                         children={(props) => (
                             <Box display="flex" flexGrow="1">
                                 <Grid container>
                                     <Grid item md={8} xs={12}>
-                                        <OrderForm {...props} />
+                                        <OrderForm errors={props.errors} values={props.values} touched={props.touched} handleChange={props.handleChange} />
                                     </Grid>
                                     <Grid item md={4} xs={12}>
                                         <CartSummary
@@ -50,8 +50,14 @@ function Cart({cartProducts, onRemoveProduct, onSubmitClick}: ICartProps) {
                     />
                 )}
             </Box>
-        </Box>
+        </PageContainer>
     );
 }
 
 export default Cart;
+
+const PageContainer = styled(Box)({
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: "40px",
+});

@@ -13,6 +13,8 @@ export default function CartPage() {
     const { createOrder } = useOrderCreation();
 
     const handleSubmit = async (values: IOrderFormFields): Promise<void> => {
+        console.log(values);
+
         const dataModel = {
             customerInfo: {
                 name: values.name,
@@ -30,11 +32,13 @@ export default function CartPage() {
             }
         };
 
+        console.log(dataModel);
+
         await createOrder(dataModel)
     };
 
 
     return (
-        <Cart cartProducts={cartItemsWithProductInfo} onRemoveProduct={removeFromCart} onSubmitClick={handleSubmit} />
+        <Cart cartProducts={cartItemsWithProductInfo} onRemoveProduct={removeFromCart} onSubmit={handleSubmit} />
     )
 }
