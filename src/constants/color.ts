@@ -1,4 +1,5 @@
 export enum Color {
+    White = "#ffffff",
     GlobalGreen = "#00A046",
     GlobalGreen80 = "#44b26f",
     GlobalGreen60 = "#73c592",
