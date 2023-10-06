@@ -16,23 +16,23 @@ declare module '@mui/material/styles' {
 export const appTheme = {
     palette: {
         primary: {
-            main: Color.GlobalGreen, // Primary color
+            main: Color.GlobalGreen,
         },
         secondary: {
-            main: '#FF4081', // Secondary color
+            main: '#FF4081',
         },
         background: {
-            default: Color.White, // Default background color
+            default: Color.White,
         },
         text: {
-            primary: Color.TextColor, // Primary text color
-            secondary: Color.GlobalBlack60, // Secondary text color
+            primary: Color.TextColor,
+            secondary: Color.GlobalBlack60,
         },
         cardBackground: {
-            main: Color.GlobalBlack10, // Cart background color
+            main: Color.GlobalBlack10,
         },
         border: {
-            main: Color.GlobalBlack20, // Border color
+            main: Color.GlobalBlack20,
         }
     },
     typography: {
@@ -75,9 +75,25 @@ export const appTheme = {
         },
     },
     components: {
-        MuiCssBaseline: {
-            '@global': {
-                '@font-face': `"Roboto", "Helvetica", "Arial", sans-serif`
+        MuiButton: {
+            defaultProps: {
+                variant: 'contained',
+            },
+            styleOverrides: {
+                containedPrimary: {
+                    backgroundColor: Color.GlobalGreen,
+                    color: Color.White,
+                    '&:hover': {
+                        backgroundColor: Color.GlobalBlack80,
+                    },
+                },
+                root: {
+                    "&.Mui-disabled": {
+                        backgroundColor: Color.GlobalGreen40,
+                        color: Color.White,
+                        pointerEvents: 'none'
+                    }
+                }
             },
         },
     },

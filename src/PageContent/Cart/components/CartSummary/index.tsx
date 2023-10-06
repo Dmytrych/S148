@@ -10,7 +10,6 @@ interface ICartSummaryProps {
     cartProducts: ICartItemsWithProductInfo[];
     disableSubmit: boolean;
     onSubmitClick: () => Promise<void> | void;
-    onRemoveProductClick: (product: ICartItemsWithProductInfo) => Promise<void> | void;
 }
 
 function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
@@ -38,7 +37,7 @@ function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummary
                     </CartSummaryRow>
                 </ToBePaidContainer>
                 <Box display="flex" mt="14px">
-                    <StyledConfirmButton variant="contained">{locale.confirm_order}</StyledConfirmButton>
+                    <StyledConfirmButton variant="contained" onClick={onSubmitClick} disabled={disableSubmit}>{locale.confirm_order}</StyledConfirmButton>
                 </Box>
             </CartSummaryContent>
         </CartSummaryBackground>)
@@ -46,7 +45,7 @@ function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummary
 
 export default CartSummary;
 
-const ToBePaidContainer = styled(Box)(({theme}) => ({
+const ToBePaidContainer = styled(Box)(({ theme}) => ({
     borderTop: `1px solid ${theme.palette.border.main}`,
     borderBottom: `1px solid ${theme.palette.border.main}`,
     padding: "14px 0px 14px 0px",

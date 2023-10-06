@@ -1,11 +1,14 @@
 import React from 'react'
 import { locale } from '@/locale/ua';
 import FormParagraphSign from '../FormParagraphSign';
-import {Box, styled, TextField} from "@mui/material";
+import {Box, styled, TextField, Typography} from "@mui/material";
 
 function OrderForm({ errors, touched, handleChange, values, handleSubmit }) {
     return (
         <>
+            <Box>
+                <Typography variant="h4">{locale.order_placement}</Typography>
+            </Box>
             <Box><FormParagraphSign text={locale.contact_info} /></Box>
             <OrderPageContentInfoBlock>
                 <Box sx={{
@@ -45,6 +48,5 @@ function OrderForm({ errors, touched, handleChange, values, handleSubmit }) {
 export default OrderForm;
 
 const OrderPageContentInfoBlock = styled(Box)({
-    marginLeft: '2rem',
     padding: '20px 15px',
 })
