@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Dispatch, SetStateAction} from "react";
+import {IAddToCartParams} from "@/hooks/context/useCart";
 
 export interface ICartProduct {
   productCode: string;
@@ -8,7 +8,9 @@ export interface ICartProduct {
 
 export interface ICartContext {
   cart: ICartProduct[];
-  saveCart: Dispatch<SetStateAction<ICartProduct[]>>;
+  addToCart: ({ productCode, quantity, append }: IAddToCartParams) => void;
+  removeFromCart: (productCode: string) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = React.createContext<ICartContext>({} as ICartContext);
