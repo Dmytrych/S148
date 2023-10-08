@@ -1,16 +1,24 @@
-import {styled} from '@mui/material';
+import {Box, Button, IconButton, Paper, styled, Typography} from '@mui/material';
 import ImageBox from '../ImageBox';
 import Link from "next/link";
 import {IProduct} from "@/api/DTO/products";
 import {PriceTag, Size} from "@/components/PriceTag";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import {Color} from "@/constants/color";
+import {locale} from "@/locale/ua";
 
-function TallProductCard({ product }: { product: IProduct }) {
+interface IProps {
+    product: IProduct;
+    onAddToCart?: () => void;
+}
+
+function TallProductCard({ product, onAddToCart }: IProps) {
   return (
-    <Container>
+    <Container elevation={4}>
       <ImageContainer>
         <ImageBox imageName={product.options.image} />
       </ImageContainer>
-      <div style={{ width: '100%' }}>
+      <Box display="flex" flexDirection="column" flexGrow="1">
         <ProductText>
           <Link href={`/products/${product.code}`}>
             {product.name}
@@ -18,28 +26,31 @@ function TallProductCard({ product }: { product: IProduct }) {
         </ProductText>
         <ProductPriceBox>
           <PriceTag value={product.price.base.toString()} size={Size.Big}/>
-          {/* <div style={{ marginRight: "10px" }}> */}
-          {/* eslint-disable-next-line max-len */}
-          {/*    <RoundedButton text={locale.buy} onClick={() => setProductQuantity(productQuantity + 1)}/> */}
-          {/* </div> */}
         </ProductPriceBox>
-      </div>
+        <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="end" flexGrow="1" mb="30px">
+          <Box>
+            <Typography variant="body2">Готовий до відправлення</Typography>
+          </Box>
+          <Box>
+            <Button>{locale.buy}</Button>
+          </Box>
+        </Box>
+      </Box>
     </Container>
   );
 }
 
 export default TallProductCard;
 
-const Container = styled('div')({
+const Container = styled(Paper)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
   height: '80vh',
   width: '20rem',
   padding: '10px',
-  borderRadius: '10px',
-  backgroundColor: 'var(--product-card-color)',
-});
+  border: `1px solid ${theme.palette.border.main}`,
+  borderRadius: "10px",
+}));
 
 const ImageContainer = styled('div')({
   height: '50%',
@@ -52,11 +63,10 @@ const ProductText = styled('span')({
   overflow: 'hidden',
   wordBreak: 'break-all',
   textOverflow: 'ellipsis',
-  margin: '10px 10px 0px 20px',
+  margin: '10px 10px 0px 5px',
 });
 
 const ProductPriceBox = styled('div')({
-  width: '100%',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',

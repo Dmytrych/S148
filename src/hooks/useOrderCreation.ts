@@ -4,14 +4,16 @@ import {createOrderApi} from "@/api/orders";
 
 export function useOrderCreation() {
     const createOrder = async (orderRequest: IOrderRequest) => {
-        if (!orderRequest) {
-            throw new Error("Order request is empty");
+        try {
+            if (!orderRequest) {
+                return undefined;
+            }
+
+            return await createOrderApi(ApiRoutes.Orders, orderRequest)
+        } catch (e) {
+            // TODO: Add error message appearance
+            return undefined;
         }
-
-        const response = await createOrderApi(ApiRoutes.Orders, orderRequest)
-
-        console.log(response)
-        // response processing
     }
 
     return {createOrder}

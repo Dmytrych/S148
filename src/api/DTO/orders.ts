@@ -19,3 +19,14 @@ export interface IOrderRequest {
         description: string;
     }
 }
+
+export interface IOrder {
+    _id: string;
+    creationDate: Date;
+    customerInfo: ICustomerInfo;
+    items: IOrderItem[];
+    comment: string;
+    deliveryInfo: {
+        description: string;
+    }
+}

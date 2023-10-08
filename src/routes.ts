@@ -1,4 +1,5 @@
 
 export enum Routes {
-    Cart = "/cart"
+    Cart = "/cart",
+    Products = "/products",
 }

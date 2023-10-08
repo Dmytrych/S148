@@ -4,17 +4,20 @@ import {IOrderFormFields} from "@/PageContent/Cart/hooks/useOrderForm";
 import {useOrderCreation} from "@/hooks/useOrderCreation";
 import {useProducts} from "@/hooks/useProducts";
 import {useCartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProductInfo";
+import {redirect} from "next/navigation";
+import {Routes} from "@/routes";
+import {RedirectType} from "next/dist/client/components/redirect";
+import {useRouter} from "next/router";
 
 export default function CartPage() {
-    const { cart, removeFromCart } = useCart();
+    const { replace } = useRouter();
+    const { cart, removeFromCart, clearCart } = useCart();
     const { data: products } = useProducts();
 
     const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, products);
     const { createOrder } = useOrderCreation();
 
     const handleSubmit = async (values: IOrderFormFields): Promise<void> => {
-        console.log(values);
-
         const dataModel = {
             customerInfo: {
                 name: values.name,
@@ -32,9 +35,12 @@ export default function CartPage() {
             }
         };
 
-        console.log(dataModel);
+        const createdRequest = await createOrder(dataModel)
 
-        await createOrder(dataModel)
+        if (createdRequest) {
+            clearCart();
+            await replace(Routes.Products)
+        }
     };
 
 

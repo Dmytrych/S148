@@ -15,10 +15,10 @@ const ProductDetails = ({product}: IProductDetailsParams) => {
     const { push } = useRouter();
     const {quantity, setQuantity, addToCart} = useProductCartControls(product);
 
-    function handleInstantBuy() {
+    async function handleInstantBuy() {
         addToCart();
 
-        push(Routes.Cart, RedirectType.replace);
+        await push(Routes.Cart);
     }
 
     function handleAddToCart() {
