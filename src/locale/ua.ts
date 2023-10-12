@@ -12,6 +12,7 @@ export const locale = {
   universal_oil: 'Універсальне мастило',
   universal_oil_detailed: 'Збройове мастило для очистки й догляду',
   buy: 'Купити',
+  ready_for_shipment: 'Готовий до відправлення',
   product_name: 'Назва продукту',
   quantity: 'Кількість',
   options: 'Опції',

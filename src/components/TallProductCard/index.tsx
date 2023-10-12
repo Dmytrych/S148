@@ -1,10 +1,8 @@
-import {Box, Button, IconButton, Paper, styled, Typography} from '@mui/material';
+import {Box, Button, Paper, styled, Typography} from '@mui/material';
 import ImageBox from '../ImageBox';
 import Link from "next/link";
 import {IProduct} from "@/api/DTO/products";
 import {PriceTag, Size} from "@/components/PriceTag";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import {Color} from "@/constants/color";
 import {locale} from "@/locale/ua";
 
 interface IProps {
@@ -19,20 +17,22 @@ function TallProductCard({ product, onAddToCart }: IProps) {
         <ImageBox imageName={product.options.image} />
       </ImageContainer>
       <Box display="flex" flexDirection="column" flexGrow="1">
-        <ProductText>
-          <Link href={`/products/${product.code}`}>
-            {product.name}
-          </Link>
-        </ProductText>
+        <Box>
+          <ProductText>
+            <Link href={`/products/${product.code}`}>
+              {product.name}
+            </Link>
+          </ProductText>
+        </Box>
         <ProductPriceBox>
           <PriceTag value={product.price.base.toString()} size={Size.Big}/>
         </ProductPriceBox>
-        <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="end" flexGrow="1" mb="30px">
-          <Box>
-            <Typography variant="body2">Готовий до відправлення</Typography>
+        <Box flexGrow="1" display="flex" flexDirection="column" justifyContent="flex-end">
+          <Box display="flex">
+            <Typography color={theme => theme.palette.text.secondary} variant="body2">{locale.ready_for_shipment}</Typography>
           </Box>
-          <Box>
-            <Button>{locale.buy}</Button>
+          <Box display="flex">
+            <LongButton variant="contained">{locale.buy}</LongButton>
           </Box>
         </Box>
       </Box>
@@ -42,12 +42,16 @@ function TallProductCard({ product, onAddToCart }: IProps) {
 
 export default TallProductCard;
 
+const LongButton = styled(Button)({
+  width: "100%"
+});
+
 const Container = styled(Paper)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   height: '80vh',
   width: '20rem',
-  padding: '10px',
+  padding: '16px 16px 32px 16px',
   border: `1px solid ${theme.palette.border.main}`,
   borderRadius: "10px",
 }));

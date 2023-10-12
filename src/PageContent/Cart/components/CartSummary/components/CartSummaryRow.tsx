@@ -1,6 +1,5 @@
 import {Box, Typography} from "@mui/material";
 import React from "react";
-import {Color} from "@/constants/color";
 import {styled} from "@mui/system";
 
 interface IProps {
@@ -12,7 +11,7 @@ export function CartSummaryRow({children, label}: IProps) {
     return (
         <Box display="flex" flexDirection="row" justifyContent="space-between">
             <CenteredBox>
-                <Typography sx={{ fontSize: "15px", color: Color.GlobalBlack60 }}>{label}</Typography>
+                <Typography color={theme => theme.palette.text.secondary} variant="body2">{label}</Typography>
             </CenteredBox>
             <CenteredBox>
                 {children}
