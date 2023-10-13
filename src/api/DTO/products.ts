@@ -8,5 +8,9 @@ export interface IProduct {
     options: {
         volume: string;
         image: string;
-    }
+    };
+    description?: {
+        short?: string;
+        full?: string;
+    };
 }

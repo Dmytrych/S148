@@ -2,9 +2,20 @@ import {CircularProgress, styled} from '@mui/material';
 import WholeWindowBlock from '../../components/WholeWindowBlock';
 import TallProductCard from '../../components/TallProductCard';
 import { useProducts } from '@/hooks/useProducts';
+import {useCart} from "@/hooks/context/useCart";
+import {IProduct} from "@/api/DTO/products";
 
 export default function Products() {
+  const { addToCart } = useCart();
   const { data: products, isLoading: productsLoading} = useProducts();
+
+  const handleAddToCart = (product: IProduct) => {
+    addToCart({
+      productCode: product.code,
+      quantity: 1,
+      append: true,
+    });
+  }
 
   return (
         <WholeWindowBlock>
@@ -17,6 +28,7 @@ export default function Products() {
                                     <TallProductCard
                                         key={index}
                                         product={product}
+                                        onAddToCart={() => handleAddToCart(product)}
                                     />
                                 )) : <CircularProgress />
                         }

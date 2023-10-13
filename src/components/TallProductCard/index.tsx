@@ -4,6 +4,7 @@ import Link from "next/link";
 import {IProduct} from "@/api/DTO/products";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
+import Markdown from "react-markdown";
 
 interface IProps {
     product: IProduct;
@@ -27,12 +28,17 @@ function TallProductCard({ product, onAddToCart }: IProps) {
         <ProductPriceBox>
           <PriceTag value={product.price.base.toString()} size={Size.Big}/>
         </ProductPriceBox>
+        <Box>
+          <Markdown>
+            {product.description?.short}
+          </Markdown>
+        </Box>
         <Box flexGrow="1" display="flex" flexDirection="column" justifyContent="flex-end">
           <Box display="flex">
             <Typography color={theme => theme.palette.text.secondary} variant="body2">{locale.ready_for_shipment}</Typography>
           </Box>
           <Box display="flex">
-            <LongButton variant="contained">{locale.buy}</LongButton>
+            <LongButton variant="contained" onClick={onAddToCart}>{locale.buy}</LongButton>
           </Box>
         </Box>
       </Box>
