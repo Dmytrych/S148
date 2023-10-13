@@ -4,9 +4,7 @@ import {IOrderFormFields} from "@/PageContent/Cart/hooks/useOrderForm";
 import {useOrderCreation} from "@/hooks/useOrderCreation";
 import {useProducts} from "@/hooks/useProducts";
 import {useCartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProductInfo";
-import {redirect} from "next/navigation";
 import {Routes} from "@/routes";
-import {RedirectType} from "next/dist/client/components/redirect";
 import {useRouter} from "next/router";
 
 export default function CartPage() {

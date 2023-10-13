@@ -1,13 +1,13 @@
 import React, {useMemo} from 'react'
 import {locale} from '@/locale/ua';
 import {Box, styled, Typography} from "@mui/material";
-import {ICartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProductInfo";
+import {CartProduct} from "@/hooks/products/useCartItemsWithProductInfo";
 import {ActionButton} from "@/components/Buttons/ActionButton";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {CartSummaryRow} from "@/PageContent/Cart/components/CartSummary/components/CartSummaryRow";
 
 interface ICartSummaryProps {
-    cartProducts: ICartItemsWithProductInfo[];
+    cartProducts: CartProduct[];
     disableSubmit: boolean;
     onSubmitClick: () => Promise<void> | void;
 }

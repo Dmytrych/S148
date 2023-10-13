@@ -1,5 +1,5 @@
 import * as React from "react";
-import {CartContext, ICartProduct} from "@/contexts/CartContext";
+import {CartContext, ICartSelection} from "@/contexts/CartContext";
 import {IAddToCartParams} from "@/hooks/context/useCart";
 import {useCartLocalStorage} from "@/hooks/localStorage/useCartLocalStorage";
 import {useEffect} from "react";
@@ -11,7 +11,7 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
     const isMounted = React.useRef(false);
     const { getValue, setValue } = useCartLocalStorage();
-    const [cart, setCart] = React.useState<ICartProduct[]>([]);
+    const [cart, setCart] = React.useState<ICartSelection[]>([]);
 
     useEffect(() => {
         if (!isMounted.current) {

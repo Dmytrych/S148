@@ -1,12 +1,9 @@
-import {ICartProduct} from "@/contexts/CartContext";
+import {ICartSelection} from "@/contexts/CartContext";
 import {IProduct} from "@/api/DTO/products";
 import {useMemo} from "react";
+import {CartProduct} from "@/interfaces/cart/CartProduct";
 
-export interface ICartItemsWithProductInfo extends ICartProduct {
-    product: IProduct;
-}
-
-export function useCartItemsWithProductInfo(cartItems?: ICartProduct[], products?: IProduct[]): ICartItemsWithProductInfo[] {
+export function useCartItemsWithProductInfo(cartItems?: ICartSelection[], products?: IProduct[]): CartProduct[] {
     return useMemo(() => {
         if (!cartItems || !products) {
             return [];
@@ -19,7 +16,7 @@ export function useCartItemsWithProductInfo(cartItems?: ICartProduct[], products
             }
             return {
                 ...cartItem,
-                product
+                ...product
             }
         })
     }, [cartItems, products]);

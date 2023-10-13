@@ -1,6 +1,6 @@
 import {LocalStorageKey, useLocalStorage} from "@/hooks/localStorage/useLocalStorage";
-import {ICartProduct} from "@/contexts/CartContext";
+import {ICartSelection} from "@/contexts/CartContext";
 
 export function useCartLocalStorage() {
-    return useLocalStorage<ICartProduct[]>(LocalStorageKey.Cart, []);
+    return useLocalStorage<ICartSelection[]>(LocalStorageKey.Cart, []);
 }
