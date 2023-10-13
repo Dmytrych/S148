@@ -9,7 +9,7 @@ import {useRouter} from "next/router";
 
 export default function CartPage() {
     const { replace } = useRouter();
-    const { cart, removeFromCart, clearCart } = useCart();
+    const { cart, removeFromCart, clearCart, addToCart } = useCart();
     const { data: products } = useProducts();
 
     const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, products);
@@ -41,8 +41,13 @@ export default function CartPage() {
         }
     };
 
+    const handleQuantityChange = (productCode: string, quantity: number) => {
+      addToCart({
+        productCode, quantity, append: false
+      });
+    }
 
     return (
-        <Cart cartProducts={cartItemsWithProductInfo} onRemoveProduct={removeFromCart} onSubmit={handleSubmit} />
+        <Cart cartProducts={cartItemsWithProductInfo} onRemoveProduct={removeFromCart} onSubmit={handleSubmit} onQuantityChange={handleQuantityChange} />
     )
 }

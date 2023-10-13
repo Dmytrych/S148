@@ -6,7 +6,7 @@ import { useState } from 'react';
 const limit = 200;
 
 type PlusMinusControlInput = {
-  onChange: (newQuantity: number) => void;
+  onChange?: (newQuantity: number) => void;
   defaultValue?: number;
 };
 
@@ -18,13 +18,13 @@ function PlusMinusControl({
 
   const handleDecrease = () => {
     const newValue = value > 1 ? value - 1 : 1;
-    setValue(newValue);
+    setValue(() => newValue);
     onChange(newValue);
   };
 
   const handleIncrease = () => {
     const newValue = value < limit ? value + 1 : value;
-    setValue(newValue);
+    setValue(() => newValue);
     onChange(newValue);
   };
 

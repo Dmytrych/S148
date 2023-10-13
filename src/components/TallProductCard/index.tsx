@@ -15,7 +15,7 @@ function TallProductCard({ product, onAddToCart }: IProps) {
   return (
     <Container elevation={4}>
       <ImageContainer>
-        <ImageBox imageName={product.options.image} />
+        <ImageBox imageName={product.options.image} width="100%" height="100%" />
       </ImageContainer>
       <Box display="flex" flexDirection="column" flexGrow="1">
         <Box>

@@ -1,36 +1,16 @@
-import {Box, styled, Typography} from "@mui/material";
+import {Box} from "@mui/material";
 import {CartProduct} from "@/interfaces/cart/CartProduct";
-import Image from "next/image";
-import ImageBox from "@/components/ImageBox";
+import {CartDisplayItem} from "@/components/CartDisplay/components/CartDisplayItem";
 
 interface IProps {
   products: CartProduct[];
+  onQuantityChange: (productCode: string, quantity: number) => void;
 }
 
-export function CartDisplay({products}: IProps) {
-  return (<Box>
-    {products.map((product, index) => (<Box key={index}>
-      <Box>
-        <ImageBox imageName={product.options.image} />
-      </Box>
-      <Box>
-        <Box>
-          <Typography>ProductName</Typography>
-        </Box>
-        <Box>
-          <Box>
-            <Typography>PlusMinus</Typography>
-          </Box>
-          <Box>
-            <Typography>Price</Typography>
-          </Box>
-        </Box>
-      </Box>
-    </Box>))}
+export function CartDisplay({products, onQuantityChange}: IProps) {
+  return (<Box display="flex" flexDirection="column">
+    {products.map((product, index) => (
+      <CartDisplayItem key={index} product={product} onQuantityChange={onQuantityChange}/>
+    ))}
   </Box>)
 }
-
-const ProductImage = styled(Image)({
-  width: "96px",
-  height: "96px",
-})

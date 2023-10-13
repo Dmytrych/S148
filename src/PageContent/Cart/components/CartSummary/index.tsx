@@ -1,10 +1,10 @@
 import React, {useMemo} from 'react'
 import {locale} from '@/locale/ua';
 import {Box, styled, Typography} from "@mui/material";
-import {CartProduct} from "@/hooks/products/useCartItemsWithProductInfo";
 import {ActionButton} from "@/components/Buttons/ActionButton";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {CartSummaryRow} from "@/PageContent/Cart/components/CartSummary/components/CartSummaryRow";
+import {CartProduct} from "@/interfaces/cart/CartProduct";
 
 interface ICartSummaryProps {
     cartProducts: CartProduct[];
@@ -14,7 +14,7 @@ interface ICartSummaryProps {
 
 function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
     const totalPrice = useMemo(() =>
-        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price.base * cartProduct.quantity), 0).toString(),
+        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.price.base * cartProduct.quantity), 0).toString(),
         [cartProducts])
 
     return (

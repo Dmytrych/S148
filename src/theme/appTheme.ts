@@ -1,5 +1,6 @@
 import {PaletteColor, PaletteColorOptions, ThemeOptions} from "@mui/material";
 import {Color} from "@/constants/color";
+import {CSSProperties} from "react";
 
 declare module '@mui/material/styles' {
     interface Palette {
@@ -11,6 +12,20 @@ declare module '@mui/material/styles' {
         cardBackground?: PaletteColorOptions | undefined;
         border?: PaletteColorOptions | undefined;
     }
+
+    interface TypographyVariants {
+      link: CSSProperties;
+    }
+
+    interface TypographyVariantsOptions {
+      link?: CSSProperties;
+    }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    link: true;
+  }
 }
 
 export const appTheme = {
@@ -69,6 +84,9 @@ export const appTheme = {
         body2: {
             fontSize: '0.875rem', // Smaller body text font size
             lineHeight: 1.4, // Smaller body text line height
+        },
+        link: {
+            color: Color.GlobalGreen,
         },
         button: {
             textTransform: 'none', // Button text capitalization

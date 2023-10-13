@@ -10,12 +10,14 @@ import {CartProduct} from "@/interfaces/cart/CartProduct";
 interface ICartProps {
     cartProducts: CartProduct[];
     onRemoveProduct: (productCode: string) => void;
+    onQuantityChange: (productCode: string, quantity: number) => void;
     onSubmit: (values: IOrderFormFields) => Promise<void> | void;
 }
 
-function Cart({cartProducts, onRemoveProduct, onSubmit}: ICartProps) {
+function Cart({cartProducts, onRemoveProduct, onSubmit, onQuantityChange}: ICartProps) {
     const {validateForm, getInitialValues} = useOrderForm();
 
+    console.log(cartProducts);
     return (
         <PageContainer sx={{ marginX: { lg: "200px", xs: "40px" } }}>
             <Box sx={{
@@ -32,8 +34,8 @@ function Cart({cartProducts, onRemoveProduct, onSubmit}: ICartProps) {
                             <Box display="flex" flexGrow="1">
                                 <Grid container>
                                     <Grid item md={8} xs={12}>
-                                        <Box>
-                                          <CartDisplay products={cartProducts} />
+                                        <Box p="16px">
+                                          <CartDisplay products={cartProducts} onQuantityChange={onQuantityChange} />
                                         </Box>
                                         <OrderForm errors={props.errors} values={props.values} touched={props.touched} handleChange={props.handleChange} />
                                     </Grid>
