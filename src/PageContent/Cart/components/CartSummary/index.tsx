@@ -4,17 +4,17 @@ import {Box, styled, Typography} from "@mui/material";
 import {ActionButton} from "@/components/Buttons/ActionButton";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {CartSummaryRow} from "@/PageContent/Cart/components/CartSummary/components/CartSummaryRow";
-import {CartProduct} from "@/interfaces/cart/CartProduct";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 
 interface ICartSummaryProps {
-    cartProducts: CartProduct[];
+    cartProducts: CartProductInfo[];
     disableSubmit: boolean;
     onSubmitClick: () => Promise<void> | void;
 }
 
 function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
     const totalPrice = useMemo(() =>
-        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.price.base * cartProduct.quantity), 0).toString(),
+        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price.base * cartProduct.quantity), 0).toString(),
         [cartProducts])
 
     return (

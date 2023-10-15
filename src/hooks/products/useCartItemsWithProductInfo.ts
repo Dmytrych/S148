@@ -1,23 +1,20 @@
 import {ICartSelection} from "@/contexts/CartContext";
 import {IProduct} from "@/api/DTO/products";
 import {useMemo} from "react";
-import {CartProduct} from "@/interfaces/cart/CartProduct";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 
-export function useCartItemsWithProductInfo(cartItems?: ICartSelection[], products?: IProduct[]): CartProduct[] {
+export function useCartItemsWithProductInfo(cartItems: ICartSelection[], products: IProduct[]): CartProductInfo[] {
     return useMemo(() => {
-        if (!cartItems || !products) {
+        if (!cartItems?.length || !products?.length) {
             return [];
         }
 
-        return cartItems.map(cartItem => {
+        return cartItems.map((cartItem) => {
             const product = products.find(p => p.code === cartItem.productCode);
-            if (!product) {
-                throw new Error(`Product with code ${cartItem.productCode} not found.`);
-            }
             return {
                 ...cartItem,
-                ...product
-            }
+                product
+            } as CartProductInfo;
         })
     }, [cartItems, products]);
 }

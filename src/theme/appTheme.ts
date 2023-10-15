@@ -86,7 +86,12 @@ export const appTheme = {
             lineHeight: 1.4, // Smaller body text line height
         },
         link: {
-            color: Color.GlobalGreen,
+            color: Color.TextColor,
+            "&:hover": {
+                textDecoration: 'underline',
+                cursor: 'pointer',
+                color: Color.GlobalGreen
+            },
         },
         button: {
             textTransform: 'none', // Button text capitalization

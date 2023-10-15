@@ -1,16 +1,16 @@
 import {Box} from "@mui/material";
-import {CartProduct} from "@/interfaces/cart/CartProduct";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 import {CartDisplayItem} from "@/components/CartDisplay/components/CartDisplayItem";
 
 interface IProps {
-  products: CartProduct[];
+  products: CartProductInfo[];
   onQuantityChange: (productCode: string, quantity: number) => void;
 }
 
 export function CartDisplay({products, onQuantityChange}: IProps) {
   return (<Box display="flex" flexDirection="column">
     {products.map((product, index) => (
-      <CartDisplayItem key={index} product={product} onQuantityChange={onQuantityChange}/>
+      <CartDisplayItem key={index} cartProductInfo={product} onQuantityChange={onQuantityChange}/>
     ))}
   </Box>)
 }

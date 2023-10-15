@@ -1,38 +1,44 @@
 import {Box, styled, Typography} from "@mui/material";
-import {CartProduct} from "@/interfaces/cart/CartProduct";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 import ImageBox from "@/components/ImageBox";
 import {PriceTag, Size} from "@/components/PriceTag";
 import PlusMinusControl from "@/components/PlusMinusControl";
+import Link from "next/link";
+import {getProductPageRoute} from "@/helpers/links";
 
 interface Props {
-  product: CartProduct;
+  cartProductInfo: CartProductInfo;
   onQuantityChange?: (productCode: string, quantity: number) => void;
 }
 
-export function CartDisplayItem({ product, onQuantityChange = () => {} }: Props) {
+export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }: Props) {
   const handleQuantityChange = (quantity: number) => {
-    onQuantityChange(product.code, quantity);
+    onQuantityChange(cartProductInfo.product.code, quantity);
   }
 
   return (
     <CartDisplayItemContainer>
       <Box display="flex" flexDirection="row" flexGrow="1">
         <Box>
-          <ImageBox imageName={product.options.image} width="96px" height="96px" />
+          <ImageBox imageName={cartProductInfo.product.options.image} width="96px" height="96px" />
         </Box>
         <Box display="flex" flexDirection="column">
-          <Box>
-            <Typography variant="link">{product.name}</Typography>
+          <Box ml={3}>
+            <Link href={getProductPageRoute(cartProductInfo.productCode)} style={{ textDecoration: "none", color: "inherit" }}>
+              <Typography variant="link">
+                {cartProductInfo.product.name}
+              </Typography>
+            </Link>
           </Box>
         </Box>
       </Box>
       <Box>
         <Box display="flex" flexDirection="row">
           <Box display="flex" justifyContent="flex-end" alignItems="center" flexGrow={2}>
-            <PlusMinusControl defaultValue={product.quantity} onChange={handleQuantityChange} />
+            <PlusMinusControl defaultValue={cartProductInfo.quantity} onChange={handleQuantityChange} />
           </Box>
           <Box display="flex" justifyContent="flex-end" alignItems="center" flexGrow={1}>
-            <PriceTag value={(product.price.base * product.quantity).toString()} size={Size.Medium} currencySize={Size.Medium} />
+            <PriceTag value={(cartProductInfo.product.price.base * cartProductInfo.quantity).toString()} size={Size.Medium} currencySize={Size.Medium} />
           </Box>
         </Box>
       </Box>

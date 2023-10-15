@@ -12,7 +12,7 @@ export default function CartPage() {
     const { cart, removeFromCart, clearCart, addToCart } = useCart();
     const { data: products } = useProducts();
 
-    const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, products);
+    const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, products ?? []);
     const { createOrder } = useOrderCreation();
 
     const handleSubmit = async (values: IOrderFormFields): Promise<void> => {

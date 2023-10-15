@@ -19,9 +19,7 @@ export function ProductDisplay({ product, onQuantityChange, quantity, handleInst
     <Grid container>
         <Grid item md={12} lg={5}>
             <Box display="flex" justifyContent="center">
-                <ProductImage>
-                    <ImageBox imageName={product.options.image}/>
-                </ProductImage>
+              <ImageBox imageName={product.options.image} width="600px" height="600px"/>
             </Box>
         </Grid>
         <Grid item md={12} lg={7}>
@@ -69,11 +67,6 @@ export function ProductDisplay({ product, onQuantityChange, quantity, handleInst
         </Grid>
     </Grid>)
 }
-
-const ProductImage = styled('div')({
-    maxWidth: '600px',
-    maxHeight: '600px',
-});
 
 const PriceTagContainer = styled('div')({
     backgroundColor: 'var(--global-color-secondary)',

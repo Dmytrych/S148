@@ -5,13 +5,14 @@ import {IProduct} from "@/api/DTO/products";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
 import Markdown from "react-markdown";
+import {getProductPageRoute} from "@/helpers/links";
 
 interface IProps {
     product: IProduct;
-    onAddToCart?: () => void;
+    onBuyClick?: () => void;
 }
 
-function TallProductCard({ product, onAddToCart }: IProps) {
+function TallProductCard({ product, onBuyClick }: IProps) {
   return (
     <Container elevation={4}>
       <ImageContainer>
@@ -20,7 +21,7 @@ function TallProductCard({ product, onAddToCart }: IProps) {
       <Box display="flex" flexDirection="column" flexGrow="1">
         <Box>
           <ProductText>
-            <Link href={`/products/${product.code}`}>
+            <Link href={getProductPageRoute(product.code)}>
               {product.name}
             </Link>
           </ProductText>
@@ -38,7 +39,7 @@ function TallProductCard({ product, onAddToCart }: IProps) {
             <Typography color={theme => theme.palette.text.secondary} variant="body2">{locale.ready_for_shipment}</Typography>
           </Box>
           <Box display="flex">
-            <LongButton variant="contained" onClick={onAddToCart}>{locale.buy}</LongButton>
+            <LongButton variant="contained" onClick={onBuyClick}>{locale.buy}</LongButton>
           </Box>
         </Box>
       </Box>
@@ -57,7 +58,7 @@ const Container = styled(Paper)(({ theme }) => ({
   flexDirection: 'column',
   height: '80vh',
   width: '20rem',
-  padding: '16px 16px 32px 16px',
+  padding: '16px 16px 24px 16px',
   border: `1px solid ${theme.palette.border.main}`,
   borderRadius: "10px",
 }));

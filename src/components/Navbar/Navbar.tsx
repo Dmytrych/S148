@@ -22,12 +22,12 @@ const Navbar = () => {
         <ItemMenu>
           <TopBarItem>
             <TopBarNavLink href="/">
-              <Typography>{locale.home_page}</Typography>
+              <Typography variant="link">{locale.home_page}</Typography>
             </TopBarNavLink>
           </TopBarItem>
           <TopBarItem>
             <TopBarNavLink href="/products">
-              <Typography>{locale.products_page}</Typography>
+              <Typography variant="link">{locale.products_page}</Typography>
             </TopBarNavLink>
           </TopBarItem>
           <TopBarItem>
@@ -37,7 +37,7 @@ const Navbar = () => {
               </TopBarNavLinkDisabled>
             ) : (
               <TopBarNavLink href="/cart">
-                <Typography>{locale.cart_page}</Typography>
+                <Typography variant="link">{locale.cart_page}</Typography>
               </TopBarNavLink>
             )}
           </TopBarItem>
@@ -70,6 +70,7 @@ const TopBarNavLinkDisabled = styled('span')({
 
 const TopBarNavLink = styled(Link)({
   textDecoration: 'none',
+  color: 'inherit',
 });
 
 const LogoContainer = styled(Image)({

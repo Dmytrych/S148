@@ -4,7 +4,6 @@ import {useProductCartControls} from "@/hooks/useProductCartControls";
 import {ProductDisplay} from "@/PageContent/ProductDetails/ProductDisplay";
 import React from "react";
 import {Routes} from "@/routes";
-import {RedirectType} from "next/dist/client/components/redirect";
 import {useRouter} from "next/router";
 
 interface IProductDetailsParams {

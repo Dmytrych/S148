@@ -5,10 +5,10 @@ import CartSummary from "@/PageContent/Cart/components/CartSummary";
 import OrderForm from "@/PageContent/Cart/components/OrderForm";
 import React from "react";
 import {CartDisplay} from "@/components/CartDisplay";
-import {CartProduct} from "@/interfaces/cart/CartProduct";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 
 interface ICartProps {
-    cartProducts: CartProduct[];
+    cartProducts: CartProductInfo[];
     onRemoveProduct: (productCode: string) => void;
     onQuantityChange: (productCode: string, quantity: number) => void;
     onSubmit: (values: IOrderFormFields) => Promise<void> | void;
