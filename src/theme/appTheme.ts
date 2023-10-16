@@ -34,7 +34,7 @@ export const appTheme = {
             main: Color.GlobalGreen,
         },
         secondary: {
-            main: '#FF4081',
+            main: Color.GlobalBlack40,
         },
         background: {
             default: Color.White,
@@ -91,6 +91,17 @@ export const appTheme = {
                 textDecoration: 'underline',
                 cursor: 'pointer',
                 color: Color.GlobalGreen
+            },
+        },
+        navbarLink: {
+            link: {
+                fontFamily: 'Squares Bold, Arial, sans-serif',
+                color: Color.TextColor,
+                "&:hover": {
+                    textDecoration: 'underline',
+                    cursor: 'pointer',
+                    color: Color.GlobalGreen
+                },
             },
         },
         button: {

@@ -1,10 +1,10 @@
 import ImageBox from "@/components/ImageBox";
-import {ProductName} from "@/components/ProductName";
-import {Box, Button, Grid, styled} from "@mui/material";
+import {Box, Button, Grid, styled, Typography} from "@mui/material";
 import {locale} from "@/locale/ua";
 import PlusMinusControl from "@/components/PlusMinusControl";
 import {IProduct} from "@/api/DTO/products";
 import {PriceTag, Size} from "@/components/PriceTag";
+import {productPageLocale} from "@/locale/ua/productPage";
 
 interface IProductDisplayProps {
     product: IProduct;
@@ -17,17 +17,15 @@ interface IProductDisplayProps {
 export function ProductDisplay({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: IProductDisplayProps) {
     return (
     <Grid container>
-        <Grid item md={12} lg={5}>
+        <Grid item md={12} lg={4}>
             <Box display="flex" justifyContent="center">
-              <ImageBox imageName={product.options.image} width="600px" height="600px"/>
+              <ImageBox imageName={product.options.image} width="400px" height="400px"/>
             </Box>
         </Grid>
-        <Grid item md={12} lg={7}>
+        <Grid item md={12} lg={8}>
             <ProductTitleBlock>
-                <ProductName value={product.name} size={"medium"}/>
-                <Box sx={{lineHeight: '2'}}>
-                    Add subtitle
-                </Box>
+                <Typography variant="h5">{product.name}</Typography>
+                <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.name}</Typography>
             </ProductTitleBlock>
             <DescriptionBox>
                 <PriceTagContainer>
@@ -40,33 +38,25 @@ export function ProductDisplay({ product, onQuantityChange, quantity, handleInst
                         defaultValue={quantity}
                     />
                 </Box>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        gap: '20px',
-                        marginTop: '10px',
-                    }}
-                >
-                    <BuyButton
-                        variant="contained"
-                        size="large"
-                        onClick={handleInstantBuy}
-                    >
+                <BuyControls>
+                    <BuyButton variant="contained" size="large" onClick={handleInstantBuy}>
                         {locale.buy}
                     </BuyButton>
-                    <BuyButton
-                        variant="contained"
-                        size="large"
-                        onClick={handleAddToCart}
-                    >
+                    <BuyButton variant="contained" size="large" onClick={handleAddToCart}>
                         {locale.add_to_cart}
                     </BuyButton>
-                </Box>
+                </BuyControls>
             </DescriptionBox>
         </Grid>
     </Grid>)
 }
+
+const BuyControls = styled('div')({
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '20px',
+    marginTop: '10px',
+})
 
 const PriceTagContainer = styled('div')({
     backgroundColor: 'var(--global-color-secondary)',
@@ -90,5 +80,5 @@ const DescriptionBox = styled('div')({
 });
 
 const ProductTitleBlock = styled('div')({
-    margin: '30px 0px 30px 30px',
+    margin: '0px 0px 30px 30px',
 });

@@ -1,7 +1,7 @@
-import ProductDetails from "@/PageContent/ProductDetails";
 import {useMemo} from "react";
 import {useProducts} from "@/hooks/useProducts";
 import {useRouter} from "next/router";
+import ProductDetailsPageContent from "@/PageContent/ProductDetails";
 
 export default function ProductDetailsPage() {
     const router = useRouter();
@@ -16,7 +16,7 @@ export default function ProductDetailsPage() {
     }, [products, isLoading, router.query.code]);
 
     return foundItem ? (
-        <ProductDetails product={foundItem} />
+        <ProductDetailsPageContent product={foundItem} productLoading={isLoading}/>
     ) : (
         <div>Item not found</div>
     )
