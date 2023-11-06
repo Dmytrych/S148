@@ -10,9 +10,9 @@ import {useRouter} from "next/router";
 export default function CartPage() {
     const { replace } = useRouter();
     const { cart, removeFromCart, clearCart, addToCart } = useCart();
-    const { data: products } = useProducts();
+    const { data: productsData } = useProducts();
 
-    const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, products ?? []);
+    const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, productsData?.data ?? []);
     const { createOrder } = useOrderCreation();
 
     const handleSubmit = async (values: IOrderFormFields): Promise<void> => {

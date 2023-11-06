@@ -1,11 +1,10 @@
 import {Box, Button, Paper, styled, Typography} from '@mui/material';
-import ImageBox from '../ImageBox';
 import Link from "next/link";
-import {IProduct} from "@/api/DTO/products";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
 import Markdown from "react-markdown";
 import {getProductPageRoute} from "@/helpers/links";
+import {IProduct} from "@/api/DTO/products";
 
 interface IProps {
     product: IProduct;
@@ -15,23 +14,23 @@ interface IProps {
 function TallProductCard({ product, onBuyClick }: IProps) {
   return (
     <Container elevation={4}>
-      <ImageContainer>
-        <ImageBox imageName={product.options.image} width="100%" height="100%" />
-      </ImageContainer>
+      {/*<ImageContainer>*/}
+      {/*  <ImageBox imageName={product} width="100%" height="100%" />*/}
+      {/*</ImageContainer>*/}
       <Box display="flex" flexDirection="column" flexGrow="1">
         <Box>
           <ProductText>
-            <Link href={getProductPageRoute(product.code)}>
-              {product.name}
+            <Link href={getProductPageRoute(product.attributes.code)}>
+              {product.attributes.name}
             </Link>
           </ProductText>
         </Box>
         <ProductPriceBox>
-          <PriceTag value={product.price.base.toString()} size={Size.Big}/>
+          <PriceTag value={product.attributes.price.toString()} size={Size.Big}/>
         </ProductPriceBox>
         <Box>
           <Markdown>
-            {product.description?.short}
+            {product.attributes.shortDescription}
           </Markdown>
         </Box>
         <Box flexGrow="1" display="flex" flexDirection="column" justifyContent="flex-end">

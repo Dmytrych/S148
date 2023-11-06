@@ -8,10 +8,10 @@ import {getProductPageRoute} from "@/helpers/links";
 
 export default function Products() {
   const { push } = useRouter();
-  const { data: products, isLoading: productsLoading} = useProducts();
+  const { data: productData, isLoading: productsLoading} = useProducts();
 
   const handleAddToCart = async (product: IProduct) => {
-    await push(getProductPageRoute(product.code))
+    await push(getProductPageRoute(product.attributes.code))
   }
 
   return (
@@ -20,8 +20,8 @@ export default function Products() {
                 <ProductPageBlock>
                     <ProductDisplay>
                         {
-                            !productsLoading && products
-                                ? products.map((product, index) => (
+                            !productsLoading && productData?.data
+                                ? productData?.data.map((product, index) => (
                                     <TallProductCard
                                         key={index}
                                         product={product}

@@ -14,7 +14,7 @@ export function useCartItemsWithProductInfo(cartItems: ICartSelection[], product
             return {
                 ...cartItem,
                 product
-            } as CartProductInfo;
+            };
         })
     }, [cartItems, products]);
 }

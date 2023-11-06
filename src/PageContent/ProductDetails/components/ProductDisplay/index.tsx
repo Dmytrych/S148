@@ -1,10 +1,9 @@
-import ImageBox from "@/components/ImageBox";
 import {Box, Button, Grid, styled, Typography} from "@mui/material";
 import {locale} from "@/locale/ua";
 import PlusMinusControl from "@/components/PlusMinusControl";
-import {IProduct} from "@/api/DTO/products";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {productPageLocale} from "@/locale/ua/productPage";
+import {IProduct} from "@/api/DTO/products";
 
 interface IProductDisplayProps {
     product: IProduct;
@@ -17,19 +16,19 @@ interface IProductDisplayProps {
 export function ProductDisplay({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: IProductDisplayProps) {
     return (
     <Grid container>
-        <Grid item md={12} lg={4}>
-            <Box display="flex" justifyContent="center">
-              <ImageBox imageName={product.options.image} width="400px" height="400px"/>
-            </Box>
-        </Grid>
+        {/*<Grid item md={12} lg={4}>*/}
+        {/*    <Box display="flex" justifyContent="center">*/}
+        {/*      <ImageBox imageName={product.options.image} width="400px" height="400px"/>*/}
+        {/*    </Box>*/}
+        {/*</Grid>*/}
         <Grid item md={12} lg={8}>
             <ProductTitleBlock>
-                <Typography variant="h5">{product.name}</Typography>
-                <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.name}</Typography>
+                <Typography variant="h5">{product.attributes.name}</Typography>
+                <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.name}</Typography>
             </ProductTitleBlock>
             <DescriptionBox>
                 <PriceTagContainer>
-                    <PriceTag value={product.price.base.toString()} size={Size.Big}/>
+                    <PriceTag value={product.attributes.price.toString()} size={Size.Big}/>
                 </PriceTagContainer>
                 <Box>
                     <div>{locale.quantity}:</div>

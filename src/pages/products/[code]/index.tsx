@@ -5,15 +5,15 @@ import ProductDetailsPageContent from "@/PageContent/ProductDetails";
 
 export default function ProductDetailsPage() {
     const router = useRouter();
-    const { data: products, isLoading} = useProducts();
+    const { data: productsResponse, isLoading} = useProducts();
 
     const foundItem = useMemo(() => {
         if (isLoading) {
             return undefined;
         }
 
-        return products?.find(product => product.code === router.query.code);
-    }, [products, isLoading, router.query.code]);
+        return productsResponse?.data?.find(product => product.attributes.code === router.query.code);
+    }, [productsResponse, isLoading, router.query.code]);
 
     return foundItem ? (
         <ProductDetailsPageContent product={foundItem} productLoading={isLoading}/>

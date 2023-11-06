@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import {ApiRoutes} from "@/api/apiRoutes";
-import {productsFetcher} from "@/api/products";
+import {ProductPopulateParams, productsFetcher} from "@/api/products";
 
 export function useProducts() {
-  return useSWR(ApiRoutes.Products, productsFetcher)
+  return useSWR(ApiRoutes.Products, (url) => productsFetcher(url, { populate: [ProductPopulateParams.Images] }) )
 }

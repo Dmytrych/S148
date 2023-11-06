@@ -1,16 +1,19 @@
-export interface IProduct {
+import {Metadata} from "@/api/DTO/common";
+
+export interface IProductAttributes {
     code: string;
     name: string;
-    quantity: number;
-    price: {
-        base: number;
-    };
-    options: {
-        volume: string;
-        image: string;
-    };
-    description?: {
-        short?: string;
-        full?: string;
-    };
+    price: number;
+    description?: string;
+    shortDescription?: string;
+}
+
+export interface IProduct {
+    id: number;
+    attributes: IProductAttributes;
+}
+
+export interface IProductApiResponse {
+    data: IProduct[];
+    meta: Metadata;
 }

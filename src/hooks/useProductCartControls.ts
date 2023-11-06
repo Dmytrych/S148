@@ -7,7 +7,7 @@ export function useProductCartControls(product: IProduct) {
     const { addToCart: addProductToCart } = useCart()
 
     const addToCart = () => {
-        addProductToCart({ productCode: product.code, quantity: quantity, append: true })
+        addProductToCart({ productCode: product.attributes.code, quantity: quantity, append: true })
     }
 
     return { quantity, setQuantity, addToCart };

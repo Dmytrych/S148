@@ -24,7 +24,7 @@ export function ProductInfoTabs({product, isLoadingProduct}: Props) {
             <Box px={10}>
                 {
                     selectedTab === 0
-                        ? <ProductDescription description={product.description?.full ?? ""} isLoading={isLoadingProduct} />
+                        ? <ProductDescription description={product.attributes.description ?? ""} isLoading={isLoadingProduct} />
                         : <div>Характеристики</div>
                 }
             </Box>
