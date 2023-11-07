@@ -5,6 +5,7 @@ import {locale} from "@/locale/ua";
 import Markdown from "react-markdown";
 import {getProductPageRoute} from "@/helpers/links";
 import {IProduct} from "@/api/DTO/products";
+import ImageBox from '../ImageBox';
 
 interface IProps {
     product: IProduct;
@@ -14,9 +15,11 @@ interface IProps {
 function TallProductCard({ product, onBuyClick }: IProps) {
   return (
     <Container elevation={4}>
-      {/*<ImageContainer>*/}
-      {/*  <ImageBox imageName={product} width="100%" height="100%" />*/}
-      {/*</ImageContainer>*/}
+      { product.attributes.images?.data[0]?.id ? (
+          <ImageContainer>
+            <ImageBox src={product.attributes.images?.data[0]?.attributes.url} width="100%" height="100%" />
+          </ImageContainer>
+      ) : null}
       <Box display="flex" flexDirection="column" flexGrow="1">
         <Box>
           <ProductText>
