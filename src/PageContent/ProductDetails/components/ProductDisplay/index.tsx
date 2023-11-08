@@ -4,6 +4,10 @@ import PlusMinusControl from "@/components/PlusMinusControl";
 import {PriceTag, Size} from "@/components/PriceTag";
 import {productPageLocale} from "@/locale/ua/productPage";
 import {IProduct} from "@/api/DTO/products";
+import Image from "next/image";
+import {getImageUrl} from "@/helpers/imageUrl";
+import ProductImage from "@/components/ProductImage/ProductImage";
+import {ApiImage} from "@/api/DTO/common/images";
 
 interface IProductDisplayProps {
     product: IProduct;
@@ -15,13 +19,13 @@ interface IProductDisplayProps {
 
 export function ProductDisplay({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: IProductDisplayProps) {
     return (
-    <Grid container>
-        {/*<Grid item md={12} lg={4}>*/}
-        {/*    <Box display="flex" justifyContent="center">*/}
-        {/*      <ImageBox imageName={product.options.image} width="400px" height="400px"/>*/}
-        {/*    </Box>*/}
-        {/*</Grid>*/}
-        <Grid item md={12} lg={8}>
+    <Box>
+        <Box>
+            <Box display="flex" justifyContent="center">
+                <ProductImage image={product.attributes.images?.data[0]} width="400px" height="400px" />
+            </Box>
+        </Box>
+        <Box>
             <ProductTitleBlock>
                 <Typography variant="h5">{product.attributes.name}</Typography>
                 <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.name}</Typography>
@@ -46,8 +50,8 @@ export function ProductDisplay({ product, onQuantityChange, quantity, handleInst
                     </BuyButton>
                 </BuyControls>
             </DescriptionBox>
-        </Grid>
-    </Grid>)
+        </Box>
+    </Box>)
 }
 
 const BuyControls = styled('div')({

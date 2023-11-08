@@ -1,6 +1,6 @@
 import {Box, styled, Typography} from "@mui/material";
 import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
-import ImageBox from "@/components/ImageBox";
+import ProductImage from "@/components/ProductImage/ProductImage";
 import {PriceTag, Size} from "@/components/PriceTag";
 import PlusMinusControl from "@/components/PlusMinusControl";
 import Link from "next/link";
@@ -20,7 +20,7 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }
     <CartDisplayItemContainer>
       <Box display="flex" flexDirection="row" flexGrow="1">
         <Box>
-          <ImageBox imageName={cartProductInfo.product.options.image} width="96px" height="96px" />
+          <ProductImage imageName={cartProductInfo.product.options.image} width="96px" height="96px" />
         </Box>
         <Box display="flex" flexDirection="column">
           <Box ml={3}>

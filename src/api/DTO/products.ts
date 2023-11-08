@@ -12,7 +12,8 @@ export interface IProductAttributes {
     };
 }
 
-export interface IProduct extends CrmModel<IProductAttributes> {}
+export interface IProduct extends CrmModel<IProductAttributes> {
+}
 
 export interface IProductApiResponse {
     data: IProduct[];

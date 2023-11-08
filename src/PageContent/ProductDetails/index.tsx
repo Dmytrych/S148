@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import {ProductDisplay} from "@/PageContent/ProductDetails/components/ProductDisplay";
 import {ProductInfoTabs} from "@/PageContent/ProductDetails/components/ProductInfoTabs";
 import {SupportInfo} from "@/PageContent/ProductDetails/components/SupportInfo";
+import {PageMargins} from "@/components/PageMargins";
 
 interface IProductDetailsParams {
     product: IProduct;
@@ -28,8 +29,8 @@ export default function ProductDetailsPageContent({product, productLoading = fal
     }
 
     return (
-        <Box>
-            <ContentSeparator>
+        <PageMargins>
+            <Box display="flex">
                 <Box flexGrow={9}>
                     <ProductDisplay
                         product={product}
@@ -42,12 +43,7 @@ export default function ProductDetailsPageContent({product, productLoading = fal
                 <Box flexGrow={1}>
                     <SupportInfo/>
                 </Box>
-            </ContentSeparator>
-        </Box>
+            </Box>
+        </PageMargins>
     );
 };
-
-const ContentSeparator = styled(Box)({
-    margin: "30px 200px",
-    display: "flex",
-})
