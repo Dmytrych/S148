@@ -19,13 +19,11 @@ interface IProductDisplayProps {
 
 export function ProductDisplay({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: IProductDisplayProps) {
     return (
-    <Box>
-        <Box>
-            <Box display="flex" justifyContent="center">
-                <ProductImage image={product.attributes.images?.data[0]} width="400px" height="400px" />
-            </Box>
+    <Box display="flex" gap="2" sx={{ flexDirection: { md: "row", xs: "column" } }}>
+        <Box display="flex" justifyContent="center" mb={2}>
+            <ProductImage image={product.attributes.images?.data[0]} width="400px" height="400px" />
         </Box>
-        <Box>
+        <Box flexGrow="1">
             <ProductTitleBlock>
                 <Typography variant="h5">{product.attributes.name}</Typography>
                 <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.name}</Typography>

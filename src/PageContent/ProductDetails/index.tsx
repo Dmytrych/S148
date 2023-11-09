@@ -40,7 +40,7 @@ export default function ProductDetailsPageContent({product, productLoading = fal
                         onQuantityChange={setQuantity}/>
                     <ProductInfoTabs product={product} isLoadingProduct={productLoading} />
                 </Box>
-                <Box flexGrow={1}>
+                <Box flexGrow={1} sx={{ display: { xs: "none", sm: "block" } }}>
                     <SupportInfo/>
                 </Box>
             </Box>

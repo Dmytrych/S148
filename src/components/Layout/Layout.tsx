@@ -1,10 +1,21 @@
-import {Box} from "@mui/material";
+import {Box, styled} from "@mui/material";
 import AppTopBar from "../Navbar";
 import { ReactNode } from "react";
+import {Footer} from "@/components/Layout/components/Footer/Footer";
 
 export function Layout({ children }: { children: ReactNode}) {
-    return (<Box>
-        <AppTopBar />
-        <main>{children}</main>
-    </Box>)
+    return (<AppWindowLayout>
+        <Box>
+            <AppTopBar />
+            <main>{children}</main>
+        </Box>
+        <Footer/>
+    </AppWindowLayout>)
 }
+
+const AppWindowLayout = styled(Box)({
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    minHeight: "100vh"
+})
