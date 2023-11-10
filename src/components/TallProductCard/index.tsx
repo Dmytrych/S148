@@ -1,6 +1,6 @@
 import {Box, Button, Paper, styled, Typography} from '@mui/material';
 import Link from "next/link";
-import {PriceTag, Size} from "@/components/PriceTag";
+import {PriceTag} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
 import Markdown from "react-markdown";
 import {getProductPageRoute} from "@/helpers/links";
@@ -29,7 +29,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
                     </ProductText>
                 </Box>
                 <ProductPriceBox>
-                    <PriceTag value={product.attributes.price.toString()} size={Size.Big}/>
+                    <PriceTag price={product.attributes.price} />
                 </ProductPriceBox>
                 <Box>
                     <StyledMarkdown>

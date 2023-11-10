@@ -1,4 +1,4 @@
-import {PaletteColor, PaletteColorOptions, ThemeOptions} from "@mui/material";
+import {PaletteColor, PaletteColorOptions, Theme, ThemeOptions} from "@mui/material";
 import {Color} from "@/constants/color";
 import {CSSProperties} from "react";
 
@@ -20,12 +20,26 @@ declare module '@mui/material/styles' {
     interface TypographyVariantsOptions {
       link?: CSSProperties;
     }
+
+    interface ButtonVariants {
+        primary: CSSProperties;
+    }
+
+    interface ButtonVariantsOptions {
+        primary: CSSProperties;
+    }
 }
 
 declare module '@mui/material/Typography' {
-  interface TypographyPropsVariantOverrides {
-    link: true;
-  }
+    interface TypographyPropsVariantOverrides {
+        link: true;
+    }
+}
+
+declare module '@mui/material/Button' {
+    interface ButtonPropsVariantOverrides {
+        primaryContained: true;
+    }
 }
 
 export const appTheme = {
@@ -48,7 +62,10 @@ export const appTheme = {
         },
         border: {
             main: Color.GlobalBlack20,
-        }
+        },
+        action: {
+            hover: "0.8",
+        },
     },
     typography: {
         fontFamily: 'Roboto, Arial, sans-serif',
@@ -105,7 +122,7 @@ export const appTheme = {
             },
         },
         button: {
-            textTransform: 'none', // Button text capitalization
+            textTransform: 'none'
         },
     },
     components: {
@@ -114,13 +131,6 @@ export const appTheme = {
                 variant: 'contained',
             },
             styleOverrides: {
-                containedPrimary: {
-                    backgroundColor: Color.GlobalGreen,
-                    color: Color.White,
-                    '&:hover': {
-                        backgroundColor: Color.GlobalBlack80,
-                    },
-                },
                 root: {
                     "&.Mui-disabled": {
                         backgroundColor: Color.GlobalGreen40,
@@ -129,6 +139,21 @@ export const appTheme = {
                     }
                 }
             },
+            variants: [
+                {
+                    props: { variant: 'primaryContained' },
+                    style: ({ theme } : {theme: Theme}) => {
+                        return {
+                            '&:hover': {
+                                opacity: theme.palette.action.hover,
+                                backgroundColor: theme.palette.primary[theme.palette.mode],
+                            },
+                            color: Color.White,
+                            backgroundColor: theme.palette.primary[theme.palette.mode],
+                        }
+                    },
+                }
+            ]
         },
     },
-} as ThemeOptions;
+};

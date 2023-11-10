@@ -1,13 +1,10 @@
-import {Box, Button, Grid, styled, Typography} from "@mui/material";
+import {Box, Button, styled, Typography} from "@mui/material";
 import {locale} from "@/locale/ua";
 import PlusMinusControl from "@/components/PlusMinusControl";
-import {PriceTag, Size} from "@/components/PriceTag";
+import {PriceTag} from "@/components/PriceTag";
 import {productPageLocale} from "@/locale/ua/productPage";
 import {IProduct} from "@/api/DTO/products";
-import Image from "next/image";
-import {getImageUrl} from "@/helpers/imageUrl";
 import ProductImage from "@/components/ProductImage/ProductImage";
-import {ApiImage} from "@/api/DTO/common/images";
 
 interface IProductDisplayProps {
     product: IProduct;
@@ -24,28 +21,23 @@ export function ProductDisplay({ product, onQuantityChange, quantity, handleInst
             <ProductImage image={product.attributes.images?.data[0]} width="400px" height="400px" />
         </Box>
         <Box flexGrow="1">
-            <ProductTitleBlock>
+            <DescriptionBox>
                 <Typography variant="h5">{product.attributes.name}</Typography>
                 <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.name}</Typography>
-            </ProductTitleBlock>
-            <DescriptionBox>
-                <PriceTagContainer>
-                    <PriceTag value={product.attributes.price.toString()} size={Size.Big}/>
-                </PriceTagContainer>
-                <Box>
-                    <div>{locale.quantity}:</div>
+                <Box my={2}>
+                    <PriceTag price={product.attributes.price} size="large" />
+                </Box>
+                <BuyControls>
                     <PlusMinusControl
                         onChange={onQuantityChange}
                         defaultValue={quantity}
                     />
-                </Box>
-                <BuyControls>
-                    <BuyButton variant="contained" size="large" onClick={handleInstantBuy}>
-                        {locale.buy}
-                    </BuyButton>
-                    <BuyButton variant="contained" size="large" onClick={handleAddToCart}>
+                    <Button variant="primaryContained" size="large" onClick={handleAddToCart} sx={{ width: "150px" }}>
                         {locale.add_to_cart}
-                    </BuyButton>
+                    </Button>
+                    <Button variant="primaryContained" size="large" onClick={handleInstantBuy}>
+                        {locale.buy}
+                    </Button>
                 </BuyControls>
             </DescriptionBox>
         </Box>
@@ -69,17 +61,6 @@ const PriceTagContainer = styled('div')({
     height: '70px',
 });
 
-const BuyButton = styled(Button)({
-    ':hover': {
-        backgroundColor: 'green',
-    },
-    backgroundColor: 'rgb(35, 189, 40)',
-});
-
 const DescriptionBox = styled('div')({
     margin: '10px 20px',
-});
-
-const ProductTitleBlock = styled('div')({
-    margin: '0px 0px 30px 30px',
 });

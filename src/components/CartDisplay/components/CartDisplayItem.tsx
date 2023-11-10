@@ -38,7 +38,7 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }
             <PlusMinusControl defaultValue={cartProductInfo.quantity} onChange={handleQuantityChange} />
           </Box>
           <Box display="flex" justifyContent="flex-end" alignItems="center" flexGrow={1}>
-            <PriceTag value={(cartProductInfo.product.price.base * cartProductInfo.quantity).toString()} size={Size.Medium} currencySize={Size.Medium} />
+            <PriceTag price={cartProductInfo.product.price * cartProductInfo.quantity} />
           </Box>
         </Box>
       </Box>

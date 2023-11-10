@@ -1,36 +1,51 @@
-import {Box, Typography} from '@mui/material';
+import {Box, styled, SxProps, Typography} from '@mui/material';
 
-export enum Size {
-    Small = 'small',
-    Medium = 'medium',
-    Big = 'big',
+interface PriceTagProps {
+    price: number;
+    currency?: string;
+    size?: "small" | "medium" | "large";
 }
 
-interface IPriceTagProps {
-    value: string;
-    size?: Size;
-    currencySize?: Size;
-}
-
-export function PriceTag({ value, size = Size.Big, currencySize = Size.Small }: IPriceTagProps) {
-    const priceFontSize = resolveFontSize(size);
-    const currencyFontSize = resolveFontSize(currencySize);
-
+export function PriceTag({ price, size, currency = "₴" }: PriceTagProps) {
     return (
-        <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
-            <Typography style={{ fontSize: priceFontSize, textAlign: "center" }}>{value}</Typography>
-            <Typography style={{ marginLeft: "5px", fontSize: currencyFontSize, textAlign: "center" }}>₴</Typography>
-        </Box>
+        <PriceTagWrapper>
+            <Price size={size}>{price.toFixed(2)}</Price>
+            <Currency size={size}>{currency}</Currency>
+        </PriceTagWrapper>
     )
 }
 
-const resolveFontSize = (size: Size) => {
-    switch (size) {
-        case Size.Big:
-            return '32px';
-        case Size.Medium:
-            return '24px';
-        case Size.Small:
-            return '16px';
-    }
-}
+const sizeStyles = {
+    "small": {
+        priceFontSize: '1.2rem',
+        currencyFontSize: '1rem',
+        padding: 0.5,
+    },
+    "medium": {
+        priceFontSize: '1.5rem',
+        currencyFontSize: '1.2rem',
+        padding: 1,
+    },
+    "large": {
+        priceFontSize: '2rem',
+        currencyFontSize: '1.5rem',
+        padding: 1.5,
+    },
+};
+
+const PriceTagWrapper = styled(Box)(() => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+const Price = styled(Typography)<Pick<PriceTagProps, "size">>(({ theme, size = "medium" }) => ({
+    fontWeight: 'bold',
+    marginRight: theme.spacing(1),
+    fontSize: sizeStyles[size].priceFontSize,
+}));
+
+const Currency = styled(Typography)<Pick<PriceTagProps, "size">>(({ theme, size = "medium" }) => ({
+    color: theme.palette.text.secondary,
+    fontSize: sizeStyles[size].currencyFontSize,
+}));

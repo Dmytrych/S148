@@ -2,7 +2,7 @@ import React, {useMemo} from 'react'
 import {locale} from '@/locale/ua';
 import {Box, styled, Typography} from "@mui/material";
 import {ActionButton} from "@/components/Buttons/ActionButton";
-import {PriceTag, Size} from "@/components/PriceTag";
+import {PriceTag} from "@/components/PriceTag";
 import {CartSummaryRow} from "@/PageContent/Cart/components/CartSummary/components/CartSummaryRow";
 import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 
@@ -14,7 +14,7 @@ interface ICartSummaryProps {
 
 function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
     const totalPrice = useMemo(() =>
-        cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price.base * cartProduct.quantity), 0).toString(),
+            cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price * cartProduct.quantity), 0),
         [cartProducts])
 
     return (
@@ -25,7 +25,7 @@ function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummary
                 </Box>
                 <Box display="flex" mt="14px" flexDirection="column">
                     <CartSummaryRow label={locale.goods_with_total_price}>
-                        <PriceTag value={totalPrice} size={Size.Small} currencySize={Size.Small}/>
+                        <PriceTag price={totalPrice} />
                     </CartSummaryRow>
                     <CartSummaryRow label={locale.delivery_cost}>
                         <Typography variant="body2">{locale.delivery_cost_unknown}</Typography>
@@ -33,7 +33,7 @@ function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummary
                 </Box>
                 <ToBePaidContainer mt="14px">
                     <CartSummaryRow label={locale.to_be_paid}>
-                        <PriceTag value={totalPrice} size={Size.Medium} currencySize={Size.Medium}/>
+                        <PriceTag price={totalPrice} />
                     </CartSummaryRow>
                 </ToBePaidContainer>
                 <Box display="flex" mt="14px">
