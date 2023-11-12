@@ -1,4 +1,4 @@
-import {CrmModel} from "@/api/DTO/common/common";
+import {CmsModel} from "@/api/DTO/common/common";
 
 export interface ImageThumbnail {
     name: string,
@@ -32,4 +32,4 @@ export interface ApiImageAttributes {
     updatedAt: string
 }
 
-export interface ApiImage extends CrmModel<ApiImageAttributes> {}
+export interface ApiImage extends CmsModel<ApiImageAttributes> {}

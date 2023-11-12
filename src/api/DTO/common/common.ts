@@ -9,15 +9,7 @@ export interface PaginationMetadata {
     total: number;
 }
 
-export interface ApiImage {
-    code: string;
-    name: string;
-    price: number;
-    description?: string;
-    shortDescription?: string;
-}
-
-export interface CrmModel<TAttributes> {
+export interface CmsModel<TAttributes> {
     id: number;
     attributes: TAttributes
 }

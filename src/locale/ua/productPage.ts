@@ -2,6 +2,7 @@ export const productPageLocale = {
     description: "Опис",
     characteristics: "Характеристики",
     code: "Код",
+    characteristicsNotFound: "Характеристики не знайдені",
 
     delivery: "Доставка",
     payment: "Оплата",

@@ -5,7 +5,7 @@ import {Footer} from "@/components/Layout/components/Footer/Footer";
 
 export function Layout({ children }: { children: ReactNode}) {
     return (<AppWindowLayout>
-        <Box>
+        <Box minHeight="100vh" mb={3}>
             <AppTopBar />
             <main>{children}</main>
         </Box>

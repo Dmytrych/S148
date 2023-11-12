@@ -19,8 +19,7 @@ const ProductImage = ({ width, height, className, image }: Props) => {
               src={getImageUrl(image.attributes.url)}
               alt="Product Image"
               fill
-              placeholder={"blur"}
-              blurDataURL={getImageUrl(image.attributes.formats.thumbnail.url)}
+              unoptimized
           />
       ) : null }
     </ContentLoader>

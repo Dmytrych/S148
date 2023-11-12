@@ -1,4 +1,4 @@
-import {CrmModel, Metadata} from "@/api/DTO/common/common";
+import {CmsModel, Metadata} from "@/api/DTO/common/common";
 import {ApiImage} from "@/api/DTO/common/images";
 
 export interface IProductAttributes {
@@ -10,9 +10,15 @@ export interface IProductAttributes {
     images?: {
         data: ApiImage[]
     };
+    characteristics?: Characteristic[];
 }
 
-export interface IProduct extends CrmModel<IProductAttributes> {
+export interface Characteristic {
+  name: string;
+  value: string;
+}
+
+export interface IProduct extends CmsModel<IProductAttributes> {
 }
 
 export interface IProductApiResponse {

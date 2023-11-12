@@ -2,7 +2,8 @@ import {API} from "@/api/axiosFetcher";
 import {IProductApiResponse} from "@/api/DTO/products";
 
 export enum ProductPopulateParams {
-    Images = "images"
+    Images = "images",
+    Characteristics = "characteristics"
 }
 
 export interface ProductQueryParams {
