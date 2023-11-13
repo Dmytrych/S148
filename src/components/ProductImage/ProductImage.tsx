@@ -5,18 +5,20 @@ import {ApiImage} from "@/api/DTO/common/images";
 import {ContentLoader} from "@/components/ContentLoader/image";
 
 interface Props {
-  image?: ApiImage;
+  imageUrl: ApiImage;
   width?: string;
   height?: string;
   className?: string;
 }
 
-const ProductImage = ({ width, height, className, image }: Props) => {
+const ProductImage = ({ width, height, className, imageUrl }: Props) => {
+  console.log(imageUrl)
+
   return (<Box className={className} width={width ?? "96px"} height={height ?? "96px"} position="relative">
-    <ContentLoader isLoading={!image}>
-      { image ? (
+    <ContentLoader isLoading={!imageUrl}>
+      { imageUrl ? (
           <StyledImage
-              src={getImageUrl(image.attributes.url)}
+              src={getImageUrl(imageUrl)}
               alt="Product Image"
               fill
               unoptimized

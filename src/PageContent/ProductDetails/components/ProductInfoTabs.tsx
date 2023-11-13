@@ -19,7 +19,7 @@ export function ProductInfoTabs({product, isLoadingProduct}: Props) {
         <Paper elevation={3} sx={{ minHeight: "200px" }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={selectedTab} onChange={(e, value) => setSelectedTab(value)} aria-label="basic tabs example">
-                    { tabs.map((tab) => <Tab label={tab} />) }
+                    { tabs.map((tab) => <Tab key={tab} label={tab} />) }
                 </Tabs>
             </Box>
             <Box px={10}>

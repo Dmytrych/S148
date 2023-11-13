@@ -5,7 +5,7 @@ import {PriceTag} from "@/components/PriceTag";
 import {productPageLocale} from "@/locale/ua/productPage";
 import {IProduct} from "@/api/DTO/products";
 import ProductImage from "@/components/ProductImage/ProductImage";
-import {ProductPhotosDisplay} from "@/components/ProductPhotosDisplay";
+import {ProductPhotosDisplay} from "../../../../components/product/ProductPhotosDisplay";
 
 interface IProductDisplayProps {
     product: IProduct;
@@ -19,8 +19,9 @@ export function ProductDisplay({ product, onQuantityChange, quantity, handleInst
     return (
     <Box display="flex" gap="2" sx={{ flexDirection: { md: "row", xs: "column" } }}>
         <Box display="flex" justifyContent="center" mb={2}>
-            <ProductImage image={product.attributes.images?.data[0]} width="400px" height="400px" />
-            <ProductPhotosDisplay productImages={product?.attributes?.images?.data}/>
+            {product?.attributes?.images?.data ? (
+                <ProductPhotosDisplay productImages={product?.attributes?.images?.data} />
+            ) : null}
         </Box>
         <Box flexGrow="1">
             <DescriptionBox>
