@@ -15,7 +15,7 @@ interface ProductDescriptionProps {
 
 export function ProductDescription({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: ProductDescriptionProps) {
     return (
-        <DescriptionBox>
+        <Box>
             <Typography variant="h5">{product.attributes.name}</Typography>
             <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.name}</Typography>
             <Box my={2}>
@@ -29,11 +29,11 @@ export function ProductDescription({ product, onQuantityChange, quantity, handle
                 <Button variant="primaryContained" size="large" onClick={handleAddToCart} sx={{ width: "150px" }}>
                     {locale.add_to_cart}
                 </Button>
-                <Button variant="primaryContained" size="large" onClick={handleInstantBuy}>
+                <Button variant="primaryOutlined" size="large" onClick={handleInstantBuy}>
                     {locale.buy}
                 </Button>
             </BuyControls>
-        </DescriptionBox>
+        </Box>
     )
 }
 
@@ -43,7 +43,3 @@ const BuyControls = styled('div')({
     gap: '20px',
     marginTop: '10px',
 })
-
-const DescriptionBox = styled('div')({
-    margin: '10px 20px',
-});

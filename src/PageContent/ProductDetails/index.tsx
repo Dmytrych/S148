@@ -33,23 +33,27 @@ export default function ProductDetailsPageContent({product, productLoading = fal
         <PageMargins>
             <Box display="flex">
                 <Grid container spacing={1}>
-                    <Grid item sm={6}>
-                        <Box display="block">
-                            <Box position="sticky" top="100px">
-                                <ProductImageBlock product={product}/>
-                            </Box>
+                    <Grid item md={6} xs={12}>
+                      <Box display="block" position="relative">
+                        <Box display="flex" height="100%" width="100%">
+                          <Box position="sticky" top="100px">
+                            <ProductImageBlock product={product}/>
+                          </Box>
                         </Box>
+                      </Box>
                     </Grid>
-                    <Grid item sm={6}>
-                        <PaperStyled elevation={1}>
-                            <Box>
+                    <Grid item md={6} xs={12}>
+                        <PaperStyled elevation={3}>
+                            <Box paddingX={5} paddingY={3}>
                                 <ProductDescription
                                     product={product}
                                     handleInstantBuy={handleInstantBuy}
                                     handleAddToCart={handleAddToCart}
                                     quantity={quantity}
                                     onQuantityChange={setQuantity}/>
-                                <ProductInfoTabs product={product} isLoadingProduct={productLoading} />
+                                <Box mt={3}>
+                                  <ProductInfoTabs product={product} isLoadingProduct={productLoading} />
+                                </Box>
                             </Box>
                         </PaperStyled>
                     </Grid>

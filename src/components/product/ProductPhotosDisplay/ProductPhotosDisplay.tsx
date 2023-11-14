@@ -3,7 +3,7 @@ import {useMemo, useState} from "react";
 import {ApiImage} from "@/api/DTO/common/images";
 import ProductImage from "@/components/ProductImage/ProductImage";
 import {ProductThumbnailImageList} from "@/components/product/ProductThumbnailImageList";
-import {ImageScroll} from "@/components/product/ProductPhotosDisplay/ProductPhotosDisplay.styles";
+import {ImageScroll, StyledProductImage} from "@/components/product/ProductPhotosDisplay/ProductPhotosDisplay.styles";
 import {ProductImageUrl} from "@/interfaces/product/ProductImageUrl";
 
 interface Props {
@@ -38,13 +38,14 @@ export function ProductPhotosDisplay({ productImages, loading = false }: Props) 
     return (
         <Box>
             {itemImages.length ? (
-                <Box display="flex" flexDirection="row" height="400px">
+                <Box display="flex" flexDirection="row">
                     <ImageScroll>
                         <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
                     </ImageScroll>
-                    <ProductImage imageUrl={selectedImageUrl} width="400px" height="400px" />
+                    <StyledProductImage imageUrl={selectedImageUrl} />
                 </Box>
             ) : null}
         </Box>
     )
 }
+

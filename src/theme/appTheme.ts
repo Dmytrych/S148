@@ -46,6 +46,7 @@ export const appTheme = {
     palette: {
         primary: {
             main: Color.GlobalGreen,
+            contrastText: Color.White
         },
         secondary: {
             main: Color.GlobalBlack40,
@@ -148,8 +149,20 @@ export const appTheme = {
                                 opacity: theme.palette.action.hover,
                                 backgroundColor: theme.palette.primary[theme.palette.mode],
                             },
-                            color: Color.White,
+                            color: theme.palette.primary.contrastText,
                             backgroundColor: theme.palette.primary[theme.palette.mode],
+                        }
+                    },
+                },
+                {
+                    props: { variant: 'primaryOutlined' },
+                    style: ({ theme } : {theme: Theme}) => {
+                        return {
+                            '&:hover': {
+                                opacity: theme.palette.action.hover,
+                            },
+                            color: theme.palette.primary[theme.palette.mode],
+                            border: `1px solid ${theme.palette.primary[theme.palette.mode]}`
                         }
                     },
                 }
