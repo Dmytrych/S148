@@ -5,15 +5,13 @@ import {ApiImage} from "@/api/DTO/common/images";
 import {ContentLoader} from "@/components/ContentLoader/image";
 
 interface Props {
-  imageUrl: ApiImage;
+  imageUrl: string;
   width?: string;
   height?: string;
   className?: string;
 }
 
 const ProductImage = ({ width, height, className, imageUrl }: Props) => {
-  console.log(imageUrl)
-
   return (<Box className={className} width={width ?? "96px"} height={height ?? "96px"} position="relative">
     <ContentLoader isLoading={!imageUrl}>
       { imageUrl ? (

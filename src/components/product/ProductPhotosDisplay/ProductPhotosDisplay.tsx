@@ -4,6 +4,7 @@ import {ApiImage} from "@/api/DTO/common/images";
 import ProductImage from "@/components/ProductImage/ProductImage";
 import {ProductThumbnailImageList} from "@/components/product/ProductThumbnailImageList";
 import {ImageScroll} from "@/components/product/ProductPhotosDisplay/ProductPhotosDisplay.styles";
+import {ProductImageUrl} from "@/interfaces/product/ProductImageUrl";
 
 interface Props {
     productImages?: ApiImage[];

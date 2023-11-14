@@ -1,4 +1,4 @@
-import {Box, Paper, Tab, Tabs} from "@mui/material";
+import {Box, Tab, Tabs} from "@mui/material";
 import {productPageLocale} from "@/locale/ua/productPage";
 import {useState} from "react";
 import {ProductDescription} from "@/PageContent/ProductDetails/components/ProductDescription";
@@ -16,7 +16,7 @@ export function ProductInfoTabs({product, isLoadingProduct}: Props) {
     const [selectedTab, setSelectedTab] = useState<number>(0);
 
     return (
-        <Paper elevation={3} sx={{ minHeight: "200px" }}>
+        <Box sx={{ minHeight: "200px" }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={selectedTab} onChange={(e, value) => setSelectedTab(value)} aria-label="basic tabs example">
                     { tabs.map((tab) => <Tab key={tab} label={tab} />) }
@@ -29,6 +29,6 @@ export function ProductInfoTabs({product, isLoadingProduct}: Props) {
                         : <CharacteristicsTab characteristics={product.attributes.characteristics}/>
                 }
             </Box>
-        </Paper>
+        </Box>
     )
 }
