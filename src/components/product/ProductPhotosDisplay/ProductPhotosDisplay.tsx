@@ -38,11 +38,11 @@ export function ProductPhotosDisplay({ productImages, loading = false }: Props) 
     return (
         <Box>
             {itemImages.length ? (
-                <Box display="flex" flexDirection="row">
-                    <ImageScroll>
-                        <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
-                    </ImageScroll>
-                    <StyledProductImage imageUrl={selectedImageUrl} />
+                <Box display="flex" flexDirection="row" gap={1}>
+                    <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
+                    <Box flexGrow="4">
+                        <StyledProductImage imageUrl={selectedImageUrl} />
+                    </Box>
                 </Box>
             ) : null}
         </Box>
