@@ -11,6 +11,7 @@ export interface ProductQueryParams {
 }
 
 export async function productsFetcher(url: string, params: ProductQueryParams): Promise<IProductApiResponse> {
+    console.log(params);
     const response = await API.get<IProductApiResponse>(url, { params });
 
     if (response.status < 200 || response.status >= 300) {

@@ -1,4 +1,4 @@
-import {Box, styled} from "@mui/material";
+import {Box, styled, SxProps} from "@mui/material";
 import Image from "next/image";
 import {getImageUrl} from "@/helpers/imageUrl";
 import {ContentLoader} from "@/components/ContentLoader/image";
@@ -6,10 +6,11 @@ import {ContentLoader} from "@/components/ContentLoader/image";
 interface Props {
   imageUrl: string;
   className?: string;
+  sx: SxProps;
 }
 
-const ProductImage = ({ className, imageUrl }: Props) => {
-  return (<Box className={className} position="relative">
+const ProductImage = ({ className, imageUrl, sx }: Props) => {
+  return (<Box className={className} sx={sx} position="relative">
     <ContentLoader isLoading={!imageUrl}>
       { imageUrl ? (
         <ImageContainer>

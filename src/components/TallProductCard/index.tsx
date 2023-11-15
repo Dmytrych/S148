@@ -15,37 +15,36 @@ interface IProps {
 function TallProductCard({product, onBuyClick}: IProps) {
     return (
         <Container elevation={4}>
-            {product.attributes.images?.data[0]?.id ? (
-                <ImageContainer>
-                    <ProductImage image={product.attributes.images?.data[0]} width="100%" height="100%"/>
-                </ImageContainer>
-            ) : null}
-            <Box display="flex" flexDirection="column" flexGrow="1">
-                <Box>
+            <ProductContent>
+                {product.attributes.images?.data[0] ? (
+                    <ImageContainer>
+                        <ProductImage imageUrl={product.attributes.images?.data[0].attributes.url} sx={{ height: "100%", width: "100%" }} />
+                    </ImageContainer>
+                ) : null}
+                <Box display="flex" flexDirection="column" flex="1">
                     <ProductText>
                         <Link href={getProductPageRoute(product.attributes.code)}>
                             {product.attributes.name}
                         </Link>
                     </ProductText>
-                </Box>
-                <ProductPriceBox>
-                    <PriceTag price={product.attributes.price} />
-                </ProductPriceBox>
-                <Box>
-                    <StyledMarkdown>
-                        {product.attributes.shortDescription}
-                    </StyledMarkdown>
-                </Box>
-                <Box flexGrow="1" display="flex" flexDirection="column" justifyContent="flex-end">
-                    <Box display="flex">
-                        <Typography color={theme => theme.palette.text.secondary}
-                                    variant="body2">{locale.ready_for_shipment}</Typography>
+                    <ProductPriceBox>
+                        <PriceTag price={product.attributes.price} />
+                    </ProductPriceBox>
+                    <Box flex="1">
+                        <StyledMarkdown>
+                            {product.attributes.shortDescription}
+                        </StyledMarkdown>
                     </Box>
-                    <Box display="flex">
-                        <LongButton variant="contained" onClick={onBuyClick}>{locale.buy}</LongButton>
+                    <Box display="flex" flexDirection="column" justifyContent="flex-end">
+                        <Box display="flex">
+                            <Typography color={theme => theme.palette.text.secondary} variant="body2">{locale.ready_for_shipment}</Typography>
+                        </Box>
+                        <Box display="flex">
+                            <LongButton variant="primaryContained" onClick={onBuyClick}>{locale.buy}</LongButton>
+                        </Box>
                     </Box>
                 </Box>
-            </Box>
+            </ProductContent>
         </Container>
     );
 }
@@ -62,22 +61,27 @@ const LongButton = styled(Button)({
 });
 
 const Container = styled(Paper)(({theme}) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    height: '80vh',
-    width: '20rem',
+    height: '700px',
+    width: '350px',
     padding: '16px 16px 24px 16px',
     border: `1px solid ${theme.palette.border.main}`,
     borderRadius: "10px",
 }));
 
-const ImageContainer = styled('div')({
-    height: '50%',
-    width: '100%',
-    backgroundColor: 'white',
+const ProductContent = styled(Box)({
+    display: 'flex',
+    flexDirection: 'column',
+    width: "100%",
+    height: "100%"
 });
 
-const ProductText = styled('span')({
+const ImageContainer = styled(Box)({
+    width: "100%",
+    height: "50%",
+    backgroundColor: "white",
+});
+
+const ProductText = styled(Typography)({
     display: 'block',
     overflow: 'hidden',
     wordBreak: 'break-all',
@@ -85,7 +89,7 @@ const ProductText = styled('span')({
     margin: '10px 10px 0px 5px',
 });
 
-const ProductPriceBox = styled('div')({
+const ProductPriceBox = styled(Box)({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
