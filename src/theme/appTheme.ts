@@ -39,6 +39,7 @@ declare module '@mui/material/Typography' {
 declare module '@mui/material/Button' {
     interface ButtonPropsVariantOverrides {
         primaryContained: true;
+        primaryOutlined: true;
     }
 }
 

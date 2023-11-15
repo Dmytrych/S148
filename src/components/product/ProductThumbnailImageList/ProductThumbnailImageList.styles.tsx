@@ -3,6 +3,7 @@ import ProductImage from "@/components/ProductImage/ProductImage";
 
 export const ImageScroll = styled(Box)(({theme}) => ({
     display: "flex",
+    height: "100%",
     flexDirection: "column",
     gap: theme.spacing(1),
     flexGrow: "1",
@@ -14,14 +15,12 @@ export const ImageScroll = styled(Box)(({theme}) => ({
     },
 }))
 
-export const HoverHighlightBox = styled(Box)({
-    transition: "all 0.1s ease-in-out",
-    "&:hover": {
-        transform: "scale(1.1)"
-    }
-})
-
-export const ThumbnailProductImage = styled(ProductImage)({
-    height: "100px",
-    width: "100%"
-})
+export const ThumbnailProductImage = styled(ProductImage)(({theme}) => ({
+  height: "100px",
+  width: "100%",
+  transition: "all 0.1s ease-in-out",
+  "&:hover": {
+    transform: "scale(1.1)"
+  },
+  margin: theme.spacing(1)
+}))

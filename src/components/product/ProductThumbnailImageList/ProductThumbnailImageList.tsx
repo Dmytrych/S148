@@ -1,7 +1,7 @@
 import {Box} from "@mui/material";
 import {noop} from "@/helpers/general";
 import {
-    HoverHighlightBox, ImageScroll,
+    ImageScroll,
     ThumbnailProductImage
 } from "@/components/product/ProductThumbnailImageList/ProductThumbnailImageList.styles";
 
@@ -15,9 +15,9 @@ export function ProductThumbnailImageList({ imageUrls, onClick = noop }: Props) 
         <ImageScroll>
             {
                 imageUrls.map((imageUrl) => (
-                    <HoverHighlightBox key={imageUrl} onClick={() => onClick(imageUrl)} width="100%">
+                    <Box key={imageUrl} onClick={() => onClick(imageUrl)} width="100%">
                         <ThumbnailProductImage imageUrl={imageUrl} />
-                    </HoverHighlightBox>
+                    </Box>
                 ))
             }
         </ImageScroll>

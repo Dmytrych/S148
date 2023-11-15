@@ -1,9 +1,8 @@
 import {Box} from "@mui/material";
 import {useMemo, useState} from "react";
 import {ApiImage} from "@/api/DTO/common/images";
-import ProductImage from "@/components/ProductImage/ProductImage";
 import {ProductThumbnailImageList} from "@/components/product/ProductThumbnailImageList";
-import {ImageScroll, StyledProductImage} from "@/components/product/ProductPhotosDisplay/ProductPhotosDisplay.styles";
+import {StyledProductImage} from "@/components/product/ProductPhotosDisplay/ProductPhotosDisplay.styles";
 import {ProductImageUrl} from "@/interfaces/product/ProductImageUrl";
 
 interface Props {
@@ -36,10 +35,12 @@ export function ProductPhotosDisplay({ productImages, loading = false }: Props) 
     }
 
     return (
-        <Box>
+        <Box width="100%" height="100%">
             {itemImages.length ? (
-                <Box display="flex" flexDirection="row" gap={1}>
-                    <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
+                <Box display="flex" flexDirection="row" gap={1} height="100%">
+                    <Box flexGrow="1">
+                        <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
+                    </Box>
                     <Box flexGrow="4">
                         <StyledProductImage imageUrl={selectedImageUrl} />
                     </Box>

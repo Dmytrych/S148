@@ -34,7 +34,9 @@ export default function ProductDetailsPageContent({product, productLoading = fal
             <Box display="flex">
                 <Grid container spacing={1}>
                     <Grid item md={6} xs={12}>
+                      <Box height="400px" width="100%">
                         <StyledImageBlock product={product}/>
+                      </Box>
                     </Grid>
                     <Grid item md={6} xs={12}>
                         <PaperStyled elevation={3}>
@@ -59,7 +61,7 @@ export default function ProductDetailsPageContent({product, productLoading = fal
 
 const StyledImageBlock = styled(ProductImageBlock)({
     width: "100%",
-    height: "400px"
+    height: "100%"
 })
 
 const PaperStyled = styled(Paper)({
