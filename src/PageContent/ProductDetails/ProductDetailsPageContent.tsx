@@ -20,8 +20,7 @@ export function ProductDetailsPageContent({product, productLoading = false}: IPr
 
     async function handleInstantBuy() {
         addToCart();
-
-        await push(Routes.Cart);
+        await push(Routes.Checkout);
     }
 
     function handleAddToCart() {

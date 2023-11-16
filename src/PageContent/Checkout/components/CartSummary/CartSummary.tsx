@@ -1,10 +1,14 @@
 import React, {useMemo} from 'react'
 import {locale} from '@/locale/ua';
-import {Box, styled, Typography} from "@mui/material";
-import {ActionButton} from "@/components/Buttons/ActionButton";
+import {Box, Typography} from "@mui/material";
 import {PriceTag} from "@/components/PriceTag";
-import {CartSummaryRow} from "@/PageContent/Cart/components/CartSummary/components/CartSummaryRow";
+import {CartSummaryRow} from "@/PageContent/Checkout/components/CartSummary/components/CartSummaryRow";
 import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
+import {
+    CartSummaryBackground,
+    CartSummaryContent, StyledConfirmButton,
+    ToBePaidContainer
+} from "@/PageContent/Checkout/components/CartSummary/CartSummary.styles";
 
 interface ICartSummaryProps {
     cartProducts: CartProductInfo[];
@@ -12,9 +16,9 @@ interface ICartSummaryProps {
     onSubmitClick: () => Promise<void> | void;
 }
 
-function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
+export function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
     const totalPrice = useMemo(() =>
-            cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.price * cartProduct.quantity), 0),
+            cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.attributes.price * cartProduct.quantity), 0),
         [cartProducts])
 
     return (
@@ -44,24 +48,3 @@ function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummary
 }
 
 export default CartSummary;
-
-const ToBePaidContainer = styled(Box)(({ theme}) => ({
-    borderTop: `1px solid ${theme.palette.border.main}`,
-    borderBottom: `1px solid ${theme.palette.border.main}`,
-    padding: "14px 0px 14px 0px",
-}));
-
-const StyledConfirmButton = styled(ActionButton)({
-    height: "50px",
-    flexGrow: 1,
-});
-
-const CartSummaryBackground = styled(Box)(({theme}) => ({
-    backgroundColor: theme.palette.cardBackground.main,
-    border: `1px solid ${theme.palette.border.main}`,
-    borderRadius: "5px"
-}));
-
-const CartSummaryContent = styled(Box)({
-    margin: "16px"
-});

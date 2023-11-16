@@ -43,7 +43,7 @@ const Navbar = () => {
               </TopBarNavLinkDisabled>
             ) : (
               <CartBadge badgeContent={cartCount} color="primary">
-                <TopBarNavLink href="/cart">
+                <TopBarNavLink href="/checkout">
                   <Typography variant="navbarLink">{locale.cart_page}</Typography>
                 </TopBarNavLink>
               </CartBadge>

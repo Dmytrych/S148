@@ -1,4 +1,4 @@
-import {IOrderFormFields} from "@/PageContent/Cart/hooks/useOrderForm";
+import {IOrderFormFields} from "@/PageContent/Checkout/hooks/useOrderForm";
 import {createOrderApi} from "@/api/orders";
 import {ApiRoutes} from "@/api/apiRoutes";
 import {ICartSelection} from "@/contexts/CartContext";

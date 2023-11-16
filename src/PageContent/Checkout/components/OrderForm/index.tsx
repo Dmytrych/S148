@@ -3,7 +3,7 @@ import { locale } from '@/locale/ua';
 import FormParagraphSign from '../FormParagraphSign';
 import {Box, styled, TextField, Typography} from "@mui/material";
 import {FormikErrors, FormikTouched} from "formik";
-import {IOrderFormFields} from "@/PageContent/Cart/hooks/useOrderForm";
+import {IOrderFormFields} from "@/PageContent/Checkout/hooks/useOrderForm";
 
 interface IProps {
     errors: FormikErrors<IOrderFormFields>;
