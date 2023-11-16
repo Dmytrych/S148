@@ -21,7 +21,7 @@ export const locale = {
   slogan: 'Ідея народжена в барі, розроблена в академії наук',
   in_your_cart: 'У вашому кошику',
 
-  home_page: 'Головна',
+  home_page: 'Home',
   products_page: 'Продукти',
   cart_page: 'Кошик',
 

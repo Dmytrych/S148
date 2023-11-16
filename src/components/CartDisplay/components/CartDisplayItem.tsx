@@ -1,7 +1,7 @@
 import {Box, styled, Typography} from "@mui/material";
 import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 import ProductImage from "@/components/ProductImage/ProductImage";
-import {PriceTag, Size} from "@/components/PriceTag";
+import {PriceTag} from "@/components/PriceTag";
 import PlusMinusControl from "@/components/PlusMinusControl";
 import Link from "next/link";
 import {getProductPageRoute} from "@/helpers/links";
@@ -13,20 +13,20 @@ interface Props {
 
 export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }: Props) {
   const handleQuantityChange = (quantity: number) => {
-    onQuantityChange(cartProductInfo.product.code, quantity);
+    onQuantityChange(cartProductInfo.product.attributes.code, quantity);
   }
 
   return (
     <CartDisplayItemContainer>
       <Box display="flex" flexDirection="row" flexGrow="1">
         <Box>
-          <ProductImage imageName={cartProductInfo.product.options.image} width="96px" height="96px" />
+          <ProductImage imageUrl={cartProductInfo.product.attributes.images?.data[0].attributes.url} sx={{ width: "96px", height: "96px" }} />
         </Box>
         <Box display="flex" flexDirection="column">
           <Box ml={3}>
             <Link href={getProductPageRoute(cartProductInfo.productCode)} style={{ textDecoration: "none", color: "inherit" }}>
-              <Typography variant="link">
-                {cartProductInfo.product.name}
+              <Typography>
+                {cartProductInfo.product.attributes.name}
               </Typography>
             </Link>
           </Box>
@@ -38,7 +38,7 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }
             <PlusMinusControl defaultValue={cartProductInfo.quantity} onChange={handleQuantityChange} />
           </Box>
           <Box display="flex" justifyContent="flex-end" alignItems="center" flexGrow={1}>
-            <PriceTag price={cartProductInfo.product.price * cartProductInfo.quantity} />
+            <PriceTag price={cartProductInfo.product.attributes.price * cartProductInfo.quantity} />
           </Box>
         </Box>
       </Box>

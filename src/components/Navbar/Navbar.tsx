@@ -1,4 +1,4 @@
-import {AppBar, styled, Toolbar, Typography} from '@mui/material';
+import {AppBar, Badge, styled, Toolbar, Typography} from '@mui/material';
 import {useMemo} from 'react';
 import logo from '../../../public/images/S148.png';
 import Link from "next/link";
@@ -13,6 +13,12 @@ const Navbar = () => {
 
   const cartLinkDisabled = useMemo(() => {
     return cart && cart.length <= 0;
+  }, [cart]);
+
+  const cartCount = useMemo(() => {
+    let total = 0;
+    cart.forEach((cartItem) => total += cartItem.quantity);
+    return total;
   }, [cart]);
 
   return (
@@ -33,12 +39,14 @@ const Navbar = () => {
           <TopBarItem>
             {cartLinkDisabled ? (
               <TopBarNavLinkDisabled>
-                <Typography color={Color.Inactive}>{locale.cart_page}</Typography>
+                <Typography variant="navbarLink" sx={{ opacity: "20%" }}>{locale.cart_page}</Typography>
               </TopBarNavLinkDisabled>
             ) : (
-              <TopBarNavLink href="/cart">
-                <Typography variant="navbarLink">{locale.cart_page}</Typography>
-              </TopBarNavLink>
+              <CartBadge badgeContent={cartCount} color="primary">
+                <TopBarNavLink href="/cart">
+                  <Typography variant="navbarLink">{locale.cart_page}</Typography>
+                </TopBarNavLink>
+              </CartBadge>
             )}
           </TopBarItem>
         </ItemMenu>
@@ -46,6 +54,12 @@ const Navbar = () => {
     </StyledAppBar>
   );
 };
+
+const CartBadge = styled(Badge)({
+  '& .MuiBadge-badge': {
+    right: -5,
+  },
+})
 
 const StyledAppBar = styled(AppBar)({
   backgroundColor: Color.NavbarBackgroundColor,

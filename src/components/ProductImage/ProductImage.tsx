@@ -4,7 +4,7 @@ import {getImageUrl} from "@/helpers/imageUrl";
 import {ContentLoader} from "@/components/ContentLoader/image";
 
 interface Props {
-  imageUrl: string;
+  imageUrl?: string;
   className?: string;
   sx?: SxProps;
 }

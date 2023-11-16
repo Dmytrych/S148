@@ -1,5 +1,4 @@
 import {API} from "@/api/axiosFetcher";
-import {IProductAttributes} from "@/api/DTO/products";
 import {IOrder, IOrderRequest} from "@/api/DTO/orders";
 
 export async function createOrderApi(url: string, requestParams: IOrderRequest): Promise<IOrder> {

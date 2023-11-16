@@ -114,7 +114,6 @@ export const appTheme = {
         },
         navbarLink: {
             fontFamily: 'Squares Bold',
-            fontWeight: '700',
             color: Color.TextColor,
             "&:hover": {
                 textDecoration: 'underline',
@@ -167,14 +166,6 @@ export const appTheme = {
                     },
                 }
             ]
-        },
-        styleOverrides: `
-            @font-face {
-                font-family: 'Squares Bold';
-                src: url('fonts/Squares Bold.otf') format('opentype');
-                font-weight: 700;
-                font-style: normal;
-            }
-        `,
+        }
     },
 };

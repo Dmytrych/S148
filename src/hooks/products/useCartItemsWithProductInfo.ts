@@ -10,11 +10,12 @@ export function useCartItemsWithProductInfo(cartItems: ICartSelection[], product
         }
 
         return cartItems.map((cartItem) => {
-            const product = products.find(p => p.code === cartItem.productCode);
+            const product = products.find(p => p.attributes.code === cartItem.productCode);
             return {
-                ...cartItem,
-                product
-            };
+                productCode: product?.attributes.code,
+                product: product,
+                quantity: cartItem.quantity
+            } as CartProductInfo;
         })
     }, [cartItems, products]);
 }
