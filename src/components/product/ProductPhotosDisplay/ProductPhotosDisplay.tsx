@@ -38,10 +38,10 @@ export function ProductPhotosDisplay({ productImages, loading = false }: Props) 
         <Box width="100%" height="100%">
             {itemImages.length ? (
                 <Box display="flex" flexDirection="row" gap={1} height="100%">
-                    <Box flexGrow="1">
+                    <Box flexBasis="100px" flexGrow="1">
                         <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
                     </Box>
-                    <Box flexGrow="4">
+                    <Box flexGrow="999">
                         <StyledProductImage imageUrl={selectedImageUrl} />
                     </Box>
                 </Box>

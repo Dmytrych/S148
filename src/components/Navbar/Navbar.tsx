@@ -22,12 +22,12 @@ const Navbar = () => {
         <ItemMenu>
           <TopBarItem>
             <TopBarNavLink href="/">
-              <Typography variant="link">{locale.home_page}</Typography>
+              <Typography variant="navbarLink">{locale.home_page}</Typography>
             </TopBarNavLink>
           </TopBarItem>
           <TopBarItem>
             <TopBarNavLink href="/products">
-              <Typography variant="link">{locale.products_page}</Typography>
+              <Typography variant="navbarLink">{locale.products_page}</Typography>
             </TopBarNavLink>
           </TopBarItem>
           <TopBarItem>
@@ -37,7 +37,7 @@ const Navbar = () => {
               </TopBarNavLinkDisabled>
             ) : (
               <TopBarNavLink href="/cart">
-                <Typography variant="link">{locale.cart_page}</Typography>
+                <Typography variant="navbarLink">{locale.cart_page}</Typography>
               </TopBarNavLink>
             )}
           </TopBarItem>

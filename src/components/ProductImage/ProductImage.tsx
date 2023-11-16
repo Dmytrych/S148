@@ -6,7 +6,7 @@ import {ContentLoader} from "@/components/ContentLoader/image";
 interface Props {
   imageUrl: string;
   className?: string;
-  sx: SxProps;
+  sx?: SxProps;
 }
 
 const ProductImage = ({ className, imageUrl, sx }: Props) => {

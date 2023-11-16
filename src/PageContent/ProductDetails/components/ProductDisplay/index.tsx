@@ -1,9 +1,9 @@
 import {Box} from "@mui/material";
-import {IProduct} from "@/api/DTO/products";
+import {Product} from "@/api/DTO/products";
 import {ProductPhotosDisplay} from "@/components/product/ProductPhotosDisplay";
 
 interface ProductImageBlockProps {
-    product: IProduct;
+    product: Product;
     className?: string;
 }
 

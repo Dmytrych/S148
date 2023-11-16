@@ -32,7 +32,7 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/Typography' {
     interface TypographyPropsVariantOverrides {
-        link: true;
+        navbarLink: true;
     }
 }
 
@@ -70,7 +70,7 @@ export const appTheme = {
         },
     },
     typography: {
-        fontFamily: 'Roboto, Arial, sans-serif',
+        fontFamily: ["Roboto", "Arial", "sans-serif"].join(','),
         color: Color.TextColor,
         h1: {
             fontSize: '2.5rem', // Heading 1 font size
@@ -113,14 +113,13 @@ export const appTheme = {
             },
         },
         navbarLink: {
-            link: {
-                fontFamily: 'Squares Bold, Arial, sans-serif',
-                color: Color.TextColor,
-                "&:hover": {
-                    textDecoration: 'underline',
-                    cursor: 'pointer',
-                    color: Color.GlobalGreen
-                },
+            fontFamily: 'Squares Bold',
+            fontWeight: '700',
+            color: Color.TextColor,
+            "&:hover": {
+                textDecoration: 'underline',
+                cursor: 'pointer',
+                color: Color.GlobalGreen
             },
         },
         button: {
@@ -169,5 +168,13 @@ export const appTheme = {
                 }
             ]
         },
+        styleOverrides: `
+            @font-face {
+                font-family: 'Squares Bold';
+                src: url('fonts/Squares Bold.otf') format('opentype');
+                font-weight: 700;
+                font-style: normal;
+            }
+        `,
     },
 };

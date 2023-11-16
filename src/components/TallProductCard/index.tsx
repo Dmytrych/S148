@@ -4,17 +4,17 @@ import {PriceTag} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
 import Markdown from "react-markdown";
 import {getProductPageRoute} from "@/helpers/links";
-import {IProduct} from "@/api/DTO/products";
+import {Product} from "@/api/DTO/products";
 import ProductImage from '@/components/ProductImage/ProductImage';
 
 interface IProps {
-    product: IProduct;
+    product: Product;
     onBuyClick?: () => void;
 }
 
 function TallProductCard({product, onBuyClick}: IProps) {
     return (
-        <Container elevation={4}>
+        <Container elevation={4} square>
             <ProductContent>
                 {product.attributes.images?.data[0] ? (
                     <ImageContainer>
@@ -61,11 +61,10 @@ const LongButton = styled(Button)({
 });
 
 const Container = styled(Paper)(({theme}) => ({
-    height: '700px',
-    width: '350px',
+    height: '500px',
+    width: '100%',
     padding: '16px 16px 24px 16px',
-    border: `1px solid ${theme.palette.border.main}`,
-    borderRadius: "10px",
+    border: `1px solid ${theme.palette.border.main}`
 }));
 
 const ProductContent = styled(Box)({

@@ -3,10 +3,10 @@ import {productPageLocale} from "@/locale/ua/productPage";
 import {PriceTag} from "@/components/PriceTag";
 import PlusMinusControl from "@/components/PlusMinusControl";
 import {locale} from "@/locale/ua";
-import {IProduct} from "@/api/DTO/products";
+import {Product} from "@/api/DTO/products";
 
 interface ProductDescriptionProps {
-    product: IProduct;
+    product: Product;
     onQuantityChange: (quantity: number) => void;
     quantity: number;
     handleInstantBuy: () => void;

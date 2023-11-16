@@ -18,10 +18,10 @@ export interface Characteristic {
   value: string;
 }
 
-export interface IProduct extends CmsModel<IProductAttributes> {
+export interface Product extends CmsModel<IProductAttributes> {
 }
 
 export interface IProductApiResponse {
-    data: IProduct[];
+    data: Product[];
     meta: Metadata;
 }

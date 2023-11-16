@@ -1,8 +1,8 @@
-import {Box} from "@mui/material";
 import {noop} from "@/helpers/general";
 import {
-    ImageScroll,
-    ThumbnailProductImage
+  ImageOutlinedBox,
+  ImageScroll,
+  ThumbnailProductImage
 } from "@/components/product/ProductThumbnailImageList/ProductThumbnailImageList.styles";
 
 interface Props {
@@ -15,9 +15,9 @@ export function ProductThumbnailImageList({ imageUrls, onClick = noop }: Props) 
         <ImageScroll>
             {
                 imageUrls.map((imageUrl) => (
-                    <Box key={imageUrl} onClick={() => onClick(imageUrl)} width="100%">
+                    <ImageOutlinedBox key={imageUrl} onClick={() => onClick(imageUrl)}>
                         <ThumbnailProductImage imageUrl={imageUrl} />
-                    </Box>
+                    </ImageOutlinedBox>
                 ))
             }
         </ImageScroll>

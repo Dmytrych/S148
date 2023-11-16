@@ -1,56 +1,26 @@
-import {CircularProgress, styled} from '@mui/material';
-import WholeWindowBlock from '../../components/WholeWindowBlock';
-import TallProductCard from '../../components/TallProductCard';
 import { useProducts } from '@/hooks/useProducts';
-import {IProduct} from "@/api/DTO/products";
+import {Product} from "@/api/DTO/products";
 import {useRouter} from "next/router";
 import {getProductPageRoute} from "@/helpers/links";
+import {PageMargins} from "@/components/PageMargins";
+import {ProductsGrid} from "@/PageContent/Products/ProductsGrid";
+import {ContentLoader} from "@/components/ContentLoader/image";
 
-export default function Products() {
+export default function ProductsPageContent() {
   const { push } = useRouter();
   const { data: productData, isLoading: productsLoading} = useProducts();
 
-  const handleAddToCart = async (product: IProduct) => {
+  const handleAddToCart = async (product: Product) => {
     await push(getProductPageRoute(product.attributes.code))
   }
 
+  console.log(productData, productsLoading);
+
   return (
-        <WholeWindowBlock>
-            <Gradient>
-                <ProductPageBlock>
-                    <ProductDisplay>
-                        {
-                            !productsLoading && productData?.data
-                                ? productData?.data.map((product, index) => (
-                                    <TallProductCard
-                                        key={index}
-                                        product={product}
-                                        onBuyClick={() => handleAddToCart(product)}
-                                    />
-                                )) : <CircularProgress />
-                        }
-                    </ProductDisplay>
-                </ProductPageBlock>
-            </Gradient>
-        </WholeWindowBlock>
+        <PageMargins>
+          <ContentLoader isLoading={productsLoading || !productData?.data}>
+            <ProductsGrid products={productData?.data}/>
+          </ContentLoader>
+        </PageMargins>
   );
 }
-
-const Gradient = styled('div')({
-  height: '100%',
-  background: 'var(--main-page-gradient)',
-});
-
-const ProductPageBlock = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-});
-
-const ProductDisplay = styled('div')({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  width: '70vw',
-  marginTop: '20px',
-});

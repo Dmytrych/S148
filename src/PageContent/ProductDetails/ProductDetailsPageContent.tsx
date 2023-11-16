@@ -1,5 +1,5 @@
 import {Box, Grid} from '@mui/material';
-import {IProduct} from "@/api/DTO/products";
+import {Product} from "@/api/DTO/products";
 import {useProductCartControls} from "@/hooks/useProductCartControls";
 import React from "react";
 import {Routes} from "@/routes";
@@ -10,7 +10,7 @@ import { ProductDescription } from './components/ProductDescription/ProductDescr
 import {PaperStyled, StyledImageBlock } from './ProductDetailsPageContent.styles';
 
 interface IProductDetailsParams {
-    product: IProduct;
+    product: Product;
     productLoading: boolean;
 }
 
@@ -31,7 +31,7 @@ export function ProductDetailsPageContent({product, productLoading = false}: IPr
     return (
         <PageMargins>
             <Box display="flex">
-                <Grid container spacing={1}>
+                <Grid container spacing={4}>
                     <Grid item md={6} xs={12}>
                         <Box height="400px" width="100%">
                             <StyledImageBlock product={product}/>
@@ -56,4 +56,4 @@ export function ProductDetailsPageContent({product, productLoading = false}: IPr
             </Box>
         </PageMargins>
     );
-};
+}

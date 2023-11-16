@@ -2,13 +2,13 @@ import {Box, Tab, Tabs} from "@mui/material";
 import {productPageLocale} from "@/locale/ua/productPage";
 import {useState} from "react";
 import {ProductDescription} from "@/PageContent/ProductDetails/components/ProductDescription";
-import {IProduct} from "@/api/DTO/products";
+import {Product} from "@/api/DTO/products";
 import {CharacteristicsTab} from "@/PageContent/ProductDetails/components/CharacteristicsTab";
 
 const tabs = [productPageLocale.description, productPageLocale.characteristics]
 
 interface Props {
-    product: IProduct;
+    product: Product;
     isLoadingProduct: boolean;
 }
 

@@ -10,8 +10,8 @@ export function Characteristics({ characteristics }: Props) {
     <Box>
       <Table size="small">
         <TableBody>
-          {characteristics.map((character) => (
-            <TableRow>
+          {characteristics.map((character, index) => (
+            <TableRow key={index}>
               <TableCell>{character.name}</TableCell>
               <TableCell>{character.value}</TableCell>
             </TableRow>

@@ -15,7 +15,5 @@ export function Layout({ children }: { children: ReactNode}) {
 
 const AppWindowLayout = styled(Box)({
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    minHeight: "100vh"
+    flexDirection: "column"
 })

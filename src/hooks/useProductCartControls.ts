@@ -1,8 +1,8 @@
-import {IProduct} from "@/api/DTO/products";
+import {Product} from "@/api/DTO/products";
 import {useCart} from "@/hooks/context/useCart";
 import {useState} from "react";
 
-export function useProductCartControls(product: IProduct) {
+export function useProductCartControls(product: Product) {
     const [quantity, setQuantity] = useState<number>(1);
     const { addToCart: addProductToCart } = useCart()
 
