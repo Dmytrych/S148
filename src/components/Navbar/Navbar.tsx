@@ -7,6 +7,7 @@ import Image from "next/image";
 import {Color} from "@/constants/color";
 import {topBarHeight} from "@/constants/size";
 import {useCart} from "@/hooks/context/useCart";
+import {Routes} from "@/routes";
 
 const Navbar = () => {
   const { cart } = useCart();
@@ -27,12 +28,12 @@ const Navbar = () => {
         <LogoContainer src={logo} alt={"loading"} />
         <ItemMenu>
           <TopBarItem>
-            <TopBarNavLink href="/">
+            <TopBarNavLink href={Routes.Home}>
               <Typography variant="navbarLink">{locale.home_page}</Typography>
             </TopBarNavLink>
           </TopBarItem>
           <TopBarItem>
-            <TopBarNavLink href="/products">
+            <TopBarNavLink href={Routes.Products}>
               <Typography variant="navbarLink">{locale.products_page}</Typography>
             </TopBarNavLink>
           </TopBarItem>
@@ -43,7 +44,7 @@ const Navbar = () => {
               </TopBarNavLinkDisabled>
             ) : (
               <CartBadge badgeContent={cartCount} color="primary">
-                <TopBarNavLink href="/checkout">
+                <TopBarNavLink href={Routes.Cart}>
                   <Typography variant="navbarLink">{locale.cart_page}</Typography>
                 </TopBarNavLink>
               </CartBadge>

@@ -2,14 +2,15 @@ import * as React from 'react';
 import {IAddToCartParams} from "@/hooks/context/useCart";
 
 export interface ICartSelection {
-  productCode: string;
+  productId: number;
   quantity: number;
 }
 
 export interface ICartContext {
   cart: ICartSelection[];
-  addToCart: ({ productCode, quantity, append }: IAddToCartParams) => void;
-  removeFromCart: (productCode: string) => void;
+  addToCart: ({ productId, quantity, append }: IAddToCartParams) => void;
+  removeFromCart: (productId: number) => void;
+  batchRemoveFromCart: (productIds: number[]) => void;
   clearCart: () => void;
 }
 

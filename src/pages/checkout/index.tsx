@@ -9,7 +9,7 @@ import {createOrderFromFormValues} from "@/PageContent/Checkout/helpers";
 
 export default function CheckoutPage() {
     const { replace } = useRouter();
-    const { cart, removeFromCart, clearCart, addToCart } = useCart();
+    const { cart, clearCart } = useCart();
     const { data: productsData } = useProducts();
 
     const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, productsData?.data ?? []);
@@ -23,13 +23,7 @@ export default function CheckoutPage() {
         }
     };
 
-    const handleQuantityChange = (productCode: string, quantity: number) => {
-      addToCart({
-        productCode, quantity, append: false
-      });
-    }
-
     return (
-        <Checkout cartProducts={cartItemsWithProductInfo} onRemoveProduct={removeFromCart} onSubmit={handleSubmit} onQuantityChange={handleQuantityChange} />
+        <Checkout cartProducts={cartItemsWithProductInfo} onSubmit={handleSubmit} />
     )
 }

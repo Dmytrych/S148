@@ -20,15 +20,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         isMounted.current = true;
     })
 
-    const addToCart = ({ productCode, quantity, append }: IAddToCartParams) => {
+    const addToCart = ({ productId, quantity, append }: IAddToCartParams) => {
         if (quantity && quantity <= 0) {
             throw new Error("Quantity should be positive");
         }
 
-        const existingItem = cart.find((item) => item.productCode === productCode);
+        const existingItem = cart.find((item) => item.productId === productId);
 
         if (!existingItem) {
-            setCart((cart) => [...cart, { productCode, quantity }]);
+            setCart((cart) => [...cart, { productId, quantity }]);
             return;
         }
 
@@ -45,12 +45,20 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         });
     }
 
-    const removeFromCart = (productCode: string) => {
+    const removeFromCart = (productId: number) => {
         setCart((cart) => {
-            const newCart = cart.filter((item) => item.productCode !== productCode);
+            const newCart = cart.filter((item) => item.productId !== productId);
             setValue(newCart)
             return newCart;
         });
+    }
+
+    const batchRemoveFromCart = (productIds: number[]) => {
+      setCart((cart) => {
+        const newCart = cart.filter((item) => productIds.includes(item.productId));
+        setValue(newCart)
+        return newCart;
+      });
     }
 
     const clearCart = () => {
@@ -60,7 +68,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         });
     }
 
-    return  (<CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart}}>
+    return  (<CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, batchRemoveFromCart}}>
         {children}
     </ CartContext.Provider>)
 }

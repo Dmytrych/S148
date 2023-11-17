@@ -8,12 +8,12 @@ import {getProductPageRoute} from "@/helpers/links";
 
 interface Props {
   cartProductInfo: CartProductInfo;
-  onQuantityChange?: (productCode: string, quantity: number) => void;
+  onQuantityChange?: (productId: number, quantity: number) => void;
 }
 
 export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }: Props) {
   const handleQuantityChange = (quantity: number) => {
-    onQuantityChange(cartProductInfo.product.attributes.code, quantity);
+    onQuantityChange(cartProductInfo.product.id, quantity);
   }
 
   return (
@@ -24,7 +24,7 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }
         </Box>
         <Box display="flex" flexDirection="column">
           <Box ml={3}>
-            <Link href={getProductPageRoute(cartProductInfo.productCode)} style={{ textDecoration: "none", color: "inherit" }}>
+            <Link href={getProductPageRoute(cartProductInfo.productId)} style={{ textDecoration: "none", color: "inherit" }}>
               <Typography>
                 {cartProductInfo.product.attributes.name}
               </Typography>

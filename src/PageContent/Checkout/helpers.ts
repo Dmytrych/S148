@@ -14,7 +14,7 @@ export function createOrderFromFormValues(values: IOrderFormFields, cart: ICartS
       email: values.email,
     },
     items: cart.map((cartProduct) => ({
-      productCode: cartProduct.productCode,
+      productCode: cartProduct.productId,
       quantity: cartProduct.quantity,
     })),
     deliveryInfo: {

@@ -4,7 +4,7 @@ import {CartDisplayItem} from "@/components/Cart/CartDisplay/components/CartDisp
 
 interface IProps {
     products: CartProductInfo[];
-    onQuantityChange: (productCode: string, quantity: number) => void;
+    onQuantityChange: (productId: number, quantity: number) => void;
 }
 
 export function CartDisplay({products, onQuantityChange}: IProps) {

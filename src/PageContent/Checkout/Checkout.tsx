@@ -9,12 +9,10 @@ import {CartSummary} from "@/PageContent/Checkout/components/CartSummary";
 
 interface ICartProps {
   cartProducts: CartProductInfo[];
-  onRemoveProduct: (productCode: string) => void;
-  onQuantityChange: (productCode: string, quantity: number) => void;
   onSubmit: (values: IOrderFormFields) => Promise<void> | void;
 }
 
-export function Checkout({cartProducts, onRemoveProduct, onSubmit, onQuantityChange}: ICartProps) {
+export function Checkout({cartProducts, onSubmit }: ICartProps) {
   const {validateForm, getInitialValues} = useOrderForm();
 
   return (
