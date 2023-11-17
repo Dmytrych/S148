@@ -2,14 +2,20 @@ export enum LocalStorageKey {
     Cart = "cart",
 }
 
-export function useLocalStorage<TKeyItem>(key: LocalStorageKey, defaultValue: TKeyItem) {
+export function useLocalStorage<TKeyItem>(key: LocalStorageKey, defaultValue?: TKeyItem) {
+    const windowMounted = typeof window !== 'undefined';
+
     const setValue = (value: TKeyItem) => {
+        if (!windowMounted) {
+          return;
+        }
+
         localStorage.setItem(key, JSON.stringify(value));
     }
 
     const getValue = () => {
-        if (typeof window === 'undefined') {
-            return defaultValue;
+        if (!windowMounted) {
+            return undefined;
         }
 
         const keyItem = localStorage.getItem(key);
@@ -21,5 +27,5 @@ export function useLocalStorage<TKeyItem>(key: LocalStorageKey, defaultValue: TK
         return JSON.parse(keyItem) as TKeyItem;
     }
 
-    return { getValue, setValue }
+    return { getValue, loading: !windowMounted ,setValue }
 }

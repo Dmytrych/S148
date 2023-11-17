@@ -1,13 +1,15 @@
 import {useProducts} from "@/hooks/useProducts";
-import {useCart} from "@/hooks/context/useCart";
 import {ContentLoader} from "@/components/ContentLoader/image";
 import {CartDisplay} from "@/components/Cart/CartDisplay";
-import {useEffect, useMemo} from "react";
+import {useMemo} from "react";
 import {getCartProductInfos} from "@/helpers/cart/getCartProductInfo";
+import {useCart} from "@/hooks/context/useCartState";
 
 export function CartItemsEditingList() {
     const { cart, batchRemoveFromCart, addToCart } = useCart();
     const { data: products, isLoading: productsLoading} = useProducts();
+
+    console.log(cart)
 
     const { converted: cartProducts, notFoundIds } = useMemo(() => {
       if (!products?.data?.length || !cart.length) {
@@ -16,6 +18,10 @@ export function CartItemsEditingList() {
 
       return getCartProductInfos(cart, products?.data);
     }, [cart, products]);
+
+    if (notFoundIds?.length) {
+      batchRemoveFromCart(notFoundIds);
+    }
 
     const handleQuantityChange = (productId: number, quantity: number) => {
       addToCart({

@@ -6,8 +6,8 @@ import {locale} from "@/constants/locale/ua";
 import Image from "next/image";
 import {Color} from "@/constants/color";
 import {topBarHeight} from "@/constants/size";
-import {useCart} from "@/hooks/context/useCart";
 import {Routes} from "@/routes";
+import {useCart} from "@/hooks/context/useCartState";
 
 const Navbar = () => {
   const { cart } = useCart();

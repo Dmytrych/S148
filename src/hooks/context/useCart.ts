@@ -7,6 +7,6 @@ export interface IAddToCartParams {
     append?: boolean;
 }
 
-export function useCart() {
+export function useCartn() {
     return useContext<ICartContext>(CartContext);
 }

@@ -1,7 +1,7 @@
 import {ICartSelection} from "@/contexts/CartContext";
 import {Product} from "@/api/DTO/products";
 import {useMemo} from "react";
-import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
+import { CartProductInfo } from "@/interfaces/cart/CartProductInfo";
 
 export function useCartItemsWithProductInfo(cartItems: ICartSelection[], products: Product[]): CartProductInfo[] {
     return useMemo(() => {
@@ -10,9 +10,9 @@ export function useCartItemsWithProductInfo(cartItems: ICartSelection[], product
         }
 
         return cartItems.map((cartItem) => {
-            const product = products.find(p => p.attributes.code === cartItem.productId);
+            const product = products.find(p => p.id === cartItem.productId);
             return {
-                productId: product?.attributes.code,
+                productId: product?.id,
                 product: product,
                 quantity: cartItem.quantity
             } as CartProductInfo;
