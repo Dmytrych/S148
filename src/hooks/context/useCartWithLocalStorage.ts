@@ -8,7 +8,7 @@ export function useCartWithLocalStorage() {
   const {setValue, loading, getValue} = useLocalStorage<ICartSelection[]>(LocalStorageKey.Cart, [])
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && !loadedFromLocalStorage.current) {
       const localStorageValue = getValue();
       if (localStorageValue) {
         setCart(() => {
