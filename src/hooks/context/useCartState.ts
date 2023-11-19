@@ -1,4 +1,5 @@
-import {useCartWithLocalStorage} from "@/hooks/context/useCartWithLocalStorage";
+import {useContext} from "react";
+import {CartContext, ICartContext} from "@/contexts/CartStateContext";
 
 export interface IAddToCartParams {
     productId: number;
@@ -7,10 +8,9 @@ export interface IAddToCartParams {
 }
 
 export function useCart() {
-  const {cart, setCart} = useCartWithLocalStorage();
+  const {cart, setCart} = useContext<ICartContext>(CartContext);
 
   const addToCart = ({ productId, quantity, append }: IAddToCartParams) => {
-    console.log("add")
     if (quantity && quantity <= 0) {
       throw new Error("Quantity should be positive");
     }
