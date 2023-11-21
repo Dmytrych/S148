@@ -1,25 +1,25 @@
-import { Box, Stack, styled, Typography } from '@mui/material'
-import { type CartProductInfo } from '@/interfaces/cart/CartProductInfo'
-import ProductImage from '@/components/ProductImage/ProductImage'
-import { PriceTag } from '@/components/PriceTag'
-import PlusMinusControl from '@/components/PlusMinusControl'
-import Link from 'next/link'
-import { getProductPageRoute } from '@/helpers/links'
+import {Box, Stack, styled, Typography} from "@mui/material";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
+import ProductImage from "@/components/ProductImage/ProductImage";
+import {PriceTag} from "@/components/PriceTag";
+import PlusMinusControl from "@/components/PlusMinusControl";
+import Link from "next/link";
+import {getProductPageRoute} from "@/helpers/links";
 
 interface Props {
-  cartProductInfo: CartProductInfo
-  onQuantityChange?: (productId: number, quantity: number) => void
+  cartProductInfo: CartProductInfo;
+  onQuantityChange?: (productId: number, quantity: number) => void;
 }
 
-export function CartDisplayItem ({ cartProductInfo, onQuantityChange = () => {} }: Props) {
+export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }: Props) {
   const handleQuantityChange = (quantity: number) => {
-    onQuantityChange(cartProductInfo.product.id, quantity)
+    onQuantityChange(cartProductInfo.product.id, quantity);
   }
 
   return (
     <CartDisplayItemContainer>
       <Stack direction="row" spacing={3} flexGrow="1">
-        <ProductImage imageUrl={cartProductInfo.product.attributes.images?.data[0].attributes.url} sx={{ width: '80px', height: '80px' }} />
+        <ProductImage imageUrl={cartProductInfo.product.attributes.images?.data[0].attributes.url} sx={{ width: "80px", height: "80px" }} />
         <Link href={getProductPageRoute(cartProductInfo.product.attributes.code)}>
           <Typography>
             {cartProductInfo.product.attributes.name}
@@ -40,10 +40,10 @@ export function CartDisplayItem ({ cartProductInfo, onQuantityChange = () => {} 
   )
 }
 
-const CartDisplayItemContainer = styled(Box)(({ theme }) => {
+const CartDisplayItemContainer = styled(Box)(({theme}) => {
   return {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '170px'
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "170px",
   }
-})
+});

@@ -1,19 +1,19 @@
-import React, { type ChangeEvent } from 'react'
-import { locale } from '@/locale/ua'
-import FormParagraphSign from '../FormParagraphSign'
-import { Box, styled, TextField, Typography } from '@mui/material'
-import { type FormikErrors, type FormikTouched } from 'formik'
-import { type IOrderFormFields } from '@/PageContent/Checkout/hooks/useOrderForm'
+import React, {ChangeEvent} from 'react'
+import { locale } from '@/locale/ua';
+import FormParagraphSign from '../FormParagraphSign';
+import {Box, styled, TextField, Typography} from "@mui/material";
+import {FormikErrors, FormikTouched} from "formik";
+import {IOrderFormFields} from "@/PageContent/Checkout/hooks/useOrderForm";
 
 interface IProps {
-  errors: FormikErrors<IOrderFormFields>
-  touched: FormikTouched<IOrderFormFields>
-  handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-  values: IOrderFormFields
+    errors: FormikErrors<IOrderFormFields>;
+    touched: FormikTouched<IOrderFormFields>;
+    handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    values: IOrderFormFields
 }
 
-function OrderForm ({ errors, touched, handleChange, values }: IProps) {
-  return (
+function OrderForm({ errors, touched, handleChange, values }: IProps) {
+    return (
         <Box>
             <Box>
                 <Typography variant="h4">{locale.order_placement}</Typography>
@@ -21,9 +21,9 @@ function OrderForm ({ errors, touched, handleChange, values }: IProps) {
             <Box><FormParagraphSign text={locale.contact_info} /></Box>
             <OrderPageContentInfoBlock>
                 <Box sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '20px'
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "20px"
                 }}>
                     <TextField variant="outlined" onChange={handleChange} name="name"
                                label={locale.name} placeholder={locale.name_placeholder} value={values.name}
@@ -51,11 +51,11 @@ function OrderForm ({ errors, touched, handleChange, values }: IProps) {
                 </Box>
             </OrderPageContentInfoBlock>
         </Box>
-  )
+    )
 }
 
-export default OrderForm
+export default OrderForm;
 
 const OrderPageContentInfoBlock = styled(Box)({
-  padding: '20px 15px'
+    padding: '20px 15px',
 })

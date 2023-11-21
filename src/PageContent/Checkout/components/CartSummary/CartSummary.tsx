@@ -1,27 +1,27 @@
-import React, { useMemo } from 'react'
-import { locale } from '@/locale/ua'
-import { Box, Typography } from '@mui/material'
-import { PriceTag } from '@/components/PriceTag'
-import { CartSummaryRow } from '@/PageContent/Checkout/components/CartSummary/components/CartSummaryRow'
-import { type CartProductInfo } from '@/interfaces/cart/CartProductInfo'
+import React, {useMemo} from 'react'
+import {locale} from '@/locale/ua';
+import {Box, Typography} from "@mui/material";
+import {PriceTag} from "@/components/PriceTag";
+import {CartSummaryRow} from "@/PageContent/Checkout/components/CartSummary/components/CartSummaryRow";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 import {
-  CartSummaryBackground,
-  CartSummaryContent, StyledConfirmButton,
-  ToBePaidContainer
-} from '@/PageContent/Checkout/components/CartSummary/CartSummary.styles'
+    CartSummaryBackground,
+    CartSummaryContent, StyledConfirmButton,
+    ToBePaidContainer
+} from "@/PageContent/Checkout/components/CartSummary/CartSummary.styles";
 
 interface ICartSummaryProps {
-  cartProducts: CartProductInfo[]
-  disableSubmit: boolean
-  onSubmitClick: () => Promise<void> | void
+    cartProducts: CartProductInfo[];
+    disableSubmit: boolean;
+    onSubmitClick: () => Promise<void> | void;
 }
 
-export function CartSummary ({ cartProducts, disableSubmit, onSubmitClick }: ICartSummaryProps) {
-  const totalPrice = useMemo(() =>
-    cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.attributes.price * cartProduct.quantity), 0),
-  [cartProducts])
+export function CartSummary({ cartProducts, disableSubmit, onSubmitClick}: ICartSummaryProps) {
+    const totalPrice = useMemo(() =>
+            cartProducts.reduce((acc, cartProduct) => acc + (cartProduct.product.attributes.price * cartProduct.quantity), 0),
+        [cartProducts])
 
-  return (
+    return (
         <CartSummaryBackground>
             <CartSummaryContent>
                 <Box>
@@ -47,4 +47,4 @@ export function CartSummary ({ cartProducts, disableSubmit, onSubmitClick }: ICa
         </CartSummaryBackground>)
 }
 
-export default CartSummary
+export default CartSummary;

@@ -1,11 +1,11 @@
-import { Box, Table, TableBody, TableCell, TableRow } from '@mui/material'
-import { type Characteristic } from '@/api/DTO/products'
+import {Box, Table, TableBody, TableCell, TableRow} from "@mui/material";
+import {Characteristic} from "@/api/DTO/products";
 
 interface Props {
-  characteristics: Characteristic[]
+  characteristics: Characteristic[];
 }
 
-export function Characteristics ({ characteristics }: Props) {
+export function Characteristics({ characteristics }: Props) {
   return (
     <Box>
       <Table size="small">

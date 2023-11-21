@@ -1,28 +1,26 @@
-import { Box, Button, Paper, styled, Typography } from '@mui/material'
-import Link from 'next/link'
-import { PriceTag } from '@/components/PriceTag'
-import { locale } from '@/locale/ua'
-import Markdown from 'react-markdown'
-import { getProductPageRoute } from '@/helpers/links'
-import { type Product } from '@/api/DTO/products'
-import ProductImage from '@/components/ProductImage/ProductImage'
+import {Box, Button, Paper, styled, Typography} from '@mui/material';
+import Link from "next/link";
+import {PriceTag} from "@/components/PriceTag";
+import {locale} from "@/locale/ua";
+import Markdown from "react-markdown";
+import {getProductPageRoute} from "@/helpers/links";
+import {Product} from "@/api/DTO/products";
+import ProductImage from '@/components/ProductImage/ProductImage';
 
 interface IProps {
-  product: Product
-  onBuyClick?: () => void
+    product: Product;
+    onBuyClick?: () => void;
 }
 
-function TallProductCard ({ product, onBuyClick }: IProps) {
-  return (
+function TallProductCard({product, onBuyClick}: IProps) {
+    return (
         <Container elevation={4} square>
             <ProductContent>
-                {product.attributes.images?.data[0]
-                  ? (
+                {product.attributes.images?.data[0] ? (
                     <ImageContainer>
-                        <ProductImage imageUrl={product.attributes.images?.data[0].attributes.url} sx={{ height: '100%', width: '100%' }} />
+                        <ProductImage imageUrl={product.attributes.images?.data[0].attributes.url} sx={{ height: "100%", width: "100%" }} />
                     </ImageContainer>
-                    )
-                  : null}
+                ) : null}
                 <Box display="flex" flexDirection="column" flex="1">
                     <ProductText>
                         <Link href={getProductPageRoute(product.attributes.code)}>
@@ -48,51 +46,51 @@ function TallProductCard ({ product, onBuyClick }: IProps) {
                 </Box>
             </ProductContent>
         </Container>
-  )
+    );
 }
 
-export default TallProductCard
+export default TallProductCard;
 
 const StyledMarkdown = styled(Markdown)({
-  whiteSpace: 'pre-wrap',
-  wordBreak: 'break-all'
+    whiteSpace: "pre-wrap",
+    wordBreak: "break-all"
 })
 
 const LongButton = styled(Button)({
-  width: '100%'
-})
+    width: "100%"
+});
 
-const Container = styled(Paper)(({ theme }) => ({
-  height: '500px',
-  width: '100%',
-  padding: '16px 16px 24px 16px',
-  border: `1px solid ${theme.palette.border.main}`
-}))
+const Container = styled(Paper)(({theme}) => ({
+    height: '500px',
+    width: '100%',
+    padding: '16px 16px 24px 16px',
+    border: `1px solid ${theme.palette.border.main}`
+}));
 
 const ProductContent = styled(Box)({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  height: '100%'
-})
+    display: 'flex',
+    flexDirection: 'column',
+    width: "100%",
+    height: "100%"
+});
 
 const ImageContainer = styled(Box)({
-  width: '100%',
-  height: '50%',
-  backgroundColor: 'white'
-})
+    width: "100%",
+    height: "50%",
+    backgroundColor: "white",
+});
 
 const ProductText = styled(Typography)({
-  display: 'block',
-  overflow: 'hidden',
-  wordBreak: 'break-all',
-  textOverflow: 'ellipsis',
-  margin: '10px 10px 0px 5px'
-})
+    display: 'block',
+    overflow: 'hidden',
+    wordBreak: 'break-all',
+    textOverflow: 'ellipsis',
+    margin: '10px 10px 0px 5px',
+});
 
 const ProductPriceBox = styled(Box)({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center'
-})
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+});

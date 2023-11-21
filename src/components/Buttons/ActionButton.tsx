@@ -1,18 +1,18 @@
-import { Button, styled } from '@mui/material'
-import { type ButtonProps } from '@mui/material/Button/Button'
-import { Color } from '@/constants/color'
+import {Button, styled} from "@mui/material";
+import {ButtonProps} from "@mui/material/Button/Button";
+import {Color} from "@/constants/color";
 
 interface IActionButtonProps extends ButtonProps {
 
 }
 
-export function ActionButton ({ ...props }: IActionButtonProps) {
-  return (<StyledButton {...props}></StyledButton>)
+export function ActionButton({...props}: IActionButtonProps) {
+    return (<StyledButton {...props}></StyledButton>)
 }
 
 const StyledButton = styled(Button)({
-  backgroundColor: Color.GlobalGreen,
-  '&:hover': {
-    backgroundColor: Color.GlobalGreen80
-  }
-})
+    backgroundColor: Color.GlobalGreen,
+    '&:hover': {
+        backgroundColor: Color.GlobalGreen80,
+    },
+});

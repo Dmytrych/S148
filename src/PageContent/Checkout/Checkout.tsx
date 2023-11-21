@@ -1,25 +1,25 @@
-import { Formik } from 'formik'
-import { Box, Grid } from '@mui/material'
-import { type IOrderFormFields, useOrderForm } from '@/PageContent/Checkout/hooks/useOrderForm'
-import React from 'react'
-import { type CartProductInfo } from '@/interfaces/cart/CartProductInfo'
-import { PageContainer } from '@/PageContent/Checkout/Checkout.styles'
-import OrderForm from '@/PageContent/Checkout/components/OrderForm'
-import { CartSummary } from '@/PageContent/Checkout/components/CartSummary'
+import {Formik} from 'formik';
+import {Box, Grid} from '@mui/material';
+import {IOrderFormFields, useOrderForm} from "@/PageContent/Checkout/hooks/useOrderForm";
+import React from "react";
+import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
+import {PageContainer} from "@/PageContent/Checkout/Checkout.styles";
+import OrderForm from "@/PageContent/Checkout/components/OrderForm";
+import {CartSummary} from "@/PageContent/Checkout/components/CartSummary";
 
 interface ICartProps {
-  cartProducts: CartProductInfo[]
-  onSubmit: (values: IOrderFormFields) => Promise<void> | void
+  cartProducts: CartProductInfo[];
+  onSubmit: (values: IOrderFormFields) => Promise<void> | void;
 }
 
-export function Checkout ({ cartProducts, onSubmit }: ICartProps) {
-  const { validateForm, getInitialValues } = useOrderForm()
+export function Checkout({cartProducts, onSubmit }: ICartProps) {
+  const {validateForm, getInitialValues} = useOrderForm();
 
   return (
-    <PageContainer sx={{ marginX: { lg: '200px', xs: '40px' } }}>
+    <PageContainer sx={{ marginX: { lg: "200px", xs: "40px" } }}>
       <Box sx={{
-        display: 'flex',
-        flexGrow: '1'
+        display: "flex",
+        flexGrow: "1"
       }}>
         {cartProducts.length > 0 && (
           <Formik
@@ -48,5 +48,5 @@ export function Checkout ({ cartProducts, onSubmit }: ICartProps) {
         )}
       </Box>
     </PageContainer>
-  )
+  );
 }

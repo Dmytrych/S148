@@ -1,3 +1,3 @@
-export function getProductPageRoute (productCode: string) {
-  return `/products/${productCode.toString()}`
+export function getProductPageRoute(productCode: string) {
+  return `/products/${productCode.toString()}`;
 }

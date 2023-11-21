@@ -52,5 +52,5 @@ export const locale = {
   delivery_info_placeholder:
         "Номер відділення або адреса кур'єрської доставки",
 
-  confirm_order: 'Підтвердити замовлення'
-}
+  confirm_order: 'Підтвердити замовлення',
+};

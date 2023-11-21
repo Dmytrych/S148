@@ -1,10 +1,10 @@
-import { useProducts } from '@/hooks/useProducts'
-import { PageMargins } from '@/components/PageMargins'
-import { ProductsGrid } from '@/PageContent/Products/ProductsGrid'
-import { ContentLoader } from '@/components/ContentLoader/image'
+import {useProducts} from '@/hooks/useProducts';
+import {PageMargins} from "@/components/PageMargins";
+import {ProductsGrid} from "@/PageContent/Products/ProductsGrid";
+import {ContentLoader} from "@/components/ContentLoader/image";
 
-export default function ProductsPageContent () {
-  const { data: productData, isLoading: productsLoading } = useProducts()
+export default function ProductsPageContent() {
+  const { data: productData, isLoading: productsLoading} = useProducts();
 
   return (
         <PageMargins>
@@ -12,5 +12,5 @@ export default function ProductsPageContent () {
             <ProductsGrid products={productData?.data}/>
           </ContentLoader>
         </PageMargins>
-  )
+  );
 }

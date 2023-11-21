@@ -1,5 +1,5 @@
-import { config } from '@/config'
+import {config} from "@/config";
 
-export function getImageUrl (imageName?: string): string {
-  return `${config.imageProviderUrl}${imageName}`
+export function getImageUrl(imageName?: string): string {
+    return `${config.imageProviderUrl}${imageName}`;
 }

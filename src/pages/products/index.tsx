@@ -1,5 +1,5 @@
-import ProductsPageContent from '@/PageContent/Products'
+import ProductsPageContent from "@/PageContent/Products";
 
-export default function ProductsPage () {
-  return (<ProductsPageContent />)
+export default function ProductsPage() {
+    return (<ProductsPageContent />)
 }

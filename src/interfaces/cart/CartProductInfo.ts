@@ -1,6 +1,6 @@
-import { type ICartSelection } from '@/contexts/CartContext'
-import { type Product } from '@/api/DTO/products'
+import {ICartSelection} from "@/contexts/CartContext";
+import {Product} from "@/api/DTO/products";
 
 export interface CartProductInfo extends ICartSelection {
-  product: Product
+  product: Product;
 }

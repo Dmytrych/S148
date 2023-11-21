@@ -1,32 +1,32 @@
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
-import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined'
-import { IconButton, styled } from '@mui/material'
-import { useState } from 'react'
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
+import { IconButton, styled } from '@mui/material';
+import { useState } from 'react';
 
-const limit = 200
+const limit = 200;
 
-interface PlusMinusControlInput {
-  onChange?: (newQuantity: number) => void
-  defaultValue?: number
-}
+type PlusMinusControlInput = {
+  onChange?: (newQuantity: number) => void;
+  defaultValue?: number;
+};
 
-function PlusMinusControl ({
+function PlusMinusControl({
   onChange = () => {},
-  defaultValue = 1
+  defaultValue = 1,
 }: PlusMinusControlInput) {
-  const [value, setValue] = useState(defaultValue)
+  const [value, setValue] = useState(defaultValue);
 
   const handleDecrease = () => {
-    const newValue = value > 1 ? value - 1 : 1
-    setValue(() => newValue)
-    onChange(newValue)
-  }
+    const newValue = value > 1 ? value - 1 : 1;
+    setValue(() => newValue);
+    onChange(newValue);
+  };
 
   const handleIncrease = () => {
-    const newValue = value < limit ? value + 1 : value
-    setValue(() => newValue)
-    onChange(newValue)
-  }
+    const newValue = value < limit ? value + 1 : value;
+    setValue(() => newValue);
+    onChange(newValue);
+  };
 
   return (
     <ControlContainer>
@@ -38,21 +38,21 @@ function PlusMinusControl ({
         <AddCircleOutlineOutlinedIcon />
       </IconButton>
     </ControlContainer>
-  )
+  );
 }
 
 const ValueContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  minWidth: '20px'
-})
+  minWidth: '20px',
+});
 
 const ControlContainer = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  width: 'fit-content'
-})
+  width: 'fit-content',
+});
 
-export default PlusMinusControl
+export default PlusMinusControl;

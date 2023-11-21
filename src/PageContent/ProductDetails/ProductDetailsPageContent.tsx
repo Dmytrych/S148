@@ -1,33 +1,33 @@
-import { Box, Grid } from '@mui/material'
-import { type Product } from '@/api/DTO/products'
-import { useProductCartControls } from '@/hooks/useProductCartControls'
-import React from 'react'
-import { Routes } from '@/routes'
-import { useRouter } from 'next/router'
-import { ProductInfoTabs } from '@/PageContent/ProductDetails/components/ProductInfoTabs'
-import { PageMargins } from '@/components/PageMargins'
-import { ProductDescription } from './components/ProductDescription/ProductDescription'
-import { PaperStyled, StyledImageBlock } from './ProductDetailsPageContent.styles'
+import {Box, Grid} from '@mui/material';
+import {Product} from "@/api/DTO/products";
+import {useProductCartControls} from "@/hooks/useProductCartControls";
+import React from "react";
+import {Routes} from "@/routes";
+import {useRouter} from "next/router";
+import {ProductInfoTabs} from "@/PageContent/ProductDetails/components/ProductInfoTabs";
+import {PageMargins} from "@/components/PageMargins";
+import { ProductDescription } from './components/ProductDescription/ProductDescription';
+import {PaperStyled, StyledImageBlock } from './ProductDetailsPageContent.styles';
 
 interface IProductDetailsParams {
-  product: Product
-  productLoading: boolean
+    product: Product;
+    productLoading: boolean;
 }
 
-export function ProductDetailsPageContent ({ product, productLoading = false }: IProductDetailsParams) {
-  const { push } = useRouter()
-  const { quantity, setQuantity, addToCart } = useProductCartControls(product)
+export function ProductDetailsPageContent({product, productLoading = false}: IProductDetailsParams) {
+    const { push } = useRouter();
+    const {quantity, setQuantity, addToCart} = useProductCartControls(product);
 
-  async function handleInstantBuy () {
-    addToCart()
-    await push(Routes.Checkout)
-  }
+    async function handleInstantBuy() {
+        addToCart();
+        await push(Routes.Checkout);
+    }
 
-  function handleAddToCart () {
-    addToCart()
-  }
+    function handleAddToCart() {
+        addToCart();
+    }
 
-  return (
+    return (
         <PageMargins>
             <Box display="flex">
                 <Grid container spacing={4}>
@@ -54,5 +54,5 @@ export function ProductDetailsPageContent ({ product, productLoading = false }: 
                 </Grid>
             </Box>
         </PageMargins>
-  )
+    );
 }

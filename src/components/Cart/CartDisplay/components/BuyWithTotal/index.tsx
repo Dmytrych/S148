@@ -1,1 +1,1 @@
-export { BuyWithTotal } from '@/components/Cart/CartDisplay/components/BuyWithTotal/BuyWithTotal'
+export {BuyWithTotal} from "@/components/Cart/CartDisplay/components/BuyWithTotal/BuyWithTotal";

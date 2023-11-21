@@ -1,7 +1,7 @@
-import { styled } from '@mui/material'
-import ProductImage from '@/components/ProductImage/ProductImage'
+import {styled} from "@mui/material";
+import ProductImage from "@/components/ProductImage/ProductImage";
 
-export const StyledProductImage = styled(ProductImage)(({ theme }) => ({
-  width: '100%',
-  height: '100%'
+export const StyledProductImage = styled(ProductImage)(({theme}) => ({
+  width: "100%",
+  height: "100%"
 }))

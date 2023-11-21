@@ -1,3 +1,3 @@
 export enum Font {
-  SquaresBold = 'Squares Bold'
+    SquaresBold = "Squares Bold"
 }
