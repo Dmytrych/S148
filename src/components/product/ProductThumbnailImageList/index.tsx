@@ -1,1 +1,1 @@
-export {ProductThumbnailImageList} from "@/components/product/ProductThumbnailImageList/ProductThumbnailImageList";
+export { ProductThumbnailImageList } from '@/components/product/ProductThumbnailImageList/ProductThumbnailImageList'

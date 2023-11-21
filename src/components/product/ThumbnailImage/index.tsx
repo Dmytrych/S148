@@ -1,1 +1,1 @@
-export {ThumbnailImage} from "@/components/product/ThumbnailImage/ThumbnailImage";
+export { ThumbnailImage } from '@/components/product/ThumbnailImage/ThumbnailImage'

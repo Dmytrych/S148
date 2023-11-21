@@ -1,16 +1,16 @@
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import React from "react";
-import { Box, styled } from "@mui/material";
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import React from 'react'
+import { Box, styled } from '@mui/material'
 
 interface ICartSummaryItemProps {
-    name: string;
-    quantity: string;
-    price: string;
-    onRemoveProductClick: () => Promise<void> | void;
+  name: string
+  quantity: string
+  price: string
+  onRemoveProductClick: () => Promise<void> | void
 }
 
-export function CartSummaryItem({quantity, price, onRemoveProductClick, name}: ICartSummaryItemProps) {
-    return (
+export function CartSummaryItem ({ quantity, price, onRemoveProductClick, name }: ICartSummaryItemProps) {
+  return (
         <Box>
             <Box>
                 <DeleteOutlineOutlinedIcon color='error' onClick={onRemoveProductClick}/>
@@ -25,10 +25,10 @@ export function CartSummaryItem({quantity, price, onRemoveProductClick, name}: I
                 {name}
             </Box>
         </Box>
-    )
+  )
 }
 
 const CartSummaryItemContainer = styled(Box)({
-    display: 'flex',
-    flexDirection: 'row',
-});
+  display: 'flex',
+  flexDirection: 'row'
+})

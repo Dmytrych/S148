@@ -1,12 +1,12 @@
-import { ImageOptionDto, TextOptionDto } from './OptionDto';
+import { type ImageOptionDto, type TextOptionDto } from './OptionDto'
 
-export type ProductOptionDto = TextOptionDto | ImageOptionDto;
+export type ProductOptionDto = TextOptionDto | ImageOptionDto
 
-export type ProductDto = {
-    id: number;
-    name: string;
-    subtitle: string;
-    imageName: string;
-    unitPrice: number;
-    options: ProductOptionDto[];
-};
+export interface ProductDto {
+  id: number
+  name: string
+  subtitle: string
+  imageName: string
+  unitPrice: number
+  options: ProductOptionDto[]
+}

@@ -1,4 +1,4 @@
 export interface ProductImageUrl {
-    thumbnail: string;
-    original: string;
+  thumbnail: string
+  original: string
 }

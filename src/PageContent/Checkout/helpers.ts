@@ -1,26 +1,26 @@
-import {IOrderFormFields} from "@/PageContent/Checkout/hooks/useOrderForm";
-import {createOrderApi} from "@/api/orders";
-import {ApiRoutes} from "@/api/apiRoutes";
-import {ICartSelection} from "@/contexts/CartContext";
-import {IOrder} from "@/api/DTO/orders";
+import { type IOrderFormFields } from '@/PageContent/Checkout/hooks/useOrderForm'
+import { createOrderApi } from '@/api/orders'
+import { ApiRoutes } from '@/api/apiRoutes'
+import { type ICartSelection } from '@/contexts/CartContext'
+import { type IOrder } from '@/api/DTO/orders'
 
-export function createOrderFromFormValues(values: IOrderFormFields, cart: ICartSelection[]): Promise<IOrder> {
+export async function createOrderFromFormValues (values: IOrderFormFields, cart: ICartSelection[]): Promise<IOrder> {
   const dataModel = {
     customerInfo: {
       name: values.name,
       surname: values.surname,
       middleName: values.middleName,
       phoneNumber: values.phoneNumber,
-      email: values.email,
+      email: values.email
     },
     items: cart.map((cartProduct) => ({
       productCode: cartProduct.productId,
-      quantity: cartProduct.quantity,
+      quantity: cartProduct.quantity
     })),
     deliveryInfo: {
-      description: values.description,
+      description: values.description
     }
-  };
+  }
 
-  return createOrderApi(ApiRoutes.Orders, dataModel);
+  return await createOrderApi(ApiRoutes.Orders, dataModel)
 }

@@ -1,1 +1,1 @@
-export {ProductDetailsPageContent} from "@/PageContent/ProductDetails/ProductDetailsPageContent";
+export { ProductDetailsPageContent } from '@/PageContent/ProductDetails/ProductDetailsPageContent'

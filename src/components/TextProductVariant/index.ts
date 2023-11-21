@@ -1,1 +1,1 @@
-export * from './TextProductVariant';
+export * from './TextProductVariant'

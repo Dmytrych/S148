@@ -1,1 +1,1 @@
-export {Checkout} from "@/PageContent/Checkout/Checkout";
+export { Checkout } from '@/PageContent/Checkout/Checkout'

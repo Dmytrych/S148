@@ -1,12 +1,12 @@
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import PaymentIcon from '@mui/icons-material/Payment';
-import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-import {Box, Typography, styled} from "@mui/material";
-import {productPageLocale} from "@/locale/ua/productPage";
-import {importantInfoLocale} from "@/locale/ua/importantInfo";
+import LocalShippingIcon from '@mui/icons-material/LocalShipping'
+import PaymentIcon from '@mui/icons-material/Payment'
+import ContactSupportIcon from '@mui/icons-material/ContactSupport'
+import { Box, Typography, styled } from '@mui/material'
+import { productPageLocale } from '@/locale/ua/productPage'
+import { importantInfoLocale } from '@/locale/ua/importantInfo'
 
-export function SupportInfo() {
-    return (
+export function SupportInfo () {
+  return (
         <Box display="flex" flexDirection="column" gap={2}>
             <Box>
                 <Box display="flex" flexDirection="row" gap={1}>
@@ -51,11 +51,11 @@ export function SupportInfo() {
                 </Box>
             </Box>
         </Box>
-    )
+  )
 }
 
-const ItemHeaderContainer = styled(Box)(({theme}) => ({
-    display: "flex",
-    flexDirection: "row",
-    gap: theme.spacing(1),
+const ItemHeaderContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: theme.spacing(1)
 }))

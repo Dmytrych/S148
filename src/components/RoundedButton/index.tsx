@@ -1,5 +1,5 @@
-import React from 'react';
-import {Typography} from "@mui/material";
+import React from 'react'
+import { Typography } from '@mui/material'
 
 // const sizeToCssMapping = {
 //   big: 'rounded-button-big',
@@ -15,7 +15,7 @@ import {Typography} from "@mui/material";
 
 // { text, size = 'big', type = 'normal', disabled = false, onClick = noop }
 
-export default function RoundedButton({text}: {text: string}) {
+export default function RoundedButton ({ text }: { text: string }) {
   // const sizeCss = sizeToCssMapping[size] ?? sizeToCssMapping['medium']
   // const typeCss = typeToCssMapping[type] ?? typeToCssMapping['normal']
   //

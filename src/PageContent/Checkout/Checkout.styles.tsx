@@ -1,7 +1,7 @@
-import {Box, styled} from "@mui/material";
+import { Box, styled } from '@mui/material'
 
 export const PageContainer = styled(Box)({
-  display: "flex",
-  justifyContent: "center",
-  paddingTop: "40px",
-});
+  display: 'flex',
+  justifyContent: 'center',
+  paddingTop: '40px'
+})

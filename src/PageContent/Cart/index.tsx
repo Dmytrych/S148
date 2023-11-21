@@ -1,1 +1,1 @@
-export {Cart} from "@/PageContent/Cart/Cart";
+export { Cart } from '@/PageContent/Cart/Cart'

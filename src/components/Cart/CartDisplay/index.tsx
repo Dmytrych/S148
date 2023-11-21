@@ -1,1 +1,1 @@
-export {CartDisplay} from "@/components/Cart/CartDisplay/CartDisplay";
+export { CartDisplay } from '@/components/Cart/CartDisplay/CartDisplay'

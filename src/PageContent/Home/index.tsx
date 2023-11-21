@@ -1,21 +1,21 @@
-import {Box, styled, Typography} from '@mui/material';
-import Image from "next/image";
-import {mainPageGradient} from "@/constants/gradients";
-import {Color} from "@/constants/color";
-import bottles from './bottles.png';
-import {locale} from "@/locale/ua";
-import RoundedButton from "@/components/RoundedButton";
-import {bodyHeight} from "@/constants/size";
-import {Font} from "@/constants/fonts";
+import { Box, styled, Typography } from '@mui/material'
+import Image from 'next/image'
+import { mainPageGradient } from '@/constants/gradients'
+import { Color } from '@/constants/color'
+import bottles from './bottles.png'
+import { locale } from '@/locale/ua'
+import RoundedButton from '@/components/RoundedButton'
+import { bodyHeight } from '@/constants/size'
+import { Font } from '@/constants/fonts'
 
-const instagramUrl = 'https://www.instagram.com/s148_engineering/';
+const instagramUrl = 'https://www.instagram.com/s148_engineering/'
 
-export default function Home() {
-    const instagramRedirect = () => {
-        window.open(instagramUrl, '_blank');
-    };
+export default function Home () {
+  const instagramRedirect = () => {
+    window.open(instagramUrl, '_blank')
+  }
 
-    return (
+  return (
         <MainFrame>
             <TitlePage>
                 <MainPageTitleText>
@@ -26,7 +26,7 @@ export default function Home() {
                     <BuyButton>
                         <RoundedButton
                             text={locale.buy}
-                            //onClick={instagramRedirect}
+                            // onClick={instagramRedirect}
                         />
                     </BuyButton>
                     <SloganContainer>{locale.slogan}</SloganContainer>
@@ -38,59 +38,59 @@ export default function Home() {
                 </Box>
             </TitlePage>
         </MainFrame>
-    );
+  )
 }
 
-const SloganContainer = styled("div")({
-    color: Color.UnimportantSubtextColor,
-    fontSize: "1rem",
+const SloganContainer = styled('div')({
+  color: Color.UnimportantSubtextColor,
+  fontSize: '1rem'
 })
 
-const BuyButton = styled("div")({
-    fontSize: "1.5rem",
+const BuyButton = styled('div')({
+  fontSize: '1.5rem'
 })
 
 const MainPageTitleDescription = styled(Typography)({
-    fontSize: "30px",
-    fontFamily: Font.SquaresBold,
+  fontSize: '30px',
+  fontFamily: Font.SquaresBold
 })
 
-const MainPageTitleText = styled("div")({
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    width: "min-content",
-    fontSize: "5rem",
-    gap: "50px"
+const MainPageTitleText = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  width: 'min-content',
+  fontSize: '5rem',
+  gap: '50px'
 })
 
 const ScratchMark = styled(Image)({
-    height: "100%",
-    width: "100%"
+  height: '100%',
+  width: '100%'
 })
 
 const ScratchImageContainer = styled('div')({
-    display: "block",
-    left: "500px",
-    height: "600px"
+  display: 'block',
+  left: '500px',
+  height: '600px'
 })
 
 const TitlePage = styled('div')({
-    display: "flex",
-    justifyContent: "center",
-    height: bodyHeight,
-    background: mainPageGradient,
-    gap: "50px"
-});
+  display: 'flex',
+  justifyContent: 'center',
+  height: bodyHeight,
+  background: mainPageGradient,
+  gap: '50px'
+})
 
 const GiantTitleText = styled(Typography)({
-    textShadow: '0px 4px 10px var(--title-text-shadow-color)',
-    width: 'min-content',
-    fontSize: '5rem',
-    fontFamily: Font.SquaresBold,
-});
+  textShadow: '0px 4px 10px var(--title-text-shadow-color)',
+  width: 'min-content',
+  fontSize: '5rem',
+  fontFamily: Font.SquaresBold
+})
 
 const MainFrame = styled('div')({
-    fontFamily: 'var(--main-page-font-family)',
-    minHeight: bodyHeight,
-});
+  fontFamily: 'var(--main-page-font-family)',
+  minHeight: bodyHeight
+})
