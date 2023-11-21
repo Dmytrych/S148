@@ -64,7 +64,6 @@ const CartBadge = styled(Badge)({
 
 const StyledAppBar = styled(AppBar)({
   backgroundColor: Color.NavbarBackgroundColor,
-  fontFamily: 'var(--home-page-font-family)',
   position: 'sticky',
   height: topBarHeight,
   display: 'flex',

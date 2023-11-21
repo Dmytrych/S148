@@ -1,7 +1,6 @@
 import {alpha, Stack, styled} from "@mui/material";
 
 export const StyledStack = styled(Stack)(({theme}) => ({
-  width: "300px",
   border: `1px solid ${theme.palette.primary[theme.palette.mode]}`,
   borderRadius: "4px",
   padding: theme.spacing(3, 3),

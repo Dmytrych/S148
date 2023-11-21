@@ -18,10 +18,10 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }
 
   return (
     <CartDisplayItemContainer>
-      <Stack direction="row" spacing={3} flexGrow="1">
+      <Stack direction="row" spacing={3}>
         <ProductImage imageUrl={cartProductInfo.product.attributes.images?.data[0].attributes.url} sx={{ width: "80px", height: "80px" }} />
         <Link href={getProductPageRoute(cartProductInfo.product.attributes.code)}>
-          <Typography>
+          <Typography variant="body1">
             {cartProductInfo.product.attributes.name}
           </Typography>
         </Link>
@@ -44,6 +44,5 @@ const CartDisplayItemContainer = styled(Box)(({theme}) => {
   return {
     display: "flex",
     flexDirection: "column",
-    minHeight: "170px",
   }
 });
