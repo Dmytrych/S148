@@ -19,7 +19,6 @@ const AdaptiveMarginsLayout = styled(Box)(({ theme }) => ({
     },
     [theme.breakpoints.up('md')]: {
         margin: theme.spacing(2, 10, 0, 10),
-
     },
     [theme.breakpoints.up('lg')]: {
         margin: theme.spacing(2, 25, 0, 25),

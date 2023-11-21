@@ -1,10 +1,10 @@
-import {PageMargins} from "@/components/PageMargins";
 import { CartItemsEditingList } from "./components/CartItemsEditingList";
+import {CartMargins} from "@/PageContent/Cart/Cart.styles";
 
 export function Cart() {
     return (
-        <PageMargins>
+        <CartMargins>
           <CartItemsEditingList/>
-        </PageMargins>
+        </CartMargins>
     )
 }

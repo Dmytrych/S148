@@ -16,8 +16,8 @@ interface ProductDescriptionProps {
 export function ProductDescription({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: ProductDescriptionProps) {
     return (
         <Box>
-            <Typography variant="h5">{product.attributes.name}</Typography>
-            <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.name}</Typography>
+            <Typography variant="h3">{product.attributes.name}</Typography>
+            <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.code}</Typography>
             <Box my={2}>
                 <PriceTag price={product.attributes.price} size="large" />
             </Box>

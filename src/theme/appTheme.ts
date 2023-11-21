@@ -78,15 +78,15 @@ export const appTheme = {
         },
         h2: {
             fontSize: '2rem', // Heading 2 font size
-            fontWeight: 500, // Heading 2 font weight
+            fontWeight: 600, // Heading 2 font weight
         },
         h3: {
             fontSize: '1.75rem', // Heading 3 font size
-            fontWeight: 500, // Heading 3 font weight
+            fontWeight: 600, // Heading 3 font weight
         },
         h4: {
             fontSize: '1.5rem', // Heading 4 font size
-            fontWeight: 500, // Heading 4 font weight
+            fontWeight: 600, // Heading 4 font weight
         },
         h5: {
             fontSize: '1.25rem', // Heading 5 font size

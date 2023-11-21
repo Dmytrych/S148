@@ -22,7 +22,7 @@ const sizeStyles = {
         padding: 0.5,
     },
     "medium": {
-        priceFontSize: '1.5rem',
+        priceFontSize: '1.3rem',
         currencyFontSize: '1.2rem',
         padding: 1,
     },

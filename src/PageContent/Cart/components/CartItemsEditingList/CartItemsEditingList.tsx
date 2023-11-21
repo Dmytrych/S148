@@ -4,12 +4,12 @@ import {CartDisplay} from "@/components/Cart/CartDisplay";
 import {useMemo} from "react";
 import {getCartProductInfos} from "@/helpers/cart/getCartProductInfo";
 import {useCart} from "@/hooks/context/useCartState";
+import {Box, Divider, Paper, Typography} from "@mui/material";
+import {locale} from "@/locale/ua";
 
 export function CartItemsEditingList() {
     const { cart, batchRemoveFromCart, addToCart } = useCart();
     const { data: products, isLoading: productsLoading} = useProducts();
-
-    console.log(cart)
 
     const { converted: cartProducts, notFoundIds } = useMemo(() => {
       if (!products?.data?.length || !cart.length) {
@@ -30,8 +30,16 @@ export function CartItemsEditingList() {
     }
 
     return (
-        <ContentLoader isLoading={productsLoading}>
-            <CartDisplay products={cartProducts} onQuantityChange={handleQuantityChange} />
-        </ContentLoader>
+        <Paper elevation={4}>
+          <Box px={3} pb={1} pt={2}>
+            <Typography variant="h4">{locale.cart_page}</Typography>
+          </Box>
+          <Divider orientation="horizontal" />
+          <Box px={3} pb={5} pt={3}>
+            <ContentLoader isLoading={productsLoading}>
+              <CartDisplay products={cartProducts} onQuantityChange={handleQuantityChange} />
+            </ContentLoader>
+          </Box>
+        </Paper>
     )
 }
