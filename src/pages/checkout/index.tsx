@@ -8,22 +8,22 @@ import {createOrderFromFormValues} from "@/PageContent/Checkout/helpers";
 import {useCart} from "@/hooks/context/useCartState";
 
 export default function CheckoutPage() {
-    const { replace } = useRouter();
-    const { cart, clearCart } = useCart();
-    const { data: productsData } = useProducts();
+  const { replace } = useRouter();
+  const { cart, clearCart } = useCart();
+  const { data: productsData } = useProducts();
 
-    const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, productsData?.data ?? []);
+  const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, productsData?.data ?? []);
 
-    const handleSubmit = async (values: IOrderFormFields): Promise<void> => {
-        const createdRequest = await createOrderFromFormValues(values, cart)
+  const handleSubmit = async (values: IOrderFormFields): Promise<void> => {
+    const createdRequest = await createOrderFromFormValues(values, cart)
 
-        if (createdRequest) {
-            clearCart();
-            await replace(Routes.Products)
-        }
-    };
+    if (createdRequest) {
+      clearCart();
+      await replace(Routes.Products)
+    }
+  };
 
-    return (
-        <Checkout cartProducts={cartItemsWithProductInfo} onSubmit={handleSubmit} />
-    )
+  return (
+    <Checkout cartProducts={cartItemsWithProductInfo} onSubmit={handleSubmit} />
+  )
 }

@@ -8,5 +8,5 @@ export interface IAddToCartParams {
 }
 
 export function useCartn() {
-    return useContext<ICartContext>(CartContext);
+  return useContext<ICartContext>(CartContext);
 }

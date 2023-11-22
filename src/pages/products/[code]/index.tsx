@@ -4,20 +4,20 @@ import {useRouter} from "next/router";
 import {ProductDetailsPageContent} from "@/PageContent/ProductDetails";
 
 export default function ProductDetailsPage() {
-    const router = useRouter();
-    const { data: productsResponse, isLoading} = useProducts();
+  const router = useRouter();
+  const { data: productsResponse, isLoading} = useProducts();
 
-    const foundItem = useMemo(() => {
-        if (isLoading) {
-            return undefined;
-        }
+  const foundItem = useMemo(() => {
+    if (isLoading) {
+      return undefined;
+    }
 
-        return productsResponse?.data?.find(product => product.attributes.code === router.query.code);
-    }, [productsResponse, isLoading, router.query.code]);
+    return productsResponse?.data?.find(product => product.attributes.code === router.query.code);
+  }, [productsResponse, isLoading, router.query.code]);
 
-    return foundItem ? (
-        <ProductDetailsPageContent product={foundItem} productLoading={isLoading}/>
-    ) : (
-        <div>Item not found</div>
-    )
+  return foundItem ? (
+    <ProductDetailsPageContent product={foundItem} productLoading={isLoading}/>
+  ) : (
+    <div>Item not found</div>
+  )
 }

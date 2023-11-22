@@ -7,13 +7,13 @@ interface Props {
 }
 
 export function ProductDescription({description, isLoading = false}: Props) {
-    return (<Box>
-        { !isLoading ?
-            <Markdown>
-                {description}
-            </Markdown>
-            : <Box>
-                <CircularProgress />
-            </Box>}
-    </Box>)
+  return (<Box>
+    { !isLoading ?
+      <Markdown>
+        {description}
+      </Markdown>
+      : <Box>
+        <CircularProgress />
+      </Box>}
+  </Box>)
 }

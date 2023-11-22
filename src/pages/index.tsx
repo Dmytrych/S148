@@ -1,7 +1,7 @@
 import Home from "@/PageContent/Home";
 
 function Index() {
-    return (<Home />)
+  return (<Home />)
 }
 
 export default Index;

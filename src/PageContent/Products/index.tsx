@@ -7,10 +7,10 @@ export default function ProductsPageContent() {
   const { data: productData, isLoading: productsLoading} = useProducts();
 
   return (
-        <PageMargins>
-          <ContentLoader isLoading={productsLoading || !productData?.data}>
-            <ProductsGrid products={productData?.data}/>
-          </ContentLoader>
-        </PageMargins>
+    <PageMargins>
+      <ContentLoader isLoading={productsLoading || !productData?.data}>
+        <ProductsGrid products={productData?.data}/>
+      </ContentLoader>
+    </PageMargins>
   );
 }

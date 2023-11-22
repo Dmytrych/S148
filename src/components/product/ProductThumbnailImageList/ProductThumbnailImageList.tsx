@@ -11,15 +11,15 @@ interface Props {
 }
 
 export function ProductThumbnailImageList({ imageUrls, onClick = noop }: Props) {
-    return (
-        <ImageScroll>
-            {
-                imageUrls.map((imageUrl) => (
-                    <ImageOutlinedBox key={imageUrl} onClick={() => onClick(imageUrl)}>
-                        <ThumbnailProductImage imageUrl={imageUrl} />
-                    </ImageOutlinedBox>
-                ))
-            }
-        </ImageScroll>
-    )
+  return (
+    <ImageScroll>
+      {
+        imageUrls.map((imageUrl) => (
+          <ImageOutlinedBox key={imageUrl} onClick={() => onClick(imageUrl)}>
+            <ThumbnailProductImage imageUrl={imageUrl} />
+          </ImageOutlinedBox>
+        ))
+      }
+    </ImageScroll>
+  )
 }

@@ -14,32 +14,32 @@ interface ProductDescriptionProps {
 }
 
 export function ProductDescription({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: ProductDescriptionProps) {
-    return (
-        <Box>
-            <Typography variant="h3">{product.attributes.name}</Typography>
-            <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.code}</Typography>
-            <Box my={2}>
-                <PriceTag price={product.attributes.price} size="large" />
-            </Box>
-            <BuyControls>
-                <PlusMinusControl
-                    onChange={onQuantityChange}
-                    defaultValue={quantity}
-                />
-                <Button variant="primaryContained" size="large" onClick={handleAddToCart} sx={{ width: "150px" }}>
-                    {locale.add_to_cart}
-                </Button>
-                <Button variant="primaryOutlined" size="large" onClick={handleInstantBuy}>
-                    {locale.buy}
-                </Button>
-            </BuyControls>
-        </Box>
-    )
+  return (
+    <Box>
+      <Typography variant="h3">{product.attributes.name}</Typography>
+      <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.code}</Typography>
+      <Box my={2}>
+        <PriceTag price={product.attributes.price} size="large" />
+      </Box>
+      <BuyControls>
+        <PlusMinusControl
+          onChange={onQuantityChange}
+          defaultValue={quantity}
+        />
+        <Button variant="primaryContained" size="large" onClick={handleAddToCart} sx={{ width: "150px" }}>
+          {locale.add_to_cart}
+        </Button>
+        <Button variant="primaryOutlined" size="large" onClick={handleInstantBuy}>
+          {locale.buy}
+        </Button>
+      </BuyControls>
+    </Box>
+  )
 }
 
 const BuyControls = styled('div')({
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '20px',
-    marginTop: '10px',
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '20px',
+  marginTop: '10px',
 })

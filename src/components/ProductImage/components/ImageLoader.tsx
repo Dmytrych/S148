@@ -5,9 +5,9 @@ interface Page {
 }
 
 export function ImageLoader() {
-    return (
-        <Box>
-            <CircularProgress />
-        </Box>
-    )
+  return (
+    <Box>
+      <CircularProgress />
+    </Box>
+  )
 }

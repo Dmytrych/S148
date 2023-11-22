@@ -7,14 +7,14 @@ import {CartStateContextProvider} from "@/contexts/CartStateContextProvider";
 let theme = createTheme(appTheme as ThemeOptions);
 
 export default function App({ Component, pageProps }: AppProps) {
-    return (
-        <ThemeProvider theme={theme}>
-          <CartStateContextProvider>
-            <CssBaseline />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </CartStateContextProvider>
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider theme={theme}>
+      <CartStateContextProvider>
+        <CssBaseline />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </CartStateContextProvider>
+    </ThemeProvider>
+  )
 }

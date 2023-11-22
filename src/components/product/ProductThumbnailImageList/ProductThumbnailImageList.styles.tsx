@@ -8,17 +8,17 @@ export const ImageOutlinedBox = styled(Box)(({theme}) => ({
 }))
 
 export const ImageScroll = styled(Box)(({theme}) => ({
-    display: "flex",
-    height: "100%",
-    flexDirection: "column",
-    flexGrow: "1",
-    overflowY: "scroll",
-    "-ms-overflow-style": "none",
-    scrollbarWidth: "none",
-    "&::-webkit-scrollbar": {
-        display: "none"
-    },
-    gap: theme.spacing(1),
+  display: "flex",
+  height: "100%",
+  flexDirection: "column",
+  flexGrow: "1",
+  overflowY: "scroll",
+  "-ms-overflow-style": "none",
+  scrollbarWidth: "none",
+  "&::-webkit-scrollbar": {
+    display: "none"
+  },
+  gap: theme.spacing(1),
 }))
 
 export const ThumbnailProductImage = styled(ProductImage)(({theme}) => ({

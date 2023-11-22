@@ -8,11 +8,11 @@ interface ProductImageBlockProps {
 }
 
 export function ProductImageBlock({ product, className }: ProductImageBlockProps) {
-    return (
-        <Box className={className}>
-            {product?.attributes?.images?.data ? (
-                <ProductPhotosDisplay productImages={product?.attributes?.images?.data} />
-            ) : null}
-        </Box>
-    )
+  return (
+    <Box className={className}>
+      {product?.attributes?.images?.data ? (
+        <ProductPhotosDisplay productImages={product?.attributes?.images?.data} />
+      ) : null}
+    </Box>
+  )
 }

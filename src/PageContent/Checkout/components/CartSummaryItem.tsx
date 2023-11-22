@@ -10,25 +10,25 @@ interface ICartSummaryItemProps {
 }
 
 export function CartSummaryItem({quantity, price, onRemoveProductClick, name}: ICartSummaryItemProps) {
-    return (
-        <Box>
-            <Box>
-                <DeleteOutlineOutlinedIcon color='error' onClick={onRemoveProductClick}/>
-            </Box>
-            <Box>
-                {quantity}
-            </Box>
-            <Box>
-                {price}₴
-            </Box>
-            <Box>
-                {name}
-            </Box>
-        </Box>
-    )
+  return (
+    <Box>
+      <Box>
+        <DeleteOutlineOutlinedIcon color='error' onClick={onRemoveProductClick}/>
+      </Box>
+      <Box>
+        {quantity}
+      </Box>
+      <Box>
+        {price}₴
+      </Box>
+      <Box>
+        {name}
+      </Box>
+    </Box>
+  )
 }
 
 const CartSummaryItemContainer = styled(Box)({
-    display: 'flex',
-    flexDirection: 'row',
+  display: 'flex',
+  flexDirection: 'row',
 });

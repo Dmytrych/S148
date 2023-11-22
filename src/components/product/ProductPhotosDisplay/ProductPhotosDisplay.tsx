@@ -11,42 +11,42 @@ interface Props {
 }
 
 export function ProductPhotosDisplay({ productImages, loading = false }: Props) {
-    const itemImages: ProductImageUrl[] = useMemo(() => {
-        if (!productImages || !productImages.length) {
-            return [];
-        }
-
-        return productImages.map((image) => ({
-            thumbnail: image.attributes.formats.thumbnail.url,
-            original: image.attributes.url,
-        }));
-    }, [productImages])
-
-    const [selectedImageUrl, setSelectedImageUrl] = useState(itemImages[0].original);
-
-    const handleThumbnailClick = (thumbnailUrl: string) => {
-        const selectedImage = itemImages.find((image) => image.thumbnail === thumbnailUrl);
-
-        if (!selectedImage) {
-            return;
-        }
-
-        setSelectedImageUrl(() => selectedImage.original);
+  const itemImages: ProductImageUrl[] = useMemo(() => {
+    if (!productImages || !productImages.length) {
+      return [];
     }
 
-    return (
-        <Box width="100%" height="100%">
-            {itemImages.length ? (
-                <Box display="flex" flexDirection="row" gap={1} height="100%">
-                    <Box flexBasis="100px" flexGrow="1">
-                        <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
-                    </Box>
-                    <Box flexGrow="999">
-                        <StyledProductImage imageUrl={selectedImageUrl} />
-                    </Box>
-                </Box>
-            ) : null}
+    return productImages.map((image) => ({
+      thumbnail: image.attributes.formats.thumbnail.url,
+      original: image.attributes.url,
+    }));
+  }, [productImages])
+
+  const [selectedImageUrl, setSelectedImageUrl] = useState(itemImages[0].original);
+
+  const handleThumbnailClick = (thumbnailUrl: string) => {
+    const selectedImage = itemImages.find((image) => image.thumbnail === thumbnailUrl);
+
+    if (!selectedImage) {
+      return;
+    }
+
+    setSelectedImageUrl(() => selectedImage.original);
+  }
+
+  return (
+    <Box width="100%" height="100%">
+      {itemImages.length ? (
+        <Box display="flex" flexDirection="row" gap={1} height="100%">
+          <Box flexBasis="100px" flexGrow="1">
+            <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
+          </Box>
+          <Box flexGrow="999">
+            <StyledProductImage imageUrl={selectedImageUrl} />
+          </Box>
         </Box>
-    )
+      ) : null}
+    </Box>
+  )
 }
 

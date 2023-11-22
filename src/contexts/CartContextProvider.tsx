@@ -9,66 +9,66 @@ interface CartContextProviderProps {
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-    const isMounted = React.useRef(false);
-    const { getValue, setValue } = useCartLocalStorage();
-    const [cart, setCart] = React.useState<ICartSelection[]>([]);
+  const isMounted = React.useRef(false);
+  const { getValue, setValue } = useCartLocalStorage();
+  const [cart, setCart] = React.useState<ICartSelection[]>([]);
 
-    useEffect(() => {
-        if (!isMounted.current) {
-            setCart(getValue() ?? [])
-        }
-        isMounted.current = true;
-    })
+  useEffect(() => {
+    if (!isMounted.current) {
+      setCart(getValue() ?? [])
+    }
+    isMounted.current = true;
+  })
 
-    const addToCart = ({ productId, quantity, append }: IAddToCartParams) => {
-        if (quantity && quantity <= 0) {
-            throw new Error("Quantity should be positive");
-        }
-
-        const existingItem = cart.find((item) => item.productId === productId);
-
-        if (!existingItem) {
-            setCart((cart) => [...cart, { productId, quantity }]);
-            return;
-        }
-
-        if (append) {
-            existingItem.quantity += quantity;
-        } else {
-            existingItem.quantity = quantity;
-        }
-
-        setCart((cart) => {
-            const newCart = [...cart];
-            setValue(newCart);
-            return newCart;
-        });
+  const addToCart = ({ productId, quantity, append }: IAddToCartParams) => {
+    if (quantity && quantity <= 0) {
+      throw new Error("Quantity should be positive");
     }
 
-    const removeFromCart = (productId: number) => {
-        setCart((cart) => {
-            const newCart = cart.filter((item) => item.productId !== productId);
-            setValue(newCart)
-            return newCart;
-        });
+    const existingItem = cart.find((item) => item.productId === productId);
+
+    if (!existingItem) {
+      setCart((cart) => [...cart, { productId, quantity }]);
+      return;
     }
 
-    const batchRemoveFromCart = (productIds: number[]) => {
-      setCart((cart) => {
-        const newCart = cart.filter((item) => productIds.includes(item.productId));
-        setValue(newCart)
-        return newCart;
-      });
+    if (append) {
+      existingItem.quantity += quantity;
+    } else {
+      existingItem.quantity = quantity;
     }
 
-    const clearCart = () => {
-        setCart(() => {
-            setValue([]);
-            return [];
-        });
-    }
+    setCart((cart) => {
+      const newCart = [...cart];
+      setValue(newCart);
+      return newCart;
+    });
+  }
 
-    return  (<CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, batchRemoveFromCart}}>
-        {children}
-    </ CartContext.Provider>)
+  const removeFromCart = (productId: number) => {
+    setCart((cart) => {
+      const newCart = cart.filter((item) => item.productId !== productId);
+      setValue(newCart)
+      return newCart;
+    });
+  }
+
+  const batchRemoveFromCart = (productIds: number[]) => {
+    setCart((cart) => {
+      const newCart = cart.filter((item) => productIds.includes(item.productId));
+      setValue(newCart)
+      return newCart;
+    });
+  }
+
+  const clearCart = () => {
+    setCart(() => {
+      setValue([]);
+      return [];
+    });
+  }
+
+  return  (<CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, batchRemoveFromCart}}>
+    {children}
+  </ CartContext.Provider>)
 }

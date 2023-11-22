@@ -8,38 +8,38 @@ import {Box, Divider, Paper, Typography} from "@mui/material";
 import {locale} from "@/locale/ua";
 
 export function CartItemsEditingList() {
-    const { cart, batchRemoveFromCart, addToCart } = useCart();
-    const { data: products, isLoading: productsLoading} = useProducts();
+  const { cart, batchRemoveFromCart, addToCart } = useCart();
+  const { data: products, isLoading: productsLoading} = useProducts();
 
-    const { converted: cartProducts, notFoundIds } = useMemo(() => {
-      if (!products?.data?.length || !cart.length) {
-        return { converted: [], notFoundIds: [] };
-      }
-
-      return getCartProductInfos(cart, products?.data);
-    }, [cart, products]);
-
-    if (notFoundIds?.length) {
-      batchRemoveFromCart(notFoundIds);
+  const { converted: cartProducts, notFoundIds } = useMemo(() => {
+    if (!products?.data?.length || !cart.length) {
+      return { converted: [], notFoundIds: [] };
     }
 
-    const handleQuantityChange = (productId: number, quantity: number) => {
-      addToCart({
-        productId, quantity, append: false
-      });
-    }
+    return getCartProductInfos(cart, products?.data);
+  }, [cart, products]);
 
-    return (
-        <Paper elevation={4}>
-          <Box px={3} pb={1} pt={2}>
-            <Typography variant="h4">{locale.cart_page}</Typography>
-          </Box>
-          <Divider orientation="horizontal" />
-          <Box px={3} pb={5} pt={3}>
-            <ContentLoader isLoading={productsLoading}>
-              <CartDisplay products={cartProducts} onQuantityChange={handleQuantityChange} />
-            </ContentLoader>
-          </Box>
-        </Paper>
-    )
+  if (notFoundIds?.length) {
+    batchRemoveFromCart(notFoundIds);
+  }
+
+  const handleQuantityChange = (productId: number, quantity: number) => {
+    addToCart({
+      productId, quantity, append: false
+    });
+  }
+
+  return (
+    <Paper elevation={4}>
+      <Box px={3} pb={1} pt={2}>
+        <Typography variant="h4">{locale.cart_page}</Typography>
+      </Box>
+      <Divider orientation="horizontal" />
+      <Box px={3} pb={5} pt={3}>
+        <ContentLoader isLoading={productsLoading}>
+          <CartDisplay products={cartProducts} onQuantityChange={handleQuantityChange} />
+        </ContentLoader>
+      </Box>
+    </Paper>
+  )
 }

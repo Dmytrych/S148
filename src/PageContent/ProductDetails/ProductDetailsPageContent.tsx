@@ -15,44 +15,44 @@ interface IProductDetailsParams {
 }
 
 export function ProductDetailsPageContent({product, productLoading = false}: IProductDetailsParams) {
-    const { push } = useRouter();
-    const {quantity, setQuantity, addToCart} = useProductCartControls(product);
+  const { push } = useRouter();
+  const {quantity, setQuantity, addToCart} = useProductCartControls(product);
 
-    async function handleInstantBuy() {
-        addToCart();
-        await push(Routes.Checkout);
-    }
+  async function handleInstantBuy() {
+    addToCart();
+    await push(Routes.Checkout);
+  }
 
-    function handleAddToCart() {
-        addToCart();
-    }
+  function handleAddToCart() {
+    addToCart();
+  }
 
-    return (
-        <PageMargins>
-            <Box display="flex">
-                <Grid container spacing={4}>
-                    <Grid item md={6} xs={12}>
-                        <Box height="400px" width="100%">
-                            <StyledImageBlock product={product}/>
-                        </Box>
-                    </Grid>
-                    <Grid item md={6} xs={12}>
-                        <PaperStyled elevation={3}>
-                            <Box paddingX={5} paddingY={3}>
-                                <ProductDescription
-                                    product={product}
-                                    handleInstantBuy={handleInstantBuy}
-                                    handleAddToCart={handleAddToCart}
-                                    quantity={quantity}
-                                    onQuantityChange={setQuantity}/>
-                                <Box mt={3}>
-                                    <ProductInfoTabs product={product} isLoadingProduct={productLoading} />
-                                </Box>
-                            </Box>
-                        </PaperStyled>
-                    </Grid>
-                </Grid>
+  return (
+    <PageMargins>
+      <Box display="flex">
+        <Grid container spacing={4}>
+          <Grid item md={6} xs={12}>
+            <Box height="400px" width="100%">
+              <StyledImageBlock product={product}/>
             </Box>
-        </PageMargins>
-    );
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <PaperStyled elevation={3}>
+              <Box paddingX={5} paddingY={3}>
+                <ProductDescription
+                  product={product}
+                  handleInstantBuy={handleInstantBuy}
+                  handleAddToCart={handleAddToCart}
+                  quantity={quantity}
+                  onQuantityChange={setQuantity}/>
+                <Box mt={3}>
+                  <ProductInfoTabs product={product} isLoadingProduct={productLoading} />
+                </Box>
+              </Box>
+            </PaperStyled>
+          </Grid>
+        </Grid>
+      </Box>
+    </PageMargins>
+  );
 }

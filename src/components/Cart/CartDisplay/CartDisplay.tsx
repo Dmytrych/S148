@@ -11,21 +11,21 @@ interface IProps {
 }
 
 export function CartDisplay({products, onQuantityChange}: IProps) {
-    const { replace } = useRouter();
-    const totalPrice = products.reduce((acc, cartProduct) => acc + (cartProduct.product.attributes.price * cartProduct.quantity), 0);
+  const { replace } = useRouter();
+  const totalPrice = products.reduce((acc, cartProduct) => acc + (cartProduct.product.attributes.price * cartProduct.quantity), 0);
 
-    const handleGoToCart = () => {
-      replace(Routes.Checkout);
-    }
+  const handleGoToCart = () => {
+    replace(Routes.Checkout);
+  }
 
-    return (<Stack direction="column" spacing={2}>
-        <Stack direction="column" spacing={2} divider={<Divider orientation="horizontal" flexItem />}>
-          {products.map((product, index) => (
-            <CartDisplayItem key={index} cartProductInfo={product} onQuantityChange={onQuantityChange}/>
-          ))}
-        </Stack>
-        <Box display="flex" justifyContent="flex-end">
-          <BuyWithTotal totalPrice={totalPrice} onBuyClick={handleGoToCart}/>
-        </Box>
-    </Stack>)
+  return (<Stack direction="column" spacing={2}>
+    <Stack direction="column" spacing={2} divider={<Divider orientation="horizontal" flexItem />}>
+      {products.map((product, index) => (
+        <CartDisplayItem key={index} cartProductInfo={product} onQuantityChange={onQuantityChange}/>
+      ))}
+    </Stack>
+    <Box display="flex" justifyContent="flex-end">
+      <BuyWithTotal totalPrice={totalPrice} onBuyClick={handleGoToCart}/>
+    </Box>
+  </Stack>)
 }

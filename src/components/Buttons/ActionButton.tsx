@@ -7,12 +7,12 @@ interface IActionButtonProps extends ButtonProps {
 }
 
 export function ActionButton({...props}: IActionButtonProps) {
-    return (<StyledButton {...props}></StyledButton>)
+  return (<StyledButton {...props}></StyledButton>)
 }
 
 const StyledButton = styled(Button)({
-    backgroundColor: Color.GlobalGreen,
-    '&:hover': {
-        backgroundColor: Color.GlobalGreen80,
-    },
+  backgroundColor: Color.GlobalGreen,
+  '&:hover': {
+    backgroundColor: Color.GlobalGreen80,
+  },
 });
