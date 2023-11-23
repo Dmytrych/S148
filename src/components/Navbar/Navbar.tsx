@@ -19,17 +19,17 @@ const NAVBAR_ITEMS: NavItem[] = [
   {
     title: locale.home_page,
     link: Routes.Home,
-    icon: <HomeIcon />
+    icon: <HomeIcon />,
   },
   {
     title: locale.products_page,
     link: Routes.Products,
-    icon: <StorefrontIcon />
+    icon: <StorefrontIcon />,
   },
   {
     title: locale.cart_page,
     link: Routes.Cart,
-    icon: <ShoppingCartIcon />
+    icon: <ShoppingCartIcon />,
   }
 ]
 
@@ -47,9 +47,9 @@ const Navbar = () => {
         <LogoContainer src={logo} alt={"loading"} />
         <ItemMenu>
           { !isMobile ? (
-            <NavMenu cartCount={cartCount} items={NAVBAR_ITEMS}/>
+            <NavMenu cartCount={cartCount}/>
           ) : (
-            <NavbarMobileMenu items={NAVBAR_ITEMS}/>
+            <NavbarMobileMenu cartCount={cartCount} items={NAVBAR_ITEMS}/>
           ) }
         </ItemMenu>
       </Toolbar>

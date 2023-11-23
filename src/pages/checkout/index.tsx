@@ -12,10 +12,12 @@ export default function CheckoutPage() {
   const { cart, clearCart } = useCart();
   const { data: productsData } = useProducts();
 
+  const cartItems = useCartItemsWithProductInfo(cart, productsData?.data ?? []);
+
   const cartItemsWithProductInfo = useCartItemsWithProductInfo(cart, productsData?.data ?? []);
 
   const handleSubmit = async (values: IOrderFormFields): Promise<void> => {
-    const createdRequest = await createOrderFromFormValues(values, cart)
+    const createdRequest = await createOrderFromFormValues(values, cartItems)
 
     if (createdRequest) {
       clearCart();

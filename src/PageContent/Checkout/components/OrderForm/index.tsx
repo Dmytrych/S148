@@ -2,17 +2,19 @@ import React, {ChangeEvent} from 'react'
 import { locale } from '@/locale/ua';
 import FormParagraphSign from '../FormParagraphSign';
 import {Box, Stack, styled, TextField, Typography} from "@mui/material";
-import {FormikErrors, FormikTouched} from "formik";
+import {FormikErrors, FormikProps, FormikTouched} from "formik";
 import {IOrderFormFields} from "@/PageContent/Checkout/hooks/useOrderForm";
 
-interface IProps {
+interface IProps extends FormikProps<IOrderFormFields>{
     errors: FormikErrors<IOrderFormFields>;
     touched: FormikTouched<IOrderFormFields>;
     handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     values: IOrderFormFields
 }
 
-function OrderForm({ errors, touched, handleChange, values }: IProps) {
+function OrderForm({ errors, touched, handleChange, values, handleBlur }: IProps) {
+  console.log(touched);
+  console.log(errors);
   return (
     <Stack spacing={2} >
       <Box>
@@ -29,9 +31,6 @@ function OrderForm({ errors, touched, handleChange, values }: IProps) {
             <TextField variant="outlined" onChange={handleChange} name="name"
               label={locale.name} placeholder={locale.name_placeholder} value={values.name}
               helperText={touched.phoneNumber && errors.name} error={Boolean(touched.name && errors.name)} />
-            <TextField variant="outlined" onChange={handleChange} name="middleName"
-              label={locale.middle_name} placeholder={locale.middle_name_placeholder} value={values.middleName}
-              helperText={touched.phoneNumber && errors.middleName} error={Boolean(touched.middleName && errors.middleName)} />
             <TextField variant="outlined" onChange={handleChange} name="surname"
               label={locale.surname} placeholder={locale.surname_placeholder} value={values.surname}
               helperText={touched.phoneNumber && errors.surname} error={Boolean(touched.surname && errors.surname)} />
@@ -40,7 +39,7 @@ function OrderForm({ errors, touched, handleChange, values }: IProps) {
               helperText={touched.phoneNumber && errors.email} error={Boolean(touched.email && errors.email)} />
             <TextField variant="outlined" onChange={handleChange} name="phoneNumber"
               label={locale.phone_number} placeholder={locale.phone_number_placeholder} value={values.phoneNumber}
-              helperText={touched.phoneNumber && errors.phoneNumber} error={Boolean(touched.phoneNumber && errors.phoneNumber)} />
+              helperText={touched.phoneNumber && errors.phoneNumber} error={Boolean(touched.phoneNumber && errors.phoneNumber)} onBlur={handleBlur} />
           </Box>
         </OrderPageContentInfoBlock>
       </Box>

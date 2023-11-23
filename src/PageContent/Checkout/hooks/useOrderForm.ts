@@ -10,7 +10,6 @@ export interface CartValidationErrors {
 
 export interface IOrderFormFields {
     name: string;
-    middleName: string;
     surname: string;
     email: string;
     phoneNumber: string;
@@ -21,7 +20,6 @@ export function useOrderForm() {
   const getInitialValues = (): IOrderFormFields => {
     return {
       name: '',
-      middleName: '',
       surname: '',
       email: '',
       phoneNumber: '',
@@ -33,9 +31,6 @@ export function useOrderForm() {
     const errors: CartValidationErrors = {};
     if (!values.name || values.name.length > 20) {
       errors.name = locale.field_should_not_be_empty_or_bigger_than_20;
-    }
-    if (!values.middleName || values.middleName.length > 20) {
-      errors.middleName = locale.field_should_not_be_empty_or_bigger_than_20;
     }
     if (!values.surname || values.surname.length > 20) {
       errors.surname = locale.field_should_not_be_empty_or_bigger_than_20;

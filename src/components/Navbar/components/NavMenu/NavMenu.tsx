@@ -1,15 +1,14 @@
 import {Routes} from "@/routes";
-import {Box, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import {locale} from "@/constants/locale/ua";
 import {CartBadge, TopBarItem, TopBarNavLink, TopBarNavLinkDisabled } from "./NavMenu.styles";
 import {NavItem} from "@/interfaces/layout";
 
 interface Props {
   cartCount: number;
-  items: NavItem[];
 }
 
-export function NavMenu({cartCount, items}: Props) {
+export function NavMenu({cartCount}: Props) {
   return (
     <>
       <TopBarItem>

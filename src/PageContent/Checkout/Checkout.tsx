@@ -1,4 +1,4 @@
-import {Formik} from 'formik';
+import {Form, Formik} from 'formik';
 import {Box, Grid} from '@mui/material';
 import {IOrderFormFields, useOrderForm} from "@/PageContent/Checkout/hooks/useOrderForm";
 import React from "react";
@@ -32,7 +32,7 @@ export function Checkout({cartProducts, onSubmit }: ICartProps) {
               <Box display="flex" flexGrow="1">
                 <Grid container>
                   <Grid item md={8} xs={12}>
-                    <OrderForm errors={props.errors} values={props.values} touched={props.touched} handleChange={props.handleChange} />
+                    <OrderForm {...props} />
                   </Grid>
                   <Grid item md={4} xs={12}>
                     <CartSummary

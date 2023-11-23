@@ -1,22 +1,21 @@
 export interface ICustomerInfo {
     name: string;
     surname: string;
-    middleName?: string;
-    phoneNumber?: string;
-    email?: string;
+    phoneNumber: string;
+    email: string;
 }
 
 export interface IOrderItem {
-    productCode: string;
+    product: number;
     quantity: number;
+    price: number;
 }
 
 export interface IOrderRequest {
     customerInfo: ICustomerInfo;
     items: IOrderItem[];
-    comment?: string;
     deliveryInfo: {
-        description: string;
+        deliveryLocation: string;
     }
 }
 
