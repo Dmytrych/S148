@@ -1,14 +1,11 @@
-import {Box, ClickAwayListener, IconButton, Menu, MenuItem} from "@mui/material";
-import React, {ReactNode, useState} from "react";
+import {Box, IconButton, Menu, MenuItem, Stack, Typography} from "@mui/material";
+import React, {useState} from "react";
 import MenuIcon from '@mui/icons-material/Menu';
+import {NavItem} from "@/interfaces/layout";
+import {StyledLink} from "@/components/Navbar/components/NavbarMobileMenu/NavbarMobileMenu.styles";
 
 interface Props {
-  items: NavbarMobileMenuItem[];
-}
-
-export interface NavbarMobileMenuItem {
-  item: ReactNode;
-  onClick: () => void;
+  items: NavItem[];
 }
 
 export function NavbarMobileMenu({items}: Props) {
@@ -20,21 +17,22 @@ export function NavbarMobileMenu({items}: Props) {
   };
 
   const handleClose = () => {
-    console.log("asdasd")
     setAnchorEl(null);
   };
 
   return (
     <Box>
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={handleClick} color="primary" size="large">
         <MenuIcon />
       </IconButton>
       <Menu open={isOpen} anchorEl={anchorEl} onClose={handleClose}>
-        {items.map((item, index) => <MenuItem key={index} onClick={() => {
-          handleClose();
-          item.onClick();
-        }}>
-          {item.item}
+        {items.map((item, index) => <MenuItem key={index}>
+          <Stack direction="row" justifyContent="flex-start" alignItems="center" gap={2} minWidth="200px">
+            {item.icon}
+            <StyledLink href={item.link} onClick={handleClose}>
+              <Typography variant="h5">{item.title}</Typography>
+            </StyledLink>
+          </Stack>
         </MenuItem>)}
       </Menu>
     </Box>

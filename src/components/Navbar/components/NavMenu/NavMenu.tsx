@@ -2,12 +2,14 @@ import {Routes} from "@/routes";
 import {Box, Typography} from "@mui/material";
 import {locale} from "@/constants/locale/ua";
 import {CartBadge, TopBarItem, TopBarNavLink, TopBarNavLinkDisabled } from "./NavMenu.styles";
+import {NavItem} from "@/interfaces/layout";
 
 interface Props {
-  cartCount: number
+  cartCount: number;
+  items: NavItem[];
 }
 
-export function NavMenu({cartCount}: Props) {
+export function NavMenu({cartCount, items}: Props) {
   return (
     <>
       <TopBarItem>
@@ -21,7 +23,7 @@ export function NavMenu({cartCount}: Props) {
         </TopBarNavLink>
       </TopBarItem>
       <TopBarItem>
-        {cartCount > 0 ? (
+        {cartCount <= 0 ? (
           <TopBarNavLinkDisabled>
             <Typography variant="navbarLink" sx={{ opacity: "20%" }}>{locale.cart_page}</Typography>
           </TopBarNavLinkDisabled>
