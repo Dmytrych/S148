@@ -19,9 +19,8 @@ export function ProductsGrid({ products }: Props) {
     <Grid container spacing={3}>
       {products ? (
         products.map((product, index) => (
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid key={index} item xs={12} sm={6} md={4}>
             <TallProductCard
-              key={index}
               product={product}
               onBuyClick={() => handleInstantBuy(product)}
             />
