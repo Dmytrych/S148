@@ -40,7 +40,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
               <Typography color={theme => theme.palette.text.secondary} variant="body2">{locale.ready_for_shipment}</Typography>
             </Box>
             <Box display="flex">
-              <LongButton variant="primaryContained" onClick={onBuyClick}>{locale.buy}</LongButton>
+              <LongButton variant="contained" color="primary" onClick={onBuyClick}>{locale.buy}</LongButton>
             </Box>
           </Box>
         </Box>

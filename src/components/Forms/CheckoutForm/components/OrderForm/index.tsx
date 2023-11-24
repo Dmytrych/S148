@@ -13,8 +13,6 @@ interface IProps extends FormikProps<IOrderFormFields>{
 }
 
 function OrderForm({ errors, touched, handleChange, values, handleBlur }: IProps) {
-  console.log(touched);
-  console.log(errors);
   return (
     <Stack spacing={2} >
       <Box>

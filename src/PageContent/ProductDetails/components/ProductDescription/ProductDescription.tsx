@@ -26,10 +26,10 @@ export function ProductDescription({ product, onQuantityChange, quantity, handle
           onChange={onQuantityChange}
           defaultValue={quantity}
         />
-        <Button variant="primaryContained" size="large" onClick={handleAddToCart} sx={{ width: "150px" }}>
+        <Button variant="contained" color="primary" size="large" onClick={handleAddToCart} sx={{ width: "150px" }}>
           {locale.add_to_cart}
         </Button>
-        <Button variant="primaryOutlined" size="large" onClick={handleInstantBuy}>
+        <Button variant="outlined" color="primary" size="large" onClick={handleInstantBuy}>
           {locale.buy}
         </Button>
       </BuyControls>

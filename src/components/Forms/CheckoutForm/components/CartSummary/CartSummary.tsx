@@ -2,13 +2,13 @@ import React, {useMemo} from 'react'
 import {locale} from '@/locale/ua';
 import {Box, Typography} from "@mui/material";
 import {PriceTag} from "@/components/PriceTag";
-import {CartSummaryRow} from "@/PageContent/Checkout/components/CartSummary/components/CartSummaryRow";
 import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
 import {
   CartSummaryBackground,
   CartSummaryContent, StyledConfirmButton,
   ToBePaidContainer
-} from "@/PageContent/Checkout/components/CartSummary/CartSummary.styles";
+} from "@/components/Forms/CheckoutForm/components/CartSummary/CartSummary.styles";
+import {CartSummaryRow} from "@/components/Forms/CheckoutForm/components/CartSummaryRow";
 
 interface ICartSummaryProps {
     cartProducts: CartProductInfo[];

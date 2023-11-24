@@ -3,8 +3,8 @@ import React from "react";
 import {styled} from "@mui/system";
 
 interface IProps {
-    children: React.ReactNode;
-    label: string;
+  children: React.ReactNode;
+  label: string;
 }
 
 export function CartSummaryRow({children, label}: IProps) {

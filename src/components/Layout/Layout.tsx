@@ -5,7 +5,7 @@ import {Footer} from "@/components/Layout/components/Footer/Footer";
 
 export function Layout({ children }: { children: ReactNode}) {
   return (<Stack direction="column" width="100%">
-    <Box minHeight="100vh">
+    <Box minHeight="100vh" overflow="hidden">
       <AppTopBar />
       <main>{children}</main>
     </Box>
