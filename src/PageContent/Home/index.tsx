@@ -33,7 +33,7 @@ export default function Home() {
         </MainPageTitleText>
         <Box display="flex" alignItems="center">
           <ScratchImageContainer>
-            <ScratchMark src={bottles} alt="loading"/>
+            <Image src={bottles} alt="loading"/>
           </ScratchImageContainer>
         </Box>
       </TitlePage>
@@ -62,11 +62,6 @@ const MainPageTitleText = styled("div")({
   width: "min-content",
   fontSize: "5rem",
   gap: "50px"
-})
-
-const ScratchMark = styled(Image)({
-  height: "100%",
-  width: "100%"
 })
 
 const ScratchImageContainer = styled('div')({

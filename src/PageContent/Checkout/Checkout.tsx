@@ -1,17 +1,14 @@
-import {Box} from '@mui/material';
 import {IOrderFormFields} from "@/PageContent/Checkout/hooks/useOrderForm";
-import React from "react";
-import {useRouter} from "next/router";
+import React, {useState} from "react";
 import {useCart} from "@/hooks/context/useCartState";
 import {useProducts} from "@/hooks/useProducts";
 import {useCartItemsWithProductInfo} from "@/hooks/products/useCartItemsWithProductInfo";
 import {createOrderFromFormValues} from "@/PageContent/Checkout/helpers";
-import {Routes} from "@/routes";
 import {CheckoutForm} from "@/components/Forms/CheckoutForm";
 import {CheckoutSuccessView} from "@/components/CheckoutSuccessView/CheckoutSuccessView";
 
 export function Checkout() {
-  const { replace } = useRouter();
+  const [checkoutSuccess, setCheckoutSuccess] = useState(false);
   const { cart, clearCart } = useCart();
   const { data: productsData } = useProducts();
 
@@ -21,13 +18,14 @@ export function Checkout() {
     const createdRequest = await createOrderFromFormValues(values, cartItems)
 
     if (createdRequest) {
-      await replace(Routes.Products).then(() => clearCart());
+      setCheckoutSuccess(true);
+      clearCart();
     }
   };
 
   return (
     <>
-      {false ? (
+      {!checkoutSuccess ? (
         <CheckoutForm cartProducts={cartItems} onSubmit={handleSubmit}/>
       ) : (
         <CheckoutSuccessView/>
