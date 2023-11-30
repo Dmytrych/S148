@@ -1,24 +1,21 @@
-import {PaletteColor, PaletteColorOptions, Theme, ThemeOptions} from "@mui/material";
+import {createTheme, PaletteColor, PaletteColorOptions, Theme, ThemeOptions} from "@mui/material";
 import {Color} from "@/constants/color";
 import {CSSProperties} from "react";
+import typography from "./typography";
+import breakpoints from "@/theme/breakpoints";
 
 declare module '@mui/material/styles' {
     interface Palette {
         cardBackground: PaletteColor;
         border: PaletteColor;
+        other: {
+          black20: string;
+        }
     }
 
     interface PaletteOptions {
         cardBackground?: PaletteColorOptions | undefined;
         border?: PaletteColorOptions | undefined;
-    }
-
-    interface TypographyVariants {
-      link: CSSProperties;
-    }
-
-    interface TypographyVariantsOptions {
-      link?: CSSProperties;
     }
 
     interface ButtonVariants {
@@ -30,12 +27,6 @@ declare module '@mui/material/styles' {
     }
 }
 
-declare module '@mui/material/Typography' {
-    interface TypographyPropsVariantOverrides {
-        navbarLink: true;
-    }
-}
-
 declare module '@mui/material/Button' {
     interface ButtonPropsVariantOverrides {
         primaryContained: true;
@@ -43,7 +34,9 @@ declare module '@mui/material/Button' {
     }
 }
 
-export const appTheme = {
+const appTheme = {
+  breakpoints,
+  typography,
   palette: {
     primary: {
       main: Color.GlobalGreen,
@@ -65,64 +58,11 @@ export const appTheme = {
     border: {
       main: Color.GlobalBlack20,
     },
+    other: {
+      black20: Color.GlobalBlack80,
+    },
     action: {
       hover: "0.8",
-    },
-  },
-  typography: {
-    fontFamily: ["Roboto", "Arial", "sans-serif"].join(','),
-    color: Color.TextColor,
-    h1: {
-      fontSize: '2.5rem', // Heading 1 font size
-      fontWeight: 600, // Heading 1 font weight
-    },
-    h2: {
-      fontSize: '2rem', // Heading 2 font size
-      fontWeight: 600, // Heading 2 font weight
-    },
-    h3: {
-      fontSize: '1.75rem', // Heading 3 font size
-      fontWeight: 600, // Heading 3 font weight
-    },
-    h4: {
-      fontSize: '1.5rem', // Heading 4 font size
-      fontWeight: 600, // Heading 4 font weight
-    },
-    h5: {
-      fontSize: '1.25rem', // Heading 5 font size
-      fontWeight: 500, // Heading 5 font weight
-    },
-    h6: {
-      fontSize: '1rem', // Heading 6 font size
-      fontWeight: 500, // Heading 6 font weight
-    },
-    body1: {
-      fontSize: '1rem', // Body text font size
-      lineHeight: 1.5, // Body text line height
-    },
-    body2: {
-      fontSize: '0.875rem', // Smaller body text font size
-      lineHeight: 1.4, // Smaller body text line height
-    },
-    link: {
-      color: Color.TextColor,
-      "&:hover": {
-        textDecoration: 'underline',
-        cursor: 'pointer',
-        color: Color.GlobalGreen
-      },
-    },
-    navbarLink: {
-      fontFamily: 'Squares Bold',
-      color: Color.TextColor,
-      "&:hover": {
-        textDecoration: 'underline',
-        cursor: 'pointer',
-        color: Color.GlobalGreen
-      },
-    },
-    button: {
-      textTransform: 'none'
     },
   },
   components: {
@@ -168,4 +108,6 @@ export const appTheme = {
       ]
     }
   },
-};
+} as ThemeOptions;
+
+export default createTheme(appTheme);

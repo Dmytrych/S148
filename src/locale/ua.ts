@@ -10,7 +10,7 @@ export const locale = {
   phone_number: 'Номер телефону',
   phone_number_placeholder: '+380*********',
   universal_oil: 'Універсальне мастило',
-  universal_oil_detailed: 'Збройове мастило для очистки й догляду',
+  universal_oil_detailed: 'Для очистки й догляду ',
   buy: 'Купити',
   ready_for_shipment: 'Готовий до відправлення',
   product_name: 'Назва продукту',
