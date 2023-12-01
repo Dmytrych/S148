@@ -1,0 +1,1 @@
+export {ItemCarousel} from "@/components/ItemCarousel/ItemCarousel";

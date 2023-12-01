@@ -1,0 +1,1 @@
+export {MainTitle} from "@/PageContent/Home/components/MainTitle/MainTitle";
