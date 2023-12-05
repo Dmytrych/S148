@@ -4,7 +4,7 @@ import ProductImage from "@/components/ProductImage/ProductImage";
 import {PriceTag} from "@/components/PriceTag";
 import PlusMinusControl from "@/components/PlusMinusControl";
 import Link from "next/link";
-import {getProductPageRoute} from "@/helpers/links";
+import {getProductRoute} from "@/helpers/links";
 
 interface Props {
   cartProductInfo: CartProductInfo;
@@ -20,7 +20,7 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = () => {} }
     <CartDisplayItemContainer>
       <Stack direction="row" spacing={3}>
         <ProductImage imageUrl={cartProductInfo.product.attributes.images?.data[0].attributes.url} sx={{ width: "80px", height: "80px" }} />
-        <Link href={getProductPageRoute(cartProductInfo.product.attributes.code)}>
+        <Link href={getProductRoute(cartProductInfo.product.attributes.code)}>
           <Typography variant="body1">
             {cartProductInfo.product.attributes.name}
           </Typography>

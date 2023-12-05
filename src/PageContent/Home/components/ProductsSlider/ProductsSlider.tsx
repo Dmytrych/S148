@@ -1,22 +1,21 @@
 import {ItemCarousel} from "@/components/ItemCarousel";
 import {Product} from "@/api/DTO/products";
-import {Box, Stack} from "@mui/material";
-import ProductImage from "@/components/ProductImage/ProductImage";
 import {ProductCard} from "@/components/ProductCard";
+import {getProductRoute} from "@/helpers/links";
+import { UndecoratedLink } from "@/components/UndecoratedLink";
 
 interface Props {
   products: Product[];
 }
 
 export function ProductsSlider({ products }: Props) {
-  console.log(products);
   return (
     <ItemCarousel>
       {
         products.map((product) => (
-          <Stack key={product.id} justifyContent="center" alignItems="center">
+          <UndecoratedLink key={product.id} href={getProductRoute(product.attributes.code)}>
             <ProductCard product={product}/>
-          </Stack>
+          </UndecoratedLink>
         ))
       }
     </ItemCarousel>

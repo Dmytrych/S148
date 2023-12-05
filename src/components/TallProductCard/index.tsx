@@ -3,7 +3,7 @@ import Link from "next/link";
 import {PriceTag} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
 import Markdown from "react-markdown";
-import {getProductPageRoute} from "@/helpers/links";
+import {getProductRoute} from "@/helpers/links";
 import {Product} from "@/api/DTO/products";
 import ProductImage from '@/components/ProductImage/ProductImage';
 
@@ -23,7 +23,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
         ) : null}
         <Box display="flex" flexDirection="column" flex="1">
           <ProductText>
-            <Link href={getProductPageRoute(product.attributes.code)}>
+            <Link href={getProductRoute(product.attributes.code)}>
               {product.attributes.name}
             </Link>
           </ProductText>

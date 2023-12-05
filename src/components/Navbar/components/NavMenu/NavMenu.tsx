@@ -1,8 +1,8 @@
 import {Routes} from "@/routes";
 import {Typography} from "@mui/material";
 import {locale} from "@/constants/locale/ua";
-import {CartBadge, TopBarItem, TopBarNavLink, TopBarNavLinkDisabled } from "./NavMenu.styles";
-import {NavItem} from "@/interfaces/layout";
+import {CartBadge, TopBarItem, TopBarNavLinkDisabled } from "./NavMenu.styles";
+import {UndecoratedLink} from "@/components/UndecoratedLink";
 
 interface Props {
   cartCount: number;
@@ -12,14 +12,14 @@ export function NavMenu({cartCount}: Props) {
   return (
     <>
       <TopBarItem>
-        <TopBarNavLink href={Routes.Home}>
+        <UndecoratedLink href={Routes.Home}>
           <Typography variant="navbarLink">{locale.home_page}</Typography>
-        </TopBarNavLink>
+        </UndecoratedLink>
       </TopBarItem>
       <TopBarItem>
-        <TopBarNavLink href={Routes.Products}>
+        <UndecoratedLink href={Routes.Products}>
           <Typography variant="navbarLink">{locale.products_page}</Typography>
-        </TopBarNavLink>
+        </UndecoratedLink>
       </TopBarItem>
       <TopBarItem>
         {cartCount <= 0 ? (
@@ -28,9 +28,9 @@ export function NavMenu({cartCount}: Props) {
           </TopBarNavLinkDisabled>
         ) : (
           <CartBadge badgeContent={cartCount} color="primary">
-            <TopBarNavLink href={Routes.Cart}>
+            <UndecoratedLink href={Routes.Cart}>
               <Typography variant="navbarLink">{locale.cart_page}</Typography>
-            </TopBarNavLink>
+            </UndecoratedLink>
           </CartBadge>
         )}
       </TopBarItem>

@@ -16,7 +16,7 @@ const RESPONSIVE_SIZES = {
     items: 2
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 512, min: 0 },
     items: 1
   }
 };
@@ -27,7 +27,7 @@ interface Props {
 
 export function ItemCarousel({ children }: Props) {
   return (
-    <Carousel responsive={RESPONSIVE_SIZES}>
+    <Carousel responsive={RESPONSIVE_SIZES} renderButtonGroupOutside>
       {children}
     </Carousel>
   );

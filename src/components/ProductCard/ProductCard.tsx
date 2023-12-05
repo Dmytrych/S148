@@ -9,14 +9,14 @@ interface Props {
 
 export function ProductCard({product}: Props) {
   return (
-    <Stack>
+    <Stack direction="column" minWidth="300px" justifyContent="start">
       <ContentLoader isLoading={!product}>
-        { product ? (
+        { product && product.attributes.images?.data[0].attributes ? (
           <>
-            <Box height="400px">
+            <Box maxHeight="400px">
               <NextImage media={product.attributes.images?.data[0].attributes} />
             </Box>
-            <Typography variant="h6">asdasdasd</Typography>
+            <Typography variant="navbarLink" textAlign="center">{product.attributes.name}</Typography>
           </>
         ) : null }
       </ContentLoader>

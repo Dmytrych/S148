@@ -19,11 +19,6 @@ export const TopBarNavLinkDisabled = styled('span')({
   textDecoration: 'none',
 });
 
-export const TopBarNavLink = styled(Link)({
-  textDecoration: 'none',
-  color: 'inherit',
-});
-
 export const ItemMenu = styled('div')({
   paddingRight: '15vw',
   height: '100%',
