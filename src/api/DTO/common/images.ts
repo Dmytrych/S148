@@ -12,12 +12,9 @@ export interface ImageThumbnail {
     url: string
 }
 
-export interface ApiImageAttributes {
+export type ApiImageAttributes = Media & {
     name: string,
-    alternativeText: string,
     caption: string,
-    width: number,
-    height: number,
     formats: {
         thumbnail: ImageThumbnail,
     },
@@ -25,11 +22,17 @@ export interface ApiImageAttributes {
     mime: string,
     hash: string,
     size: number,
-    url: string,
     previewUrl: string,
     provider: string,
     createdAt: string,
     updatedAt: string
+}
+
+export type Media = {
+    url: string
+    alternativeText: string
+    width: number,
+    height: number,
 }
 
 export interface ApiImage extends CmsModel<ApiImageAttributes> {}
