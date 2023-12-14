@@ -9,7 +9,11 @@ export interface PaginationMetadata {
     total: number;
 }
 
-export interface CmsModel<TAttributes> {
+export type CmsModel<TAttributes> = {
     id: number;
     attributes: TAttributes
+}
+
+export type CmsData<TData> = {
+    data: TData
 }

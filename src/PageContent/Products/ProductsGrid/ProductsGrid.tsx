@@ -11,7 +11,7 @@ interface Props {
 export function ProductsGrid({ products }: Props) {
   const { push } = useRouter();
 
-  const handleInstantBuy = async (product: Product) => {
+  const handleBuyClick = async (product: Product) => {
     await push(getProductRoute(product.attributes.code))
   }
 
@@ -22,7 +22,7 @@ export function ProductsGrid({ products }: Props) {
           <Grid key={index} item xs={12} sm={6} md={4}>
             <TallProductCard
               product={product}
-              onBuyClick={() => handleInstantBuy(product)}
+              onBuyClick={() => handleBuyClick(product)}
             />
           </Grid>
         ))) : null}

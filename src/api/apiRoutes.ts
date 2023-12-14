@@ -1,4 +1,5 @@
 export enum ApiRoutes {
     Products = "/products",
-    Orders = "/orders"
+    Orders = "/orders",
+    HomePage = "/home-page"
 }

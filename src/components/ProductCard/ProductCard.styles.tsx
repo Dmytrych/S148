@@ -7,10 +7,4 @@ export const StyledStack = styled(Box)({
   justifyContent: "start",
   alignItems: "center",
   display: "flex",
-  "&:hover": {
-    backgroundImage: `url(${Image.src})`,
-    backgroundSize: "contain",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-  }
 })
