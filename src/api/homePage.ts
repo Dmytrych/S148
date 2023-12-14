@@ -1,4 +1,4 @@
-import {API} from "@/api/axiosFetcher";
+  import {API} from "@/api/axiosFetcher";
 import {HomePageResponse} from "@/api/DTO/homePage";
 
 export async function homePageInfoFetcher(url: string): Promise<HomePageResponse> {
