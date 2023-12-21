@@ -11,25 +11,28 @@ export function Socials() {
   return (
     <Stack direction="row" justifyContent="center">
       <IconButton
+        size="large"
         href={SOCIAL_MEDIA_LINKS.facebook}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Facebook />
+        <Facebook color="primary" transform="scale(1.5)" />
       </IconButton>
       <IconButton
+        size="large"
         href={SOCIAL_MEDIA_LINKS.twitter}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Twitter />
+        <Twitter color="primary" transform="scale(1.5)" />
       </IconButton>
       <IconButton
+        size="large"
         href={SOCIAL_MEDIA_LINKS.instagram}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Instagram />
+        <Instagram color="primary" transform="scale(1.5)" />
       </IconButton>
     </Stack>
   )

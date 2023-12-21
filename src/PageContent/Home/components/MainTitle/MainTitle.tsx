@@ -11,7 +11,11 @@ import {
 } from "./MainTitle.styles";
 import {useIsMobile} from "@/hooks/useIsMobile";
 
-export function MainTitle() {
+interface Props {
+  onBuyClick: () => void;
+}
+
+export function MainTitle({ onBuyClick }: Props) {
   const isMobile = useIsMobile();
 
   return (
@@ -23,7 +27,7 @@ export function MainTitle() {
             {locale.universal_oil_detailed}
           </MainPageTitleDescription>
           <Box>
-            <Button variant="contained" color="primary" sx={{width: "300px", height: "40px"}}>{locale.buy}</Button>
+            <Button variant="contained" color="primary" sx={{width: "300px", height: "40px"}} onClick={onBuyClick}>{locale.buy}</Button>
           </Box>
           <SloganContainer>{locale.slogan}</SloganContainer>
         </MainPageTitleText>

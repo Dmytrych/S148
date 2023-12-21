@@ -1,13 +1,13 @@
-import {Box, styled} from "@mui/material";
+import {Box, BoxProps, styled} from "@mui/material";
 import {ReactNode} from "react";
 
-interface Props {
+interface Props extends BoxProps {
     children: ReactNode;
 }
 
-export function PageMargins({ children }: Props) {
+export function PageMargins({ children, ...props }: Props) {
   return (
-    <AdaptiveMarginsLayout>
+    <AdaptiveMarginsLayout {...props}>
       {children}
     </AdaptiveMarginsLayout>
   )
