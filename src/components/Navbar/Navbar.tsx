@@ -1,7 +1,5 @@
 import {AppBar, Box, styled, Toolbar} from '@mui/material';
 import {useMemo} from 'react';
-import logo from '../../../public/images/S148.png';
-import Image from "next/image";
 import {Color} from "@/constants/color";
 import {topBarHeight} from "@/constants/size";
 import {useCart} from "@/hooks/context/useCartState";
@@ -10,17 +8,12 @@ import {useIsMobile} from "@/hooks/useIsMobile";
 import {NavbarMobileMenu} from "@/components/Navbar/components/NavbarMobileMenu";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
-import HomeIcon from '@mui/icons-material/Home';
 import {Routes} from "@/routes";
 import {NavItem} from "@/interfaces/layout";
 import {locale} from "@/locale/ua";
+import {SmallLogo} from "@/components/SmallLogo";
 
 const NAVBAR_ITEMS: NavItem[] = [
-  {
-    title: locale.home_page,
-    link: Routes.Home,
-    icon: <HomeIcon />,
-  },
   {
     title: locale.products_page,
     link: Routes.Products,
@@ -44,7 +37,7 @@ const Navbar = () => {
   return (
     <StyledAppBar>
       <Toolbar>
-        <LogoContainer src={logo} alt={"loading"} />
+        <SmallLogo />
         <ItemMenu>
           { !isMobile ? (
             <NavMenu cartCount={cartCount}/>
@@ -63,12 +56,6 @@ const StyledAppBar = styled(AppBar)({
   height: topBarHeight,
   display: 'flex',
   justifyContent: 'center',
-});
-
-const LogoContainer = styled(Image)({
-  width: 'auto',
-  height: '60px',
-  margin: '10px 0px',
 });
 
 const ItemMenu = styled(Box)(({theme}) => ({

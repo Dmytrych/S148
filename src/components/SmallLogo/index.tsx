@@ -1,0 +1,1 @@
+export {SmallLogo} from "@/components/SmallLogo/SmallLogo";
