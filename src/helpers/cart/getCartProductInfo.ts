@@ -1,6 +1,6 @@
-import {ICartSelection} from "@/contexts/CartContext";
 import {Product} from "@/api/DTO/products";
 import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
+import {ICartSelection} from "@/contexts/CartStateContext";
 
 interface GetCartProductInfosResult {
   converted: CartProductInfo[],
