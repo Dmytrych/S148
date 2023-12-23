@@ -1,7 +1,7 @@
-import {ICartSelection} from "@/contexts/CartContext";
 import {Product} from "@/api/DTO/products";
 import {useMemo} from "react";
 import { CartProductInfo } from "@/interfaces/cart/CartProductInfo";
+import {ICartSelection} from "@/contexts/CartStateContext";
 
 export function useCartItemsWithProductInfo(cartItems: ICartSelection[], products: Product[]): CartProductInfo[] {
   return useMemo(() => {
