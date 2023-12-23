@@ -5,11 +5,11 @@ import './index.css'
 import { noop } from '../../utils';
 
 function RadioButtonIcon({checked = false, onClick = noop}) { 
-      return (
-        <div className='radio-button-icon' onClick={onClick}>
-            <img src={checked ? radioButtonChecked : radioButtonUnchecked}></img>
-        </div>
-      );
+  return (
+    <div className='radio-button-icon' onClick={onClick}>
+      <img src={checked ? radioButtonChecked : radioButtonUnchecked}></img>
+    </div>
+  );
 }
 
 export default RadioButtonIcon;
