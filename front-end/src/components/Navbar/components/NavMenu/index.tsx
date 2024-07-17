@@ -1,1 +1,0 @@
-export {NavMenu} from "@/components/Navbar/components/NavMenu/NavMenu";

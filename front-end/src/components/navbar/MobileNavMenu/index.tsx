@@ -1,0 +1,1 @@
+export {MobileNavMenu} from "@/components/navbar/MobileNavMenu/MobileNavMenu";

@@ -1,1 +1,0 @@
-export {UndecoratedLink} from "@/components/UndecoratedLink/UndecoratedLink";

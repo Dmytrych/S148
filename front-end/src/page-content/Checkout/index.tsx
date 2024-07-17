@@ -1,0 +1,1 @@
+export {Checkout} from "@/page-content/Checkout/Checkout";

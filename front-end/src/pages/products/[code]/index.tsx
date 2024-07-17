@@ -1,7 +1,7 @@
 import {useMemo} from "react";
 import {useProducts} from "@/hooks/useProducts";
 import {useRouter} from "next/router";
-import {ProductDetailsPageContent} from "@/PageContent/ProductDetails";
+import {ProductDetailsPageContent} from "@/page-content/ProductDetails";
 
 export default function ProductDetailsPage() {
   const router = useRouter();

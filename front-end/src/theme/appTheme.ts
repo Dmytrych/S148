@@ -66,6 +66,16 @@ const appTheme = {
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          overflowX: 'hidden'
+        },
+        body: {
+          overflowX: 'hidden'
+        },
+      },
+    },
     MuiButton: {
       defaultProps: {
         variant: 'contained',

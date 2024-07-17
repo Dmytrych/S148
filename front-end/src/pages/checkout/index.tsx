@@ -1,4 +1,4 @@
-import {Checkout} from "@/PageContent/Checkout";
+import {Checkout} from "@/page-content/Checkout";
 
 export default function CheckoutPage() {
   return (

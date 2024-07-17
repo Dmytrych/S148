@@ -1,5 +1,5 @@
 import {AppProps} from "next/app";
-import {Layout} from "@/components/Layout/Layout";
+import Layout from "@/components/Layout";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "@/theme/appTheme";
 import "../theme/fontImports.css"

@@ -1,4 +1,4 @@
-import {Home} from "@/PageContent/Home";
+import {Home} from "@/page-content/Home";
 
 function Index() {
   return (<Home />)

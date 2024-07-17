@@ -1,0 +1,1 @@
+export {ProductDetailsPageContent} from "@/page-content/ProductDetails/ProductDetailsPageContent";

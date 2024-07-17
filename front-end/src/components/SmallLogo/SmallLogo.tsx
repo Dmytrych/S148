@@ -1,8 +1,11 @@
 import {LogoContainer} from "@/components/SmallLogo/SmallLogo.styles";
 import logo from "../../../public/images/S148.png";
+import {Box} from "@mui/material";
 
 export function SmallLogo() {
   return (
-    <LogoContainer src={logo} alt={"loading"}/>
+    <Box>
+      <LogoContainer src={logo} alt={"loading"}/>
+    </Box>
   )
 }
