@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_info_blocks_text_with_pictures",
+  "info": {
+    "displayName": "text-with-picture",
+    "icon": "code",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "pictureRight",
+        "pictureLeft"
+      ],
+      "required": true,
+      "default": "pictureRight"
+    }
+  }
+}

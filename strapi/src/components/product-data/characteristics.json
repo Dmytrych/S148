@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_product_data_characteristics",
+  "info": {
+    "displayName": "Characteristics",
+    "icon": "puzzle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

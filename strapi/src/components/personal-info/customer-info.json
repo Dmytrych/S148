@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_personal_info_customer_infos",
+  "info": {
+    "displayName": "CustomerInfo",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": false
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 2
+    },
+    "surname": {
+      "type": "string",
+      "required": true,
+      "minLength": 2
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
