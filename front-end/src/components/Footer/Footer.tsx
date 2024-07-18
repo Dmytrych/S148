@@ -8,7 +8,7 @@ import Copyright from "@/components/ui/Copyright";
 export function Footer() {
   return (
     <StyledFooter>
-      <Stack direction="column" alignItems="center" gap={1}>
+      <Stack direction="column" alignItems="center" gap={1} mt={1}>
         <SmallLogo />
         <Socials/>
         <Contacts/>

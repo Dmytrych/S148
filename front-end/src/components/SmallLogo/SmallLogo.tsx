@@ -5,7 +5,7 @@ import {Box} from "@mui/material";
 export function SmallLogo() {
   return (
     <Box>
-      <LogoContainer src={logo} alt={"loading"}/>
+      <LogoContainer src={logo} alt={"Logo"} priority/>
     </Box>
   )
 }

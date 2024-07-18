@@ -1,5 +1,44 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface PersonalInfoCustomerInfo extends Schema.Component {
+  collectionName: 'components_personal_info_customer_infos';
+  info: {
+    displayName: 'CustomerInfo';
+    icon: 'user';
+    description: '';
+  };
+  attributes: {
+    email: Attribute.Email;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    surname: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    phoneNumber: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface InfoBlocksTextWithPicture extends Schema.Component {
+  collectionName: 'components_info_blocks_text_with_pictures';
+  info: {
+    displayName: 'text-with-picture';
+    icon: 'code';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.RichText & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    variant: Attribute.Enumeration<['pictureRight', 'pictureLeft']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'pictureRight'>;
+  };
+}
+
 export interface ProductDataCharacteristics extends Schema.Component {
   collectionName: 'components_product_data_characteristics';
   info: {
@@ -60,53 +99,14 @@ export interface OrderInfoDeliveryInfo extends Schema.Component {
   };
 }
 
-export interface InfoBlocksTextWithPicture extends Schema.Component {
-  collectionName: 'components_info_blocks_text_with_pictures';
-  info: {
-    displayName: 'text-with-picture';
-    icon: 'code';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.RichText & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    variant: Attribute.Enumeration<['pictureRight', 'pictureLeft']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'pictureRight'>;
-  };
-}
-
-export interface PersonalInfoCustomerInfo extends Schema.Component {
-  collectionName: 'components_personal_info_customer_infos';
-  info: {
-    displayName: 'CustomerInfo';
-    icon: 'user';
-    description: '';
-  };
-  attributes: {
-    email: Attribute.Email;
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
-    surname: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
-    phoneNumber: Attribute.String & Attribute.Required;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'personal-info.customer-info': PersonalInfoCustomerInfo;
+      'info-blocks.text-with-picture': InfoBlocksTextWithPicture;
       'product-data.characteristics': ProductDataCharacteristics;
       'order-info.order-item': OrderInfoOrderItem;
       'order-info.delivery-info': OrderInfoDeliveryInfo;
-      'info-blocks.text-with-picture': InfoBlocksTextWithPicture;
-      'personal-info.customer-info': PersonalInfoCustomerInfo;
     }
   }
 }

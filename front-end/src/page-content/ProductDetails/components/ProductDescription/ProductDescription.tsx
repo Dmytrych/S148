@@ -4,6 +4,7 @@ import {PriceTag} from "@/components/PriceTag";
 import PlusMinusControl from "@/components/PlusMinusControl";
 import {locale} from "@/locale/ua";
 import {Product} from "@/api/DTO/products";
+import {getProductAvailabilityString} from "@/helpers/product/get-product-availability-string";
 
 interface ProductDescriptionProps {
     product: Product;
@@ -14,13 +15,14 @@ interface ProductDescriptionProps {
 }
 
 export function ProductDescription({ product, onQuantityChange, quantity, handleInstantBuy, handleAddToCart }: ProductDescriptionProps) {
+  const availability = getProductAvailabilityString(product.attributes.inStock);
+
   return (
     <Box>
       <Typography variant="h3">{product.attributes.name}</Typography>
       <Typography variant="body2" color="secondary">{productPageLocale.code}: {product.attributes.code}</Typography>
-      <Box my={2}>
-        <PriceTag price={product.attributes.price} size="large" />
-      </Box>
+      <Typography variant="body2" color="secondary">{availability}</Typography>
+      <PriceTag price={product.attributes.price} size="large" />
       <BuyControls>
         <PlusMinusControl
           onChange={onQuantityChange}

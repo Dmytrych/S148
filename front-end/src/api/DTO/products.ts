@@ -11,6 +11,7 @@ export interface IProductAttributes {
         data: ApiImage[]
     };
     characteristics?: Characteristic[];
+    inStock: boolean;
 }
 
 export interface Characteristic {

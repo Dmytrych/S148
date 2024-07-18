@@ -42,7 +42,7 @@ export function ProductPhotosDisplay({ productImages, loading = false }: Props) 
             <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
           </Box>
           <Box flexGrow="999">
-            <StyledProductImage imageUrl={selectedImageUrl} />
+            <StyledProductImage imageUrl={selectedImageUrl} priority />
           </Box>
         </Box>
       ) : null}

@@ -880,6 +880,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         number
       >;
     characteristics: Attribute.Component<'product-data.characteristics', true>;
+    inStock: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

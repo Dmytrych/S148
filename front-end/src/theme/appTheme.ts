@@ -10,12 +10,14 @@ declare module '@mui/material/styles' {
         border: PaletteColor;
         other: {
           black20: string;
-        }
+        },
+        fluid_text: PaletteColor;
     }
 
     interface PaletteOptions {
         cardBackground?: PaletteColorOptions | undefined;
         border?: PaletteColorOptions | undefined;
+        fluid_text?: PaletteColorOptions | undefined;
     }
 
     interface ButtonVariants {
@@ -64,6 +66,10 @@ const appTheme = {
     action: {
       hover: "0.8",
     },
+    fluid_text: {
+      main: Color.GlobalBlack,
+      contrastText: Color.White
+    }
   },
   components: {
     MuiCssBaseline: {

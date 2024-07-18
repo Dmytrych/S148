@@ -13,6 +13,7 @@ export const locale = {
   universal_oil_detailed: 'Для очистки й догляду ',
   buy: 'Купити',
   ready_for_shipment: 'Готовий до відправлення',
+  out_of_stock: 'Немає в наявності',
   product_name: 'Назва продукту',
   quantity: 'Кількість',
   options: 'Опції',

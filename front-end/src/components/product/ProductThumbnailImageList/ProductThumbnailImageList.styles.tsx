@@ -13,7 +13,7 @@ export const ImageScroll = styled(Box)(({theme}) => ({
   flexDirection: "column",
   flexGrow: "1",
   overflowY: "scroll",
-  "-ms-overflow-style": "none",
+  msOverflowStyle: "none",
   scrollbarWidth: "none",
   "&::-webkit-scrollbar": {
     display: "none"

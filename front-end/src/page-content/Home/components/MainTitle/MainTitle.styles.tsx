@@ -28,8 +28,8 @@ export const ScratchImageContainer = styled(Box)(({theme}) => ({
 
 export const TitleBlockContainer = styled('div')({
   display: "flex",
-  justifyContent: "center",
-  height: "70vh"
+  alignItems: "center",
+  flexDirection: "column"
 });
 
 export const GiantTitleText = styled(Typography)({

@@ -2,20 +2,24 @@ import {CSSProperties} from "react";
 import {TypographyOptions} from "@mui/material/styles/createTypography";
 import {Palette} from "@mui/material/styles/createPalette";
 import {Color} from "@/constants/color";
+import {Font} from "@/constants/fonts";
 
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     navbarLink: true;
+    h5_squares: true;
   }
 }
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     link: CSSProperties;
+    h5_squares: CSSProperties;
   }
 
   interface TypographyVariantsOptions {
     link?: CSSProperties;
+    h5_squares?: CSSProperties;
   }
 }
 
@@ -23,39 +27,96 @@ export default {
   fontFamily: ["Roboto", "Arial", "sans-serif"].join(','),
   color: Color.TextColor,
   h1: {
-    fontSize: "2.5rem",
-    "@media (min-width:900px)": {
-      fontSize: "5rem"
+    fontSize: '2.5rem',
+    '@media (min-width:600px)': {
+      fontSize: '3rem',
     },
-    fontWeight: 600,
+    '@media (min-width:960px)': {
+      fontSize: '3.5rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '4rem',
+    },
   },
   h2: {
     fontSize: '2rem',
-    fontWeight: 600,
+    '@media (min-width:600px)': {
+      fontSize: '2.5rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '3rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '3.5rem',
+    },
   },
   h3: {
-    fontSize: "1.75rem",
-    fontWeight: 600, // Heading 3 font weight
+    fontSize: '1.75rem',
+    '@media (min-width:600px)': {
+      fontSize: '2rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '2.25rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '2.5rem',
+    },
   },
   h4: {
-    fontSize: '1.5rem', // Heading 4 font size
-    fontWeight: 600, // Heading 4 font weight
+    fontSize: '1.5rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.75rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '2rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '2.25rem',
+    },
+  },
+  h5_squares: {
+    fontSize: '1.25rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.5rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '1.75rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '2rem',
+    },
+    fontFamily: Font.SquaresBold,
   },
   h5: {
-    fontSize: '1.25rem', // Heading 5 font size
-    fontWeight: 500, // Heading 5 font weight
+    fontSize: '1.25rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.5rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '1.75rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '2rem',
+    },
   },
   h6: {
-    fontSize: '1rem', // Heading 6 font size
-    fontWeight: 500, // Heading 6 font weight
+    fontSize: '1rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.25rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '1.5rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '1.75rem',
+    },
   },
   body1: {
-    fontSize: '1rem', // Body text font size
-    lineHeight: 1.5, // Body text line height
+    lineHeight: 1.5,
   },
   body2: {
-    fontSize: '0.875rem', // Smaller body text font size
-    lineHeight: 1.4, // Smaller body text line height
+    fontSize: '0.875rem',
+    lineHeight: 1.4,
   },
   link: {
     color: Color.TextColor,

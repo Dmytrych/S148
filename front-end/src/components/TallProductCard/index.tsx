@@ -6,6 +6,7 @@ import Markdown from "react-markdown";
 import {getProductRoute} from "@/helpers/links";
 import {Product} from "@/api/DTO/products";
 import ProductImage from '@/components/ProductImage/ProductImage';
+import {getProductAvailabilityString} from "@/helpers/product/get-product-availability-string";
 
 interface IProps {
     product: Product;
@@ -13,6 +14,8 @@ interface IProps {
 }
 
 function TallProductCard({product, onBuyClick}: IProps) {
+  const availability = getProductAvailabilityString(product.attributes.inStock);
+
   return (
     <Container elevation={4} square>
       <ProductContent>
@@ -37,7 +40,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
           </Box>
           <Box display="flex" flexDirection="column" justifyContent="flex-end">
             <Box display="flex">
-              <Typography color={theme => theme.palette.text.secondary} variant="body2">{locale.ready_for_shipment}</Typography>
+              <Typography color={theme => theme.palette.text.secondary} variant="body2">{availability}</Typography>
             </Box>
             <Box display="flex">
               <LongButton variant="contained" color="primary" onClick={onBuyClick}>{locale.buy}</LongButton>

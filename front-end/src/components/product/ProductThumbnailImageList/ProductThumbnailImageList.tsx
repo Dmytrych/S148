@@ -16,7 +16,7 @@ export function ProductThumbnailImageList({ imageUrls, onClick = noop }: Props) 
       {
         imageUrls.map((imageUrl) => (
           <ImageOutlinedBox key={imageUrl} onClick={() => onClick(imageUrl)}>
-            <ThumbnailProductImage imageUrl={imageUrl} />
+            <ThumbnailProductImage imageUrl={imageUrl} priority />
           </ImageOutlinedBox>
         ))
       }

@@ -7,14 +7,16 @@ interface Props {
   imageUrl?: string;
   className?: string;
   sx?: SxProps;
+  priority?: boolean;
 }
 
-const ProductImage = ({ className, imageUrl, sx }: Props) => {
+const ProductImage = ({ className, imageUrl, sx, priority }: Props) => {
   return (<Box className={className} sx={sx} position="relative">
     <ContentLoader isLoading={!imageUrl}>
       { imageUrl ? (
         <ImageContainer>
           <StyledImage
+            priority={priority}
             src={getImageUrl(imageUrl)}
             alt="Product Image"
             fill
@@ -34,6 +36,7 @@ const StyledImage = styled(Image)({
 })
 
 const ImageContainer = styled(Box)({
+  position: "relative",
   width: "100%",
   height: "100%",
   "&> div": {
