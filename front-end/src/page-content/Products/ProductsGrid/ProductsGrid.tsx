@@ -1,31 +1,33 @@
-import {Grid} from "@mui/material";
 import {Product} from "@/api/DTO/products";
-import TallProductCard from "@/components/TallProductCard";
 import {getProductRoute} from "@/helpers/links";
 import {useRouter} from "next/router";
+import {useProducts} from "@/hooks/useProducts";
+import { ContentLoader } from "@/components/ContentLoader/image";
+import {Grid} from "@mui/material";
+import TallProductCard from "@/components/TallProductCard";
 
-interface Props {
-  products: Product[] | undefined;
-}
-
-export function ProductsGrid({ products }: Props) {
+const ProductsGrid = () => {
+  const { data: productData, isLoading: productsLoading} = useProducts();
   const { push } = useRouter();
 
   const handleBuyClick = async (product: Product) => {
-    await push(getProductRoute(product.attributes.code))
+    await push(getProductRoute(product.id.toString()))
   }
 
   return (
-    <Grid container spacing={3}>
-      {products ? (
-        products.map((product, index) => (
+    <ContentLoader isLoading={productsLoading}>
+      <Grid container spacing={3}>
+        {productData ? productData.map((product, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
             <TallProductCard
               product={product}
               onBuyClick={() => handleBuyClick(product)}
             />
           </Grid>
-        ))) : null}
-    </Grid>
+        )) : null}
+      </Grid>
+    </ContentLoader>
   )
 }
+
+export default ProductsGrid;

@@ -1,5 +1,5 @@
-import {API} from "@/api/axiosFetcher";
-import {IProductApiResponse} from "@/api/DTO/products";
+import {IProductsApiResponse} from "@/api/DTO/products";
+import {fetchData} from "@/helpers/api-helpers";
 
 export enum ProductPopulateParams {
     Images = "images",
@@ -10,12 +10,6 @@ export interface ProductQueryParams {
     populate: ProductPopulateParams[]
 }
 
-export async function productsFetcher(url: string, params: ProductQueryParams): Promise<IProductApiResponse> {
-  const response = await API.get<IProductApiResponse>(url, { params });
-
-  if (response.status < 200 || response.status >= 300) {
-    throw new Error("Could not fetch products");
-  }
-
-  return response.data;
+export async function fetchProducts(url: string, params: ProductQueryParams): Promise<IProductsApiResponse> {
+  return fetchData(url, { params, method: "GET" });
 }

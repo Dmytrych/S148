@@ -1,5 +1,4 @@
 import {Box, styled} from "@mui/material";
-import Image from "../../../public/images/S148.png";
 
 export const StyledStack = styled(Box)({
   flexDirection: "column",

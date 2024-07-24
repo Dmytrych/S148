@@ -1,7 +1,7 @@
-import {Home} from "@/page-content/Home";
+import ProductsPageContent from "@/page-content/Products";
 
 function Index() {
-  return (<Home />)
+  return (<ProductsPageContent />)
 }
 
 export default Index;

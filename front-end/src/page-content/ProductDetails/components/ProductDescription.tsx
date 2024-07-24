@@ -1,19 +1,14 @@
-import {Box, CircularProgress} from "@mui/material";
+import {Box} from "@mui/material";
 import Markdown from "react-markdown";
 
 interface Props {
     description: string;
-    isLoading?: boolean;
 }
 
-export function ProductDescription({description, isLoading = false}: Props) {
+export function ProductDescription({description}: Props) {
   return (<Box>
-    { !isLoading ?
-      <Markdown>
-        {description}
-      </Markdown>
-      : <Box>
-        <CircularProgress />
-      </Box>}
+    <Markdown>
+      {description}
+    </Markdown>
   </Box>)
 }

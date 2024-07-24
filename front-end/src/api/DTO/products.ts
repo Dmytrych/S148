@@ -22,7 +22,13 @@ export interface Characteristic {
 export interface Product extends CmsModel<IProductAttributes> {
 }
 
-export interface IProductApiResponse {
+export interface IProductsApiResponse {
     data: Product[];
     meta: Metadata;
 }
+
+export type ProductApiResponse = {
+  data: Product;
+  meta: Metadata;
+}
+

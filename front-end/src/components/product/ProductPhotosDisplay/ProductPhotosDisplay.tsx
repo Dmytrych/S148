@@ -7,10 +7,9 @@ import {ProductImageUrl} from "@/interfaces/product/ProductImageUrl";
 
 interface Props {
     productImages?: ApiImage[];
-    loading?: boolean;
 }
 
-export function ProductPhotosDisplay({ productImages, loading = false }: Props) {
+export function ProductPhotosDisplay({ productImages }: Props) {
   const itemImages: ProductImageUrl[] = useMemo(() => {
     if (!productImages || !productImages.length) {
       return [];

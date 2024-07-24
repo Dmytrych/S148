@@ -1,6 +1,6 @@
 import Image, {ImageProps} from "next/image"
 import {Media} from "@/api/DTO/common/images";
-import {getImageUrl} from "@/helpers/imageUrl";
+import {getImageUrl} from "@/helpers/image-url";
 
 interface Props extends Partial<ImageProps> {
   media: Media

@@ -1,6 +1,6 @@
 import {Box, styled, SxProps} from "@mui/material";
 import Image from "next/image";
-import {getImageUrl} from "@/helpers/imageUrl";
+import {getImageUrl} from "@/helpers/image-url";
 import {ContentLoader} from "@/components/ContentLoader/image";
 
 interface Props {

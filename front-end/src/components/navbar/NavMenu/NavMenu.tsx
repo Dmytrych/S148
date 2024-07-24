@@ -12,7 +12,7 @@ export function NavMenu({cartCount}: Props) {
   return (
     <>
       <TopBarItem>
-        <UndecoratedLink href={Routes.Products}>
+        <UndecoratedLink href={Routes.Home}>
           <Typography variant="navbarLink">{locale.products_page}</Typography>
         </UndecoratedLink>
       </TopBarItem>

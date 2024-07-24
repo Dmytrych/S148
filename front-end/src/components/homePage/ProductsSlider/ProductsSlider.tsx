@@ -2,7 +2,7 @@ import {ItemCarousel} from "@/components/ItemCarousel";
 import {Product} from "@/api/DTO/products";
 import {ProductCard} from "@/components/ProductCard";
 import {Box, Paper } from "@mui/material";
-import {StyledBackground} from "@/page-content/Home/components/ProductsSlider/ProductsSlider.styles";
+import {StyledBackground} from "@/components/homePage/ProductsSlider/ProductsSlider.styles";
 
 interface Props {
   products: Product[];

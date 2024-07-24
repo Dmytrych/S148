@@ -18,7 +18,7 @@ export const StyledBox = styled(Box)(({theme}) => ({
   width: "100%",
   height: "200px",
   backgroundColor: theme.palette.fluid_text.main,
-  animation: `${fluidAnimation} 4s ease-in-out infinite`,
+  animation: `${fluidAnimation} 2s ease-in-out infinite`,
   "& span": {
     color: theme.palette.fluid_text.contrastText,
   }

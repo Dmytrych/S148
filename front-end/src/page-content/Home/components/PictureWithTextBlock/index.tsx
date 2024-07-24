@@ -1,1 +1,0 @@
-export {PictureWithTextBlock} from "@/page-content/Home/components/PictureWithTextBlock/PictureWithTextBlock";

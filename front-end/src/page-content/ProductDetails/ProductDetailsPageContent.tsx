@@ -11,10 +11,9 @@ import {PaperStyled, StyledImageBlock } from './ProductDetailsPageContent.styles
 
 interface IProductDetailsParams {
     product: Product;
-    productLoading: boolean;
 }
 
-export function ProductDetailsPageContent({product, productLoading = false}: IProductDetailsParams) {
+export function ProductDetailsPageContent({product}: IProductDetailsParams) {
   const { push } = useRouter();
   const {quantity, setQuantity, addToCart} = useProductCartControls(product);
 
@@ -46,7 +45,7 @@ export function ProductDetailsPageContent({product, productLoading = false}: IPr
                   quantity={quantity}
                   onQuantityChange={setQuantity}/>
                 <Box mt={3}>
-                  <ProductInfoTabs product={product} isLoadingProduct={productLoading} />
+                  <ProductInfoTabs product={product}/>
                 </Box>
               </Box>
             </PaperStyled>

@@ -1,16 +1,11 @@
-import {API} from "@/api/axiosFetcher";
 import {HomePageResponse} from "@/api/DTO/homePage";
+import {fetchData} from "@/helpers/api-helpers";
+import {ProductPopulateParams} from "@/api/products";
 
-export async function homePageInfoFetcher(url: string): Promise<HomePageResponse> {
+export async function fetchHomePageInfo(url: string): Promise<HomePageResponse> {
   const params = {
-    populate: ["blocks", "blocks.image"]
+    populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics]
   }
 
-  const response = await API.get<HomePageResponse>(url, { params });
-
-  if (response.status < 200 || response.status >= 300) {
-    throw new Error("Error while submitting your order");
-  }
-
-  return response.data;
+  return fetchData(url, { params } )
 }

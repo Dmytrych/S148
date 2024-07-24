@@ -1,12 +1,6 @@
-import {API} from "@/api/axiosFetcher";
 import {IOrder, IOrderRequest} from "@/api/DTO/orders";
+import {fetchData} from "@/helpers/api-helpers";
 
-export async function createOrderApi(url: string, requestParams: IOrderRequest): Promise<IOrder> {
-  const response = await API.post<IOrder>(url, { data: requestParams });
-
-  if (response.status < 200 || response.status >= 300) {
-    throw new Error("Error while submitting your order");
-  }
-
-  return response.data;
+export async function createOrder(url: string, requestParams: IOrderRequest): Promise<IOrder> {
+  return fetchData(url, { data: { data: requestParams }, method: "POST" });
 }

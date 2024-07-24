@@ -15,7 +15,7 @@ import {ItemMenu, StyledAppBar} from "@/components/navbar/Navbar/Navbar.styled";
 const NAVBAR_ITEMS: NavItem[] = [
   {
     title: locale.products_page,
-    link: Routes.Products,
+    link: Routes.Home,
     icon: <StorefrontIcon />,
   },
   {

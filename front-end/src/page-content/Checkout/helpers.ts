@@ -1,5 +1,5 @@
 import {IOrderFormFields} from "@/page-content/Checkout/hooks/useOrderForm";
-import {createOrderApi} from "@/api/orders";
+import {createOrder} from "@/api/orders";
 import {ApiRoutes} from "@/api/apiRoutes";
 import {IOrder} from "@/api/DTO/orders";
 import {CartProductInfo} from "@/interfaces/cart/CartProductInfo";
@@ -22,5 +22,5 @@ export function createOrderFromFormValues(values: IOrderFormFields, cart: CartPr
     }
   };
 
-  return createOrderApi(ApiRoutes.Orders, dataModel);
+  return createOrder(ApiRoutes.ordersUrl(), dataModel);
 }

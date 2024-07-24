@@ -26,7 +26,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
         ) : null}
         <Box display="flex" flexDirection="column" flex="1">
           <ProductText>
-            <Link href={getProductRoute(product.attributes.code)}>
+            <Link href={getProductRoute(product.id.toString())}>
               {product.attributes.name}
             </Link>
           </ProductText>

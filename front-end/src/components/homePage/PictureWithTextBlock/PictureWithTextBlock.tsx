@@ -1,7 +1,7 @@
 import {Box, Grid} from "@mui/material";
 import {TextWithImageBlock, TextWithImageVariants} from "@/api/DTO/common/contentBlocks/textWithImage";
 import NextImage from "@/components/ProductCard/NextImage";
-import {StyledMarkdown} from "@/page-content/Home/components/PictureWithTextBlock/PictureWithTextBlock.styles";
+import {StyledMarkdown} from "@/components/homePage/PictureWithTextBlock/PictureWithTextBlock.styles";
 
 interface Props {
   block: TextWithImageBlock;

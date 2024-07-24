@@ -9,10 +9,9 @@ const tabs = [productPageLocale.description, productPageLocale.characteristics]
 
 interface Props {
     product: Product;
-    isLoadingProduct: boolean;
 }
 
-export function ProductInfoTabs({product, isLoadingProduct}: Props) {
+export function ProductInfoTabs({product}: Props) {
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   return (
@@ -25,7 +24,7 @@ export function ProductInfoTabs({product, isLoadingProduct}: Props) {
       <Box px={10}>
         {
           selectedTab === 0
-            ? <ProductDescription description={product.attributes.description ?? ""} isLoading={isLoadingProduct} />
+            ? <ProductDescription description={product.attributes.description ?? ""} />
             : <CharacteristicsTab characteristics={product.attributes.characteristics}/>
         }
       </Box>

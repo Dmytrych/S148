@@ -23,6 +23,7 @@ export const locale = {
   slogan: 'Ідея народжена в барі, розроблена в академії наук',
   in_your_cart: 'У вашому кошику',
   to_checkout: 'Замовити',
+  cart_empty: 'Ваш кошик порожній',
 
   home_page: 'Головна',
   products_page: 'Продукти',
@@ -40,6 +41,7 @@ export const locale = {
   nova_poshta: 'Нова Пошта',
   address: 'Адреса',
 
+  unexpected_error_occurred: 'Помилка завантаження...',
   loading: 'Завантаження...',
   no_matches_found: 'Співпадінь не знайдено.',
 

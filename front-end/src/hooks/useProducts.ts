@@ -1,7 +1,11 @@
-import useSWR from "swr";
 import {ApiRoutes} from "@/api/apiRoutes";
-import {ProductPopulateParams, productsFetcher} from "@/api/products";
+import {ProductPopulateParams, fetchProducts} from "@/api/products";
+import {useFetch} from "@/hooks/useFetch";
 
 export function useProducts() {
-  return useSWR(ApiRoutes.Products, (url) => productsFetcher(url, { populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics] }) )
+  return useFetch(ApiRoutes.productsUrl(),
+    async (url) => {
+      const response = await fetchProducts(url, { populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics] });
+      return response.data;
+    })
 }

@@ -1,7 +1,7 @@
 import {
   TitleBlockContainer
 } from "./MainTitle.styles";
-import FluidAnimatedText from "@/page-content/Home/components/FluidAnimatedText/FluidAnimatedText";
+import FluidAnimatedText from "@/components/homePage/FluidAnimatedText/FluidAnimatedText";
 import {Typography} from "@mui/material";
 
 interface Props {
