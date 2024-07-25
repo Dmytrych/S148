@@ -1,18 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ProductDataCharacteristics extends Schema.Component {
-  collectionName: 'components_product_data_characteristics';
-  info: {
-    displayName: 'Characteristics';
-    icon: 'puzzle';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    value: Attribute.Text & Attribute.Required;
-  };
-}
-
 export interface PersonalInfoCustomerInfo extends Schema.Component {
   collectionName: 'components_personal_info_customer_infos';
   info: {
@@ -36,19 +23,16 @@ export interface PersonalInfoCustomerInfo extends Schema.Component {
   };
 }
 
-export interface InfoBlocksTextWithPicture extends Schema.Component {
-  collectionName: 'components_info_blocks_text_with_pictures';
+export interface ProductDataCharacteristics extends Schema.Component {
+  collectionName: 'components_product_data_characteristics';
   info: {
-    displayName: 'text-with-picture';
-    icon: 'code';
+    displayName: 'Characteristics';
+    icon: 'puzzle';
     description: '';
   };
   attributes: {
-    text: Attribute.RichText & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    variant: Attribute.Enumeration<['pictureRight', 'pictureLeft']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'pictureRight'>;
+    name: Attribute.String & Attribute.Required;
+    value: Attribute.Text & Attribute.Required;
   };
 }
 
@@ -99,14 +83,30 @@ export interface OrderInfoDeliveryInfo extends Schema.Component {
   };
 }
 
+export interface InfoBlocksTextWithPicture extends Schema.Component {
+  collectionName: 'components_info_blocks_text_with_pictures';
+  info: {
+    displayName: 'text-with-picture';
+    icon: 'code';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.RichText & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    variant: Attribute.Enumeration<['pictureRight', 'pictureLeft']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'pictureRight'>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'product-data.characteristics': ProductDataCharacteristics;
       'personal-info.customer-info': PersonalInfoCustomerInfo;
-      'info-blocks.text-with-picture': InfoBlocksTextWithPicture;
+      'product-data.characteristics': ProductDataCharacteristics;
       'order-info.order-item': OrderInfoOrderItem;
       'order-info.delivery-info': OrderInfoDeliveryInfo;
+      'info-blocks.text-with-picture': InfoBlocksTextWithPicture;
     }
   }
 }
