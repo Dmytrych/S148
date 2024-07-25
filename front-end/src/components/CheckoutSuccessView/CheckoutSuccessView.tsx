@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {Routes} from "@/routes";
 import {useIsMobile} from "@/hooks/useIsMobile";
+import {locale} from "@/locale/ua";
 
 export function CheckoutSuccessView() {
   const isMobile = useIsMobile();
@@ -12,11 +13,11 @@ export function CheckoutSuccessView() {
       <Stack flexDirection="column" spacing={2} mx={1} mt={{ xs: 20, sm: 1 }}>
         <Image src="/images/checkoutSuccess.png" alt="Checkout success" width={imageSize} height={imageSize} />
         <Stack alignItems="center">
-          <Typography variant="h3">Замовлення успішне</Typography>
+          <Typography variant="h3">{locale.order_placement_successful}</Typography>
         </Stack>
         <Link href={Routes.Home}>
           <Button component={MuiLink} variant="contained" color="primary" size="large" fullWidth>
-            Продовжити покупки
+            {locale.order_placement_successful}
           </Button>
         </Link>
       </Stack>

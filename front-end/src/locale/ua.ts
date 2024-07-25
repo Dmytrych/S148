@@ -41,6 +41,9 @@ export const locale = {
   nova_poshta: 'Нова Пошта',
   address: 'Адреса',
 
+  continue_shopping: 'Продовжити покупки',
+  order_placement_successful: 'Замовлення успішне',
+
   unexpected_error_occurred: 'Помилка завантаження...',
   loading: 'Завантаження...',
   no_matches_found: 'Співпадінь не знайдено.',
