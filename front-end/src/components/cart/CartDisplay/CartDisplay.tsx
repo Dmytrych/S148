@@ -1,6 +1,6 @@
 import {Box, Divider, Stack} from "@mui/material";
 import {CartDisplayItem} from "@/components/cart/CartDisplayItem";
-import {BuyWithTotal} from "@/components/cart/BuyWithTotal/BuyWithTotal";
+import BuyWithTotal from "@/components/cart/BuyWithTotal/BuyWithTotal";
 import {useRouter} from "next/router";
 import {Routes} from "@/routes";
 import {useCart} from "@/hooks/context/useCartState";
@@ -10,7 +10,7 @@ import {getCartProductInfos} from "@/helpers/cart/getCartProductInfo";
 import CenteredLoader from "@/components/ui/CenteredLoader";
 import EmptyCartState from "@/components/cart/EmptyCartState";
 
-export function CartDisplay() {
+const CartDisplay = () => {
   const { cart, batchRemoveFromCart, addToCart, removeFromCart } = useCart();
   const { data: products, isLoading: productsLoading} = useProducts();
 
@@ -64,3 +64,5 @@ export function CartDisplay() {
     </Box>
   </Stack>)
 }
+
+export default CartDisplay

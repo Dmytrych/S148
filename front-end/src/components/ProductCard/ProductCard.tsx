@@ -23,7 +23,7 @@ export function ProductCard({product}: Props) {
             <Typography variant="navbarLink" textAlign="center">{product.attributes.name}</Typography>
             <Stack direction="row" justifyContent="center" sx={{ width: "100%", my: 2 }}>
               <Box>
-                <Link href={Routes.Products}>
+                <Link href={Routes.Home}>
                   <Button variant="contained" color="primary" sx={{ width: "100px" }}>{locale.buy}</Button>
                 </Link>
               </Box>

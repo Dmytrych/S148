@@ -1,6 +1,6 @@
-import {StyledStack} from "@/components/Cart/BuyWithTotal/BuyWithTotal.styles";
+import {StyledStack} from "@/components/cart/BuyWithTotal/BuyWithTotal.styles";
 import {locale} from "@/locale/ua";
-import {StyledButton} from "@/components/Cart/CartDisplay/CartDisplay.styles";
+import {StyledButton} from "@/components/cart/CartDisplay/CartDisplay.styles";
 import {PriceTag} from "@/components/PriceTag";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   onBuyClick: () => void;
 }
 
-export function BuyWithTotal({totalPrice, onBuyClick}: Props) {
+const BuyWithTotal = ({totalPrice, onBuyClick}: Props) => {
   return (
     <StyledStack direction="row" spacing={2}>
       <PriceTag price={totalPrice} />
@@ -16,3 +16,5 @@ export function BuyWithTotal({totalPrice, onBuyClick}: Props) {
     </StyledStack>
   )
 }
+
+export default BuyWithTotal;

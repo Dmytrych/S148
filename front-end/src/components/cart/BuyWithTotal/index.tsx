@@ -1,1 +1,3 @@
-export {BuyWithTotal} from "@/components/Cart/BuyWithTotal/BuyWithTotal";
+import BuyWithTotal from "@/components/cart/BuyWithTotal/BuyWithTotal";
+
+export default BuyWithTotal;

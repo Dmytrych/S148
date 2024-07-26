@@ -1,8 +1,8 @@
-import {CartDisplay} from "@/components/cart/CartDisplay";
+import CartDisplay from "@/components/cart/CartDisplay";
 import {Box, Divider, Paper, Typography} from "@mui/material";
 import {locale} from "@/locale/ua";
 
-export function CartItemsEditingList() {
+const CartItemsEditingList = () => {
   return (
     <Paper elevation={4}>
       <Box px={3} pb={1} pt={2}>
@@ -15,3 +15,5 @@ export function CartItemsEditingList() {
     </Paper>
   )
 }
+
+export default CartItemsEditingList

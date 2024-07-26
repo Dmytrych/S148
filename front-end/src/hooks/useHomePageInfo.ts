@@ -1,9 +1,9 @@
-import useSWR from "swr";
 import {ApiRoutes} from "@/api/apiRoutes";
 import {fetchHomePageInfo} from "@/api/homePage";
+import {useFetch} from "@/hooks/useFetch";
 
 export function useHomePageInfo() {
-  return useSWR(
-    ApiRoutes.HomePage,
+  return useFetch(
+    ApiRoutes.homePage(),
     (url) => fetchHomePageInfo(url) )
 }

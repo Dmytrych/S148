@@ -1,5 +1,5 @@
 import {ProductDetailsPageContent} from "@/page-content/ProductDetails";
-import {fetchData} from "@/helpers/api-helpers";
+import {fetchDataFromServer} from "@/helpers/api-helpers";
 import {ApiRoutes} from "@/api/apiRoutes";
 import {GetServerSideProps} from "next";
 import {ProductApiResponse, Product} from "@/api/DTO/products";
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps<ProductDetailsPageProps, Pro
   const pageParams = params as ProductDetailsPageParams;
 
   try {
-    const productApiResponse = await fetchData<ProductApiResponse>(
+    const productApiResponse = await fetchDataFromServer<ProductApiResponse>(
       ApiRoutes.productUrl(pageParams.id),
       {
         method: "GET",
