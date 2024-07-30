@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  strapi:
+    build:
+      context: ../strapi
+      dockerfile: Dockerfile
+    container_name: strapi
+    ports:
+      - '1337:1337'
+    volumes:
+      - strapi_uploads:/usr/src/app/public/uploads
+    environment:
+      HOST: ${HOST}
+      PORT: ${PORT}
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      - strapi-postgres
+
+  frontend-s148:
+    build:
+      context: ../front-end
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_BACK_END_URL: ${NEXT_PUBLIC_BACK_END_URL}
+        NEXT_PUBLIC_IMAGE_PROVIDER_URL: ${NEXT_PUBLIC_IMAGE_PROVIDER_URL}
+        NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN: ${NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN}
+        NEXT_PUBLIC_EMAIL: ${NEXT_PUBLIC_EMAIL}
+        NEXT_PUBLIC_PHONE_NUMBER: ${NEXT_PUBLIC_PHONE_NUMBER}
+        NEXT_PUBLIC_PHONE_NUMBER_FOR_URL: ${NEXT_PUBLIC_PHONE_NUMBER_FOR_URL}
+        NEXT_PUBLIC_FACEBOOK_LINK: ${NEXT_PUBLIC_FACEBOOK_LINK}
+        NEXT_PUBLIC_TWITTER_LINK: ${NEXT_PUBLIC_TWITTER_LINK}
+        NEXT_PUBLIC_INSTAGRAM_LINK: ${NEXT_PUBLIC_INSTAGRAM_LINK}
+        NEXT_PUBLIC_COPYRIGHT: ${NEXT_PUBLIC_COPYRIGHT}
+    container_name: frontend-s148
+    environment:
+      BACK_END_URL: ${BACK_END_URL}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - strapi
+
+  strapi-postgres:
+    image: postgres:13
+    container_name: strapi-postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - strapi_postgres:/var/lib/postgresql/data
+
+volumes:
+  strapi_uploads:
+  strapi_postgres:
