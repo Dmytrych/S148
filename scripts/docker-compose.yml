@@ -64,7 +64,7 @@ services:
     image: postgres:13
     container_name: strapi-postgres
     ports:
-      - '5430:5432'
+      - '5432:5432'
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
