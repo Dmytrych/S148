@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: strapi
     ports:
-      - '1337:1337'
+      - '1447:1447'
     volumes:
       - strapi_uploads:/usr/src/app/public/uploads
     environment:
@@ -64,7 +64,7 @@ services:
     image: postgres:13
     container_name: strapi-postgres
     ports:
-      - '5432:5432'
+      - '5430:5432'
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
