@@ -1,51 +1,48 @@
-import {Box} from "@mui/material";
-import {useMemo, useState} from "react";
+import {useMemo} from "react";
 import {ApiImage} from "@/api/DTO/common/images";
-import {ProductThumbnailImageList} from "@/components/product/ProductThumbnailImageList";
-import {StyledProductImage} from "@/components/product/ProductPhotosDisplay/ProductPhotosDisplay.styles";
-import {ProductImageUrl} from "@/interfaces/product/ProductImageUrl";
+import ImageGallery, {ReactImageGalleryItem} from "react-image-gallery";
+import {Box, styled} from "@mui/material";
+
+const getProductImageUrl = (imageUrl: string) => {
+  return `${process.env.NEXT_PUBLIC_IMAGE_PROVIDER_URL}${imageUrl}`
+}
 
 interface Props {
     productImages?: ApiImage[];
 }
 
+const GalleryStylesOverrides = styled(Box)({
+  '& .image-gallery-content:not(.fullscreen) .image-gallery-image': {
+    minHeight: "400px",
+    maxHeight: "300px",
+    padding: "0px 1px" // Is needed so that the beginning of the next image is not shown
+  },
+})
+
 export function ProductPhotosDisplay({ productImages }: Props) {
-  const itemImages: ProductImageUrl[] = useMemo(() => {
+  const itemImages: ReactImageGalleryItem[] = useMemo(() => {
     if (!productImages || !productImages.length) {
       return [];
     }
 
     return productImages.map((image) => ({
-      thumbnail: image.attributes.formats.thumbnail.url,
-      original: image.attributes.url,
+      thumbnail: getProductImageUrl(image.attributes.formats.thumbnail.url),
+      original: getProductImageUrl(image.attributes.url),
     }));
   }, [productImages])
 
-  const [selectedImageUrl, setSelectedImageUrl] = useState(itemImages[0].original);
-
-  const handleThumbnailClick = (thumbnailUrl: string) => {
-    const selectedImage = itemImages.find((image) => image.thumbnail === thumbnailUrl);
-
-    if (!selectedImage) {
-      return;
-    }
-
-    setSelectedImageUrl(() => selectedImage.original);
-  }
-
   return (
-    <Box width="100%" height="100%">
-      {itemImages.length ? (
-        <Box display="flex" flexDirection="row" gap={1} height="100%">
-          <Box flexBasis="100px" flexGrow="1">
-            <ProductThumbnailImageList imageUrls={itemImages.map((url) => url.thumbnail)} onClick={handleThumbnailClick}/>
-          </Box>
-          <Box flexGrow="999">
-            <StyledProductImage imageUrl={selectedImageUrl} priority />
-          </Box>
-        </Box>
-      ) : null}
-    </Box>
+    <GalleryStylesOverrides>
+      <ImageGallery
+        showFullscreenButton={false}
+        showPlayButton={false}
+        showThumbnails={true}
+        slideDuration={550}
+        thumbnailPosition="left"
+        lazyLoad
+        items={itemImages}
+      />
+    </GalleryStylesOverrides>
   )
 }
 

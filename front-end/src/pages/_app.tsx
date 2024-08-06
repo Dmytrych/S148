@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "@/theme/appTheme";
 import "../theme/fontImports.css"
+import "react-image-gallery/styles/css/image-gallery.css"
 import {CartStateContextProvider} from "@/contexts/CartStateContextProvider";
 import Head from "next/head";
 

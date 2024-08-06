@@ -6,8 +6,9 @@ import {Routes} from "@/routes";
 import {useRouter} from "next/router";
 import {ProductInfoTabs} from "@/page-content/ProductDetails/components/ProductInfoTabs";
 import {PageMargins} from "@/components/PageMargins";
-import { ProductDescription } from './components/ProductDescription/ProductDescription';
-import {PaperStyled, StyledImageBlock } from './ProductDetailsPageContent.styles';
+import {ProductDescription} from './components/ProductDescription/ProductDescription';
+import {PaperStyled } from './ProductDetailsPageContent.styles';
+import {ProductImageBlock} from "@/page-content/ProductDetails/components/ProductDisplay";
 
 interface IProductDetailsParams {
     product: Product;
@@ -29,10 +30,10 @@ export function ProductDetailsPageContent({product}: IProductDetailsParams) {
   return (
     <PageMargins>
       <Box display="flex">
-        <Grid container spacing={4}>
+        <Grid container spacing={{ sm: 1, md: 4 }}>
           <Grid item md={6} xs={12}>
-            <Box height="400px" width="100%">
-              <StyledImageBlock product={product}/>
+            <Box>
+              <ProductImageBlock product={product}/>
             </Box>
           </Grid>
           <Grid item md={6} xs={12}>

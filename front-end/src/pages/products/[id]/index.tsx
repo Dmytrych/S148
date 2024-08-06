@@ -41,7 +41,5 @@ export const getServerSideProps: GetServerSideProps<ProductDetailsPageProps, Pro
 })
 
 export default function ProductDetailsPage({ product }: ProductDetailsPageProps) {
-  console.log(product);
-
   return <ProductDetailsPageContent product={product}/>
 }

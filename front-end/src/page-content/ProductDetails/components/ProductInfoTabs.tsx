@@ -21,7 +21,7 @@ export function ProductInfoTabs({product}: Props) {
           { tabs.map((tab) => <Tab key={tab} label={tab} />) }
         </Tabs>
       </Box>
-      <Box px={10}>
+      <Box>
         {
           selectedTab === 0
             ? <ProductDescription description={product.attributes.description ?? ""} />

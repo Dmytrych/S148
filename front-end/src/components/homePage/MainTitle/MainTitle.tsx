@@ -4,15 +4,11 @@ import {
 import FluidAnimatedText from "@/components/homePage/FluidAnimatedText/FluidAnimatedText";
 import {Typography} from "@mui/material";
 
-interface Props {
-  onBuyClick: () => void;
-}
-
-export function MainTitle({ onBuyClick }: Props) {
+export function MainTitle() {
 
   return (
     <TitleBlockContainer>
-      <FluidAnimatedText text="Засоби для догляду за зброЄю"/>
+      <FluidAnimatedText text="Засоби для догляду за зброєю"/>
       <Typography variant="h5_squares">
         Засоби для догляду за зброЄю
       </Typography>
