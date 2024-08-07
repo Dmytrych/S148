@@ -75,7 +75,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
           <ProductPriceBox>
             <PriceTag price={product.attributes.price}/>
           </ProductPriceBox>
-          <StyledDescriptionTypography variant="body1">
+          <StyledDescriptionTypography variant="body2">
             {product.attributes.shortDescription}
           </StyledDescriptionTypography>
           <Stack direction="column" flex="1" justifyContent="flex-end">
