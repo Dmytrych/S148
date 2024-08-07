@@ -3,7 +3,7 @@ import {getProductRoute} from "@/helpers/links";
 import {useRouter} from "next/router";
 import {useProducts} from "@/hooks/useProducts";
 import { ContentLoader } from "@/components/ContentLoader/image";
-import {Grid} from "@mui/material";
+import {Grid, Stack} from "@mui/material";
 import TallProductCard from "@/components/TallProductCard";
 
 const ProductsGrid = () => {
@@ -16,16 +16,14 @@ const ProductsGrid = () => {
 
   return (
     <ContentLoader isLoading={productsLoading}>
-      <Grid container spacing={3}>
+      <Stack direction="row" flexWrap="wrap" gap={3}>
         {productData ? productData.map((product, index) => (
-          <Grid key={index} item xs={12} sm={6} md={4}>
-            <TallProductCard
-              product={product}
-              onBuyClick={() => handleBuyClick(product)}
-            />
-          </Grid>
+          <TallProductCard
+            product={product}
+            onBuyClick={() => handleBuyClick(product)}
+          />
         )) : null}
-      </Grid>
+      </Stack>
     </ContentLoader>
   )
 }

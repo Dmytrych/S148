@@ -2,6 +2,7 @@ import {IProductsApiResponse} from "@/api/DTO/products";
 import {fetchDataFromClient} from "@/helpers/api-helpers";
 
 export enum ProductPopulateParams {
+    TitleImage = "titleImage",
     Images = "images",
     Characteristics = "characteristics"
 }

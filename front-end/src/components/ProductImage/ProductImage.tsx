@@ -1,34 +1,16 @@
 import {Box, styled, SxProps} from "@mui/material";
 import Image from "next/image";
+import ProductPlaceholderImage from "./product_image_placeholder.png";
 import {getImageUrl} from "@/helpers/image-url";
-import {ContentLoader} from "@/components/ContentLoader/image";
+import {SyntheticEvent, useEffect, useState} from "react";
 
 interface Props {
   imageUrl?: string;
   className?: string;
   sx?: SxProps;
   priority?: boolean;
+  alt: string;
 }
-
-const ProductImage = ({ className, imageUrl, sx, priority }: Props) => {
-  return (<Box className={className} sx={sx} position="relative">
-    <ContentLoader isLoading={!imageUrl}>
-      { imageUrl ? (
-        <ImageContainer>
-          <StyledImage
-            priority={priority}
-            src={getImageUrl(imageUrl)}
-            alt="Product Image"
-            fill
-            unoptimized
-          />
-        </ImageContainer>
-      ) : null }
-    </ContentLoader>
-  </Box>)
-}
-
-export default ProductImage;
 
 const StyledImage = styled(Image)({
   backgroundColor: "white",
@@ -49,3 +31,27 @@ const ImageContainer = styled(Box)({
     height: "unset !important"
   }
 })
+
+const ProductImage = ({ className, imageUrl, sx, priority, alt }: Props) => {
+  const [error, setError] = useState<
+    SyntheticEvent<HTMLImageElement, Event> | null>();
+
+  useEffect(() => {
+    setError(null)
+  }, [imageUrl])
+
+  return (<Box className={className} sx={sx} position="relative">
+    <ImageContainer>
+      <StyledImage
+        priority={priority}
+        src={error ? ProductPlaceholderImage : getImageUrl(imageUrl)}
+        alt={alt}
+        onError={(err) => setError(err)}
+        fill
+        unoptimized
+      />
+    </ImageContainer>
+  </Box>)
+}
+
+export default ProductImage;

@@ -1,14 +1,17 @@
 import {CmsModel, Metadata} from "@/api/DTO/common/common";
 import {ApiImage} from "@/api/DTO/common/images";
 
-export interface IProductAttributes {
+export type ProductAttributes = {
     code: string;
     name: string;
     price: number;
     description?: string;
     shortDescription?: string;
     images?: {
-        data: ApiImage[]
+        data: ApiImage[];
+    };
+    titleImage: {
+      data: ApiImage;
     };
     characteristics?: Characteristic[];
     inStock: boolean;
@@ -19,7 +22,7 @@ export interface Characteristic {
   value: string;
 }
 
-export interface Product extends CmsModel<IProductAttributes> {
+export interface Product extends CmsModel<ProductAttributes> {
 }
 
 export interface IProductsApiResponse {

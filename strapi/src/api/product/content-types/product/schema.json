@@ -51,6 +51,17 @@
       "type": "boolean",
       "default": true,
       "required": true
+    },
+    "titleImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

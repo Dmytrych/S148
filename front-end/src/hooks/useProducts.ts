@@ -5,7 +5,7 @@ import {useFetch} from "@/hooks/useFetch";
 export function useProducts() {
   return useFetch(ApiRoutes.productsUrl(),
     async (url) => {
-      const response = await fetchProducts(url, { populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics] });
+      const response = await fetchProducts(url, { populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics, ProductPopulateParams.TitleImage] });
       return response.data;
     })
 }

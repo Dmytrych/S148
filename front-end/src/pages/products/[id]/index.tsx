@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps<ProductDetailsPageProps, Pro
       {
         method: "GET",
         params: {
-          populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics]
+          populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics, ProductPopulateParams.TitleImage]
         }
       })
     return { props: { product: productApiResponse.data } }

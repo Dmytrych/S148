@@ -13,12 +13,10 @@ declare module '@mui/material/Typography' {
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
-    link: CSSProperties;
     h5_squares: CSSProperties;
   }
 
   interface TypographyVariantsOptions {
-    link?: CSSProperties;
     h5_squares?: CSSProperties;
   }
 }
@@ -117,14 +115,6 @@ export default {
   body2: {
     fontSize: '0.875rem',
     lineHeight: 1.4,
-  },
-  link: {
-    color: Color.TextColor,
-    "&:hover": {
-      textDecoration: 'underline',
-      cursor: 'pointer',
-      color: Color.GlobalGreen
-    },
   },
   navbarLink: {
     fontFamily: 'Squares Bold',

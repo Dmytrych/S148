@@ -4,7 +4,7 @@ import {ProductPopulateParams} from "@/api/products";
 
 export async function fetchHomePageInfo(url: string): Promise<HomePageResponse> {
   const params = {
-    populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics]
+    populate: [ProductPopulateParams.Images, ProductPopulateParams.Characteristics, ProductPopulateParams.TitleImage]
   }
 
   return fetchDataFromClient(url, { params } )
