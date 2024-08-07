@@ -110,6 +110,7 @@ export default {
     },
   },
   body1: {
+    fontSize: '1rem',
     lineHeight: 1.5,
   },
   body2: {

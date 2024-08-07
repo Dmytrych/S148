@@ -17,7 +17,7 @@ export function CheckoutSuccessView() {
         </Stack>
         <Link href={Routes.Home}>
           <Button component={MuiLink} variant="contained" color="primary" size="large" fullWidth>
-            {locale.order_placement_successful}
+            {locale.continue_shopping}
           </Button>
         </Link>
       </Stack>

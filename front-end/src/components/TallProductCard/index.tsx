@@ -1,24 +1,19 @@
-import {Box, Button, Paper, styled, Typography, Link} from '@mui/material';
+import {Box, Button, Paper, styled, Typography, Link, Stack} from '@mui/material';
 import NextLink from "next/link";
 import {PriceTag} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
-import Markdown from "react-markdown";
 import {getProductRoute} from "@/helpers/links";
 import {Product} from "@/api/DTO/products";
 import ProductImage from '@/components/ProductImage/ProductImage';
 import {getProductAvailabilityString} from "@/helpers/product/get-product-availability-string";
 import {getProductTitleImageUrl} from "@/helpers/product/get-product-title-image-url";
 
-const StyledMarkdown = styled(Markdown)({
-  whiteSpace: "pre-wrap",
-  wordBreak: "break-all"
-})
-
 const LongButton = styled(Button)({
   width: "100%"
 });
 
 const StyledPaper = styled(Paper)(({theme}) => ({
+  overflow: "hidden",
   height: '500px',
   width: '300px',
   padding: '16px 16px 24px 16px',
@@ -45,6 +40,15 @@ const ProductPriceBox = styled(Box)({
   alignItems: 'center',
 });
 
+const StyledDescriptionTypography = styled(Typography)({
+  height: '3rem',
+  '-webkit-box-orient': 'vertical',
+  display: '-webkit-box',
+  overflow: 'hidden !important',
+  textOverflow: 'ellipsis',
+  '-webkit-line-clamp': "2"
+})
+
 interface IProps {
   product: Product;
   onBuyClick?: () => void;
@@ -56,33 +60,33 @@ function TallProductCard({product, onBuyClick}: IProps) {
 
   return (
     <StyledPaper elevation={4} square>
-      <ProductContent gap={1}>
+      <ProductContent gap={2}>
         <Link href={productLink} component={NextLink}>
           <ImageContainer>
             <ProductImage imageUrl={getProductTitleImageUrl(product.attributes)} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
           </ImageContainer>
         </Link>
-        <Box display="flex" flexDirection="column" flex="1">
+        <Stack direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
-            {product.attributes.name}
+            <Typography variant="body1" fontWeight="500" fontSize='1.3rem' >
+              {product.attributes.name}
+            </Typography>
           </Link>
           <ProductPriceBox>
             <PriceTag price={product.attributes.price}/>
           </ProductPriceBox>
-          <Box flex="1">
-            <StyledMarkdown>
-              {product.attributes.shortDescription}
-            </StyledMarkdown>
-          </Box>
-          <Box display="flex" flexDirection="column" justifyContent="flex-end">
-            <Box display="flex">
+          <StyledDescriptionTypography variant="body1">
+            {product.attributes.shortDescription}
+          </StyledDescriptionTypography>
+          <Stack direction="column" flex="1" justifyContent="flex-end">
+            <Box>
               <Typography color={theme => theme.palette.text.secondary} variant="body2">{availability}</Typography>
             </Box>
-            <Box display="flex">
+            <Box>
               <LongButton variant="contained" color="primary" onClick={onBuyClick}>{locale.buy}</LongButton>
             </Box>
-          </Box>
-        </Box>
+          </Stack>
+        </Stack>
       </ProductContent>
     </StyledPaper>
   );

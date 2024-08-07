@@ -18,30 +18,27 @@ export function PriceTag({ price, size, currency = "₴" }: PriceTagProps) {
 const sizeStyles = {
   "small": {
     priceFontSize: '1.2rem',
-    currencyFontSize: '1rem',
-    padding: 0.5,
+    currencyFontSize: '1rem'
   },
   "medium": {
     priceFontSize: '1.3rem',
-    currencyFontSize: '1.2rem',
-    padding: 1,
+    currencyFontSize: '1.2rem'
   },
   "large": {
     priceFontSize: '2rem',
-    currencyFontSize: '1.5rem',
-    padding: 1.5,
+    currencyFontSize: '1.5rem'
   },
 };
 
 const PriceTagWrapper = styled(Box)(() => ({
+  gap: 5,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
 }));
 
 const Price = styled(Typography)<Pick<PriceTagProps, "size">>(({ theme, size = "medium" }) => ({
-  fontWeight: 'bold',
-  marginRight: theme.spacing(1),
+  fontWeight: "500",
   fontSize: sizeStyles[size].priceFontSize,
 }));
 
