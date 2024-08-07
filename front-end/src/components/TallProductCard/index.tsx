@@ -41,12 +41,12 @@ const ProductPriceBox = styled(Box)({
 });
 
 const StyledDescriptionTypography = styled(Typography)({
-  height: '3rem',
+  height: '3.5rem',
   '-webkit-box-orient': 'vertical',
   display: '-webkit-box',
   overflow: 'hidden !important',
   textOverflow: 'ellipsis',
-  '-webkit-line-clamp': "2"
+  '-webkit-line-clamp': "3"
 })
 
 interface IProps {
