@@ -68,7 +68,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
         </Link>
         <Stack direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
-            <Typography variant="body1" fontWeight="500" fontSize='1.3rem' >
+            <Typography variant="body1" fontWeight="500" fontSize='1.1rem' >
               {product.attributes.name}
             </Typography>
           </Link>
