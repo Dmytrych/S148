@@ -13,8 +13,7 @@ interface Props {
 
 const GalleryStylesOverrides = styled(Box)({
   '& .image-gallery-content:not(.fullscreen) .image-gallery-image': {
-    minHeight: "400px",
-    maxHeight: "300px",
+    height: "400px",
     padding: "0px 1px" // Is needed so that the beginning of the next image is not shown
   },
 })
@@ -37,7 +36,7 @@ export function ProductPhotosDisplay({ productImages }: Props) {
         showFullscreenButton={false}
         showPlayButton={false}
         showThumbnails={true}
-        slideDuration={550}
+        slideDuration={370}
         thumbnailPosition="left"
         lazyLoad
         items={itemImages}
