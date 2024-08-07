@@ -8,6 +8,11 @@ import {getProductRoute} from "@/helpers/links";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import {noop} from "@/helpers/general";
 
+const CartDisplayItemContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+});
+
 interface Props {
   cartProductInfo: CartProductInfo;
   onQuantityChange?: (productId: number, quantity: number) => void;
@@ -22,7 +27,7 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = noop, onRe
   return (
     <CartDisplayItemContainer>
       <Stack direction="row" spacing={3}>
-        <ProductImage imageUrl={cartProductInfo.product.attributes.images?.data[0].attributes.url} sx={{ width: "80px", height: "80px" }} />
+        <ProductImage imageUrl={cartProductInfo.product.attributes.images?.data[0].attributes.url} sx={{ width: "80px", height: "80px" }} alt={cartProductInfo.product.attributes.name} />
         <Stack direction="row" alignItems="space-between" flex={1}>
           <Box flex={1}>
             <Link href={getProductRoute(cartProductInfo.product.id.toString())}>
@@ -51,10 +56,3 @@ export function CartDisplayItem({ cartProductInfo, onQuantityChange = noop, onRe
     </CartDisplayItemContainer>
   )
 }
-
-const CartDisplayItemContainer = styled(Box)(({theme}) => {
-  return {
-    display: "flex",
-    flexDirection: "column",
-  }
-});
