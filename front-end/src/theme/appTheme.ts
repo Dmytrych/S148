@@ -1,3 +1,5 @@
+'use client'
+
 import {createTheme, PaletteColor, PaletteColorOptions, Theme, ThemeOptions} from "@mui/material";
 import {Color} from "@/constants/color";
 import {CSSProperties} from "react";

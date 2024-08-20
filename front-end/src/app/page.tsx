@@ -1,7 +1,7 @@
 import ProductsPageContent from "@/page-content/Products";
 
-function Index() {
+function Page() {
   return (<ProductsPageContent />)
 }
 
-export default Index;
+export default Page;

@@ -4,9 +4,7 @@ import {locale} from "@/locale/ua";
 
 const ProductListing = () => {
   return (
-    <ErrorBoundary fallback={<div>{locale.unexpected_error_occurred}</div>}>
-      <ProductsGrid/>
-    </ErrorBoundary>
+    <ProductsGrid/>
   )
 }
 
