@@ -1,7 +1,9 @@
+'use client'
+
 import {Box, Divider, Stack} from "@mui/material";
 import {CartDisplayItem} from "@/components/cart/CartDisplayItem";
 import BuyWithTotal from "@/components/cart/BuyWithTotal/BuyWithTotal";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import {Routes} from "@/routes";
 import {useCart} from "@/hooks/context/useCartState";
 import {useProducts} from "@/hooks/useProducts";

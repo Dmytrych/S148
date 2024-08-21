@@ -1,3 +1,5 @@
+'use client'
+
 import {IOrderFormFields} from "@/page-content/Checkout/hooks/useOrderForm";
 import React, {useState} from "react";
 import {useCart} from "@/hooks/context/useCartState";

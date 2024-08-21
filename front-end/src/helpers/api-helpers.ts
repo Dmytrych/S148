@@ -1,5 +1,6 @@
 import {AxiosRequestConfig} from "axios";
-import {axiosClientInstance, axiosServerInstance} from "@/api/axiosFetcher";
+import {axiosClientInstance} from "@/api/axios-client";
+import {axiosServerInstance} from "@/api/axios-server";
 
 export const getFetchData = (axiosInstance = axiosClientInstance) => {
   return async <TResponse>(url: string, config?: AxiosRequestConfig<any>): Promise<TResponse> => {
