@@ -5,7 +5,7 @@ import "../theme/fontImports.css"
 import {CartStateContextProvider} from "@/contexts/CartStateContextProvider";
 import {Metadata} from "next";
 import Script from "next/script";
-import Head from "next/head";
+import "react-image-gallery/styles/css/image-gallery.css"
 
 export const metadata: Metadata = {
   title: "S148 Engineering",
