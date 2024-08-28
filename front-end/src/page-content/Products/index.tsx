@@ -1,3 +1,5 @@
+'use client'
+
 import {PageMargins} from "@/components/PageMargins";
 import {MainTitle} from "@/components/homePage/MainTitle";
 import { Box } from '@mui/material';

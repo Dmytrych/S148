@@ -1,8 +1,27 @@
+'use client'
+
 import {Routes} from "@/routes";
-import {Typography} from "@mui/material";
+import {Typography, Badge, styled} from "@mui/material";
 import {locale} from "@/constants/locale/ua";
-import {CartBadge, TopBarItem, TopBarNavLinkDisabled } from "./NavMenu.styles";
 import {UndecoratedLink} from "../../ui/UndecoratedLink";
+
+export const CartBadge = styled(Badge)({
+  '& .MuiBadge-badge': {
+    right: -5,
+  },
+})
+
+export const TopBarItem = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  height: '50%',
+  margin: '1rem',
+});
+
+export const TopBarNavLinkDisabled = styled('span')({
+  cursor: 'default',
+  textDecoration: 'none',
+});
 
 interface Props {
   cartCount: number;

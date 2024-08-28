@@ -1,20 +1,26 @@
+'use client'
+
 import {
   Badge,
   Box,
   ClickAwayListener,
-  Grow,
   IconButton,
   MenuItem, MenuList,
   Paper,
   Popper,
-  Stack,
+  Stack, styled,
   Typography
 } from "@mui/material";
 import React, {useCallback, useState} from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import {NavItem} from "@/interfaces/layout";
-import {StyledLink} from "@/components/navbar/MobileNavMenu/MobileNavMenu.styles";
 import {Routes} from "@/routes";
+import Link from "next/link";
+
+export const StyledLink = styled(Link)(({theme}) => ({
+  textDecoration: "none",
+  color: theme.palette.text.primary
+}))
 
 interface Props {
   cartCount: number;

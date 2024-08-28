@@ -1,9 +1,16 @@
-import {Box, Stack} from "@mui/material";
+'use client'
+
+import {Box, Stack, styled} from "@mui/material";
 import {Socials} from "@/components/Footer/components/Socials";
 import {Contacts} from "@/components/Footer/components/Contacts";
 import {SmallLogo} from "@/components/SmallLogo";
-import {StyledFooter} from "@/components/Footer/Footer.styled";
 import Copyright from "@/components/ui/Copyright";
+
+const StyledFooter = styled("footer")(({theme}) => ({
+  width: "100%",
+  backgroundColor: theme.palette.background.default,
+  borderTop: `1px solid ${theme.palette.divider}`,
+}))
 
 export function Footer() {
   return (

@@ -1,4 +1,6 @@
-import * as React from "react";
+'use client'
+
+import { createContext } from "react";
 import {Dispatch, SetStateAction} from "react";
 
 export interface ICartSelection {
@@ -11,4 +13,4 @@ export interface ICartContext {
   setCart: Dispatch<SetStateAction<ICartSelection[]>>
 }
 
-export const CartContext = React.createContext<ICartContext>({} as ICartContext);
+export const CartContext = createContext<ICartContext>({} as ICartContext);

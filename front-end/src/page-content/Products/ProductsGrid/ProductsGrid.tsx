@@ -1,6 +1,6 @@
 import {Product} from "@/api/DTO/products";
 import {getProductRoute} from "@/helpers/links";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import {useProducts} from "@/hooks/useProducts";
 import { ContentLoader } from "@/components/ContentLoader/image";
 import {Stack} from "@mui/material";

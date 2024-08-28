@@ -50,6 +50,7 @@ services:
     container_name: frontend-s148
     environment:
       BACK_END_URL: ${BACK_END_URL}
+      GOOGLE_G_TAG: ${GOOGLE_G_TAG}
     ports:
       - '3000:3000'
     depends_on:

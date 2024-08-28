@@ -1,3 +1,9 @@
-import {StyledNavLink} from "@/components/ui/UndecoratedLink/UndecoratedLink.styles";
+'use client'
 
-export const UndecoratedLink = StyledNavLink;
+import {styled} from "@mui/material";
+import Link from "next/link";
+
+export const UndecoratedLink = styled(Link)({
+  textDecoration: 'none',
+  color: 'inherit',
+});

@@ -1,4 +1,6 @@
-import {Toolbar} from '@mui/material';
+'use client'
+
+import {AppBar, Box, styled, Toolbar} from '@mui/material';
 import {useMemo} from 'react';
 import {useCart} from "@/hooks/context/useCartState";
 import {NavMenu} from "../NavMenu";
@@ -10,7 +12,28 @@ import {Routes} from "@/routes";
 import {NavItem} from "@/interfaces/layout";
 import {locale} from "@/locale/ua";
 import {SmallLogo} from "@/components/SmallLogo";
-import {ItemMenu, StyledAppBar} from "@/components/navbar/Navbar/Navbar.styled";
+import {Color} from "@/constants/color";
+import {topBarHeight} from "@/constants/size";
+
+export const StyledAppBar = styled(AppBar)({
+  backgroundColor: Color.NavbarBackgroundColor,
+  position: 'sticky',
+  height: topBarHeight,
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+export const ItemMenu = styled(Box)(({theme}) => ({
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'end',
+  flexGrow: '9',
+  [theme.breakpoints.up("md")]: {
+    paddingRight: "200px"
+  }
+}));
 
 const NAVBAR_ITEMS: NavItem[] = [
   {

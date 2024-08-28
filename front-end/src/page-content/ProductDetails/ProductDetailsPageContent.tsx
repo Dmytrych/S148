@@ -1,9 +1,11 @@
+'use client'
+
 import {Box, Grid} from '@mui/material';
 import {Product} from "@/api/DTO/products";
 import {useProductCartControls} from "@/hooks/useProductCartControls";
 import React from "react";
 import {Routes} from "@/routes";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import {ProductInfoTabs} from "@/page-content/ProductDetails/components/ProductInfoTabs";
 import {PageMargins} from "@/components/PageMargins";
 import {ProductDescription} from './components/ProductDescription/ProductDescription';
