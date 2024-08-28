@@ -4,12 +4,11 @@ import {ProductPhotosDisplay} from "@/components/product/ProductPhotosDisplay";
 
 interface ProductImageBlockProps {
     product: Product;
-    className?: string;
 }
 
-export function ProductImageBlock({ product, className }: ProductImageBlockProps) {
+export function ProductImageBlock({ product }: ProductImageBlockProps) {
   return (
-    <Box className={className}>
+    <Box>
       {product?.attributes?.images?.data ? (
         <ProductPhotosDisplay productImages={product?.attributes?.images?.data} />
       ) : null}
