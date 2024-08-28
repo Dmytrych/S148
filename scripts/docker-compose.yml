@@ -47,10 +47,10 @@ services:
         NEXT_PUBLIC_TWITTER_LINK: ${NEXT_PUBLIC_TWITTER_LINK}
         NEXT_PUBLIC_INSTAGRAM_LINK: ${NEXT_PUBLIC_INSTAGRAM_LINK}
         NEXT_PUBLIC_COPYRIGHT: ${NEXT_PUBLIC_COPYRIGHT}
+        NEXT_PUBLIC_GOOGLE_G_TAG: ${NEXT_PUBLIC_GOOGLE_G_TAG}
     container_name: frontend-s148
     environment:
       BACK_END_URL: ${BACK_END_URL}
-      GOOGLE_G_TAG: ${GOOGLE_G_TAG}
     ports:
       - '3000:3000'
     depends_on:
