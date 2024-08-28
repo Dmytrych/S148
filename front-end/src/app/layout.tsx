@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_G_TAG}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-TYBM8XHFER`}
         />
         <Script
           id="google-analytics"
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_G_TAG}');
+              gtag('config', 'G-TYBM8XHFER');
             `,
           }}
         />
