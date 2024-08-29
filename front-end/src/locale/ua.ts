@@ -29,6 +29,11 @@ export const locale = {
   products_page: 'Продукти',
   cart_page: 'Кошик',
 
+  // Head elements
+  home_page_title: 'Фірмовий магазин засобів для чищення та догляду за зброєю',
+  home_page_description: 'S148 Engineering представляє вам лінійку засобів для професійного чищення вашої зброї: мастила, розчинники іржі, розміднювачі та інші продукти',
+  not_found_product_page_title: 'Продукт не знайдено',
+
   total: 'Разом',
   to_be_paid: 'До сплати',
   goods_with_total_price: 'Товари на суму',
