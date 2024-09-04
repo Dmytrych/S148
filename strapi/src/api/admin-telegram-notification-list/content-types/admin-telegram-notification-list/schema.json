@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "admin_telegram_notification_lists",
+  "info": {
+    "singularName": "admin-telegram-notification-list",
+    "pluralName": "admin-telegram-notification-lists",
+    "displayName": "Admin Telegram Notification List"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "recipientName": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "telegramChatId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

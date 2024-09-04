@@ -788,6 +788,38 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAdminTelegramNotificationListAdminTelegramNotificationList
+  extends Schema.CollectionType {
+  collectionName: 'admin_telegram_notification_lists';
+  info: {
+    singularName: 'admin-telegram-notification-list';
+    pluralName: 'admin-telegram-notification-lists';
+    displayName: 'Admin Telegram Notification List';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    recipientName: Attribute.String & Attribute.Required & Attribute.Unique;
+    telegramChatId: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::admin-telegram-notification-list.admin-telegram-notification-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::admin-telegram-notification-list.admin-telegram-notification-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderOrder extends Schema.CollectionType {
   collectionName: 'orders';
   info: {
@@ -888,6 +920,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::admin-telegram-notification-list.admin-telegram-notification-list': ApiAdminTelegramNotificationListAdminTelegramNotificationList;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
     }
