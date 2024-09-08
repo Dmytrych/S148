@@ -1,11 +1,7 @@
 import Layout from "@/components/Layout";
-import {CssBaseline, ThemeProvider} from "@mui/material";
+import {ThemeProvider} from "@mui/material";
 import theme from "@/theme/appTheme";
-import "../theme/fontImports.css"
-import {CartStateContextProvider} from "@/contexts/CartStateContextProvider";
 import {Metadata, Viewport} from "next";
-import Script from "next/script";
-import "react-image-gallery/styles/css/image-gallery.css"
 import {locale} from "@/locale/ua";
 
 export const viewport: Viewport = {
@@ -40,29 +36,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-TYBM8XHFER`}
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-TYBM8XHFER');
-                `,
-          }}
-        />
         <ThemeProvider theme={theme}>
-          <CartStateContextProvider>
-            <CssBaseline/>
-            <Layout>
-              {children}
-            </Layout>
-          </CartStateContextProvider>
+          <Layout>
+            {children}
+          </Layout>
         </ThemeProvider>
       </body>
     </html>
