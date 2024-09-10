@@ -1,4 +1,5 @@
 import {locale} from "@/locale/ua";
+import {matchIsValidTel} from "mui-tel-input";
 export interface CartValidationErrors {
     name?: string;
     middleName?: string;
@@ -39,8 +40,7 @@ export function useOrderForm() {
     if (!values.email || !emailRegexp.test(values.email)) {
       errors.email = locale.field_should_contain_valid_email;
     }
-    const phoneRegexp = /(\+380)(\d{9})$/;
-    if (!values.phoneNumber || !phoneRegexp.test(values.phoneNumber)) {
+    if (!values.phoneNumber || !matchIsValidTel(values.phoneNumber, { onlyCountries: ["UA"] })) {
       errors.phoneNumber = locale.field_should_contain_valid_phone_number;
     }
     if (!values.description || values.description.length > 100) {

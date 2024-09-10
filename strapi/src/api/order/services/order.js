@@ -11,7 +11,13 @@ module.exports = createCoreService('api::order.order', ({ strapi }) =>  ({
   async create(params) {
     const result = await super.create(params);
 
-    const recipients = await strapi.entityService.findMany('api::admin-telegram-notification-list.admin-telegram-notification-list', {});
+    const recipients = await strapi.entityService.findMany('api::admin-telegram-notification-list.admin-telegram-notification-list', {
+      filters: {
+        publishedAt: {
+          $null: false,
+        },
+      },
+    });
 
     for (const recipient of recipients) {
       try {

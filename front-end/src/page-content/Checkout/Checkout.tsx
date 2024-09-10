@@ -10,6 +10,7 @@ import {CheckoutSuccessView} from "@/components/CheckoutSuccessView/CheckoutSucc
 import {CheckoutForm} from "@/components/checkout/CheckoutForm";
 
 export function Checkout() {
+  const [isCheckoutLoading, setCheckoutLoading] = useState(false);
   const [checkoutSuccess, setCheckoutSuccess] = useState(false);
   const { cart, clearCart } = useCart();
   const { data: productsData } = useProducts();
@@ -17,18 +18,20 @@ export function Checkout() {
   const cartItems = useCartItemsWithProductInfo(cart, productsData ?? []);
 
   const handleSubmit = async (values: IOrderFormFields): Promise<void> => {
+    setCheckoutLoading(() => true)
     const createdRequest = await createOrderFromFormValues(values, cartItems)
 
     if (createdRequest) {
       setCheckoutSuccess(true);
       clearCart();
     }
+    setCheckoutLoading(() => false)
   };
 
   return (
     <>
       {!checkoutSuccess ? (
-        <CheckoutForm cartProducts={cartItems} onSubmit={handleSubmit}/>
+        <CheckoutForm cartProducts={cartItems} onSubmit={handleSubmit} isLoading={isCheckoutLoading}/>
       ) : (
         <CheckoutSuccessView/>
       )}

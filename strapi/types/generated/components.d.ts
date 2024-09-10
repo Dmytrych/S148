@@ -13,29 +13,6 @@ export interface ProductDataCharacteristics extends Schema.Component {
   };
 }
 
-export interface PersonalInfoCustomerInfo extends Schema.Component {
-  collectionName: 'components_personal_info_customer_infos';
-  info: {
-    displayName: 'CustomerInfo';
-    icon: 'user';
-    description: '';
-  };
-  attributes: {
-    email: Attribute.Email;
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
-    surname: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
-    phoneNumber: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface OrderInfoOrderItem extends Schema.Component {
   collectionName: 'components_order_info_order_items';
   info: {
@@ -73,13 +50,33 @@ export interface OrderInfoDeliveryInfo extends Schema.Component {
   collectionName: 'components_order_info_delivery_infos';
   info: {
     displayName: 'DeliveryInfo';
+    description: '';
   };
   attributes: {
-    deliveryLocation: Attribute.Text &
+    deliveryLocation: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface PersonalInfoCustomerInfo extends Schema.Component {
+  collectionName: 'components_personal_info_customer_infos';
+  info: {
+    displayName: 'CustomerInfo';
+    icon: 'user';
+    description: '';
+  };
+  attributes: {
+    email: Attribute.Email;
+    name: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
-        minLength: 6;
+        minLength: 2;
       }>;
+    surname: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    phoneNumber: Attribute.String & Attribute.Required;
   };
 }
 
@@ -103,9 +100,9 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'product-data.characteristics': ProductDataCharacteristics;
-      'personal-info.customer-info': PersonalInfoCustomerInfo;
       'order-info.order-item': OrderInfoOrderItem;
       'order-info.delivery-info': OrderInfoDeliveryInfo;
+      'personal-info.customer-info': PersonalInfoCustomerInfo;
       'info-blocks.text-with-picture': InfoBlocksTextWithPicture;
     }
   }

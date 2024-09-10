@@ -1,14 +1,14 @@
 {
   "collectionName": "components_order_info_delivery_infos",
   "info": {
-    "displayName": "DeliveryInfo"
+    "displayName": "DeliveryInfo",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "deliveryLocation": {
       "type": "text",
-      "required": true,
-      "minLength": 6
+      "required": true
     }
   }
 }
