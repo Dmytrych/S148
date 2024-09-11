@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import {ThemeProvider} from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "@/theme/appTheme";
 import {Metadata, Viewport} from "next";
 import {locale} from "@/locale/ua";
@@ -37,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <ThemeProvider theme={theme}>
+          <CssBaseline/>
           <Layout>
             {children}
           </Layout>

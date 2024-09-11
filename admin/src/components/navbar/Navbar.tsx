@@ -2,6 +2,7 @@
 
 import {AppBar, styled, Toolbar} from '@mui/material';
 import {Color} from "@/constants/color";
+import SmallLogo from "@/components/ui/SmallLogo";
 
 export const StyledAppBar = styled(AppBar)({
   backgroundColor: Color.NavbarBackgroundColor,
@@ -15,7 +16,7 @@ const Navbar = () => {
   return (
     <StyledAppBar>
       <Toolbar>
-        Admin UI
+        <SmallLogo/>
       </Toolbar>
     </StyledAppBar>
   );

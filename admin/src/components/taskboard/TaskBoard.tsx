@@ -1,7 +1,9 @@
 'use client'
 
 import {ReactNode} from "react";
-import {Box, Stack} from "@mui/material";
+import {Box, Stack, styled} from "@mui/material";
+import {Color} from "@/constants/color";
+import {bodyHeight} from "@/constants/size";
 
 export type Item = {
   id: string;
@@ -14,6 +16,12 @@ export type Column<TItem extends Item> = {
 
 export type RenderColumnCallback<TItem extends Item, TColumn extends Column<TItem>> = (column: TColumn) => ReactNode
 
+const StyledStack = styled(Stack)(({ theme }) => ({
+  height: bodyHeight,
+  backgroundColor: Color.GlobalGreen40,
+  overflow: "auto"
+}))
+
 type TaskBoardProps<TItem extends Item, TColumn extends Column<TItem>> = {
   columns: TColumn[];
   renderColumn: RenderColumnCallback<TItem, TColumn>;
@@ -21,11 +29,11 @@ type TaskBoardProps<TItem extends Item, TColumn extends Column<TItem>> = {
 
 const TaskBoard = <TItem extends Item, TColumn extends Column<TItem>>({ columns, renderColumn }: TaskBoardProps<TItem, TColumn>) => {
 
-    return (
-        <Stack direction="row" gap={1}>
-            {columns.map((column) => (<Box key={column.id}>{renderColumn(column)}</Box>))}
-        </Stack>
-    )
+  return (
+    <StyledStack direction="row" gap={1} p={4}>
+      {columns.map((column) => (<Box key={column.id}>{renderColumn(column)}</Box>))}
+    </StyledStack>
+  )
 }
 
 export default TaskBoard;
