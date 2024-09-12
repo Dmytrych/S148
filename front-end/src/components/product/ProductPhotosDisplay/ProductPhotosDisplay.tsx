@@ -1,10 +1,11 @@
 import {useMemo} from "react";
-import {ApiImage} from "@/api/DTO/common/images";
+import {ApiImage, ImageFormatName} from "@/api/DTO/common/images";
 import ImageGallery, {ReactImageGalleryItem} from "react-image-gallery";
 import {Box, styled} from "@mui/material";
+import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 
-const getProductImageUrl = (imageUrl: string) => {
-  return `${process.env.NEXT_PUBLIC_IMAGE_PROVIDER_URL}${imageUrl}`
+const getProductImageUrl = (image: ApiImage, preferredFormat: ImageFormatName) => {
+  return `${process.env.NEXT_PUBLIC_IMAGE_PROVIDER_URL}${getOptimizedImageUrl(image, preferredFormat)}`
 }
 
 interface Props {
@@ -25,8 +26,8 @@ export function ProductPhotosDisplay({ productImages }: Props) {
     }
 
     return productImages.map((image) => ({
-      thumbnail: getProductImageUrl(image.attributes.formats.thumbnail.url),
-      original: getProductImageUrl(image.attributes.url),
+      thumbnail: getProductImageUrl(image, "thumbnail"),
+      original: getProductImageUrl(image, "medium"),
     }));
   }, [productImages])
 

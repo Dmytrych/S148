@@ -71,9 +71,6 @@ export function CheckoutForm({ cartProducts, onSubmit, isLoading }: ICartProps) 
                               <TextField variant="outlined" onChange={handleChange} name="surname"
                                 label={locale.surname} placeholder={locale.surname_placeholder} value={values.surname}
                                 helperText={touched.surname && errors.surname} error={Boolean(touched.surname && errors.surname)} onBlur={handleBlur} />
-                              <TextField variant="outlined" onChange={handleChange} name="email"
-                                label={locale.email} placeholder={locale.email_placeholder} value={values.email}
-                                helperText={touched.email && errors.email} error={Boolean(touched.email && errors.email)} onBlur={handleBlur} />
                               <MuiTelInput onlyCountries={["UA"]} defaultCountry="UA" value={values.phoneNumber} onChange={handleChangePhone} helperText={touched.phoneNumber && errors.phoneNumber}
                                 error={Boolean(touched.phoneNumber && errors.phoneNumber)} onBlur={handleBlur} />
                             </Box>

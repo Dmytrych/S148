@@ -7,10 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "email": {
-      "type": "email",
-      "required": false
-    },
     "name": {
       "type": "string",
       "required": true,

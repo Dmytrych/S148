@@ -6,7 +6,7 @@ import {getProductRoute} from "@/helpers/links";
 import {Product} from "@/api/DTO/products";
 import ProductImage from '@/components/ProductImage/ProductImage';
 import {getProductAvailabilityString} from "@/helpers/product/get-product-availability-string";
-import {getProductTitleImageUrl} from "@/helpers/product/get-product-title-image-url";
+import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 
 const LongButton = styled(Button)({
   width: "100%"
@@ -63,7 +63,7 @@ function TallProductCard({product, onBuyClick}: IProps) {
       <ProductContent gap={2}>
         <Link href={productLink} component={NextLink}>
           <ImageContainer>
-            <ProductImage imageUrl={getProductTitleImageUrl(product.attributes)} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
+            <ProductImage imageUrl={getOptimizedImageUrl(product?.attributes?.titleImage.data)} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
           </ImageContainer>
         </Link>
         <Stack direction="column" flex="1">

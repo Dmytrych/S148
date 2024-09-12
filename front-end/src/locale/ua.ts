@@ -1,6 +1,4 @@
 export const locale = {
-  email: 'E-mail адреса',
-  email_placeholder: 'samplemail@gmail.com',
   name: "Ім'я",
   name_placeholder: 'Петро',
   surname: 'Прізвище',

@@ -882,8 +882,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       >;
     characteristics: Attribute.Component<'product-data.characteristics', true>;
     inStock: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
-    titleImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
+    titleImage: Attribute.Media<'images'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,6 +1,6 @@
 import {CmsModel} from "@/api/DTO/common/common";
 
-export interface ImageThumbnail {
+export interface OptimizedImage {
     name: string,
     hash: string,
     ext: string,
@@ -12,11 +12,18 @@ export interface ImageThumbnail {
     url: string
 }
 
+export const imageFormats: ImageFormatName[] = ["small", "medium", "large"]
+
+export type ImageFormatName =  "small" | "medium" | "large" | "thumbnail"
+
 export type ApiImageAttributes = Media & {
     name: string,
     caption: string,
     formats: {
-        thumbnail: ImageThumbnail,
+        thumbnail: OptimizedImage,
+        large: OptimizedImage,
+        medium: OptimizedImage,
+        small: OptimizedImage
     },
     ext: string,
     mime: string,

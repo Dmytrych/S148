@@ -15,6 +15,7 @@ export type ProductAttributes = {
     };
     characteristics?: Characteristic[];
     inStock: boolean;
+    updatedAt: Date;
 }
 
 export interface Characteristic {
@@ -25,7 +26,7 @@ export interface Characteristic {
 export interface Product extends CmsModel<ProductAttributes> {
 }
 
-export interface IProductsApiResponse {
+export type ProductsApiResponse = {
     data: Product[];
     meta: Metadata;
 }
