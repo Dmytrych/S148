@@ -27,7 +27,7 @@ export default async function sitemap({
   }
 
   return products.map((product) => ({
-    url: `${process.env.NEXT_PUBLIC_HOST_NAME}/products/${product.id}`,
+    url: `https://${process.env.NEXT_PUBLIC_HOST_NAME}/products/${product.id}`,
     lastModified: product.attributes.updatedAt
   }))
 }
