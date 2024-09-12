@@ -2,7 +2,6 @@ export interface ICustomerInfo {
     name: string;
     surname: string;
     phoneNumber: string;
-    email: string;
 }
 
 export interface IOrderItem {

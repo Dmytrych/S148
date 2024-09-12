@@ -10,7 +10,6 @@ export function createOrderFromFormValues(values: IOrderFormFields, cart: CartPr
       name: values.name,
       surname: values.surname,
       phoneNumber: values.phoneNumber,
-      email: values.email,
     },
     items: cart.map((cartProduct) => ({
       product: cartProduct.productId,
