@@ -1,6 +1,6 @@
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
-import { IconButton, styled } from '@mui/material';
+import {IconButton, Stack, styled} from '@mui/material';
 import { useState } from 'react';
 
 const limit = 200;
@@ -29,15 +29,15 @@ function PlusMinusControl({
   };
 
   return (
-    <ControlContainer>
-      <IconButton onClick={handleDecrease}>
+    <Stack direction="row" alignItems="center">
+      <IconButton onClick={handleDecrease} size="small">
         <RemoveCircleOutlineOutlinedIcon />
       </IconButton>
       <ValueContainer>{value}</ValueContainer>
-      <IconButton onClick={handleIncrease}>
+      <IconButton onClick={handleIncrease} size="small">
         <AddCircleOutlineOutlinedIcon />
       </IconButton>
-    </ControlContainer>
+    </Stack>
   );
 }
 
@@ -45,14 +45,7 @@ const ValueContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  minWidth: '20px',
-});
-
-const ControlContainer = styled('div')({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  width: 'fit-content',
+  minWidth: '10px',
 });
 
 export default PlusMinusControl;

@@ -40,7 +40,7 @@ export function ProductDetailsPageContent({product}: IProductDetailsParams) {
           </Grid>
           <Grid item md={6} xs={12}>
             <PaperStyled elevation={3}>
-              <Box paddingX={5} paddingY={3}>
+              <Box sx={{ p: { xs: 2, sm: 3 } }}>
                 <ProductDescription
                   product={product}
                   handleInstantBuy={handleInstantBuy}

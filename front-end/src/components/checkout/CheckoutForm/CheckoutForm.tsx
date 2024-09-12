@@ -50,9 +50,9 @@ export function CheckoutForm({ cartProducts, onSubmit, isLoading }: ICartProps) 
                 await setFieldTouched('phoneNumber', true)
               }
               return (
-                <Box display="flex" flexGrow="1">
+                <Box display="flex" flexGrow="1" marginBottom={1}>
                   <Grid container>
-                    <Grid item md={8} xs={12}>
+                    <Grid item md={8} xs={12} spacing={2}>
                       <Stack spacing={2} >
                         <Box>
                           <Typography variant="h4">{locale.order_placement}</Typography>
