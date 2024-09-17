@@ -7,16 +7,8 @@ import {
   CardHeader, Chip,
   Typography
 } from "@mui/material";
-import {Item} from "@/components/taskboard/TaskBoard";
 import {formatRelative} from "date-fns";
-
-export type OrderItem = Item & {
-    title: string
-    creationDate?: Date
-    customerFullName: string
-    customerContact: string
-    price: string
-}
+import {OrderItem} from "@/services/orderConversionService";
 
 export type DefaultItemProps = {
     item: OrderItem

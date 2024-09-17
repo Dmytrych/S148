@@ -60,8 +60,8 @@ const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
       if (newToken && newUser) {
         handleUpdate( { token: newToken, user: newUser } )
-        setIsReady(true)
       }
+      setIsReady(true)
     }
   }, [])
 

@@ -2,6 +2,10 @@
 
 import * as jwt from 'jsonwebtoken';
 import {AuthContextFields} from "@/providers/auth";
+import {redirect, RedirectType} from "next/navigation";
+import {AUTH_PAGE} from "@/constants/routes";
+import {fetchDataFromClient} from "@/helpers/api-helpers";
+import {AxiosRequestConfig} from "axios";
 
 const TOKEN_KEY = 'auth'
 const USER_KEY = 'user'
@@ -49,4 +53,14 @@ export function getCachedUser() {
     console.log(e)
     return;
   }
+}
+
+export async function fetchWithToken<TResponse>(url: string, config?: AxiosRequestConfig<any>) {
+  const token = getCachedToken()
+
+  if (!token) {
+    redirect(AUTH_PAGE, RedirectType.replace)
+  }
+
+  return fetchDataFromClient<TResponse>(url, config)
 }

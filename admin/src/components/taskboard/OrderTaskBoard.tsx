@@ -3,15 +3,15 @@
 import TaskBoard from "@/components/taskboard/TaskBoard";
 import OrderColumnComponent from "@/components/taskboard/OrderColumnComponent";
 import OrderItemComponent from "@/components/taskboard/OrderItemComponent";
-import {useAuthContext} from "@/providers/auth";
 import {useMandatoryAuth} from "@/hooks/useMandatoryAuth";
+import useSWR from "swr";
+import {ApiRoutes} from "@/api/apiRoutes";
+import {getOrders} from "@/api/orders";
 
 const OrderTaskBoard = () => {
   useMandatoryAuth()
-  const { token, user } = useAuthContext();
 
-  console.log(token)
-  console.log(user)
+  const { data, isLoading } = useSWR(ApiRoutes.getOrdersUrl(), (url) => getOrders(url))
 
   const columns = [
     {
