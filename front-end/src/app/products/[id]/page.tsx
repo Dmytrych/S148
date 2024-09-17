@@ -40,7 +40,8 @@ export async function generateMetadata(
       title: product.attributes.name,
       description: product.attributes.shortDescription,
       images: product.attributes.titleImage ? [`${process.env.NEXT_PUBLIC_IMAGE_PROVIDER_URL}${getOptimizedImageUrl(product?.attributes?.titleImage.data)}`] : undefined,
-    }
+    },
+    robots: "follow,index",
   }
 }
 

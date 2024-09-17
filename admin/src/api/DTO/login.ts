@@ -5,14 +5,16 @@ export type LoginRequest = {
 
 export type LoginResponse = {
   jwt: string;
-  user: {
-    id: number,
-    username: string,
-    email: string,
-    provider: string,
-    confirmed: boolean,
-    blocked: boolean,
-    createdAt: Date,
-    updatedAt: Date
-  }
+  user: UserProfileDto
+}
+
+type UserProfileDto = {
+  id: number,
+  username: string,
+  email: string,
+  provider: string,
+  confirmed: boolean,
+  blocked: boolean,
+  createdAt: Date,
+  updatedAt: Date
 }

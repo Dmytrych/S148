@@ -3,8 +3,16 @@
 import TaskBoard from "@/components/taskboard/TaskBoard";
 import OrderColumnComponent from "@/components/taskboard/OrderColumnComponent";
 import OrderItemComponent from "@/components/taskboard/OrderItemComponent";
+import {useAuthContext} from "@/providers/auth";
+import {useMandatoryAuth} from "@/hooks/useMandatoryAuth";
 
 const OrderTaskBoard = () => {
+  useMandatoryAuth()
+  const { token, user } = useAuthContext();
+
+  console.log(token)
+  console.log(user)
+
   const columns = [
     {
       id: "test1",

@@ -3,6 +3,7 @@ import {CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "@/theme/appTheme";
 import {Metadata, Viewport} from "next";
 import {locale} from "@/locale/ua";
+import AuthContextProvider from "@/providers/auth";
 
 export const viewport: Viewport = {
   initialScale: 1,
@@ -36,12 +37,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline/>
-          <Layout>
-            {children}
-          </Layout>
-        </ThemeProvider>
+        <AuthContextProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <Layout>
+              {children}
+            </Layout>
+          </ThemeProvider>
+        </AuthContextProvider>
       </body>
     </html>
   )

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/checkout"
   },
-  robots: "noindex,nofollow",
+  robots: "noindex,follow",
 }
 
 export default function CheckoutPage() {

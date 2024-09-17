@@ -2,7 +2,7 @@ import OrderTaskBoard from "@/components/taskboard/OrderTaskBoard";
 
 
 function Page() {
-    return (<OrderTaskBoard/>)
+  return (<OrderTaskBoard/>)
 }
 
 export default Page;

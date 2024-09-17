@@ -1,11 +1,15 @@
 'use client'
 
 import {Formik, FormikHelpers} from "formik";
-import {Box, Button, Stack, TextField, Typography} from "@mui/material";
+import {Button, Stack, TextField, Typography} from "@mui/material";
 import {locale} from "@/locale/ua";
 import {getToken} from "@/api/login";
 import {ApiRoutes} from "@/api/apiRoutes";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getCachedToken, isExpired, saveJwtInfo} from "@/services/authService";
+import {useRouter} from "next/navigation";
+import {AUTH_PAGE, HOME_PAGE} from "@/constants/routes";
+import {useAuthContext} from "@/providers/auth";
 
 type LoginValues = {
   identifier: string;
@@ -18,14 +22,18 @@ const initialValues: LoginValues = {
 }
 
 const Page = () => {
+  const { update } = useAuthContext();
+  const { replace } = useRouter();
   const [error, setError] = useState<string>();
 
   const handleSubmit = async (values: LoginValues, helpers: FormikHelpers<LoginValues>) => {
     try {
       const token = await getToken(ApiRoutes.loginUrl(), values)
-      console.log(token)
+
+      update({ token: token.jwt, user: token.user })
+      replace(HOME_PAGE)
     } catch (e) {
-      setError("Unable to log you in")
+      setError("Unable to log you in");
     } finally {
       helpers.setSubmitting(false);
     }

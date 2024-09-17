@@ -23,12 +23,14 @@ export const locale = {
   to_checkout: 'Замовити',
   cart_empty: 'Ваш кошик порожній',
 
+  cart_title: 'Кошик',
+
   home_page: 'Головна',
   products_page: 'Продукти',
   cart_page: 'Кошик',
 
   // Head elements
-  home_page_title: 'Фірмовий магазин засобів для чищення та догляду за зброєю',
+  home_page_title: 'Засоби для догляду за зброєю S148',
   home_page_description: 'S148 Engineering представляє вам лінійку засобів для професійного чищення вашої зброї: мастила, розчинники іржі, розміднювачі та інші продукти',
   not_found_product_page_title: 'Продукт не знайдено',
 
