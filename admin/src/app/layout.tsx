@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     description: locale.home_page_description,
     images: ['/images/S148.png'],
   },
+  robots: "index, follow",
   manifest: "/manifest.json"
 }
 

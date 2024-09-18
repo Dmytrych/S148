@@ -7,6 +7,7 @@ import {Product} from "@/api/DTO/products";
 import ProductImage from '@/components/ProductImage/ProductImage';
 import {getProductAvailabilityString} from "@/helpers/product/get-product-availability-string";
 import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
+import {Color} from "@/constants/color";
 
 const LongButton = styled(Button)({
   width: "100%"
@@ -61,11 +62,9 @@ function TallProductCard({product, onBuyClick}: IProps) {
   return (
     <StyledPaper elevation={4} square>
       <ProductContent gap={2}>
-        <Link href={productLink} component={NextLink}>
-          <ImageContainer>
-            <ProductImage imageUrl={getOptimizedImageUrl(product?.attributes?.titleImage.data)} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
-          </ImageContainer>
-        </Link>
+        <ImageContainer>
+          <ProductImage imageUrl={getOptimizedImageUrl(product?.attributes?.titleImage.data)} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
+        </ImageContainer>
         <Stack direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
             <Typography variant="body1" fontWeight="500" fontSize='1.1rem' >
@@ -80,10 +79,10 @@ function TallProductCard({product, onBuyClick}: IProps) {
           </StyledDescriptionTypography>
           <Stack direction="column" flex="1" justifyContent="flex-end">
             <Box>
-              <Typography color={theme => theme.palette.text.secondary} variant="body2">{availability}</Typography>
+              <Typography color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
             </Box>
             <Box>
-              <LongButton variant="contained" color="primary" onClick={onBuyClick}>{locale.buy}</LongButton>
+              <LongButton variant="contained" color="primary" onClick={onBuyClick} aria-label={locale.buy}>{locale.buy}</LongButton>
             </Box>
           </Stack>
         </Stack>
