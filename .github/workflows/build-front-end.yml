@@ -1,17 +1,23 @@
-name: build-front-end
+name: Build and Deploy Docker Containers
+
 on:
-  workflow_dispatch:
-jobs: 
-  build:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: checkout repo
-      - name: Enter project directory
+  push:
+    branches:
+      - production
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Build and Deploy using Docker Compose
+      - name: Deploy with Docker Compose
         run: |
-          cd front-end
-      - name: use node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-      - run: yarn install
-      - run: yarn run build
+          cd /scripts/
+          
+          echo secrets.TEST_SECRET
+          echo TEST_VARIABLE
