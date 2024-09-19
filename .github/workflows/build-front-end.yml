@@ -17,7 +17,5 @@ jobs:
       # Step 2: Build and Deploy using Docker Compose
       - name: Deploy with Docker Compose
         run: |
-          ls -la
-          
           echo "${{secrets.TEST_SECRET}}"
           echo "$TEST_VARIABLE"
