@@ -48,4 +48,5 @@ jobs:
           NEXT_PUBLIC_GOOGLE_G_TAG: ${{vars.NEXT_PUBLIC_GOOGLE_G_TAG}}
         run: |
           cd ./scripts
-          printenv
+
+          docker-compose up --build --force-recreate -d
