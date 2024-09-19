@@ -17,36 +17,36 @@ jobs:
 
       # Step 2: Build and Deploy using Docker Compose
       - name: Deploy with Docker Compose
+        env:
+          HOST: ${{vars.HOST}}
+          PORT: ${{vars.PORT}}
+          APP_KEYS: ${{secrets.APP_KEYS}}
+          API_TOKEN_SALT: ${{secrets.API_TOKEN_SALT}}
+          ADMIN_JWT_SECRET: ${{secrets.ADMIN_JWT_SECRET}}
+          TRANSFER_TOKEN_SALT: ${{secrets.TRANSFER_TOKEN_SALT}}
+          DATABASE_CLIENT: ${{vars.DATABASE_CLIENT}}
+          DATABASE_PORT: ${{secrets.DATABASE_PORT}}
+          DATABASE_NAME: ${{vars.DATABASE_NAME}}
+          DATABASE_HOST: ${{vars.DATABASE_HOST}}
+          DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
+          DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+          JWT_SECRET: ${{secrets.JWT_SECRET}}
+          TELEGRAM_API_KEY: ${{secrets.TELEGRAM_API_KEY}}
+
+          NEXT_PUBLIC_BACK_END_URL: ${{vars.NEXT_PUBLIC_BACK_END_URL}}
+          NEXT_PUBLIC_IMAGE_PROVIDER_URL: ${{vars.NEXT_PUBLIC_IMAGE_PROVIDER_URL}}
+          NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN: ${{vars.NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN}}
+          NEXT_PUBLIC_EMAIL: ${{vars.NEXT_PUBLIC_EMAIL}}
+          NEXT_PUBLIC_PHONE_NUMBER: ${{vars.NEXT_PUBLIC_PHONE_NUMBER}}
+          NEXT_PUBLIC_PHONE_NUMBER_FOR_URL: ${{vars.NEXT_PUBLIC_PHONE_NUMBER_FOR_URL}}
+          NEXT_PUBLIC_FACEBOOK_LINK: ${{vars.NEXT_PUBLIC_FACEBOOK_LINK}}
+          NEXT_PUBLIC_TWITTER_LINK: ${{vars.NEXT_PUBLIC_TWITTER_LINK}}
+          NEXT_PUBLIC_INSTAGRAM_LINK: ${{vars.NEXT_PUBLIC_INSTAGRAM_LINK}}
+          NEXT_PUBLIC_COPYRIGHT: ${{vars.NEXT_PUBLIC_COPYRIGHT}}
+          NEXT_PUBLIC_HOST_NAME: ${{vars.NEXT_PUBLIC_HOST_NAME}}
+          BACK_END_URL: ${{vars.BACK_END_URL}}
+          NEXT_PUBLIC_GOOGLE_G_TAG: ${{vars.NEXT_PUBLIC_GOOGLE_G_TAG}}
         run: |
           cd ./scripts
 
-          HOST=${{vars.HOST}}
-          PORT=${{vars.PORT}}
-          APP_KEYS=${{secrets.APP_KEYS}}
-          API_TOKEN_SALT=${{secrets.API_TOKEN_SALT}}
-          ADMIN_JWT_SECRET=${{secrets.ADMIN_JWT_SECRET}}
-          TRANSFER_TOKEN_SALT=${{secrets.TRANSFER_TOKEN_SALT}}
-          DATABASE_CLIENT=${{vars.DATABASE_CLIENT}}
-          DATABASE_PORT=${{secrets.DATABASE_PORT}}
-          DATABASE_NAME=${{vars.DATABASE_NAME}}
-          DATABASE_HOST=${{vars.DATABASE_HOST}}
-          DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}}
-          DATABASE_PASSWORD=${{secrets.DATABASE_PASSWORD}}
-          JWT_SECRET=${{secrets.JWT_SECRET}}
-          TELEGRAM_API_KEY=${{secrets.TELEGRAM_API_KEY}}
-
-          NEXT_PUBLIC_BACK_END_URL=${{vars.NEXT_PUBLIC_BACK_END_URL}}
-          NEXT_PUBLIC_IMAGE_PROVIDER_URL=${{vars.NEXT_PUBLIC_IMAGE_PROVIDER_URL}}
-          NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN=${{vars.NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN}}
-          NEXT_PUBLIC_EMAIL=${{vars.NEXT_PUBLIC_EMAIL}}
-          NEXT_PUBLIC_PHONE_NUMBER=${{vars.NEXT_PUBLIC_PHONE_NUMBER}}
-          NEXT_PUBLIC_PHONE_NUMBER_FOR_URL=${{vars.NEXT_PUBLIC_PHONE_NUMBER_FOR_URL}}
-          NEXT_PUBLIC_FACEBOOK_LINK=${{vars.NEXT_PUBLIC_FACEBOOK_LINK}}
-          NEXT_PUBLIC_TWITTER_LINK=${{vars.NEXT_PUBLIC_TWITTER_LINK}}
-          NEXT_PUBLIC_INSTAGRAM_LINK=${{vars.NEXT_PUBLIC_INSTAGRAM_LINK}}
-          NEXT_PUBLIC_COPYRIGHT=${{vars.NEXT_PUBLIC_COPYRIGHT}}
-          NEXT_PUBLIC_HOST_NAME=${{vars.NEXT_PUBLIC_HOST_NAME}}
-          BACK_END_URL=${{vars.BACK_END_URL}}
-          NEXT_PUBLIC_GOOGLE_G_TAG=${{vars.NEXT_PUBLIC_GOOGLE_G_TAG}}
-          
           printenv
