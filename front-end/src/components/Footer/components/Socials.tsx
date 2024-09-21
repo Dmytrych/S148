@@ -3,7 +3,7 @@ import {Facebook, Instagram} from "@mui/icons-material";
 
 const SOCIAL_MEDIA_LINKS = {
   facebook: process.env.NEXT_PUBLIC_FACEBOOK_LINK ?? "",
-  instagram: process.env.NEXT_PUBLIC_INSTAGRAM_LIMK ?? "",
+  instagram: process.env.NEXT_PUBLIC_INSTAGRAM_LINK ?? "",
 };
 
 export function Socials() {
