@@ -25,8 +25,14 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
       TELEGRAM_API_KEY: ${TELEGRAM_API_KEY}
+      STRAPI_HEALTHCHECK_ENDPOINT: ${STRAPI_HEALTHCHECK_ENDPOINT}
     depends_on:
       - strapi-postgres
+    healthcheck:
+      test: ["CMD", "curl", "-f", "${STRAPI_HEALTHCHECK_ENDPOINT}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     logging:
       driver: "json-file"
       options:
