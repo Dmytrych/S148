@@ -9,8 +9,11 @@ module.exports = {
    * This gives you an opportunity to extend code.
    */
   register(props) {
-    const apiKey = strapi.config.get('server.telegramBot.apiKey', 'defaultValueIfUndefined');
-    createTelegramBot(apiKey)
+    const apiKey = strapi.config.get('server.telegramBot.apiKey', undefined);
+
+    if (apiKey?.length) {
+      createTelegramBot(apiKey)
+    }
   },
 
   /**
