@@ -14,6 +14,7 @@ import {locale} from "@/locale/ua";
 import {SmallLogo} from "@/components/SmallLogo";
 import {Color} from "@/constants/color";
 import {topBarHeight} from "@/constants/size";
+import {Article} from "@mui/icons-material";
 
 export const StyledAppBar = styled(AppBar)({
   backgroundColor: Color.NavbarBackgroundColor,
@@ -40,6 +41,11 @@ const NAVBAR_ITEMS: NavItem[] = [
     title: locale.products_page,
     link: Routes.Home,
     icon: <StorefrontIcon />,
+  },
+  {
+    title: locale.articles_page,
+    link: Routes.Cart,
+    icon: <Article />,
   },
   {
     title: locale.cart_page,

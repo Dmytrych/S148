@@ -23,6 +23,7 @@ export const locale = {
 
   home_page: 'Головна',
   products_page: 'Продукти',
+  about_cleaning_page: 'Про чистку',
   cart_page: 'Кошик',
 
   total: 'Разом',

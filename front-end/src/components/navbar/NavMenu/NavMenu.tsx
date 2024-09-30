@@ -36,6 +36,11 @@ export function NavMenu({cartCount}: Props) {
         </UndecoratedLink>
       </TopBarItem>
       <TopBarItem>
+        <UndecoratedLink href={Routes.Articles}>
+          <Typography variant="navbarLink">{locale.about_cleaning_page}</Typography>
+        </UndecoratedLink>
+      </TopBarItem>
+      <TopBarItem>
         {cartCount <= 0 ? (
           <TopBarNavLinkDisabled>
             <Typography variant="navbarLink" sx={{ opacity: "20%" }}>{locale.cart_page}</Typography>

@@ -1,5 +1,5 @@
 export const ApiRoutes = {
-  articleUrl: (slug: string) => `/articles/slug/${slug}`,
+  articleUrl: (slug: string) => `/article/slug/${slug}`,
   articlesUrl: () => `/articles`,
   productUrl: (productId: string) => `/products/${productId}`,
   productsUrl: () => "/products",

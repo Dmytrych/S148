@@ -27,6 +27,7 @@ export const locale = {
 
   home_page: 'Головна',
   products_page: 'Продукти',
+  articles_page: 'Статті',
   cart_page: 'Кошик',
 
   // Head elements
@@ -70,4 +71,6 @@ export const locale = {
         "Номер відділення або адреса кур'єрської доставки",
 
   confirm_order: 'Підтвердити замовлення',
+
+  view_article: 'Читати...'
 };

@@ -4,6 +4,7 @@ export type ArticleAttributes = {
   id: number,
   slug: string,
   title: string,
+  description: string,
   author?: string,
   canonicalUrl?: string,
   content: string;
@@ -14,6 +15,8 @@ export type ArticleAttributes = {
 export type Article = CmsModel<ArticleAttributes> & {
 }
 
+export type ArticleProjection = (keyof ArticleAttributes)[]
+
 export type ArticleApiResponse = {
   data: Article;
   meta: Metadata;
@@ -21,5 +24,15 @@ export type ArticleApiResponse = {
 
 export type ArticlesApiResponse = {
   data: Article[];
+  meta: Metadata;
+}
+
+export type PartialArticleApiResponse<TArticle extends Partial<ArticleAttributes>> = {
+  data: CmsModel<TArticle>;
+  meta: Metadata;
+}
+
+export type PartialArticlesApiResponse<TArticle extends Partial<ArticleAttributes>> = {
+  data: CmsModel<TArticle>[];
   meta: Metadata;
 }
