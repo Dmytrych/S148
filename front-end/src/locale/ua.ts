@@ -1,3 +1,4 @@
+// Use
 export const locale = {
   name: "Ім'я",
   name_placeholder: 'Петро',

@@ -2,8 +2,8 @@
 
 import {Routes} from "@/routes";
 import {Typography, Badge, styled} from "@mui/material";
-import {locale} from "@/constants/locale/ua";
 import {UndecoratedLink} from "../../ui/UndecoratedLink";
+import {locale} from "@/locale/ua";
 
 export const CartBadge = styled(Badge)({
   '& .MuiBadge-badge': {
@@ -37,7 +37,7 @@ export function NavMenu({cartCount}: Props) {
       </TopBarItem>
       <TopBarItem>
         <UndecoratedLink href={Routes.Articles}>
-          <Typography variant="navbarLink">{locale.about_cleaning_page}</Typography>
+          <Typography variant="navbarLink">{locale.articles_page}</Typography>
         </UndecoratedLink>
       </TopBarItem>
       <TopBarItem>

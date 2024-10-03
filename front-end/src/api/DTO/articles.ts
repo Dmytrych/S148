@@ -1,4 +1,5 @@
 import {CmsModel, Metadata} from "@/api/DTO/common/common";
+import {ApiImage} from "@/api/DTO/common/images";
 
 export type ArticleAttributes = {
   id: number,
@@ -9,7 +10,11 @@ export type ArticleAttributes = {
   canonicalUrl?: string,
   content: string;
   createdAt: Date,
-  updatedAt: Date
+  updatedAt: Date,
+  coverImage: {
+    data: ApiImage;
+  },
+  keywords: string
 }
 
 export type Article = CmsModel<ArticleAttributes> & {

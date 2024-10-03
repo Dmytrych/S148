@@ -3,9 +3,9 @@ import {Product} from "@/api/DTO/products";
 import {ContentLoader} from "@/components/ContentLoader/image";
 import NextImage from "@/components/ProductCard/NextImage";
 import {StyledStack} from "@/components/ProductCard/ProductCard.styles";
-import {locale} from "@/constants/locale/ua";
 import Link from "next/link";
 import {Routes} from "@/routes";
+import {locale} from "@/locale/ua";
 
 interface Props {
   product: Product;

@@ -8,10 +8,7 @@ import {notFound} from "next/navigation";
 import {ArticleAttributes} from "@/api/DTO/articles";
 import {MDXRemote} from "next-mdx-remote/rsc";
 import Image from "next/image";
-
-type ArticleSlugProjection = {
-  slug: string;
-}
+import ArticleContent from "@/components/articles/ArticleContent";
 
 type ArticleMetadataProjection = {
   slug: string;
@@ -26,14 +23,14 @@ type PageParams = {
 }
 
 export async function generateStaticParams() {
-  const posts = await fetchArticles<ArticleSlugProjection>(["slug"]);
+  const posts = await fetchArticles<ArticleAttributes>();
 
   if (!posts) {
     return;
   }
 
   return posts.map((post) => ({
-    slug: post.attributes.slug,
+    slug: post.attributes.slug
   }));
 }
 
@@ -82,7 +79,7 @@ async function Page({ params }: ArticlePageProps) {
       <article>
         <Typography variant="h5">{article.attributes.title}</Typography>
         <Box>
-          <MDXRemote source={article.attributes.content} components={components}/>
+          <ArticleContent content={article.attributes.content}/>
         </Box>
       </article>
     </Container>

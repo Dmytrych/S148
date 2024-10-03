@@ -9,12 +9,13 @@ import {
   PartialArticlesApiResponse
 } from "@/api/DTO/articles";
 
-export const fetchArticles = cache(async <TArticle extends Partial<ArticleAttributes>>(projection?: ArticleProjection) => {
+export const fetchArticles = cache(async <TArticle extends Partial<ArticleAttributes>>(projection?: ArticleProjection, populate?: ArticleProjection) => {
   try {
     const productApiResponse = await fetchDataFromServer<PartialArticlesApiResponse<TArticle>>(ApiRoutes.articlesUrl(), {
       method: "GET",
       params: {
-        fields: projection
+        fields: projection,
+        populate
       }})
 
     return productApiResponse.data

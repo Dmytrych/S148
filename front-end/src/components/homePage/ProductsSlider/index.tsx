@@ -1,1 +1,0 @@
-export {ProductsSlider} from "@/components/homePage/ProductsSlider/ProductsSlider";

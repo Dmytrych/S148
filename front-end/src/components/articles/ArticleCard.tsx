@@ -1,4 +1,4 @@
-import {Card, CardActions, CardContent, Typography} from "@mui/material";
+import {Card, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
 import {ReactNode} from "react";
 import Link from "next/link";
 
@@ -7,11 +7,18 @@ type ArticleCardProps = {
   description: string;
   renderBottomButtons?: () => ReactNode | ReactNode[];
   titleUrl: string;
+  imageSrc: string;
+  altText: string;
 }
 
-const ArticleCard = ({ title, description, renderBottomButtons, titleUrl }: ArticleCardProps) => {
+const ArticleCard = ({ title, description, renderBottomButtons, titleUrl, imageSrc, altText }: ArticleCardProps) => {
   return (
     <Card sx={{ maxWidth: 345, flexGrow: 1 }}>
+      <CardMedia
+        sx={{ height: 200 }}
+        image={imageSrc}
+        title={altText}
+      />
       <CardContent>
         <Link href={titleUrl}>
           <Typography gutterBottom variant="h5" component="div">
