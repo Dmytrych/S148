@@ -6,14 +6,14 @@ import {fetchArticles} from "@/actions/fetchArticles";
 import {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {ArticleAttributes} from "@/api/DTO/articles";
-import {MDXRemote} from "next-mdx-remote/rsc";
-import Image from "next/image";
 import ArticleContent from "@/components/articles/ArticleContent";
 
 type ArticleMetadataProjection = {
   slug: string;
   title: string;
   canonicalUrl: string;
+  description: string;
+  keywords: string;
 }
 
 type PageParams = {
@@ -35,7 +35,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
-  const article = await fetchArticleBySlug<ArticleMetadataProjection>(params.slug, ["slug", "title", "canonicalUrl"]);
+  const article = await fetchArticleBySlug<ArticleMetadataProjection>(params.slug, ["slug", "title", "canonicalUrl", "description", "keywords"]);
 
   if (!article) {
     return notFound();
@@ -43,8 +43,12 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
   return {
     title: article.attributes.title,
+    description: article.attributes.description,
+    keywords: article.attributes.keywords,
+    robots: "index,follow",
     openGraph: {
       title: article.attributes.title,
+      description: article.attributes.description,
     },
     alternates: {
       canonical: article.attributes.canonicalUrl
@@ -57,11 +61,6 @@ type ArticlePageProps = {
     slug: string;
   }
 }
-
-const components = {
-  Image
-}
-
 
 async function Page({ params }: ArticlePageProps) {
   if (!params?.slug) {
