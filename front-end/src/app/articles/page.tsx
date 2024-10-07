@@ -2,7 +2,6 @@ import {ArticleAttributes} from "@/api/DTO/articles";
 import {fetchArticles} from "@/actions/fetchArticles";
 import AdaptiveCardGrid from "@/components/articles/AdaptiveCardGrid";
 import ArticleCard from "@/components/articles/ArticleCard";
-import Link from "next/link";
 import {locale} from "@/locale/ua";
 import {Routes} from "@/routes";
 import {notFound} from "next/navigation";

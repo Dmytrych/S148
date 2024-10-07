@@ -44,7 +44,7 @@ const NAVBAR_ITEMS: NavItem[] = [
   },
   {
     title: locale.articles_page,
-    link: Routes.Cart,
+    link: Routes.Articles,
     icon: <Article />,
   },
   {
