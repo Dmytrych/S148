@@ -26,7 +26,7 @@ export async function generateStaticParams() {
   const posts = await fetchArticles<ArticleAttributes>();
 
   if (!posts) {
-    return;
+    return [];
   }
 
   return posts.map((post) => ({
