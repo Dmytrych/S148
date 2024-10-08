@@ -16,6 +16,9 @@ async function Page() {
     <Box display="flex" justifyContent="center" mb={2}>
       <Typography variant="h5_squares">{locale.articles_page}</Typography>
     </Box>
+    <Box>
+      {JSON.stringify(articles)}
+    </Box>
     { articles ? <AdaptiveCardGrid items={articles} renderItem={(article) => (
       <ArticleCard
         imageSrc={getImageUrl(getOptimizedImageUrl(article.attributes.coverImage.data, 'small')) ?? ""}
