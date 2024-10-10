@@ -9,7 +9,7 @@ import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 import {getImageUrl} from "@/helpers/image-url";
 import {Metadata} from "next";
 
-export const revalidate = 60
+export const revalidate = 600
 
 export const metadata: Metadata = {
   title: locale.articles_page_title,
