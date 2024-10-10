@@ -7,8 +7,17 @@ import {Routes} from "@/routes";
 import {Box, Container, Typography} from "@mui/material";
 import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 import {getImageUrl} from "@/helpers/image-url";
+import {Metadata} from "next";
 
 export const revalidate = 60
+
+export const metadata: Metadata = {
+  title: locale.articles_page_title,
+  openGraph: {
+    title: locale.articles_page_title
+  },
+  robots: "follow,noindex",
+}
 
 async function Page() {
   const articles = await fetchArticles<ArticleAttributes>(['title', 'slug', 'createdAt', 'description'], ['coverImage'])

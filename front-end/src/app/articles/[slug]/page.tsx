@@ -1,5 +1,3 @@
-'use server'
-
 import {Box, Container, Typography} from "@mui/material";
 import {fetchArticleBySlug} from "@/actions/fetchArticleBySlug";
 import {fetchArticles} from "@/actions/fetchArticles";
@@ -30,7 +28,7 @@ export async function generateStaticParams() {
   }
 
   return posts.map((post) => ({
-    slug: post.attributes.slug
+    slug: post.attributes.slug,
   }));
 }
 
@@ -61,6 +59,8 @@ type ArticlePageProps = {
     slug: string;
   }
 }
+
+export const revalidate = 30
 
 async function Page({ params }: ArticlePageProps) {
   if (!params?.slug) {
