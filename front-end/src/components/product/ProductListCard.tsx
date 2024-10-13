@@ -4,10 +4,11 @@ import {PriceTag} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
 import {getProductRoute} from "@/helpers/links";
 import {Product} from "@/api/DTO/products";
-import ProductImage from '@/components/ProductImage/ProductImage';
 import {getProductAvailabilityString} from "@/helpers/product/get-product-availability-string";
 import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 import {Color} from "@/constants/color";
+import ProductListCardImage from "@/components/product/ProductListCardImage";
+import {useMemo} from "react";
 
 const LongButton = styled(Button)({
   width: "100%"
@@ -18,7 +19,7 @@ const StyledPaper = styled(Paper)(({theme}) => ({
   height: '500px',
   width: '300px',
   padding: '16px 16px 24px 16px',
-  border: `1px solid ${theme.palette.border.main}`
+  border: `1px solid ${theme.palette.grey}`
 }));
 
 const ProductContent = styled(Box)({
@@ -55,15 +56,23 @@ interface IProps {
   onBuyClick?: () => void;
 }
 
-function TallProductCard({product, onBuyClick}: IProps) {
+function ProductListCard({product, onBuyClick}: IProps) {
   const availability = getProductAvailabilityString(product.attributes.inStock);
   const productLink = getProductRoute(product.id.toString());
+
+  const imageUrl = useMemo(() => {
+    if (!product?.attributes?.titleImage?.data) {
+      return;
+    }
+
+    return getOptimizedImageUrl(product?.attributes?.titleImage?.data, "small")
+  }, [product]);
 
   return (
     <StyledPaper elevation={4} square>
       <ProductContent gap={2}>
         <ImageContainer>
-          <ProductImage imageUrl={getOptimizedImageUrl(product?.attributes?.titleImage.data)} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
+          <ProductListCardImage imageUrl={imageUrl} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
         </ImageContainer>
         <Stack direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
@@ -91,4 +100,4 @@ function TallProductCard({product, onBuyClick}: IProps) {
   );
 }
 
-export default TallProductCard;
+export default ProductListCard;

@@ -4,7 +4,7 @@ import {useRouter} from "next/navigation";
 import {useProducts} from "@/hooks/useProducts";
 import { ContentLoader } from "@/components/ContentLoader/image";
 import {Stack} from "@mui/material";
-import TallProductCard from "@/components/TallProductCard";
+import ProductListCard from "@/components/product/ProductListCard";
 
 const ProductsGrid = () => {
   const { data: productData, isLoading: productsLoading} = useProducts();
@@ -16,9 +16,9 @@ const ProductsGrid = () => {
 
   return (
     <ContentLoader isLoading={productsLoading}>
-      <Stack direction="row" flexWrap="wrap" gap={3} justifyContent="start">
+      <Stack direction="row" flexWrap="wrap" gap={3} justifyContent={{ xs: "center", md: "start" }}>
         {productData ? productData.map((product, index) => (
-          <TallProductCard
+          <ProductListCard
             key={product.id}
             product={product}
             onBuyClick={() => handleBuyClick(product)}

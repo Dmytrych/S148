@@ -27,7 +27,7 @@ const findMostOptimalProductAttributes = (image: ApiImage, preferredFormat: Imag
 }
 
 
-export const getOptimizedImageUrl = (image: ApiImage, preferredFormat: ImageFormatName = "medium") => {
+export const getOptimizedImageUrl = (image?: ApiImage, preferredFormat: ImageFormatName = "medium") => {
   if (!image?.attributes) {
     return;
   }
