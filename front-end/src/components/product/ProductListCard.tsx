@@ -1,4 +1,16 @@
-import {Box, Button, Paper, styled, Typography, Link, Stack} from '@mui/material';
+import {
+  Box,
+  Button,
+  Paper,
+  styled,
+  Typography,
+  Link,
+  Stack,
+  CardContent,
+  Card,
+  CardMedia,
+  CardActions, IconButton
+} from '@mui/material';
 import NextLink from "next/link";
 import {PriceTag} from "@/components/PriceTag";
 import {locale} from "@/locale/ua";
@@ -9,14 +21,14 @@ import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 import {Color} from "@/constants/color";
 import ProductListCardImage from "@/components/product/ProductListCardImage";
 import {useMemo} from "react";
+import {getImageUrl} from "@/helpers/image-url";
+import Image from "next/image";
+import ProductImage from "@/components/ProductImage/ProductImage";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-const LongButton = styled(Button)({
-  width: "100%"
-});
-
-const StyledPaper = styled(Paper)(({theme}) => ({
+const StyledPaper = styled(Box)(({theme}) => ({
   overflow: "hidden",
-  height: '500px',
+  height: '300px',
   width: '300px',
   padding: '16px 16px 24px 16px',
   border: `1px solid ${theme.palette.grey}`
@@ -33,13 +45,6 @@ const ImageContainer = styled(Box)({
   width: "100%",
   height: "250px",
   backgroundColor: "white",
-});
-
-const ProductPriceBox = styled(Box)({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
 });
 
 const StyledDescriptionTypography = styled(Typography)({
@@ -69,34 +74,33 @@ function ProductListCard({product, onBuyClick}: IProps) {
   }, [product]);
 
   return (
-    <StyledPaper elevation={4} square>
-      <ProductContent gap={2}>
-        <ImageContainer>
-          <ProductListCardImage imageUrl={imageUrl} alt={product.attributes.name}/>
-        </ImageContainer>
-        <Stack direction="column" flex="1">
+    <Card square elevation={0} sx={{display: "flex", flexDirection: "column", aspectRatio: "2 / 3"}}>
+      <Box flex={1}>
+        <ProductListCardImage imageUrl={imageUrl} alt={product.attributes.name}/>
+      </Box>
+      <CardContent sx={{ paddingX: 0, paddingY: 0.5 }}>
+        <Stack ml={0} direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
             <Typography variant="body1" fontWeight="500" fontSize='1.1rem' >
               {product.attributes.name}
             </Typography>
           </Link>
-          <ProductPriceBox>
-            <PriceTag price={product.attributes.price}/>
-          </ProductPriceBox>
-          <StyledDescriptionTypography variant="body2">
-            {product.attributes.shortDescription}
-          </StyledDescriptionTypography>
-          <Stack direction="column" flex="1" justifyContent="flex-end">
-            <Box>
-              <Typography color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
-            </Box>
-            <Box>
-              <LongButton variant="contained" color="primary" onClick={onBuyClick} aria-label={locale.buy}>{locale.buy}</LongButton>
-            </Box>
-          </Stack>
         </Stack>
-      </ProductContent>
-    </StyledPaper>
+      </CardContent>
+      <Box sx={{ flexDirection: "column" }}>
+        <Box width="100%">
+          <Typography color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
+        </Box>
+        <Box display="flex" direction="row" justifyContent="space-between" width="100%">
+          <Box>
+            <PriceTag price={product.attributes.price}/>
+          </Box>
+          <IconButton onClick={onBuyClick} color="primary" aria-label={locale.buy} size="small" variant="contained">
+            <ShoppingCartOutlinedIcon/>
+          </IconButton>
+        </Box>
+      </Box>
+    </Card>
   );
 }
 

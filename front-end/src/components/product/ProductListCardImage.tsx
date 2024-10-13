@@ -9,6 +9,11 @@ type Props = {
   alt: string;
 }
 
+const StyledImage = styled(Image)({
+  maxWidth: "100%",
+  maxHeight: "100%",
+})
+
 const ImageContainer = styled(Box)({
   width: "100%",
   height: "100%",
@@ -21,15 +26,14 @@ const ProductListCardImage = ({ imageUrl, alt }: Props) => {
   const image = error ? ProductPlaceholderImage : getImageUrl(imageUrl);
   return (
     <ImageContainer>
-      <Image
-        priority={true}
+      <StyledImage
+        priority
         src={image}
         alt={alt}
         onError={setError}
         fill
         style={{
-          objectFit: "contain",
-          backgroundColor: "white"
+          objectFit: "contain"
         }}
       />
     </ImageContainer>

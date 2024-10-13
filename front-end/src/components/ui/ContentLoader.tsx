@@ -1,7 +1,7 @@
 import {ReactNode} from "react";
 import {Box, BoxProps, CircularProgress} from "@mui/material";
 
-interface Props extends BoxProps {
+type Props = BoxProps & {
     isLoading: boolean;
     children: ReactNode;
 }
