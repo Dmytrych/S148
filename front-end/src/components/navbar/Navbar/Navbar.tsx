@@ -4,14 +4,12 @@ import {AppBar, Box, styled, Toolbar} from '@mui/material';
 import {useMemo} from 'react';
 import {useCart} from "@/hooks/context/useCartState";
 import {NavMenu} from "../NavMenu";
-import {useIsMobile} from "@/hooks/useIsMobile";
 import {MobileNavMenu} from "../MobileNavMenu";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import {Routes} from "@/routes";
 import {NavItem} from "@/interfaces/layout";
 import {locale} from "@/locale/ua";
-import {SmallLogo} from "@/components/SmallLogo";
 import {Color} from "@/constants/color";
 import {topBarHeight} from "@/constants/size";
 import {Article} from "@mui/icons-material";
@@ -29,12 +27,26 @@ export const ItemMenu = styled(Box)(({theme}) => ({
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'row',
-  justifyContent: 'end',
+  justifyContent: 'center',
   flexGrow: '9',
-  [theme.breakpoints.up("md")]: {
-    paddingRight: "200px"
+  [theme.breakpoints.down("md")]: {
+    justifyContent: "end"
   }
 }));
+
+const MobileOnlyContent = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    display: "none"
+  }
+}))
+
+const DesktopOnlyContent = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    display: "none"
+  },
+  display: "flex",
+  flexDirection: "row"
+}))
 
 const NAVBAR_ITEMS: NavItem[] = [
   {
@@ -55,7 +67,6 @@ const NAVBAR_ITEMS: NavItem[] = [
 ]
 
 const Navbar = () => {
-  const isMobile = useIsMobile();
   const { cart } = useCart();
 
   const cartCount = useMemo(() => {
@@ -64,14 +75,14 @@ const Navbar = () => {
 
   return (
     <StyledAppBar>
-      <Toolbar>
-        <SmallLogo />
+      <Toolbar sx={{ justifyContent: "center" }}>
         <ItemMenu>
-          { !isMobile ? (
+          <DesktopOnlyContent>
             <NavMenu cartCount={cartCount}/>
-          ) : (
+          </DesktopOnlyContent>
+          <MobileOnlyContent>
             <MobileNavMenu cartCount={cartCount} items={NAVBAR_ITEMS}/>
-          ) }
+          </MobileOnlyContent>
         </ItemMenu>
       </Toolbar>
     </StyledAppBar>

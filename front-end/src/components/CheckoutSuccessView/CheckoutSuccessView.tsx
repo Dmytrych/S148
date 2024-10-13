@@ -6,8 +6,7 @@ import {useIsMobile} from "@/hooks/useIsMobile";
 import {locale} from "@/locale/ua";
 
 export function CheckoutSuccessView() {
-  const isMobile = useIsMobile();
-  const imageSize = isMobile ? 300 : 400;
+  const imageSize = 300;
   return (
     <Stack alignItems="center">
       <Stack flexDirection="column" spacing={2} mx={1} mt={{ xs: 20, sm: 1 }}>

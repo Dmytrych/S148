@@ -16,7 +16,7 @@ const ProductsGrid = () => {
 
   return (
     <ContentLoader isLoading={productsLoading}>
-      <Stack direction="row" flexWrap="wrap" gap={3} justifyContent="center">
+      <Stack direction="row" flexWrap="wrap" gap={3} justifyContent="start">
         {productData ? productData.map((product, index) => (
           <TallProductCard
             key={product.id}

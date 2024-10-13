@@ -39,11 +39,13 @@ export async function generateMetadata(
     openGraph: {
       title: product.attributes.name,
       description: product.attributes.shortDescription,
-      images: product.attributes.titleImage ? [`${process.env.NEXT_PUBLIC_IMAGE_PROVIDER_URL}${getOptimizedImageUrl(product?.attributes?.titleImage.data)}`] : undefined,
+      images: product.attributes.titleImage ? [`${process.env.NEXT_PUBLIC_IMAGE_PROVIDER_URL}${getOptimizedImageUrl(product?.attributes?.titleImage?.data)}`] : undefined,
     },
     robots: "follow,index",
   }
 }
+
+export const revalidate = 3600
 
 export default async function ProductDetailsPage({ params }: ProductDetailsPageProps) {
   if (!params.id) {
