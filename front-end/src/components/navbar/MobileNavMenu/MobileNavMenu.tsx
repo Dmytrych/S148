@@ -58,16 +58,16 @@ export function MobileNavMenu({items, cartCount}: Props) {
               id="composition-menu"
               aria-labelledby="composition-button"
             >
-              {items.map((item, index) => <MenuItem key={index}>
-                <Stack direction="row" justifyContent="flex-start" alignItems="center" gap={2} minWidth="200px">
-                  {item.icon}
-                  <Badge color="primary" badgeContent={cartCount} invisible={item.link !== Routes.Cart}>
-                    <StyledLink href={item.link}>
+              {items.map((item, index) => <StyledLink href={item.link}>
+                <MenuItem key={index}>
+                  <Stack direction="row" justifyContent="flex-start" alignItems="center" gap={2} minWidth="200px">
+                    {item.icon}
+                    <Badge color="primary" badgeContent={cartCount} invisible={item.link !== Routes.Cart}>
                       <Typography variant="h5">{item.title}</Typography>
-                    </StyledLink>
-                  </Badge>
-                </Stack>
-              </MenuItem>)}
+                    </Badge>
+                  </Stack>
+                </MenuItem>
+              </StyledLink>)}
             </MenuList>
           </ClickAwayListener>
         </Paper>
