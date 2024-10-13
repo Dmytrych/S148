@@ -72,7 +72,7 @@ function ProductListCard({product, onBuyClick}: IProps) {
     <StyledPaper elevation={4} square>
       <ProductContent gap={2}>
         <ImageContainer>
-          <ProductListCardImage imageUrl={imageUrl} sx={{height: "100%", width: "100%"}} alt={product.attributes.name}/>
+          <ProductListCardImage imageUrl={imageUrl} alt={product.attributes.name}/>
         </ImageContainer>
         <Stack direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
