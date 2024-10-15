@@ -1,4 +1,4 @@
-import {Box, Grid2, Stack} from "@mui/material";
+import {Grid2} from "@mui/material";
 import {ReactNode} from "react";
 
 type AdaptiveCardGridProps<TItem> = {
