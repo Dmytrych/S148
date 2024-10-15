@@ -35,7 +35,7 @@ type FetchResult<T> = {
   error?: string;
 };
 
-export async function fetchFromServer<T>({ method, url, body, headers = {}, otherOptions, queryParams }: FetchDataParams): Promise<FetchResult<T> | undefined> {
+export async function fetchFromServer<T>({ method, url, body, headers = {}, otherOptions, queryParams }: FetchDataParams): Promise<T | undefined> {
   try {
     const fullUrl = `${process.env.BACK_END_URL}${url}?${qs.stringify(queryParams, { arrayFormat: 'brackets' })}`
 
@@ -53,11 +53,11 @@ export async function fetchFromServer<T>({ method, url, body, headers = {}, othe
 
     if (!response.ok) {
       const errorText = await response.text();
-      return { error: `Error ${response.status}: ${errorText || response.statusText}` };
+      console.log(`Request failed: ${errorText}`)
+      return;
     }
 
-    const data = (await response.json()) as T;
-    return { data };
+    return (await response.json()) as T;
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.log(`Request failed: ${error.message}`)

@@ -61,7 +61,8 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - strapi
+      strapi:
+        condition: service_healthy
     logging:
       driver: "json-file"
       options:

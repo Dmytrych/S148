@@ -20,7 +20,7 @@ export const fetchArticles = async <TArticle extends Partial<ArticleAttributes>>
       otherOptions: nextOptions
     })
 
-    return productApiResponse?.data?.data
+    return productApiResponse?.data
   } catch (err) {
     console.log(err);
     return undefined;

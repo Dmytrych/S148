@@ -16,7 +16,7 @@ export const fetchArticleBySlug = cache(async <TArticle extends Partial<ArticleA
       otherOptions: nextOptions
     })
 
-    return productApiResponse?.data?.data
+    return productApiResponse?.data
   } catch (err) {
     console.log(err);
     return undefined;
