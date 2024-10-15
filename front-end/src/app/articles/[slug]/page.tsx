@@ -60,7 +60,7 @@ type ArticlePageProps = {
   }
 }
 
-export const revalidate = 600
+export const revalidate = 60
 
 async function Page({ params }: ArticlePageProps) {
   if (!params?.slug) {
