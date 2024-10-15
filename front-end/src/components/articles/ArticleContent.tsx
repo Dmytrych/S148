@@ -17,7 +17,11 @@ const components = {
 const ArticleContent = ({ content }: ArticleContentProps) => {
   return (
     <Box>
-      <ErrorBoundary fallbackRender={(props) => <div>{JSON.stringify(props.error)}</div>}>
+      <ErrorBoundary fallbackRender={(props) => {
+        "use server"
+
+        return <div>{JSON.stringify(props.error)}</div>
+      }}>
         <MDXRemote source={content} components={components}/>
       </ErrorBoundary>
     </Box>
