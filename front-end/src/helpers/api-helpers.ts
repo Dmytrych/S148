@@ -35,7 +35,7 @@ type FetchResult<T> = {
   error?: string;
 };
 
-export async function fetchFromServer<T>({ method, url, body, headers = {}, otherOptions, queryParams }: FetchDataParams): Promise<FetchResult<T>> {
+export async function fetchFromServer<T>({ method, url, body, headers = {}, otherOptions, queryParams }: FetchDataParams): Promise<FetchResult<T> | undefined> {
   try {
     const fullUrl = `${process.env.BACK_END_URL}${url}?${qs.stringify(queryParams, { arrayFormat: 'brackets' })}`
 
