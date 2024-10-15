@@ -29,7 +29,7 @@ services:
     depends_on:
       - strapi-postgres
     healthcheck:
-      test: ["CMD", "curl", "-f", "${STRAPI_HEALTHCHECK_ENDPOINT}"]
+      test: ["CMD", "curl", "-f", "http://strapi:1447/api/healthcheck"]
       interval: 10s
       timeout: 10s
       retries: 5
