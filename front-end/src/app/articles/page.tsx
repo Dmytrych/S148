@@ -31,8 +31,8 @@ async function Page() {
     </Box>
     { articles ? <AdaptiveCardGrid<CmsModel<ArticleAttributes>> items={articles} renderItem={(article) => (
       <ArticleCard
-        imageSrc={getImageUrl(getOptimizedImageUrl(article.attributes.coverImage?.data, 'small')) ?? ""}
-        altText={article.attributes.coverImage?.data.attributes.alternativeText}
+        imageSrc={article.attributes.coverImage ? getImageUrl(getOptimizedImageUrl(article.attributes.coverImage?.data, 'small')) : undefined}
+        altText={article.attributes.coverImage?.data?.attributes?.alternativeText}
         titleUrl={`${Routes.Articles}/${article.attributes.slug}`}
         title={article.attributes.title}
         description={article.attributes.description}
