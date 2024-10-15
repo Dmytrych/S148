@@ -67,7 +67,7 @@ async function Page({ params }: ArticlePageProps) {
     return notFound()
   }
 
-  const article = await fetchArticleBySlug<ArticleAttributes>(params.slug, { revalidate: 180 })
+  const article = await fetchArticleBySlug<ArticleAttributes>(params.slug, undefined, { revalidate: 180 })
 
   if (!article) {
     return notFound()
