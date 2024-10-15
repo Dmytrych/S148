@@ -17,7 +17,7 @@ const components = {
 const ArticleContent = ({ content }: ArticleContentProps) => {
   return (
     <Box>
-      <ErrorBoundary fallback={<div>{locale.unexpected_error_occurred}</div>}>
+      <ErrorBoundary fallbackRender={(props) => <div>{JSON.stringify(props.error)}</div>}>
         <MDXRemote source={content} components={components}/>
       </ErrorBoundary>
     </Box>
