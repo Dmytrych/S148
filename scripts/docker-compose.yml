@@ -30,7 +30,7 @@ services:
       - strapi-postgres
     healthcheck:
       test: ["CMD", "curl", "-f", "${STRAPI_HEALTHCHECK_ENDPOINT}"]
-      interval: 30s
+      interval: 10s
       timeout: 10s
       retries: 5
     logging:
