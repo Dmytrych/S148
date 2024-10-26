@@ -38,7 +38,7 @@ function ProductListCard({product, onBuyClick}: IProps) {
 
   return (
     <Card square elevation={0} sx={{display: "flex", flexDirection: "column", aspectRatio: "2 / 3"}}>
-      <Box flex={3}>
+      <Box flex={1} sx={{ aspectRatio: "1 / 1" }}>
         <ProductListCardImage imageUrl={imageUrl} alt={product.attributes.name}/>
       </Box>
       <CardContent sx={{ paddingX: 0, paddingY: 0.5 }}>
