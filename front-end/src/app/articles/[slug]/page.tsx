@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
       description: article.attributes.description,
     },
     alternates: {
-      canonical: article.attributes.canonicalUrl
+      canonical: article.attributes.canonicalUrl ?? `https://${process.env.NEXT_PUBLIC_HOST_NAME}/articles/${article.attributes.slug}`,
     }
   };
 }
