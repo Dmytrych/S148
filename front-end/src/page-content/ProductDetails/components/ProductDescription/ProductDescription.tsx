@@ -18,11 +18,11 @@ export function ProductDescription({ product, handleInstantBuy, handleAddToCart 
   const availability = getProductAvailabilityString(product.attributes.inStock);
 
   const handleSnackbarClose = () => {
-    setSnackbarOpen(false)
+    setSnackbarOpen(() => false)
   }
 
   const handleAddToCartCb = () => {
-    setSnackbarOpen(true)
+    setSnackbarOpen(() => true)
     handleAddToCart()
   }
 
@@ -41,10 +41,10 @@ export function ProductDescription({ product, handleInstantBuy, handleAddToCart 
         </IconButton>
       </Stack>
       <Snackbar
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={snackbarOpen}
         onClose={handleSnackbarClose}
-        autoHideDuration={1000}>
+        autoHideDuration={2000}>
         <Alert
           severity="success"
           variant="filled"

@@ -1,15 +1,11 @@
 import {
   Box,
-  Button,
-  Paper,
-  styled,
   Typography,
   Link,
   Stack,
   CardContent,
   Card,
-  CardMedia,
-  CardActions, IconButton
+  IconButton
 } from '@mui/material';
 import NextLink from "next/link";
 import {PriceTag} from "@/components/PriceTag";
@@ -21,40 +17,7 @@ import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 import {Color} from "@/constants/color";
 import ProductListCardImage from "@/components/product/ProductListCardImage";
 import {useMemo} from "react";
-import {getImageUrl} from "@/helpers/image-url";
-import Image from "next/image";
-import ProductImage from "@/components/ProductImage/ProductImage";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-
-const StyledPaper = styled(Box)(({theme}) => ({
-  overflow: "hidden",
-  height: '300px',
-  width: '300px',
-  padding: '16px 16px 24px 16px',
-  border: `1px solid ${theme.palette.grey}`
-}));
-
-const ProductContent = styled(Box)({
-  display: 'flex',
-  flexDirection: 'column',
-  width: "100%",
-  height: "100%"
-});
-
-const ImageContainer = styled(Box)({
-  width: "100%",
-  height: "250px",
-  backgroundColor: "white",
-});
-
-const StyledDescriptionTypography = styled(Typography)({
-  height: '3.5rem',
-  '-webkit-box-orient': 'vertical',
-  display: '-webkit-box',
-  overflow: 'hidden !important',
-  textOverflow: 'ellipsis',
-  '-webkit-line-clamp': "3"
-})
 
 interface IProps {
   product: Product;
@@ -91,14 +54,14 @@ function ProductListCard({product, onBuyClick}: IProps) {
         <Box width="100%">
           <Typography color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
         </Box>
-        <Box display="flex" direction="row" justifyContent="space-between" width="100%">
+        <Stack display="flex" direction="row" justifyContent="space-between" width="100%">
           <Box>
             <PriceTag price={product.attributes.price}/>
           </Box>
-          <IconButton onClick={onBuyClick} color="primary" aria-label={locale.buy} size="small" variant="contained">
+          <IconButton onClick={onBuyClick} color="primary" aria-label={locale.buy} size="small">
             <ShoppingCartOutlinedIcon/>
           </IconButton>
-        </Box>
+        </Stack>
       </Box>
     </Card>
   );
