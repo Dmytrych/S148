@@ -38,21 +38,21 @@ function ProductListCard({product, onBuyClick}: IProps) {
 
   return (
     <Card square elevation={0} sx={{display: "flex", flexDirection: "column", aspectRatio: "2 / 3"}}>
-      <Box flex={1}>
+      <Box flex={3}>
         <ProductListCardImage imageUrl={imageUrl} alt={product.attributes.name}/>
       </Box>
       <CardContent sx={{ paddingX: 0, paddingY: 0.5 }}>
         <Stack ml={0} direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
-            <Typography variant="body1" fontWeight="500" fontSize='1.1rem' >
+            <Typography variant="body1" fontWeight="500" fontSize='1.1rem'>
               {product.attributes.name}
             </Typography>
           </Link>
         </Stack>
       </CardContent>
-      <Box sx={{ flexDirection: "column" }}>
+      <Box flex={1} sx={{ flexDirection: "column" }}>
         <Box width="100%">
-          <Typography color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
+          <Typography display="inline-block" color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
         </Box>
         <Stack display="flex" direction="row" justifyContent="space-between" width="100%">
           <Box>
