@@ -37,7 +37,7 @@ function ProductListCard({product, onBuyClick}: IProps) {
   }, [product]);
 
   return (
-    <Card square elevation={0} sx={{display: "flex", flexDirection: "column"}}>
+    <Card square elevation={0} sx={{display: "flex", flexDirection: "column", height: "100%" }}>
       <Box flex={1} sx={{ aspectRatio: "1 / 1" }}>
         <ProductListCardImage imageUrl={imageUrl} alt={product.attributes.name}/>
       </Box>
@@ -50,21 +50,19 @@ function ProductListCard({product, onBuyClick}: IProps) {
           </Link>
         </Stack>
       </CardContent>
-      <CardContent sx={{ paddingX: 0, paddingY: 0.5 }}>
-        <Stack flex={1} direction="column" sx={{ justifyContent: "flex-end" }}>
-          <Box width="100%">
-            <Typography display="inline-block" color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
+      <Stack sx={{ paddingX: 0, justifyContent: "flex-end", flexGrow: 1 }}>
+        <Box width="100%">
+          <Typography display="inline-block" color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
+        </Box>
+        <Stack display="flex" direction="row" justifyContent="space-between" width="100%">
+          <Box>
+            <PriceTag price={product.attributes.price}/>
           </Box>
-          <Stack display="flex" direction="row" justifyContent="space-between" width="100%">
-            <Box>
-              <PriceTag price={product.attributes.price}/>
-            </Box>
-            <IconButton onClick={onBuyClick} color="primary" aria-label={locale.buy} size="small">
-              <ShoppingCartOutlinedIcon/>
-            </IconButton>
-          </Stack>
+          <IconButton onClick={onBuyClick} color="primary" aria-label={locale.buy} size="small">
+            <ShoppingCartOutlinedIcon/>
+          </IconButton>
         </Stack>
-      </CardContent>
+      </Stack>
     </Card>
   );
 }

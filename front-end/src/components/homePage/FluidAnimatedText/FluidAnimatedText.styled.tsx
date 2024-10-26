@@ -1,4 +1,4 @@
-import {Box, Container, keyframes, styled} from "@mui/material";
+import {Box, keyframes, styled} from "@mui/material";
 
 const fluidAnimation = keyframes`
   0%,100% {
