@@ -50,7 +50,7 @@ function ProductListCard({product, onBuyClick}: IProps) {
           </Link>
         </Stack>
       </CardContent>
-      <Box flex={1} sx={{ flexDirection: "column", justifyContent: "end" }}>
+      <Stack flex={1} direction="column" sx={{ justifyContent: "flex-end" }}>
         <Box width="100%">
           <Typography display="inline-block" color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
         </Box>
@@ -62,7 +62,7 @@ function ProductListCard({product, onBuyClick}: IProps) {
             <ShoppingCartOutlinedIcon/>
           </IconButton>
         </Stack>
-      </Box>
+      </Stack>
     </Card>
   );
 }
