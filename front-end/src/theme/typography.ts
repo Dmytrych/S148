@@ -73,9 +73,8 @@ export default {
     },
   },
   h5_squares: {
-    fontSize: '1.25rem',
     '@media (min-width:600px)': {
-      fontSize: '1.5rem',
+      fontSize: '1.25rem',
     },
     '@media (min-width:960px)': {
       fontSize: '1.75rem',
@@ -110,8 +109,7 @@ export default {
     },
   },
   body1: {
-    fontSize: '1rem',
-    lineHeight: 1.5,
+    fontSize: '1rem'
   },
   body2: {
     fontSize: '0.875rem',

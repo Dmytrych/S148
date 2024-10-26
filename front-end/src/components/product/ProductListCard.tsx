@@ -37,32 +37,34 @@ function ProductListCard({product, onBuyClick}: IProps) {
   }, [product]);
 
   return (
-    <Card square elevation={0} sx={{display: "flex", flexDirection: "column", aspectRatio: "2 / 3"}}>
+    <Card square elevation={0} sx={{display: "flex", flexDirection: "column"}}>
       <Box flex={1} sx={{ aspectRatio: "1 / 1" }}>
         <ProductListCardImage imageUrl={imageUrl} alt={product.attributes.name}/>
       </Box>
       <CardContent sx={{ paddingX: 0, paddingY: 0.5 }}>
         <Stack ml={0} direction="column" flex="1">
           <Link href={productLink} component={NextLink}>
-            <Typography variant="body1" fontWeight="500" fontSize='1.1rem'>
+            <Typography variant="body1" fontWeight="500">
               {product.attributes.name}
             </Typography>
           </Link>
         </Stack>
       </CardContent>
-      <Stack flex={1} direction="column" sx={{ justifyContent: "flex-end" }}>
-        <Box width="100%">
-          <Typography display="inline-block" color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
-        </Box>
-        <Stack display="flex" direction="row" justifyContent="space-between" width="100%">
-          <Box>
-            <PriceTag price={product.attributes.price}/>
+      <CardContent sx={{ paddingX: 0, paddingY: 0.5 }}>
+        <Stack flex={1} direction="column" sx={{ justifyContent: "flex-end" }}>
+          <Box width="100%">
+            <Typography display="inline-block" color={Color.GlobalBlack60} variant="body2">{availability}</Typography>
           </Box>
-          <IconButton onClick={onBuyClick} color="primary" aria-label={locale.buy} size="small">
-            <ShoppingCartOutlinedIcon/>
-          </IconButton>
+          <Stack display="flex" direction="row" justifyContent="space-between" width="100%">
+            <Box>
+              <PriceTag price={product.attributes.price}/>
+            </Box>
+            <IconButton onClick={onBuyClick} color="primary" aria-label={locale.buy} size="small">
+              <ShoppingCartOutlinedIcon/>
+            </IconButton>
+          </Stack>
         </Stack>
-      </Stack>
+      </CardContent>
     </Card>
   );
 }
