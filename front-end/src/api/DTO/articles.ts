@@ -11,7 +11,7 @@ export type ArticleAttributes = {
   content: string;
   createdAt: Date,
   updatedAt: Date,
-  coverImage: {
+  coverImage?: {
     data: ApiImage;
   },
   keywords: string

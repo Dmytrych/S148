@@ -29,8 +29,8 @@ services:
     depends_on:
       - strapi-postgres
     healthcheck:
-      test: ["CMD", "curl", "-f", "${STRAPI_HEALTHCHECK_ENDPOINT}"]
-      interval: 30s
+      test: ["CMD", "curl", "-f", "http://localhost:1447/api/healthcheck"]
+      interval: 10s
       timeout: 10s
       retries: 5
     logging:
@@ -52,6 +52,7 @@ services:
         NEXT_PUBLIC_PHONE_NUMBER_FOR_URL: ${NEXT_PUBLIC_PHONE_NUMBER_FOR_URL}
         NEXT_PUBLIC_FACEBOOK_LINK: ${NEXT_PUBLIC_FACEBOOK_LINK}
         NEXT_PUBLIC_INSTAGRAM_LINK: ${NEXT_PUBLIC_INSTAGRAM_LINK}
+        NEXT_PUBLIC_TELEGRAM_LINK: ${NEXT_PUBLIC_TELEGRAM_LINK}
         NEXT_PUBLIC_COPYRIGHT: ${NEXT_PUBLIC_COPYRIGHT}
         NEXT_PUBLIC_GOOGLE_G_TAG: ${NEXT_PUBLIC_GOOGLE_G_TAG}
         NEXT_PUBLIC_HOST_NAME: ${NEXT_PUBLIC_HOST_NAME}
@@ -61,7 +62,8 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - strapi
+      strapi:
+        condition: service_healthy
     logging:
       driver: "json-file"
       options:

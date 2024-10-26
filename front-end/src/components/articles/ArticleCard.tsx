@@ -7,8 +7,8 @@ type ArticleCardProps = {
   description: string;
   renderBottomButtons?: () => ReactNode | ReactNode[];
   titleUrl: string;
-  imageSrc: string;
-  altText: string;
+  imageSrc?: string;
+  altText?: string;
 }
 
 const ArticleCard = ({ title, description, renderBottomButtons, titleUrl, imageSrc, altText }: ArticleCardProps) => {

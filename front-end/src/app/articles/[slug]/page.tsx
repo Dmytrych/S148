@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
       description: article.attributes.description,
     },
     alternates: {
-      canonical: article.attributes.canonicalUrl
+      canonical: article.attributes.canonicalUrl ?? `https://${process.env.NEXT_PUBLIC_HOST_NAME}/articles/${article.attributes.slug}`,
     }
   };
 }
@@ -60,14 +60,14 @@ type ArticlePageProps = {
   }
 }
 
-export const revalidate = 600
+export const revalidate = 60
 
 async function Page({ params }: ArticlePageProps) {
   if (!params?.slug) {
     return notFound()
   }
 
-  const article = await fetchArticleBySlug<ArticleAttributes>(params.slug)
+  const article = await fetchArticleBySlug<ArticleAttributes>(params.slug, undefined, { revalidate: 180 })
 
   if (!article) {
     return notFound()

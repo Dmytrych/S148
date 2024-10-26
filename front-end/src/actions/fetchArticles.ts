@@ -1,7 +1,6 @@
 'use server'
 
-import {cache} from "react";
-import {fetchDataFromServer} from "@/helpers/api-helpers";
+import {fetchFromServer} from "@/helpers/api-helpers";
 import {ApiRoutes} from "@/api/apiRoutes";
 import {
   ArticleAttributes,
@@ -9,18 +8,21 @@ import {
   PartialArticlesApiResponse
 } from "@/api/DTO/articles";
 
-export const fetchArticles = cache(async <TArticle extends Partial<ArticleAttributes>>(projection?: ArticleProjection, populate?: ArticleProjection) => {
+export const fetchArticles = async <TArticle extends Partial<ArticleAttributes>>(projection?: ArticleProjection, populate?: ArticleProjection, nextOptions?: any) => {
   try {
-    const productApiResponse = await fetchDataFromServer<PartialArticlesApiResponse<TArticle>>(ApiRoutes.articlesUrl(), {
+    const productApiResponse = await fetchFromServer<PartialArticlesApiResponse<TArticle>>({
+      url: ApiRoutes.articlesUrl(),
       method: "GET",
-      params: {
-        fields: projection,
-        populate
-      }})
+      queryParams: {
+        fields: projection as string[],
+        populate: populate as string[]
+      },
+      otherOptions: nextOptions
+    })
 
-    return productApiResponse.data
+    return productApiResponse?.data
   } catch (err) {
     console.log(err);
     return undefined;
   }
-})
+}

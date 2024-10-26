@@ -8,8 +8,9 @@ import {Box, Container, Typography} from "@mui/material";
 import {getOptimizedImageUrl} from "@/helpers/product/get-optimized-image-url";
 import {getImageUrl} from "@/helpers/image-url";
 import {Metadata} from "next";
+import {CmsModel} from "@/api/DTO/common/common";
 
-export const revalidate = 600
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: locale.articles_page_title,
@@ -20,16 +21,18 @@ export const metadata: Metadata = {
 }
 
 async function Page() {
-  const articles = await fetchArticles<ArticleAttributes>(['title', 'slug', 'createdAt', 'description'], ['coverImage'])
+  const articles = await fetchArticles<ArticleAttributes>(['title', 'slug', 'createdAt', 'description'], ['coverImage'], { revalidate: 120 })
+
+  console.log(JSON.stringify(articles))
 
   return (<Container sx={{ pt: 3 }}>
     <Box display="flex" justifyContent="center" mb={2}>
       <Typography variant="h5_squares">{locale.articles_page}</Typography>
     </Box>
-    { articles ? <AdaptiveCardGrid items={articles} renderItem={(article) => (
+    { articles ? <AdaptiveCardGrid<CmsModel<ArticleAttributes>> items={articles} renderItem={(article) => (
       <ArticleCard
-        imageSrc={getImageUrl(getOptimizedImageUrl(article.attributes.coverImage.data, 'small')) ?? ""}
-        altText={article.attributes.coverImage.data.attributes.alternativeText}
+        imageSrc={article.attributes.coverImage ? getImageUrl(getOptimizedImageUrl(article.attributes.coverImage?.data, 'small')) : undefined}
+        altText={article.attributes.coverImage?.data?.attributes?.alternativeText}
         titleUrl={`${Routes.Articles}/${article.attributes.slug}`}
         title={article.attributes.title}
         description={article.attributes.description}
