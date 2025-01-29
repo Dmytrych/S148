@@ -1,8 +1,7 @@
-import OrderTaskBoard from "@/components/taskboard/OrderTaskBoard";
-
+import HomePage from "@/components/home/HomePage";
 
 function Page() {
-  return (<OrderTaskBoard/>)
+  return (<HomePage/>)
 }
 
 export default Page;

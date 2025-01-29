@@ -3,5 +3,7 @@ export const ApiRoutes = {
   productUrl: (productId: string) => `/products/${productId}`,
   productsUrl: () => "/products",
   getOrdersUrl: () => "/orders",
-  homePage: () => "/home-page"
+  homePage: () => "/home-page",
+  articleUrl: (slug: string) => `/article/slug/${slug}`,
+  articlesUrl: () => `/articles`,
 }

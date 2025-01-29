@@ -23,8 +23,6 @@ export const metadata: Metadata = {
 async function Page() {
   const articles = await fetchArticles<ArticleAttributes>(['title', 'slug', 'createdAt', 'description'], ['coverImage'], { revalidate: 120 })
 
-  console.log(JSON.stringify(articles))
-
   return (<Container sx={{ pt: 3 }}>
     <Box display="flex" justifyContent="center" mb={2}>
       <Typography variant="h5_squares">{locale.articles_page}</Typography>
