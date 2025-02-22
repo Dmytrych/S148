@@ -3,7 +3,8 @@ FROM node:20
 WORKDIR /usr/src/app
 
 COPY package.json ./
-RUN yarn install
+COPY package-lock.json ./
+RUN npm install
 
 COPY . .
 
@@ -31,8 +32,8 @@ ENV NEXT_PUBLIC_TELEGRAM_LINK=$NEXT_PUBLIC_TELEGRAM_LINK
 ENV NEXT_PUBLIC_COPYRIGHT=$NEXT_PUBLIC_COPYRIGHT
 ENV NEXT_PUBLIC_HOST_NAME=$NEXT_PUBLIC_HOST_NAME
 
-RUN yarn build
+RUN npm run build
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
