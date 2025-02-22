@@ -1,0 +1,55 @@
+.rounded-button {
+    background-color: white;
+    width: fit-content;
+    border-radius: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.rounded-button:hover {
+    background-color: rgb(249, 255, 243);
+}
+
+.rounded-button-error {
+    color: var(--error-color);
+}
+
+.rounded-button:active {
+    background-color: rgb(206, 255, 147);
+}
+
+.rounded-button-success {
+    color: var(--success-color);
+}
+
+.rounded-button-disabled {
+    color: var(--global-color-inactive);
+    background-color: white;
+    width: fit-content;
+    border-radius: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.rounded-button-big {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.rounded-button-medium {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.rounded-button-small {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
