@@ -3,6 +3,6 @@ export function getArticlesRoute() {
 }
 
 export function getArticleEditRoute(slug: string) {
-  return `articles/edit/${slug}`
+  return `/articles/edit/${slug}`
 }
 
