@@ -11,9 +11,8 @@ type LoginValues = {
 }
 
 function LoginPage () {
-  const { user } = useLogin();
   const navigate = useNavigate();
-  const { handleLogin } = useLogin()
+  const { user, handleLogin } = useLogin()
   const {
     register,
     handleSubmit,

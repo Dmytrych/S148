@@ -1,11 +1,12 @@
-import {useEditor} from "@tiptap/react";
+import {Extensions, useEditor} from "@tiptap/react";
 import {Underline} from "@tiptap/extension-underline";
 import {StarterKit} from "@tiptap/starter-kit";
 import {TextAlign} from "@tiptap/extension-text-align";
 import {Link} from "@tiptap/extension-link";
+import {Image} from "@tiptap/extension-image";
 import RichTextEditor from "../rich-text-editor/RichTextEditor.tsx";
 
-const extensions = [
+const extensions: Extensions = [
   StarterKit,
   Underline,
   TextAlign.configure({
@@ -16,8 +17,7 @@ const extensions = [
     defaultProtocol: 'https',
     openOnClick: false,
   }),
-  Image,
-  History
+  Image
 ]
 
 type ArticleRteFormFieldProps = {
@@ -33,6 +33,10 @@ function ArticleRteFormField({ value, onChange }: ArticleRteFormFieldProps) {
       onChange(updateEvent.editor.getHTML())
     }
   })
+
+  if (!editor) {
+    return null
+  }
 
   return <RichTextEditor editor={editor} />
 }

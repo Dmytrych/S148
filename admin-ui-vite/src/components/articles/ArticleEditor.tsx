@@ -3,26 +3,29 @@ import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import ArticleRteFormField from "./ArticleRteFormField.tsx";
 
 type ArticleEditorProps = {
-  title: string;
-  content: string;
-  onSave: () => void;
+  values: ArticleEditValues
+  onSave: (values: ArticleEditValues) => void;
 }
 
-type ArticleValues = {
+export type ArticleEditValues = {
   title: string;
   content: string;
+  slug: string;
+  keywords: string;
+  description: string;
+  author: string;
 }
 
-export default function ArticleEditor({ title = '', content = '' }: ArticleEditorProps) {
+export default function ArticleEditor({ values, onSave }: ArticleEditorProps) {
   const {
     control,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ArticleValues>({ defaultValues: { title, content } });
+  } = useForm<ArticleEditValues>({ defaultValues: { ...values } });
 
-  const onSubmit: SubmitHandler<ArticleValues> = async (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<ArticleEditValues> = async (data) => {
+    onSave(data);
   }
 
   return (
@@ -38,6 +41,34 @@ export default function ArticleEditor({ title = '', content = '' }: ArticleEdito
         {...register('title', { required: 'Title is required' })}
         error={!!errors.title}
         helperText={errors.title?.message}
+      />
+      <TextField
+        label="Slug"
+        type="text"
+        {...register('slug', { required: 'Slug is required' })}
+        error={!!errors.slug}
+        helperText={errors.slug?.message}
+      />
+      <TextField
+        label="Keywords"
+        type="text"
+        {...register('keywords', { required: 'Keywords are required' })}
+        error={!!errors.keywords}
+        helperText={errors.keywords?.message}
+      />
+      <TextField
+        label="Description"
+        type="text"
+        {...register('description', { required: 'Description is required' })}
+        error={!!errors.description}
+        helperText={errors.description?.message}
+      />
+      <TextField
+        label="Author"
+        type="text"
+        {...register('author', { required: 'Author is required' })}
+        error={!!errors.author}
+        helperText={errors.author?.message}
       />
       <Controller
         control={control}

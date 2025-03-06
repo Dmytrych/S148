@@ -1,5 +1,5 @@
 import {axiosInstance} from "./axios-client.ts";
-import {ArticleApiResponse, ArticlesApiResponse} from "./DTO/articles.ts";
+import {ArticleApiResponse, ArticleAttributes, ArticlesApiResponse} from "./DTO/articles.ts";
 
 export async function getListArticles() {
   return axiosInstance.get<ArticlesApiResponse>('api/articles', {
@@ -15,5 +15,11 @@ export async function getArticle(slug: string) {
     params: {
       populate: ['coverImage', 'images', 'characteristics'],
     }
+  }).then(response => response.data);
+}
+
+export async function updateArticle(id: string, attributes: Partial<ArticleAttributes>) {
+  return axiosInstance.put<ArticleApiResponse>(`api/articles/${id}`, {
+    data: attributes
   }).then(response => response.data);
 }

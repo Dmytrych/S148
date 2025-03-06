@@ -2,7 +2,6 @@ import {ApiImage} from "./common/images.ts";
 import {CmsModel, Metadata} from "./common/common.ts";
 
 export type ArticleAttributes = {
-  id: number,
   slug: string,
   title: string,
   description: string,
@@ -16,6 +15,8 @@ export type ArticleAttributes = {
   },
   keywords: string
 }
+
+export type ArticleUpdateAttributes = Partial<ArticleAttributes>
 
 export type Article = CmsModel<ArticleAttributes> & {
 }
