@@ -1,10 +1,11 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {getArticle, updateArticle} from "../../api/articles.ts";
-import {CircularProgress, Container} from "@mui/material";
+import {CircularProgress, Container, Paper} from "@mui/material";
 import {Navigate, useParams} from "react-router";
 import ArticleEditor, {ArticleEditValues} from "../../components/articles/ArticleEditor.tsx";
 import {ArticleApiResponse, ArticleUpdateAttributes} from "../../api/DTO/articles.ts";
 import {useLogin} from "../../hooks/use-login.ts";
+import BackNavigation from "../../components/BackNavigation.tsx";
 
 export default function EditArticle() {
   const {user} = useLogin()
@@ -12,7 +13,7 @@ export default function EditArticle() {
 
   const params = useParams();
   const { data: articleData, isPending } = useQuery({
-    queryKey: ['article', params.slug],
+    queryKey: ['article', params.id],
     queryFn: async (params) => getArticle(params.queryKey[1] as string), })
 
   const updateMutation = useMutation<ArticleApiResponse, Error, { id: number, attributes: ArticleUpdateAttributes }>({
@@ -26,15 +27,11 @@ export default function EditArticle() {
     return <Navigate to='/login'/>
   }
 
-  if ( isPending ) {
+  if ( isPending || !articleData ) {
     return <CircularProgress />
   }
 
   const handleSave = async (values: ArticleEditValues) => {
-    if (!articleData) {
-      // TODO: Create article
-      return
-    }
     await updateMutation.mutateAsync({ id: articleData.data.id, attributes: values })
     await queryClient.invalidateQueries({ queryKey: ['article'] })
   }
@@ -51,9 +48,12 @@ export default function EditArticle() {
   } : null
 
   return (
-    <Container sx={{ mt: 2 }}>
+    <Container>
+      <BackNavigation fallbackTo='/articles'/>
       { values ? (
-        <ArticleEditor values={values} onSave={handleSave} />
+        <Paper elevation={3} sx={{ p: 5 }}>
+          <ArticleEditor values={values} onSave={handleSave} />
+        </Paper>
       ) : null }
     </Container>
   )

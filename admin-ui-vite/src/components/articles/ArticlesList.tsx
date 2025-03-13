@@ -16,7 +16,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
         key={index}
         imageSrc={article.attributes.coverImage ? getImageUrl(getOptimizedImageUrl(article.attributes.coverImage?.data, 'small')) : undefined}
         altText={article.attributes.coverImage?.data?.attributes?.alternativeText}
-        titleUrl={getArticleEditRoute(article.attributes.slug)}
+        titleUrl={getArticleEditRoute(article.id.toString())}
         title={article.attributes.title}
         description={article.attributes.description}
       />

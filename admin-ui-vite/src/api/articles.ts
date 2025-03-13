@@ -10,8 +10,8 @@ export async function getListArticles() {
   }).then(response => response.data);
 }
 
-export async function getArticle(slug: string) {
-  return axiosInstance.get<ArticleApiResponse>(`api/article/slug/${slug}`, {
+export async function getArticle(id: string) {
+  return axiosInstance.get<ArticleApiResponse>(`api/articles/${id}`, {
     params: {
       populate: ['coverImage', 'images', 'characteristics'],
     }
@@ -20,6 +20,12 @@ export async function getArticle(slug: string) {
 
 export async function updateArticle(id: string, attributes: Partial<ArticleAttributes>) {
   return axiosInstance.put<ArticleApiResponse>(`api/articles/${id}`, {
+    data: attributes
+  }).then(response => response.data);
+}
+
+export async function createArticle(attributes: Partial<ArticleAttributes>) {
+  return axiosInstance.post<ArticleApiResponse>(`api/articles/`, {
     data: attributes
   }).then(response => response.data);
 }

@@ -13,7 +13,7 @@ type ArticleCardProps = {
 
 const ArticleCard = ({ title, description, renderBottomButtons, titleUrl, imageSrc, altText }: ArticleCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345, flexGrow: 1 }}>
+    <Card sx={{ width: 345 }}>
       <CardMedia
         sx={{ height: 200 }}
         image={imageSrc}
