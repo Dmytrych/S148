@@ -1,6 +1,7 @@
 import {Box, Button, TextField} from "@mui/material";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import ArticleRteFormField from "./ArticleRteFormField.tsx";
+import ArticleFileList from "./ArticleFileList.tsx";
 
 type ArticleEditorProps = {
   values: ArticleEditValues
@@ -70,6 +71,7 @@ export default function ArticleEditor({ values, onSave }: ArticleEditorProps) {
         error={!!errors.author}
         helperText={errors.author?.message}
       />
+      <ArticleFileList images={}/>
       <Controller
         control={control}
         render={({ field }) => (

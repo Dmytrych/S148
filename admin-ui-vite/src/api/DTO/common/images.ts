@@ -42,4 +42,4 @@ export type Media = {
     height: number,
 }
 
-export interface ApiImage extends CmsModel<ApiImageAttributes> {}
+export type ApiImage = CmsModel<ApiImageAttributes>

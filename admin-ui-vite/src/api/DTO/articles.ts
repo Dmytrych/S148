@@ -17,6 +17,15 @@ export type ArticleAttributes = {
 }
 
 export type ArticleUpdateAttributes = Partial<ArticleAttributes>
+export type ArticleCreateAttributes = {
+  slug: string,
+  title: string,
+  description: string,
+  author?: string,
+  canonicalUrl?: string,
+  content: string;
+  keywords: string
+}
 
 export type Article = CmsModel<ArticleAttributes> & {
 }
