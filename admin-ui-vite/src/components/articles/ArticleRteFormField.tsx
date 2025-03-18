@@ -5,6 +5,7 @@ import {TextAlign} from "@tiptap/extension-text-align";
 import {Link} from "@tiptap/extension-link";
 import {Image} from "@tiptap/extension-image";
 import RichTextEditor from "../rich-text-editor/RichTextEditor.tsx";
+import {ApiImage} from "../../api/DTO/common/images.ts";
 
 const extensions: Extensions = [
   StarterKit,
@@ -23,9 +24,10 @@ const extensions: Extensions = [
 type ArticleRteFormFieldProps = {
   value: string;
   onChange: (value: string) => void;
+  availableImages: ApiImage[];
 }
 
-function ArticleRteFormField({ value, onChange }: ArticleRteFormFieldProps) {
+function ArticleRteFormField({ value, onChange, availableImages }: ArticleRteFormFieldProps) {
   const editor = useEditor({
     content: value,
     extensions,
@@ -38,7 +40,7 @@ function ArticleRteFormField({ value, onChange }: ArticleRteFormFieldProps) {
     return null
   }
 
-  return <RichTextEditor editor={editor} />
+  return <RichTextEditor editor={editor} availableImages={availableImages} />
 }
 
 export default ArticleRteFormField

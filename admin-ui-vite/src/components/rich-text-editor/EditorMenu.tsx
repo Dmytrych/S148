@@ -14,6 +14,9 @@ import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import PopoverInput from "../ui/PopoverInput.tsx";
 import {Editor} from "@tiptap/react";
+import PopoverFileSelect from "../articles/PopoverFileSelect.tsx";
+import {ApiImage} from "../../api/DTO/common/images.ts";
+import {getImageUrl} from "../../utils/image-url.ts";
 
 type Level = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
@@ -33,10 +36,11 @@ const HEADINGS: HeadingEntry[] = [
 ]
 
 type EditorMenuProps = {
-  editor: Editor
+  editor: Editor;
+  imagesToSelect: ApiImage[];
 }
 
-const EditorMenu = ({ editor }: EditorMenuProps) => {
+const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
   const setLink = (url: string) => {
     if (url === null) {
       return
@@ -51,9 +55,9 @@ const EditorMenu = ({ editor }: EditorMenuProps) => {
     editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
   }
 
-  const addImage = (url: string) => {
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run()
+  const addImage = (image: ApiImage) => {
+    if (image?.attributes.url) {
+      editor.chain().focus().setImage({ src: getImageUrl(image?.attributes.url) }).run()
     }
   }
 
@@ -156,15 +160,14 @@ const EditorMenu = ({ editor }: EditorMenuProps) => {
         </ToolbarButtonStyled>
       </ButtonGroup>
       <ButtonGroup>
-        <PopoverInput
-          placeholder='Picture URL'
+        <PopoverFileSelect
+          images={imagesToSelect}
           renderButton={(props) => (
             <Button {...props}>
               <InsertPhoto/>
             </Button>
           )}
-          onSubmit={addImage}
-        />
+          onSelect={addImage}/>
       </ButtonGroup>
       <Select
         variant='outlined'

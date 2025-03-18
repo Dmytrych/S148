@@ -1,10 +1,6 @@
 import React, {ReactNode, useState} from 'react'
-import { Popover, TextField } from '@mui/material'
-
-type RenderButtonProps = {
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
-    disabled: boolean
-}
+import { TextField } from '@mui/material'
+import PopoverButton, {RenderButtonProps, RenderContentProps} from "./PopoverButton.tsx";
 
 type PopoverInputProps = {
     placeholder: string;
@@ -19,56 +15,49 @@ const PopoverInput = ({
   getDefaultValue,
   renderButton
 }: PopoverInputProps) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
   const [inputValue, setInputValue] = useState('')
 
-  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setIsOpen(true)
-    setInputValue(getDefaultValue ? getDefaultValue() : '')
-    setAnchorEl(event.currentTarget)
+  const getHandleButtonClick = (props: RenderButtonProps) => {
+    return (event: React.MouseEvent<HTMLButtonElement>) => {
+      setInputValue(getDefaultValue ? getDefaultValue() : '')
+      props.onClick(event)
+    }
   }
 
   const handleClose = () => {
-    setAnchorEl(null)
     setInputValue('')
-    setIsOpen(false)
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value)
   }
 
-  const handleInputSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleClose()
-      onSubmit?.(inputValue)
+  const getHandleInputSubmit = (props: RenderContentProps) => {
+    return (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        handleClose()
+        props.closePopover()
+        onSubmit?.(inputValue)
+      }
     }
   }
 
   return (
-    <>
-      {renderButton({ onClick: handleButtonClick, disabled: isOpen })}
-      <Popover
-        open={isOpen}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-      >
-        <div style={{ padding: 4 }}>
+    <PopoverButton
+      onClose={handleClose}
+      renderButton={(props) => renderButton({ onClick: getHandleButtonClick(props), disabled: props.disabled })}
+      renderPopper={(props) => (
+        <div style={{padding: 4}}>
           <TextField
             value={inputValue}
             onChange={handleInputChange}
-            onKeyDown={handleInputSubmit}
+            onKeyDown={getHandleInputSubmit(props)}
             placeholder={placeholder}
             autoFocus
           />
         </div>
-      </Popover>
-    </>
+      )}
+    />
   )
 }
 

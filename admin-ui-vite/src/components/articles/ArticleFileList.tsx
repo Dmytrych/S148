@@ -1,23 +1,36 @@
 import {ApiImage} from "../../api/DTO/common/images.ts";
-import {ImageList, ImageListItem} from "@mui/material";
+import {ImageList, ImageListItem, ImageListItemBar, styled} from "@mui/material";
 import {constructSrcSet} from "../../utils/srcset-construction.ts";
+import {getImageUrl} from "../../utils/image-url.ts";
 
 type ArticleFileListProps = {
-  images: ApiImage[]
+  images: ApiImage[];
+  onClick: (image: ApiImage) => void;
 }
 
-export default function ArticleFileList({ images }: ArticleFileListProps) {
+const StyledImageListItem = styled(ImageListItem)({
+  ":hover": {
+    opacity: '70%',
+  },
+  cursor: 'pointer',
+})
+
+export default function ArticleFileList({ images, onClick }: ArticleFileListProps) {
   return (
-    <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+    <ImageList cols={4}>
       {images.map((item) => (
-        <ImageListItem key={item.id}>
+        <StyledImageListItem key={item.id} onClick={() => onClick(item)}>
           <img
             srcSet={constructSrcSet(item.attributes.formats)}
-            src={item.attributes.url}
+            src={getImageUrl(item.attributes.url)}
             alt={item.attributes.name}
             loading="lazy"
           />
-        </ImageListItem>
+          <ImageListItemBar
+            title={item.attributes.name}
+            subtitle='image'
+          />
+        </StyledImageListItem>
       ))}
     </ImageList>
   )

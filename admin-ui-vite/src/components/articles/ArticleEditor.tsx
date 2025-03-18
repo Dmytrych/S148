@@ -1,9 +1,10 @@
 import {Box, Button, TextField} from "@mui/material";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import ArticleRteFormField from "./ArticleRteFormField.tsx";
-import ArticleFileList from "./ArticleFileList.tsx";
+import {ApiImage} from "../../api/DTO/common/images.ts";
 
 type ArticleEditorProps = {
+  articleImages: ApiImage[];
   values: ArticleEditValues
   onSave: (values: ArticleEditValues) => void;
 }
@@ -17,7 +18,7 @@ export type ArticleEditValues = {
   author: string;
 }
 
-export default function ArticleEditor({ values, onSave }: ArticleEditorProps) {
+export default function ArticleEditor({ values, onSave, articleImages }: ArticleEditorProps) {
   const {
     control,
     register,
@@ -71,11 +72,10 @@ export default function ArticleEditor({ values, onSave }: ArticleEditorProps) {
         error={!!errors.author}
         helperText={errors.author?.message}
       />
-      <ArticleFileList images={}/>
       <Controller
         control={control}
         render={({ field }) => (
-          <ArticleRteFormField value={field.value} onChange={field.onChange}/>
+          <ArticleRteFormField value={field.value} onChange={field.onChange} availableImages={articleImages}/>
         )}
         name="content"
       />

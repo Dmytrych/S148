@@ -13,7 +13,7 @@ export async function getListArticles() {
 export async function getArticle(id: string) {
   return axiosInstance.get<ArticleApiResponse>(`api/articles/${id}`, {
     params: {
-      populate: ['coverImage', 'images', 'characteristics'],
+      populate: ['coverImage', 'images', 'characteristics', 'relatedUploads'],
     }
   }).then(response => response.data);
 }

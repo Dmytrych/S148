@@ -13,6 +13,9 @@ export type ArticleAttributes = {
   coverImage?: {
     data: ApiImage;
   },
+  relatedUploads?: {
+    data: ApiImage[];
+  }
   keywords: string
 }
 
