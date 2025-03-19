@@ -3,9 +3,9 @@ import {Underline} from "@tiptap/extension-underline";
 import {StarterKit} from "@tiptap/starter-kit";
 import {TextAlign} from "@tiptap/extension-text-align";
 import {Link} from "@tiptap/extension-link";
-import {Image} from "@tiptap/extension-image";
 import RichTextEditor from "../rich-text-editor/RichTextEditor.tsx";
 import {ApiImage} from "../../api/DTO/common/images.ts";
+import {ImageResize} from "../rich-text-editor/shared/ImageResize.tsx";
 
 const extensions: Extensions = [
   StarterKit,
@@ -18,7 +18,7 @@ const extensions: Extensions = [
     defaultProtocol: 'https',
     openOnClick: false,
   }),
-  Image
+  ImageResize
 ]
 
 type ArticleRteFormFieldProps = {
