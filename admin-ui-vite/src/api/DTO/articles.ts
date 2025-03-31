@@ -19,7 +19,18 @@ export type ArticleAttributes = {
   keywords: string
 }
 
-export type ArticleUpdateAttributes = Partial<ArticleAttributes>
+export type ArticleUpdateAttributes = {
+  slug: string,
+  title: string,
+  description: string,
+  author?: string,
+  canonicalUrl?: string,
+  content: string;
+  coverImage?: number,
+  relatedUploads?: number[]
+  keywords: string
+}
+
 export type ArticleCreateAttributes = {
   slug: string,
   title: string,

@@ -17,7 +17,7 @@ const StyledImageListItem = styled(ImageListItem)({
 
 export default function ArticleFileList({ images, onClick }: ArticleFileListProps) {
   return (
-    <ImageList cols={4}>
+    <ImageList cols={4} sx={{ m: 0 }}>
       {images.map((item) => (
         <StyledImageListItem key={item.id} onClick={() => onClick(item)}>
           <img

@@ -2,6 +2,7 @@ import {Box, Button, TextField} from "@mui/material";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import ArticleRteFormField from "./ArticleRteFormField.tsx";
 import {ApiImage} from "../../api/DTO/common/images.ts";
+import CoverImagePicker from "./CoverImagePicker.tsx";
 
 type ArticleEditorProps = {
   articleImages: ApiImage[];
@@ -16,6 +17,7 @@ export type ArticleEditValues = {
   keywords: string;
   description: string;
   author: string;
+  coverImageId?: number;
 }
 
 export default function ArticleEditor({ values, onSave, articleImages }: ArticleEditorProps) {
@@ -71,6 +73,13 @@ export default function ArticleEditor({ values, onSave, articleImages }: Article
         {...register('author', { required: 'Author is required' })}
         error={!!errors.author}
         helperText={errors.author?.message}
+      />
+      <Controller
+        name="coverImageId"
+        control={control}
+        render={({ field }) => (
+          <CoverImagePicker defaultSelectionId={field.value} images={articleImages} onSelect={(image) => field.onChange(image.id)}/>
+        )}
       />
       <Controller
         control={control}

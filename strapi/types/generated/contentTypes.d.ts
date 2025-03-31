@@ -906,6 +906,14 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    type: Attribute.Enumeration<['markdown', 'richText']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'markdown'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -17,6 +17,7 @@ import {Editor} from "@tiptap/react";
 import PopoverFileSelect from "../articles/PopoverFileSelect.tsx";
 import {ApiImage} from "../../api/DTO/common/images.ts";
 import {getImageUrl} from "../../utils/image-url.ts";
+import {constructSrcSet} from "../../utils/srcset-construction.ts";
 
 type Level = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
@@ -57,7 +58,7 @@ const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
 
   const addImage = (image: ApiImage) => {
     if (image?.attributes.url) {
-      editor.chain().focus().setImage({ src: getImageUrl(image?.attributes.url) }).run()
+      editor.chain().focus().setImage({ src: getImageUrl(image?.attributes.url), srcset: constructSrcSet(image.attributes.formats) }).run()
     }
   }
 

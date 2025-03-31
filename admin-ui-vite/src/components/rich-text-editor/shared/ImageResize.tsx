@@ -1,5 +1,18 @@
 import Image from '@tiptap/extension-image';
 
+declare module '@tiptap/core' {
+  interface Commands<ReturnType> {
+    customImage: {
+      setImage: (options: {
+        src: string
+        alt?: string
+        title?: string
+        srcset?: string
+      }) => ReturnType
+    }
+  }
+}
+
 // This code was borrowed from tiptap-extension-resize-image, however the version with normal image fitting wasn't released yet.
 // TODO: Install the package when the fix is released
 export const ImageResize = Image.extend({
@@ -15,6 +28,13 @@ export const ImageResize = Image.extend({
             : `${element.style.cssText}`;
         },
       },
+      srcset: {
+        parseHTML: element => element.getAttribute('srcset'),
+        renderHTML: attributes => {
+          if (!attributes.srcset) return {}
+          return { srcset: attributes.srcset }
+        },
+      },
     };
   },
   addNodeView() {
@@ -23,7 +43,8 @@ export const ImageResize = Image.extend({
         view,
         options: { editable },
       } = editor;
-      const { style } = node.attrs;
+      console.log(node)
+      const { style, srcset } = node.attrs;
       const $wrapper = document.createElement('div');
       const $container = document.createElement('div');
       const $img = document.createElement('img');
@@ -34,6 +55,7 @@ export const ImageResize = Image.extend({
           const newAttrs = {
             ...node.attrs,
             style: `${$img.style.cssText}`,
+            srcset
           };
           view.dispatch(view.state.tr.setNodeMarkup(getPos(), null, newAttrs));
         }

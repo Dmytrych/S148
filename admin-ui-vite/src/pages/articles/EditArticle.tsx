@@ -6,6 +6,7 @@ import ArticleEditor, {ArticleEditValues} from "../../components/articles/Articl
 import {ArticleApiResponse, ArticleUpdateAttributes} from "../../api/DTO/articles.ts";
 import {useLogin} from "../../hooks/use-login.ts";
 import BackNavigation from "../../components/BackNavigation.tsx";
+import {ArticleEditorContextProvider} from "../../components/context-providers/ArticleEditorContextProvider.tsx";
 
 export default function EditArticle() {
   const {user} = useLogin()
@@ -32,7 +33,12 @@ export default function EditArticle() {
   }
 
   const handleSave = async (values: ArticleEditValues) => {
-    await updateMutation.mutateAsync({ id: articleData.data.id, attributes: values })
+    const { coverImageId, ...fields } = values
+    const finalData = {
+      ...fields,
+      coverImage: coverImageId,
+    }
+    await updateMutation.mutateAsync({ id: articleData.data.id, attributes: finalData })
     await queryClient.invalidateQueries({ queryKey: ['article'] })
   }
 
@@ -45,18 +51,21 @@ export default function EditArticle() {
     canonicalUrl: attributes.canonicalUrl,
     content: attributes.content,
     keywords: attributes.keywords,
+    coverImageId: attributes.coverImage?.data?.id,
   } : null
 
   return (
-    <Container>
-      <BackNavigation fallbackTo='/articles'/>
-      { values ? (
-        <Stack direction='column' gap={2}>
-          <Paper elevation={3} sx={{ p: 5 }}>
-            <ArticleEditor values={values} onSave={handleSave} articleImages={articleData?.data?.attributes?.relatedUploads?.data ?? []} />
-          </Paper>
-        </Stack>
-      ) : null }
-    </Container>
+    <ArticleEditorContextProvider article={articleData?.data}>
+      <Container>
+        <BackNavigation fallbackTo='/articles'/>
+        { values ? (
+          <Stack direction='column' gap={2}>
+            <Paper elevation={3} sx={{ p: 5 }}>
+              <ArticleEditor values={values} onSave={handleSave} articleImages={articleData?.data?.attributes?.relatedUploads?.data ?? []} />
+            </Paper>
+          </Stack>
+        ) : null }
+      </Container>
+    </ArticleEditorContextProvider>
   )
 }
