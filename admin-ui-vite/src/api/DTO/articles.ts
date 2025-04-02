@@ -10,6 +10,7 @@ export type ArticleAttributes = {
   content: string;
   createdAt: Date,
   updatedAt: Date,
+  publishedAt: Date | null,
   coverImage?: {
     data: ApiImage;
   },
@@ -25,6 +26,7 @@ export type ArticleUpdateAttributes = {
   description: string,
   author?: string,
   canonicalUrl?: string,
+  publishedAt?: Date | null,
   content: string;
   coverImage?: number,
   relatedUploads?: number[]

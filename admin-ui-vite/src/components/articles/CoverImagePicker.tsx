@@ -42,7 +42,7 @@ export default function CoverImagePicker({ onSelect, images, defaultSelectionId 
         onSelect={handleSelect}
         images={images}
         renderButton={(props) => (
-          <Button {...props}>Select</Button>
+          <Button {...props}>Select Cover Image</Button>
         )}
       />
     </Stack>

@@ -72,7 +72,7 @@ const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
   }
 
   return (
-    <Stack direction='row' spacing={1} sx={{ overflowX: 'auto' }}>
+    <Stack direction='row' spacing={1}>
       <ButtonGroup variant='outlined'>
         <ToolbarButtonStyled
           onClick={() => editor.chain().focus().toggleBold().run()}

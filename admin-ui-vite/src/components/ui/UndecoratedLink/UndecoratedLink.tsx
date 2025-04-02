@@ -1,7 +1,5 @@
-'use client'
-
 import {styled} from "@mui/material";
-import Link from "next/link";
+import {Link} from "react-router";
 
 export const UndecoratedLink = styled(Link)({
   textDecoration: 'none',

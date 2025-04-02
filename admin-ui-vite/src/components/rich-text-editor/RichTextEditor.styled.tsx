@@ -5,8 +5,7 @@ import Button from '@mui/material/Button'
 export const RichTextEditorWrapperStyled = styled(Box)({
   border: '1px solid lightgray',
   borderRadius: '4px',
-  display: 'flex',
-  flexDirection: 'column',
+  position: 'relative',
   '& .ProseMirror-focused': {
     outline: 'none',
   }

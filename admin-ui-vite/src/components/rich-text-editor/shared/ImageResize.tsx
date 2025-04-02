@@ -43,7 +43,6 @@ export const ImageResize = Image.extend({
         view,
         options: { editable },
       } = editor;
-      console.log(node)
       const { style, srcset } = node.attrs;
       const $wrapper = document.createElement('div');
       const $container = document.createElement('div');

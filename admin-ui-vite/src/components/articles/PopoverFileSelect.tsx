@@ -26,7 +26,7 @@ export default function PopoverFileSelect({ onSelect, renderButton, images }: Po
     if (file) {
       addImage(file)
         .then(async (response) => {
-          const existingUploads = article.attributes.relatedUploads?.data.map((upload) => upload.id) ?? []
+          const existingUploads = article.attributes.relatedUploads?.data?.map((upload) => upload.id) ?? []
           await updateArticleUploads.mutateAsync({ id: article.id, uploads: [...existingUploads, response[0].id] })
           await queryClient.invalidateQueries({ queryKey: ['article'] })
           setFile(null)

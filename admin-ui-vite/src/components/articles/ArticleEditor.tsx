@@ -37,7 +37,7 @@ export default function ArticleEditor({ values, onSave, articleImages }: Article
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '0 auto' }}
+      sx={{ display: 'flex', flexDirection: 'column', gap: 2, margin: '0' }}
     >
       <TextField
         label="Title"
