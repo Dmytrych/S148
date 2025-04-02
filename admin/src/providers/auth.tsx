@@ -2,8 +2,6 @@
 
 import {createContext, ReactNode, useCallback, useContext, useEffect, useState} from "react";
 import {getCachedToken, getCachedUser, saveJwtInfo} from "@/services/authService";
-import {useRouter} from "next/navigation";
-import {AUTH_PAGE} from "@/constants/routes";
 
 type UserProfile = {
   id: number,
