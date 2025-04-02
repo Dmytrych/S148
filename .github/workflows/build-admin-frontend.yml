@@ -31,6 +31,4 @@ jobs:
         working-directory: ./admin-ui-vite
 
       - name: Move static files
-        run: |
-          mkdir -p $STATIC_FILES_PATH
-          cp -r ./admin-ui-vite/dist/* $STATIC_FILES_PATH
+        run: cp -r ./admin-ui-vite/dist/* $STATIC_FILES_PATH
