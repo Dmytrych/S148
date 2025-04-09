@@ -7,16 +7,19 @@ declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     navbarLink: true;
     h5_squares: true;
+    h6_squares: true;
   }
 }
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     h5_squares: CSSProperties;
+    h6_squares: CSSProperties;
   }
 
   interface TypographyVariantsOptions {
     h5_squares?: CSSProperties;
+    h6_squares?: CSSProperties;
   }
 }
 
@@ -72,6 +75,18 @@ export default {
     },
   },
   h5_squares: {
+    fontSize: '1.25rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.5rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '1.75rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '2rem',
+    },
+  },
+  h6_squares: {
     fontSize: '1.25rem',
     '@media (min-width:600px)': {
       fontSize: '1.5rem',

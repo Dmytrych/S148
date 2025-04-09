@@ -5,7 +5,8 @@ import {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {ArticleAttributes} from "@/api/DTO/articles";
 import ArticleContent from "@/components/articles/ArticleContent";
-import MdxArticleContent from "@/components/articles/MdxArticleContent";
+import LogoBanner from "@/components/ui/logo/LogoBanner";
+import TopBuyBanner from "@/components/ui/banners/TopBuyBanner";
 
 type ArticleMetadataProjection = {
   slug: string;
@@ -75,17 +76,14 @@ async function Page({ params }: ArticlePageProps) {
   }
 
   return (<main>
+    <TopBuyBanner/>
     <Container>
       <article>
         <Grid2 container>
           <Grid2 size={{xs: 12, md: 8}}>
             <Typography mt={4} variant="h4">{article.attributes.title}</Typography>
             <Box borderTop='2px solid' mt={2}>
-              {article.attributes.type === 'richText' ? (
-                <ArticleContent content={article.attributes.content}/>
-              ) : (
-                <MdxArticleContent content={article.attributes.content}/>
-              )}
+              <ArticleContent content={article.attributes.content}/>
             </Box>
           </Grid2>
         </Grid2>

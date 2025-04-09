@@ -8,16 +8,22 @@ declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     navbarLink: true;
     h5_squares: true;
+    h6_squares: true;
+    body_squares: true;
   }
 }
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     h5_squares: CSSProperties;
+    h6_squares: CSSProperties;
+    body_squares: CSSProperties;
   }
 
   interface TypographyVariantsOptions {
     h5_squares?: CSSProperties;
+    h6_squares?: CSSProperties;
+    body_squares?: CSSProperties;
   }
 }
 
@@ -96,6 +102,19 @@ export default {
       fontSize: '2rem',
     },
   },
+  h6_squares: {
+    fontSize: '1rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.25rem',
+    },
+    '@media (min-width:960px)': {
+      fontSize: '1.5rem',
+    },
+    '@media (min-width:1280px)': {
+      fontSize: '1.75rem',
+    },
+    fontFamily: Font.SquaresBold,
+  },
   h6: {
     fontSize: '1rem',
     '@media (min-width:600px)': {
@@ -114,6 +133,10 @@ export default {
   body2: {
     fontSize: '0.875rem',
     lineHeight: 1.4,
+  },
+  body_squares: {
+    fontFamily: Font.SquaresBold,
+    fontSize: '1rem'
   },
   navbarLink: {
     fontFamily: 'Squares Bold',

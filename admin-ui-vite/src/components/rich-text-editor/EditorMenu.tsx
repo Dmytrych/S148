@@ -1,5 +1,5 @@
 import ButtonGroup from '@mui/material/ButtonGroup'
-import {ToolbarButtonStyled} from './RichTextEditor.styled.js'
+import {ToolbarButtonStyled, ToolbarSelectStyled} from './RichTextEditor.styled.js'
 import {
   AddLink,
   DataObject, FormatAlignCenter, FormatAlignJustify,
@@ -9,8 +9,7 @@ import {
   FormatStrikethrough,
   FormatUnderlined, InsertPhoto, LinkOff, Redo, Undo
 } from '@mui/icons-material'
-import {Button, SelectChangeEvent, Stack} from '@mui/material'
-import Select from '@mui/material/Select'
+import {SelectChangeEvent, Stack} from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import PopoverInput from "../ui/PopoverInput.tsx";
 import {Editor} from "@tiptap/react";
@@ -72,8 +71,18 @@ const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
   }
 
   return (
-    <Stack direction='row' spacing={1}>
-      <ButtonGroup variant='outlined'>
+    <Stack direction='row' spacing={1} overflow='scroll'>
+      <ToolbarSelectStyled
+        variant='outlined'
+        value={editor.isActive('heading') ? editor.getAttributes('heading').level : 0}
+        label='Text Format'
+        onChange={handleHeadingChange}
+      >
+        {
+          HEADINGS.map(option => <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)
+        }
+      </ToolbarSelectStyled>
+      <ButtonGroup variant='outlined' size='small'>
         <ToolbarButtonStyled
           onClick={() => editor.chain().focus().toggleBold().run()}
           isActive={editor.isActive('bold')}
@@ -105,7 +114,7 @@ const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
           <FormatUnderlined/>
         </ToolbarButtonStyled>
       </ButtonGroup>
-      <ButtonGroup>
+      <ButtonGroup size='small'>
         <ToolbarButtonStyled
           onClick={() => editor.chain().focus().setTextAlign('left').run()}
           isActive={editor.isActive({ textAlign: 'left' })}
@@ -131,7 +140,7 @@ const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
           <FormatAlignJustify/>
         </ToolbarButtonStyled>
       </ButtonGroup>
-      <ButtonGroup>
+      <ButtonGroup size='small'>
         <ToolbarButtonStyled
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           isActive={editor.isActive('bulletList')}
@@ -145,7 +154,7 @@ const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
           <FormatListNumbered/>
         </ToolbarButtonStyled>
       </ButtonGroup>
-      <ButtonGroup>
+      <ButtonGroup size='small'>
         <PopoverInput
           placeholder='Insert a link here'
           getDefaultValue={() => editor.getAttributes('link').href}
@@ -160,27 +169,17 @@ const EditorMenu = ({ editor, imagesToSelect }: EditorMenuProps) => {
           <LinkOff/>
         </ToolbarButtonStyled>
       </ButtonGroup>
-      <ButtonGroup>
+      <ButtonGroup size='small'>
         <PopoverFileSelect
           images={imagesToSelect}
           renderButton={(props) => (
-            <Button {...props}>
+            <ToolbarButtonStyled {...props} isActive={true}>
               <InsertPhoto/>
-            </Button>
+            </ToolbarButtonStyled>
           )}
           onSelect={addImage}/>
       </ButtonGroup>
-      <Select
-        variant='outlined'
-        value={editor.isActive('heading') ? editor.getAttributes('heading').level : 0}
-        label='Text Format'
-        onChange={handleHeadingChange}
-      >
-        {
-          HEADINGS.map(option => <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>)
-        }
-      </Select>
-      <ButtonGroup>
+      <ButtonGroup size='small'>
         <ToolbarButtonStyled isActive={false} onClick={() => editor.chain().focus().undo().run()} >
           <Undo/>
         </ToolbarButtonStyled>
