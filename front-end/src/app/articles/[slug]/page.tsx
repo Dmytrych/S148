@@ -1,10 +1,11 @@
-import {Box, Container, Typography} from "@mui/material";
+import {Box, Container, Grid2, Typography} from "@mui/material";
 import {fetchArticleBySlug} from "@/actions/fetchArticleBySlug";
 import {fetchArticles} from "@/actions/fetchArticles";
 import {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {ArticleAttributes} from "@/api/DTO/articles";
 import ArticleContent from "@/components/articles/ArticleContent";
+import MdxArticleContent from "@/components/articles/MdxArticleContent";
 
 type ArticleMetadataProjection = {
   slug: string;
@@ -76,10 +77,18 @@ async function Page({ params }: ArticlePageProps) {
   return (<main>
     <Container>
       <article>
-        <Typography variant="h5">{article.attributes.title}</Typography>
-        <Box>
-          <ArticleContent content={article.attributes.content}/>
-        </Box>
+        <Grid2 container>
+          <Grid2 size={{xs: 12, md: 8}}>
+            <Typography mt={4} variant="h4">{article.attributes.title}</Typography>
+            <Box borderTop='2px solid' mt={2}>
+              {article.attributes.type === 'richText' ? (
+                <ArticleContent content={article.attributes.content}/>
+              ) : (
+                <MdxArticleContent content={article.attributes.content}/>
+              )}
+            </Box>
+          </Grid2>
+        </Grid2>
       </article>
     </Container>
   </main>)
