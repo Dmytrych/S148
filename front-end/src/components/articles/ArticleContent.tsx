@@ -1,29 +1,40 @@
-'use server'
+'use client'
 
-import {MDXRemote} from "next-mdx-remote/rsc";
-import {Box} from "@mui/material";
-import ArticleImage from "@/components/articles/ArticleImage";
-import {ErrorBoundary} from "react-error-boundary";
+import {EditorContent, Extensions, useEditor} from "@tiptap/react";
+import {StarterKit} from "@tiptap/starter-kit";
+import {Underline} from "@tiptap/extension-underline";
+import {TextAlign} from "@tiptap/extension-text-align";
+import {Link} from "@tiptap/extension-link";
+import {ImageResize} from "@/components/articles/ImageResize";
 
 type ArticleContentProps = {
   content: string;
 }
 
-const components = {
-  ArticleImage
-}
+const extensions: Extensions = [
+  StarterKit,
+  Underline,
+  TextAlign.configure({
+    types: ['heading', 'paragraph'],
+  }),
+  Link.configure({
+    autolink: true,
+    defaultProtocol: 'https',
+    openOnClick: false,
+  }),
+  ImageResize
+]
 
 const ArticleContent = ({ content }: ArticleContentProps) => {
-  return (
-    <Box>
-      <ErrorBoundary fallbackRender={(props) => {
-        "use server"
+  const editor = useEditor({
+    content,
+    editable: false,
+    extensions: extensions,
+    immediatelyRender: false
+  })
 
-        return <div>{JSON.stringify(props.error)}</div>
-      }}>
-        <MDXRemote source={content} components={components}/>
-      </ErrorBoundary>
-    </Box>
+  return (
+    <EditorContent editor={editor} />
   )
 }
 

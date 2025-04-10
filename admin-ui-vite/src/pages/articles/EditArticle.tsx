@@ -60,7 +60,7 @@ export default function EditArticle() {
         <BackNavigation fallbackTo='/articles'/>
         { values ? (
           <Stack direction='column' gap={2}>
-            <Paper elevation={3} sx={{ p: 5 }}>
+            <Paper elevation={3} sx={{ p: 1 }}>
               <ArticleEditor values={values} onSave={handleSave} articleImages={articleData?.data?.attributes?.relatedUploads?.data ?? []} />
             </Paper>
           </Stack>

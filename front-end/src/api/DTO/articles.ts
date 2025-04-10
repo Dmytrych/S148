@@ -8,12 +8,13 @@ export type ArticleAttributes = {
   description: string,
   author?: string,
   canonicalUrl?: string,
-  content: string;
+  content: string,
   createdAt: Date,
   updatedAt: Date,
   coverImage?: {
-    data: ApiImage;
+    data: ApiImage
   },
+  type: string,
   keywords: string
 }
 

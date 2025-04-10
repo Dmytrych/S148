@@ -1,6 +1,6 @@
 'use client'
 
-import {createTheme, PaletteColor, PaletteColorOptions, Theme, ThemeOptions} from "@mui/material";
+import {createTheme, PaletteColor, PaletteColorOptions, Theme, ThemeOptions, TypeBackground} from "@mui/material";
 import {Color} from "@/constants/color";
 import {CSSProperties} from "react";
 import typography from "./typography";
@@ -29,6 +29,10 @@ declare module '@mui/material/styles' {
     interface ButtonVariantsOptions {
         primary: CSSProperties;
     }
+
+    interface TypeBackground {
+        logo: string;
+    }
 }
 
 declare module '@mui/material/Button' {
@@ -51,6 +55,7 @@ const appTheme = {
     },
     background: {
       default: Color.White,
+      logo: Color.GlobalBlack,
     },
     text: {
       primary: Color.TextColor,

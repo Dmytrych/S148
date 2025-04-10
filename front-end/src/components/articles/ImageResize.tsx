@@ -20,11 +20,11 @@ export const ImageResize = Image.extend({
     return {
       ...this.parent?.(),
       style: {
-        default: 'width: 100%; height: auto; cursor: pointer; max-width: 100%;',
+        default: 'width: 100%; height: auto; cursor: pointer;',
         parseHTML: (element) => {
           const width = element.getAttribute('width');
           return width
-            ? `width: ${width}px; height: auto; cursor: pointer; max-width: 100%;`
+            ? `width: ${width}px; height: auto; cursor: pointer;`
             : `${element.style.cssText}`;
         },
       },
