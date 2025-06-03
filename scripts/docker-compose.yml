@@ -39,39 +39,8 @@ services:
         max-size: "100m"
         max-file: "3"
 
-  frontend-s148:
-    build:
-      context: ../front-end
-      dockerfile: Dockerfile
-      args:
-        NEXT_PUBLIC_BACK_END_URL: ${NEXT_PUBLIC_BACK_END_URL}
-        NEXT_PUBLIC_IMAGE_PROVIDER_URL: ${NEXT_PUBLIC_IMAGE_PROVIDER_URL}
-        NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN: ${NEXT_PUBLIC_IMAGE_PROVIDER_DOMAIN}
-        NEXT_PUBLIC_EMAIL: ${NEXT_PUBLIC_EMAIL}
-        NEXT_PUBLIC_PHONE_NUMBER: ${NEXT_PUBLIC_PHONE_NUMBER}
-        NEXT_PUBLIC_PHONE_NUMBER_FOR_URL: ${NEXT_PUBLIC_PHONE_NUMBER_FOR_URL}
-        NEXT_PUBLIC_FACEBOOK_LINK: ${NEXT_PUBLIC_FACEBOOK_LINK}
-        NEXT_PUBLIC_INSTAGRAM_LINK: ${NEXT_PUBLIC_INSTAGRAM_LINK}
-        NEXT_PUBLIC_TELEGRAM_LINK: ${NEXT_PUBLIC_TELEGRAM_LINK}
-        NEXT_PUBLIC_COPYRIGHT: ${NEXT_PUBLIC_COPYRIGHT}
-        NEXT_PUBLIC_GOOGLE_G_TAG: ${NEXT_PUBLIC_GOOGLE_G_TAG}
-        NEXT_PUBLIC_HOST_NAME: ${NEXT_PUBLIC_HOST_NAME}
-    container_name: frontend-s148
-    environment:
-      BACK_END_URL: ${BACK_END_URL}
-    ports:
-      - '3000:3000'
-    depends_on:
-      strapi:
-        condition: service_healthy
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "30m"
-        max-file: "3"
-
   strapi-postgres:
-    image: postgres:13
+    image: postgres:13-alpine
     container_name: strapi-postgres
     ports:
       - '5432:5432'
